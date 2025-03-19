@@ -1,0 +1,20 @@
+.css_caseta_label, .css_caseta_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_caseta_grid_line, .css_caseta_grid_line:hover {vertical-align: top;text-align: right;}
+.css_carril_label, .css_carril_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_carril_grid_line, .css_carril_grid_line:hover {vertical-align: top;text-align: right;}
+.css_id_tag_label, .css_id_tag_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_id_tag_grid_line, .css_id_tag_grid_line:hover {vertical-align: top;text-align: right;}
+.css_placas_label, .css_placas_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_placas_grid_line, .css_placas_grid_line:hover {vertical-align: top;text-align: right;}
+.css_fecha_label, .css_fecha_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_fecha_grid_line, .css_fecha_grid_line:hover {vertical-align: top;text-align: right;}
+.css_hora_label, .css_hora_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_hora_grid_line, .css_hora_grid_line:hover {vertical-align: top;text-align: right;}
+.css_clase_label, .css_clase_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_clase_grid_line, .css_clase_grid_line:hover {vertical-align: top;text-align: right;}
+.css_ejes_label, .css_ejes_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_ejes_grid_line, .css_ejes_grid_line:hover {vertical-align: top;text-align: right;}
+.css_importe_label, .css_importe_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_importe_grid_line, .css_importe_grid_line:hover {vertical-align: top;text-align: right;}
+.css_usuario_label, .css_usuario_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_usuario_grid_line, .css_usuario_grid_line:hover {vertical-align: top;text-align: right;}

@@ -1,0 +1,24 @@
+.css_carrilid_label, .css_carrilid_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_carrilid_grid_line, .css_carrilid_grid_line:hover {vertical-align: top;text-align: right;}
+.css_cuerpo_label, .css_cuerpo_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_cuerpo_grid_line, .css_cuerpo_grid_line:hover {vertical-align: top;text-align: left;}
+.css_usuarioid_label, .css_usuarioid_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_usuarioid_grid_line, .css_usuarioid_grid_line:hover {vertical-align: top;text-align: left;}
+.css_horainicio_label, .css_horainicio_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_horainicio_grid_line, .css_horainicio_grid_line:hover {vertical-align: top;text-align: center;}
+.css_horafin_label, .css_horafin_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_horafin_grid_line, .css_horafin_grid_line:hover {vertical-align: top;text-align: center;}
+.css_encargadoturnoid_pre_label, .css_encargadoturnoid_pre_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_encargadoturnoid_pre_grid_line, .css_encargadoturnoid_pre_grid_line:hover {vertical-align: top;text-align: right;}
+.css_foliocierre_label, .css_foliocierre_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_foliocierre_grid_line, .css_foliocierre_grid_line:hover {vertical-align: top;text-align: left;}
+.css_preliquidar_label, .css_preliquidar_label:hover {text-align:;vertical-align:middle;justify-content:;font-weight:bold;}
+.css_preliquidar_grid_line, .css_preliquidar_grid_line:hover {text-align: center;}
+.css_consecutivo_label, .css_consecutivo_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_consecutivo_grid_line, .css_consecutivo_grid_line:hover {vertical-align: top;text-align: right;}
+.css_turnoid_label, .css_turnoid_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_turnoid_grid_line, .css_turnoid_grid_line:hover {vertical-align: top;text-align: right;}
+.css_casetaid_label, .css_casetaid_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_casetaid_grid_line, .css_casetaid_grid_line:hover {vertical-align: top;text-align: right;}
+.css_tramoid_label, .css_tramoid_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_tramoid_grid_line, .css_tramoid_grid_line:hover {vertical-align: top;text-align: right;}

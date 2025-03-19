@@ -1,0 +1,7 @@
+index.php
+BackOffice_Acapulco
+chart_aforo_1
+NAO
+cons
+chart_aforo_1
+LigMd5

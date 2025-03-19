@@ -1,0 +1,10 @@
+.css_fld_caseta_label, .css_fld_caseta_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_fld_caseta_grid_line, .css_fld_caseta_grid_line:hover {vertical-align: top;text-align: right;}
+.css_fld_fecha_ini_label, .css_fld_fecha_ini_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_fld_fecha_ini_grid_line, .css_fld_fecha_ini_grid_line:hover {vertical-align: top;text-align: center;}
+.css_fld_fecha_fin_label, .css_fld_fecha_fin_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_fld_fecha_fin_grid_line, .css_fld_fecha_fin_grid_line:hover {vertical-align: top;text-align: center;}
+.css_fld_grupo_label, .css_fld_grupo_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_fld_grupo_grid_line, .css_fld_grupo_grid_line:hover {vertical-align: top;text-align: right;}
+.css_fld_tarifa_label, .css_fld_tarifa_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_fld_tarifa_grid_line, .css_fld_tarifa_grid_line:hover {vertical-align: top;text-align: right;}

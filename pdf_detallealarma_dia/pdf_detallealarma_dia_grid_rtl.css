@@ -1,0 +1,16 @@
+.css_fecha_label, .css_fecha_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_fecha_grid_line, .css_fecha_grid_line:hover {vertical-align: top;text-align: center;}
+.css_turno_label, .css_turno_label:hover {text-align:;vertical-align:middle;justify-content:;font-weight:bold;}
+.css_turno_grid_line, .css_turno_grid_line:hover {text-align: right;}
+.css_hora_label, .css_hora_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_hora_grid_line, .css_hora_grid_line:hover {vertical-align: top;text-align: center;}
+.css_usuarioid_label, .css_usuarioid_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_usuarioid_grid_line, .css_usuarioid_grid_line:hover {vertical-align: top;text-align: right;}
+.css_carrilid_label, .css_carrilid_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_carrilid_grid_line, .css_carrilid_grid_line:hover {vertical-align: top;text-align: right;}
+.css_cuerpo_label, .css_cuerpo_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_cuerpo_grid_line, .css_cuerpo_grid_line:hover {vertical-align: top;text-align: right;}
+.css_alarmaid_label, .css_alarmaid_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_alarmaid_grid_line, .css_alarmaid_grid_line:hover {vertical-align: top;text-align: right;}
+.css_descripcion_label, .css_descripcion_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_descripcion_grid_line, .css_descripcion_grid_line:hover {vertical-align: top;text-align: right;}

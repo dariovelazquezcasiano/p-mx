@@ -1,0 +1,65 @@
+<html>
+	<head>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+      <style>
+        body{
+    		padding:0px;
+        }
+        .show-on-hover:hover > ul.dropdown-menu {
+            display: block;
+        }
+        .show-on-hover{
+        	position: fixed;
+			right: 10px;
+        	top: 0px;
+        }
+        .dropdown-menu > a:hover {
+        	background-color: #007bff;
+        	color: black;
+        }
+        .dropdown-menu{
+        	min-width: 300px;
+        	right: 10px !important;
+        	left: inherit !important;
+        	padding-top: 0px;
+			top: 30px;
+			right: 8px !important;
+        }
+        .dropdown-toggle::after{
+        	display: none !important;
+        }
+        .dropdown-toggle{
+        	background: none !important;
+        }
+        #round-badge{
+        	position: absolute;
+            top: 0px;
+			left: 30px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background-color: red;
+            color: white;
+        }
+      </style>
+  	</head>
+  	<body>
+		<div class="container-fluid">
+          <div class="row">
+              <div class="btn-group show-on-hover">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+<!--                   <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCAzMDAgMzAwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAzMDAgMzAwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCI+CjxnPgoJPGc+CgkJPHBhdGggZD0iTTE0OS45OTYsMEM2Ny4xNTcsMCwwLjAwMSw2Ny4xNjEsMC4wMDEsMTQ5Ljk5N1M2Ny4xNTcsMzAwLDE0OS45OTYsMzAwczE1MC4wMDMtNjcuMTYzLDE1MC4wMDMtMTUwLjAwMyAgICBTMjMyLjgzNSwwLDE0OS45OTYsMHogTTE0OS45OTksMjMyLjk1MWMtMTAuNzY2LDAtMTkuNDk5LTguNzI1LTE5LjQ5OS0xOS40OTloMzguOTk1ICAgIEMxNjkuNDk3LDIyNC4yMjYsMTYwLjc2NSwyMzIuOTUxLDE0OS45OTksMjMyLjk1MXogTTIxNS44ODksMTkzLjloLTAuMDA1di0wLjAwMWMwLDcuMjEtNS44NDMsNy42ODUtMTMuMDQ4LDcuNjg1SDk3LjE2ICAgIGMtNy4yMDgsMC0xMy4wNDYtMC40NzUtMTMuMDQ2LTcuNjg1di0xLjI0MmMwLTUuMTg1LDMuMDQ1LTkuNjI1LDcuNDItMTEuNzMxbDQuMTQyLTM1Ljc1M2MwLTI2LjE3NCwxOC41MS00OC4wMiw0My4xNTItNTMuMTc0ICAgIHYtMTMuODhjMC02LjE3LDUuMDAzLTExLjE3MywxMS4xNzYtMTEuMTczYzYuMTcsMCwxMS4xNzMsNS4wMDMsMTEuMTczLDExLjE3M1Y5MmMyNC42NDIsNS4xNTMsNDMuMTUyLDI2Ljk5Nyw0My4xNTIsNTMuMTc0ICAgIGw0LjE0MiwzNS43NThjNC4zNzUsMi4xMDksNy40MTgsNi41NDEsNy40MTgsMTEuNzI2VjE5My45eiIgZmlsbD0iIzAwNkRGMCIvPgoJPC9nPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=" /> <span class="caret"></span> -->
+					<img src="<?php echo sc_url_library('prj', 'notifications', 'image/campana32.png'); ?>"><span class="caret"></span>
+					
+                  <span id="round-badge" class="badge">0</span>
+                </button>
+                <ul id="dropdow-main" class="dropdown-menu" role="menu">
+                </ul>
+              </div>
+          </div>
+		</div>
+  	</body>
+</html>

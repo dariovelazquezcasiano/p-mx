@@ -1,0 +1,8 @@
+.css_excentoid_label, .css_excentoid_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_excentoid_grid_line, .css_excentoid_grid_line:hover {vertical-align: top;text-align: center;}
+.css_dependencia_label, .css_dependencia_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_dependencia_grid_line, .css_dependencia_grid_line:hover {vertical-align: top;text-align: left;}
+.css_esactivo_label, .css_esactivo_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_esactivo_grid_line, .css_esactivo_grid_line:hover {vertical-align: top;text-align: left;}
+.css_imagen_label, .css_imagen_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_imagen_grid_line, .css_imagen_grid_line:hover {vertical-align: top;text-align: left;}

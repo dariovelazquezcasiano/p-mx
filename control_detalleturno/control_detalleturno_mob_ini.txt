@@ -1,0 +1,7 @@
+control_detalleturno_mob.php
+BackOffice_Acapulco
+control_detalleturno_mob
+NAO
+contr
+control_detalleturno
+LigMd5

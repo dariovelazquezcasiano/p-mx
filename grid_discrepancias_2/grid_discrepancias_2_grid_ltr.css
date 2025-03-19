@@ -1,0 +1,18 @@
+.css_fechaoperacion_label, .css_fechaoperacion_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_fechaoperacion_grid_line, .css_fechaoperacion_grid_line:hover {vertical-align: top;text-align: center;}
+.css_carrilid_label, .css_carrilid_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_carrilid_grid_line, .css_carrilid_grid_line:hover {vertical-align: top;text-align: right;}
+.css_cruces_label, .css_cruces_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_cruces_grid_line, .css_cruces_grid_line:hover {vertical-align: top;text-align: right;}
+.css_novalidos_label, .css_novalidos_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_novalidos_grid_line, .css_novalidos_grid_line:hover {vertical-align: top;text-align: right;}
+.css_discrepancias_label, .css_discrepancias_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_discrepancias_grid_line, .css_discrepancias_grid_line:hover {text-align: right;}
+.css_porcientodisc_label, .css_porcientodisc_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_porcientodisc_grid_line, .css_porcientodisc_grid_line:hover {font-weight:bold;text-align: right;}
+.css_porcientoconteo_label, .css_porcientoconteo_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_porcientoconteo_grid_line, .css_porcientoconteo_grid_line:hover {font-weight:bold;text-align: right;}
+.css_clasificados_label, .css_clasificados_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_clasificados_grid_line, .css_clasificados_grid_line:hover {vertical-align: top;text-align: right;}
+.css_detectados_label, .css_detectados_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_detectados_grid_line, .css_detectados_grid_line:hover {vertical-align: top;text-align: right;}

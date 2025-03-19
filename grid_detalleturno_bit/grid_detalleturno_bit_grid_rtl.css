@@ -1,0 +1,26 @@
+.css_casetaid_label, .css_casetaid_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_casetaid_grid_line, .css_casetaid_grid_line:hover {vertical-align: top;text-align: right;}
+.css_turnoid_label, .css_turnoid_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_turnoid_grid_line, .css_turnoid_grid_line:hover {font-weight:bold;vertical-align: top;text-align: center;}
+.css_carrilid_label, .css_carrilid_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_carrilid_grid_line, .css_carrilid_grid_line:hover {vertical-align: top;text-align: center;}
+.css_estatuscarril_label, .css_estatuscarril_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_estatuscarril_grid_line, .css_estatuscarril_grid_line:hover {vertical-align: top;text-align: right;}
+.css_usuarioid_label, .css_usuarioid_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_usuarioid_grid_line, .css_usuarioid_grid_line:hover {vertical-align: top;text-align: right;}
+.css_fechaoperacion_label, .css_fechaoperacion_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_fechaoperacion_grid_line, .css_fechaoperacion_grid_line:hover {vertical-align: top;text-align: center;}
+.css_horainicio_label, .css_horainicio_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_horainicio_grid_line, .css_horainicio_grid_line:hover {vertical-align: top;text-align: center;}
+.css_fechafin_label, .css_fechafin_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_fechafin_grid_line, .css_fechafin_grid_line:hover {vertical-align: top;text-align: center;}
+.css_horafin_label, .css_horafin_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_horafin_grid_line, .css_horafin_grid_line:hover {vertical-align: top;text-align: center;}
+.css_tiempodif_label, .css_tiempodif_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_tiempodif_grid_line, .css_tiempodif_grid_line:hover {font-weight:bold;vertical-align: top;text-align: center;}
+.css_consecutivo_label, .css_consecutivo_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_consecutivo_grid_line, .css_consecutivo_grid_line:hover {vertical-align: top;text-align: right;}
+.css_tramoid_label, .css_tramoid_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_tramoid_grid_line, .css_tramoid_grid_line:hover {vertical-align: top;text-align: right;}
+.css_cuerpo_label, .css_cuerpo_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_cuerpo_grid_line, .css_cuerpo_grid_line:hover {vertical-align: top;text-align: right;}

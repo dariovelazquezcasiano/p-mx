@@ -1,0 +1,51 @@
+.css_L1C1_label, .css_L1C1_label:hover {text-align:center;vertical-align:middle;font-size:14px;}
+.css_L1C2_label, .css_L1C2_label:hover {text-align:center;vertical-align:middle;font-size:14px;}
+.css_L1C3_label, .css_L1C3_label:hover {text-align:center;vertical-align:middle;font-size:14px;}
+.css_L1C4_label, .css_L1C4_label:hover {text-align:center;vertical-align:middle;font-size:14px;}
+.css_L1C5_label, .css_L1C5_label:hover {text-align:center;vertical-align:middle;font-size:14px;}
+.css_L1C6_label, .css_L1C6_label:hover {text-align:center;vertical-align:middle;font-size:14px;}
+.css_L1C7_label, .css_L1C7_label:hover {text-align:center;vertical-align:middle;font-size:14px;}
+.css_L1C8_label, .css_L1C8_label:hover {text-align:center;vertical-align:middle;font-size:14px;}
+.css_mes_label, .css_mes_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_mes_grid_line, .css_mes_grid_line:hover {vertical-align: top;text-align: right;}
+.css_aforon_label, .css_aforon_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_aforon_grid_line, .css_aforon_grid_line:hover {vertical-align: top;text-align: right;}
+.css_aforon_tot_ger, .css_aforon_tot_ger:hover {text-align: right;}
+.css_ingreson_label, .css_ingreson_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_ingreson_grid_line, .css_ingreson_grid_line:hover {vertical-align: top;text-align: right;}
+.css_ingreson_tot_ger, .css_ingreson_tot_ger:hover {text-align: right;}
+.css_aforoi_label, .css_aforoi_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_aforoi_grid_line, .css_aforoi_grid_line:hover {vertical-align: top;text-align: right;}
+.css_aforoi_tot_ger, .css_aforoi_tot_ger:hover {text-align: right;}
+.css_ingresoi_label, .css_ingresoi_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_ingresoi_grid_line, .css_ingresoi_grid_line:hover {vertical-align: top;text-align: right;}
+.css_ingresoi_tot_ger, .css_ingresoi_tot_ger:hover {text-align: right;}
+.css_aforoe_label, .css_aforoe_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_aforoe_grid_line, .css_aforoe_grid_line:hover {vertical-align: top;text-align: right;}
+.css_aforoe_tot_ger, .css_aforoe_tot_ger:hover {text-align: right;}
+.css_ingresoe_label, .css_ingresoe_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_ingresoe_grid_line, .css_ingresoe_grid_line:hover {vertical-align: top;text-align: right;}
+.css_ingresoe_tot_ger, .css_ingresoe_tot_ger:hover {text-align: right;}
+.css_aforov_label, .css_aforov_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_aforov_grid_line, .css_aforov_grid_line:hover {vertical-align: top;text-align: right;}
+.css_aforov_tot_ger, .css_aforov_tot_ger:hover {text-align: right;}
+.css_ingresov_label, .css_ingresov_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_ingresov_grid_line, .css_ingresov_grid_line:hover {vertical-align: top;text-align: right;}
+.css_ingresov_tot_ger, .css_ingresov_tot_ger:hover {text-align: right;}
+.css_aforoex_label, .css_aforoex_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_aforoex_grid_line, .css_aforoex_grid_line:hover {vertical-align: top;text-align: right;}
+.css_ingresoex_label, .css_ingresoex_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_ingresoex_grid_line, .css_ingresoex_grid_line:hover {vertical-align: top;text-align: right;}
+.css_afororsp_label, .css_afororsp_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_afororsp_grid_line, .css_afororsp_grid_line:hover {vertical-align: top;text-align: right;}
+.css_ingresorsp_label, .css_ingresorsp_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_ingresorsp_grid_line, .css_ingresorsp_grid_line:hover {vertical-align: top;text-align: right;}
+.css_total_veh_label, .css_total_veh_label:hover {text-align:;vertical-align:middle;justify-content:;font-weight:bold;}
+.css_total_veh_grid_line, .css_total_veh_grid_line:hover {color:#FFFFFF;font-size:14px;background-color:#3C4858;font-weight:bold;text-align: right;}
+.css_total_veh_tot_ger, .css_total_veh_tot_ger:hover {text-align: right;}
+.css_total_ing_label, .css_total_ing_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_total_ing_grid_line, .css_total_ing_grid_line:hover {color:#FFFFFF;font-size:14px;background-color:#3C4858;font-weight:bold;text-align: right;}
+.css_total_ing_tot_ger, .css_total_ing_tot_ger:hover {text-align: right;}
+.css_tpdpp_label, .css_tpdpp_label:hover {text-align:;vertical-align:middle;justify-content:;font-weight:bold;}
+.css_tpdpp_grid_line, .css_tpdpp_grid_line:hover {color:#FFFFFF;font-size:14px;background-color:#3C4858;font-weight:bold;font-style:italic;text-align: right;}
+.css_tpdpp_tot_ger, .css_tpdpp_tot_ger:hover {text-align: right;}

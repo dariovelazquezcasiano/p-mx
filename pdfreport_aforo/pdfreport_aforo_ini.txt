@@ -1,0 +1,7 @@
+index.php
+BackOffice_Acapulco
+pdfreport_aforo
+SIM
+reportpdf
+pdfreport_aforo
+LigMd5

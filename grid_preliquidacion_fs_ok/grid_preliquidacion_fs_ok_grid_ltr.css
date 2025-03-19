@@ -1,0 +1,31 @@
+.css_L1C1_label, .css_L1C1_label:hover {}
+.css_L1C2_label, .css_L1C2_label:hover {text-align:center;vertical-align:middle;font-size:10px;}
+.css_turnoid_label, .css_turnoid_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_turnoid_grid_line, .css_turnoid_grid_line:hover {vertical-align: top;text-align: right;}
+.css_carrilid_label, .css_carrilid_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_carrilid_grid_line, .css_carrilid_grid_line:hover {vertical-align: top;text-align: right;}
+.css_cuerpo_label, .css_cuerpo_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_cuerpo_grid_line, .css_cuerpo_grid_line:hover {vertical-align: top;text-align: left;}
+.css_usuarioid_label, .css_usuarioid_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_usuarioid_grid_line, .css_usuarioid_grid_line:hover {vertical-align: top;text-align: left;}
+.css_montocr_label, .css_montocr_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_montocr_grid_line, .css_montocr_grid_line:hover {vertical-align: top;text-align: right;}
+.css_importemxn_label, .css_importemxn_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_importemxn_grid_line, .css_importemxn_grid_line:hover {vertical-align: top;text-align: right;}
+.css_operacion_label, .css_operacion_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_operacion_grid_line, .css_operacion_grid_line:hover {vertical-align: top;text-align: right;}
+.css_faltante_label, .css_faltante_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_faltante_grid_line, .css_faltante_grid_line:hover {vertical-align: top;text-align: right;}
+.css_sobrante_label, .css_sobrante_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_sobrante_grid_line, .css_sobrante_grid_line:hover {vertical-align: top;text-align: right;}
+.css_entregado_label, .css_entregado_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_entregado_grid_line, .css_entregado_grid_line:hover {vertical-align: top;text-align: right;}
+.css_depositopre_label, .css_depositopre_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_depositopre_grid_line, .css_depositopre_grid_line:hover {color:#000000;background-color:#0099CC;font-weight:bold;text-align: right;}
+.css_depositopre_tot_ger, .css_depositopre_tot_ger:hover {text-align: right;}
+.css_consecutivo_label, .css_consecutivo_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_consecutivo_grid_line, .css_consecutivo_grid_line:hover {vertical-align: top;text-align: right;}
+.css_casetaid_label, .css_casetaid_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_casetaid_grid_line, .css_casetaid_grid_line:hover {vertical-align: top;text-align: right;}
+.css_tramoid_label, .css_tramoid_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_tramoid_grid_line, .css_tramoid_grid_line:hover {vertical-align: top;text-align: right;}

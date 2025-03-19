@@ -1,0 +1,129 @@
+.css_consecutivo_label {text-align:;}
+.css_consecutivo_line {text-align:left;}
+.css_consecutivo_obj {text-align:left;}
+.css_turnoid_label {text-align:;}
+.css_turnoid_line {text-align:left;}
+.css_turnoid_obj {text-align:left;}
+.css_casetaid_label {text-align:;}
+.css_casetaid_line {text-align:left;}
+.css_casetaid_obj {text-align:left;}
+.css_tramoid_label {text-align:;}
+.css_tramoid_line {text-align:left;}
+.css_tramoid_obj {text-align:left;}
+.css_cuerpo_label { }
+.css_cuerpo_line { }
+.css_cuerpo_obj { }
+.css_usuarioid_label { }
+.css_usuarioid_line { }
+.css_usuarioid_obj { }
+.css_carrilid_label {text-align:;}
+.css_carrilid_line {text-align:left;}
+.css_carrilid_obj {text-align:left;}
+.css_fechaoperacion_label { }
+.css_fechaoperacion_line { }
+.css_fechaoperacion_obj { }
+.css_fechaturno_label { }
+.css_fechaturno_line { }
+.css_fechaturno_obj { }
+.css_horainicio_label { }
+.css_horainicio_line { }
+.css_horainicio_obj { }
+.css_fechafin_label { }
+.css_fechafin_line { }
+.css_fechafin_obj { }
+.css_horafin_label { }
+.css_horafin_line { }
+.css_horafin_obj { }
+.css_operacionid_label { }
+.css_operacionid_line { }
+.css_operacionid_obj { }
+.css_foliocierre_label { }
+.css_foliocierre_line { }
+.css_foliocierre_obj { }
+.css_estatuscarril_label { }
+.css_estatuscarril_line { }
+.css_estatuscarril_obj { }
+.css_observacion_label { }
+.css_observacion_line { }
+.css_observacion_obj { }
+.css_preliquidado_label {text-align:;}
+.css_preliquidado_line {text-align:left;}
+.css_preliquidado_obj {text-align:left;}
+.css_montocr_label {text-align:;}
+.css_montocr_line {text-align:left;}
+.css_montocr_obj {text-align:left;}
+.css_montoana_label {text-align:;}
+.css_montoana_line {text-align:left;}
+.css_montoana_obj {text-align:left;}
+.css_cantidadmxn_label {text-align:;}
+.css_cantidadmxn_line {text-align:left;}
+.css_cantidadmxn_obj {text-align:left;}
+.css_cantidadusd_label {text-align:;}
+.css_cantidadusd_line {text-align:left;}
+.css_cantidadusd_obj {text-align:left;}
+.css_importemxn_label {text-align:;}
+.css_importemxn_line {text-align:left;}
+.css_importemxn_obj {text-align:left;}
+.css_importeusd_label {text-align:;}
+.css_importeusd_line {text-align:left;}
+.css_importeusd_obj {text-align:left;}
+.css_folioinicialcr_label {text-align:;}
+.css_folioinicialcr_line {text-align:left;}
+.css_folioinicialcr_obj {text-align:left;}
+.css_foliofinalcr_label {text-align:;}
+.css_foliofinalcr_line {text-align:left;}
+.css_foliofinalcr_obj {text-align:left;}
+.css_folioinicialeap_label {text-align:;}
+.css_folioinicialeap_line {text-align:left;}
+.css_folioinicialeap_obj {text-align:left;}
+.css_foliofinaleap_label {text-align:;}
+.css_foliofinaleap_line {text-align:left;}
+.css_foliofinaleap_obj {text-align:left;}
+.css_faltante_label {text-align:;}
+.css_faltante_line {text-align:left;}
+.css_faltante_obj {text-align:left;}
+.css_ingresoelu_pre_label {text-align:;}
+.css_ingresoelu_pre_line {text-align:left;}
+.css_ingresoelu_pre_obj {text-align:left;}
+.css_entregado_label {text-align:;}
+.css_entregado_line {text-align:left;}
+.css_entregado_obj {text-align:left;}
+.css_administradorid_label {text-align:;}
+.css_administradorid_line {text-align:left;}
+.css_administradorid_obj {text-align:left;}
+.css_encargadoturnoid_label {text-align:;}
+.css_encargadoturnoid_line {text-align:left;}
+.css_encargadoturnoid_obj {text-align:left;}
+.css_encargadoturnoid_pre_label {text-align:;}
+.css_encargadoturnoid_pre_line {text-align:left;}
+.css_encargadoturnoid_pre_obj {text-align:left;}
+.css_fechacierre_label { }
+.css_fechacierre_line { }
+.css_fechacierre_obj { }
+.css_fechapreliq_label { }
+.css_fechapreliq_line { }
+.css_fechapreliq_obj { }
+.css_fechaliq_label { }
+.css_fechaliq_line { }
+.css_fechaliq_obj { }
+.css_operacion_label {text-align:;}
+.css_operacion_line {text-align:left;}
+.css_operacion_obj {text-align:left;}
+.css_liquidadorid_label { }
+.css_liquidadorid_line { }
+.css_liquidadorid_obj { }
+.css_faltanteana_label {text-align:;}
+.css_faltanteana_line {text-align:left;}
+.css_faltanteana_obj {text-align:left;}
+.css_ingresoelu_ana_label {text-align:;}
+.css_ingresoelu_ana_line {text-align:left;}
+.css_ingresoelu_ana_obj {text-align:left;}
+.css_conteo_label {text-align:;}
+.css_conteo_line {text-align:left;}
+.css_conteo_obj {text-align:left;}
+.css_fechainiciodictamen_label { }
+.css_fechainiciodictamen_line { }
+.css_fechainiciodictamen_obj { }
+.css_fechafindictamen_label { }
+.css_fechafindictamen_line { }
+.css_fechafindictamen_obj { }

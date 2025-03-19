@@ -1,0 +1,16 @@
+.css_carrilid_label, .css_carrilid_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_carrilid_grid_line, .css_carrilid_grid_line:hover {vertical-align: top;text-align: right;}
+.css_dispositivo_label, .css_dispositivo_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_dispositivo_grid_line, .css_dispositivo_grid_line:hover {vertical-align: top;text-align: right;}
+.css_fecha_label, .css_fecha_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_fecha_grid_line, .css_fecha_grid_line:hover {vertical-align: top;text-align: center;}
+.css_alarmaid_label, .css_alarmaid_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_alarmaid_grid_line, .css_alarmaid_grid_line:hover {vertical-align: top;text-align: right;}
+.css_estatus_label, .css_estatus_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_estatus_grid_line, .css_estatus_grid_line:hover {vertical-align: top;text-align: right;}
+.css_id_label, .css_id_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_id_grid_line, .css_id_grid_line:hover {vertical-align: top;text-align: right;}
+.css_casetaid_label, .css_casetaid_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_casetaid_grid_line, .css_casetaid_grid_line:hover {vertical-align: top;text-align: right;}
+.css_cuerpo_label, .css_cuerpo_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_cuerpo_grid_line, .css_cuerpo_grid_line:hover {vertical-align: top;text-align: right;}

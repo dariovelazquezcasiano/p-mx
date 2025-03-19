@@ -1,0 +1,7 @@
+index.php
+BackOffice_Acapulco
+seg_sync_apps
+SIM
+contr
+seg_sync_apps
+LigMd5

@@ -1,0 +1,16 @@
+.css_casetaid_label, .css_casetaid_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_casetaid_grid_line, .css_casetaid_grid_line:hover {vertical-align: top;text-align: right;}
+.css_usuarioid_label, .css_usuarioid_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_usuarioid_grid_line, .css_usuarioid_grid_line:hover {vertical-align: top;text-align: center;}
+.css_nombre_label, .css_nombre_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_nombre_grid_line, .css_nombre_grid_line:hover {vertical-align: top;text-align: right;}
+.css_apellidopaterno_label, .css_apellidopaterno_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_apellidopaterno_grid_line, .css_apellidopaterno_grid_line:hover {vertical-align: top;text-align: right;}
+.css_apellidomaterno_label, .css_apellidomaterno_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_apellidomaterno_grid_line, .css_apellidomaterno_grid_line:hover {vertical-align: top;text-align: right;}
+.css_activo_label, .css_activo_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_activo_grid_line, .css_activo_grid_line:hover {vertical-align: top;text-align: right;}
+.css_password_label, .css_password_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_password_grid_line, .css_password_grid_line:hover {vertical-align: top;text-align: right;}
+.css_usuariotipoid_label, .css_usuariotipoid_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_usuariotipoid_grid_line, .css_usuariotipoid_grid_line:hover {vertical-align: top;text-align: right;}

@@ -1,0 +1,7 @@
+seg_retrieve_pswd_mob.php
+BackOffice_Acapulco
+seg_retrieve_pswd_mob
+NAO
+contr
+seg_retrieve_pswd
+LigMd5

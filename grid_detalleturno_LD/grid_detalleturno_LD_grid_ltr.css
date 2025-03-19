@@ -1,0 +1,14 @@
+.css_fechaoperacion_label, .css_fechaoperacion_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_fechaoperacion_grid_line, .css_fechaoperacion_grid_line:hover {vertical-align: top;text-align: center;}
+.css_liquidacion_label, .css_liquidacion_label:hover {text-align:;vertical-align:middle;justify-content:;font-weight:bold;}
+.css_liquidacion_grid_line, .css_liquidacion_grid_line:hover {text-align: center;}
+.css_liquida_label, .css_liquida_label:hover {text-align:;vertical-align:middle;justify-content:;font-weight:bold;}
+.css_liquida_grid_line, .css_liquida_grid_line:hover {text-align: center;}
+.css_liquidacion_ok_label, .css_liquidacion_ok_label:hover {text-align:;vertical-align:middle;justify-content:;font-weight:bold;}
+.css_liquidacion_ok_grid_line, .css_liquidacion_ok_grid_line:hover {text-align: center;}
+.css_resumen_blank_label, .css_resumen_blank_label:hover {text-align:;vertical-align:middle;justify-content:;font-weight:bold;}
+.css_resumen_blank_grid_line, .css_resumen_blank_grid_line:hover {text-align: left;}
+.css_resumen_label, .css_resumen_label:hover {text-align:;vertical-align:middle;justify-content:;font-weight:bold;}
+.css_resumen_grid_line, .css_resumen_grid_line:hover {text-align: center;}
+.css_cuerpo_label, .css_cuerpo_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_cuerpo_grid_line, .css_cuerpo_grid_line:hover {vertical-align: top;text-align: left;}

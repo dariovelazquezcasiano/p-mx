@@ -1,0 +1,53 @@
+
+body {
+	min-height: 99%;
+	min-width: 99%;
+	background-color: #14274d;
+}
+h2{
+	background-color: #2451a1;
+	color: white;
+}
+.divmain {
+	display: flex;
+	width: 98%;
+	height: 98%;
+	margin-right: auto;
+	margin-left: auto;
+}
+.divsub {
+	width: 48%;
+	min-height: 90%;
+	min-height: 650px;
+	max-height: 650px;
+	margin-left: 1%;
+	margin-right: 1%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 20px;
+	padding-right: 10px;
+	background-color: #e9e7f6;
+}
+.divsubscroll{
+	overflow-y: scroll;
+}
+.listavideos{
+	max-height: 550px;
+}
+.dias{
+	max-height: 80px;
+	overflow-y: scroll;
+}
+.fecha{
+	margin-top: 2px;
+	width: 100px;
+	/*background-color: #8CB48D;*/
+}
+.actualizar{
+	height: 30px;
+	width: 100px;
+	background-color: #379516;
+	color: white;
+	border: none;
+	border-radius: 15px;
+}

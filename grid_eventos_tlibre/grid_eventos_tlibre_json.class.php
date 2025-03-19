@@ -1,0 +1,1164 @@
+<?php
+
+class grid_eventos_tlibre_json
+{
+   var $Db;
+   var $Erro;
+   var $Ini;
+   var $Lookup;
+   var $nm_data;
+   var $Arquivo;
+   var $Arquivo_view;
+   var $Tit_doc;
+   var $sc_proc_grid; 
+   var $NM_cmp_hidden = array();
+
+   function __construct()
+   {
+      $this->nm_data = new nm_data("es");
+   }
+
+   function monta_json()
+   {
+      $this->inicializa_vars();
+      $this->grava_arquivo();
+      if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['embutida'])
+      {
+          if ($this->Ini->sc_export_ajax)
+          {
+              $this->Arr_result['file_export']  = NM_charset_to_utf8($this->Json_f);
+              $this->Arr_result['title_export'] = NM_charset_to_utf8($this->Tit_doc);
+              $Temp = ob_get_clean();
+              if ($Temp !== false && trim($Temp) != "")
+              {
+                  $this->Arr_result['htmOutput'] = NM_charset_to_utf8($Temp);
+              }
+              $result_json = json_encode($this->Arr_result, JSON_UNESCAPED_UNICODE);
+              if ($result_json == false)
+              {
+                  $oJson = new Services_JSON();
+                  $result_json = $oJson->encode($this->Arr_result);
+              }
+              echo $result_json;
+              exit;
+          }
+          else
+          {
+              $this->progress_bar_end();
+          }
+      }
+      else
+      {
+          $_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['opcao'] = "";
+      }
+   }
+
+   function inicializa_vars()
+   {
+      global $nm_lang;
+      if (isset($GLOBALS['nmgp_parms']) && !empty($GLOBALS['nmgp_parms'])) 
+      { 
+          $GLOBALS['nmgp_parms'] = str_replace("@aspass@", "'", $GLOBALS['nmgp_parms']);
+          $todox = str_replace("?#?@?@?", "?#?@ ?@?", $GLOBALS["nmgp_parms"]);
+          $todo  = explode("?@?", $todox);
+          foreach ($todo as $param)
+          {
+               $cadapar = explode("?#?", $param);
+               if (1 < sizeof($cadapar))
+               {
+                   if (substr($cadapar[0], 0, 11) == "SC_glo_par_")
+                   {
+                       $cadapar[0] = substr($cadapar[0], 11);
+                       $cadapar[1] = $_SESSION[$cadapar[1]];
+                   }
+                   if (isset($GLOBALS['sc_conv_var'][$cadapar[0]]))
+                   {
+                       $cadapar[0] = $GLOBALS['sc_conv_var'][$cadapar[0]];
+                   }
+                   elseif (isset($GLOBALS['sc_conv_var'][strtolower($cadapar[0])]))
+                   {
+                       $cadapar[0] = $GLOBALS['sc_conv_var'][strtolower($cadapar[0])];
+                   }
+                   nm_limpa_str_grid_eventos_tlibre($cadapar[1]);
+                   nm_protect_num_grid_eventos_tlibre($cadapar[0], $cadapar[1]);
+                   if ($cadapar[1] == "@ ") {$cadapar[1] = trim($cadapar[1]); }
+                   $Tmp_par   = $cadapar[0];
+                   $$Tmp_par = $cadapar[1];
+                   if ($Tmp_par == "nmgp_opcao")
+                   {
+                       $_SESSION['sc_session'][$script_case_init]['grid_eventos_tlibre']['opcao'] = $cadapar[1];
+                   }
+               }
+          }
+      }
+      if (!isset($addCondicion) && isset($addcondicion)) 
+      {
+         $addCondicion = $addcondicion;
+      }
+      if (isset($addCondicion)) 
+      {
+          $_SESSION['addCondicion'] = $addCondicion;
+          nm_limpa_str_grid_eventos_tlibre($_SESSION["addCondicion"]);
+      }
+      if (!isset($modoOperacion) && isset($modooperacion)) 
+      {
+         $modoOperacion = $modooperacion;
+      }
+      if (isset($modoOperacion)) 
+      {
+          $_SESSION['modoOperacion'] = $modoOperacion;
+          nm_limpa_str_grid_eventos_tlibre($_SESSION["modoOperacion"]);
+      }
+      if (!isset($Salidas) && isset($salidas)) 
+      {
+         $Salidas = $salidas;
+      }
+      if (isset($Salidas)) 
+      {
+          $_SESSION['Salidas'] = $Salidas;
+          nm_limpa_str_grid_eventos_tlibre($_SESSION["Salidas"]);
+      }
+      $dir_raiz          = strrpos($_SERVER['PHP_SELF'],"/") ;  
+      $dir_raiz          = substr($_SERVER['PHP_SELF'], 0, $dir_raiz + 1) ;  
+      $this->Json_use_label = false;
+      $this->Json_format = false;
+      $this->Tem_json_res = false;
+      $this->Json_password = "";
+      if (isset($_REQUEST['nm_json_label']) && !empty($_REQUEST['nm_json_label']))
+      {
+          $this->Json_use_label = ($_REQUEST['nm_json_label'] == "S") ? true : false;
+      }
+      if (isset($_REQUEST['nm_json_format']) && !empty($_REQUEST['nm_json_format']))
+      {
+          $this->Json_format = ($_REQUEST['nm_json_format'] == "S") ? true : false;
+      }
+      $this->Tem_json_res  = true;
+      if (isset($_REQUEST['SC_module_export']) && $_REQUEST['SC_module_export'] != "")
+      { 
+          $this->Tem_json_res = (strpos(" " . $_REQUEST['SC_module_export'], "resume") !== false) ? true : false;
+      } 
+      if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['SC_Ind_Groupby'] == "sc_free_total")
+      {
+          $this->Tem_json_res  = false;
+      }
+      if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['SC_Ind_Groupby'] == "sc_free_group_by" && empty($_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['SC_Gb_Free_cmp']))
+      {
+          $this->Tem_json_res  = false;
+      }
+      if (!is_file($this->Ini->root . $this->Ini->path_link . "grid_eventos_tlibre/grid_eventos_tlibre_res_json.class.php"))
+      {
+          $this->Tem_json_res  = false;
+      }
+      if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['embutida'] && isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['json_label']))
+      {
+          $this->Json_use_label = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['json_label'];
+      }
+      if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['embutida'] && isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['json_format']))
+      {
+          $this->Json_format = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['json_format'];
+      }
+      $this->nm_location = $this->Ini->sc_protocolo . $this->Ini->server . $dir_raiz; 
+      if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['embutida'] && !$this->Ini->sc_export_ajax) {
+          require_once($this->Ini->path_lib_php . "/sc_progress_bar.php");
+          $this->pb = new scProgressBar();
+          $this->pb->setRoot($this->Ini->root);
+          $this->pb->setDir($_SESSION['scriptcase']['grid_eventos_tlibre']['glo_nm_path_imag_temp'] . "/");
+          $this->pb->setProgressbarMd5($_GET['pbmd5']);
+          $this->pb->initialize();
+          $this->pb->setReturnUrl("./");
+          $this->pb->setReturnOption($_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['json_return']);
+          if ($this->Tem_json_res) {
+              $PB_plus = intval ($this->count_ger * 0.04);
+              $PB_plus = ($PB_plus < 2) ? 2 : $PB_plus;
+          }
+          else {
+              $PB_plus = intval ($this->count_ger * 0.02);
+              $PB_plus = ($PB_plus < 1) ? 1 : $PB_plus;
+          }
+          $PB_tot = $this->count_ger + $PB_plus;
+          $this->PB_dif = $PB_tot - $this->count_ger;
+          $this->pb->setTotalSteps($PB_tot);
+      }
+      $this->nm_data = new nm_data("es");
+      $this->Arquivo      = "sc_json";
+      $this->Arquivo     .= "_" . date("YmdHis") . "_" . rand(0, 1000);
+      $this->Arq_zip      = $this->Arquivo . "_grid_eventos_tlibre.zip";
+      $this->Arquivo     .= "_grid_eventos_tlibre";
+      $this->Arquivo     .= ".json";
+      $this->Tit_doc      = "grid_eventos_tlibre.json";
+      $this->Tit_zip      = "grid_eventos_tlibre.zip";
+   }
+
+   function prep_modulos($modulo)
+   {
+      $this->$modulo->Ini    = $this->Ini;
+      $this->$modulo->Db     = $this->Db;
+      $this->$modulo->Erro   = $this->Erro;
+      $this->$modulo->Lookup = $this->Lookup;
+   }
+
+   function grava_arquivo()
+   {
+      global $nm_lang;
+      global $nm_nada, $nm_lang;
+
+      $_SESSION['scriptcase']['sc_sql_ult_conexao'] = ''; 
+      $this->sc_proc_grid = false; 
+      $nm_raiz_img  = ""; 
+      if (isset($_SESSION['scriptcase']['sc_apl_conf']['grid_eventos_tlibre']['field_display']) && !empty($_SESSION['scriptcase']['sc_apl_conf']['grid_eventos_tlibre']['field_display']))
+      {
+          foreach ($_SESSION['scriptcase']['sc_apl_conf']['grid_eventos_tlibre']['field_display'] as $NM_cada_field => $NM_cada_opc)
+          {
+              $this->NM_cmp_hidden[$NM_cada_field] = $NM_cada_opc;
+          }
+      }
+      if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['usr_cmp_sel']) && !empty($_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['usr_cmp_sel']))
+      {
+          foreach ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['usr_cmp_sel'] as $NM_cada_field => $NM_cada_opc)
+          {
+              $this->NM_cmp_hidden[$NM_cada_field] = $NM_cada_opc;
+          }
+      }
+      if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['php_cmp_sel']) && !empty($_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['php_cmp_sel']))
+      {
+          foreach ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['php_cmp_sel'] as $NM_cada_field => $NM_cada_opc)
+          {
+              $this->NM_cmp_hidden[$NM_cada_field] = $NM_cada_opc;
+          }
+      }
+      $this->sc_where_orig   = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['where_orig'];
+      $this->sc_where_atual  = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['where_pesq'];
+      $this->sc_where_filtro = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['where_pesq_filtro'];
+      if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['campos_busca']) && !empty($_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['campos_busca']))
+      { 
+          $Busca_temp = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['campos_busca'];
+          if ($_SESSION['scriptcase']['charset'] != "UTF-8")
+          {
+              $Busca_temp = NM_conv_charset($Busca_temp, $_SESSION['scriptcase']['charset'], "UTF-8");
+          }
+      } 
+      $this->nm_where_dinamico = "";
+      $_SESSION['scriptcase']['grid_eventos_tlibre']['contr_erro'] = 'on';
+if (!isset($_SESSION['Salidas'])) {$_SESSION['Salidas'] = "";}
+if (!isset($this->sc_temp_Salidas)) {$this->sc_temp_Salidas = (isset($_SESSION['Salidas'])) ? $_SESSION['Salidas'] : "";}
+if (!isset($_SESSION['addCondicion'])) {$_SESSION['addCondicion'] = "";}
+if (!isset($this->sc_temp_addCondicion)) {$this->sc_temp_addCondicion = (isset($_SESSION['addCondicion'])) ? $_SESSION['addCondicion'] : "";}
+ $valida = true;
+$Salidas = "";
+$valor = " WHERE 0";
+$concat = "(concat(FechaOperacion,' ',HoraEvento) between ";
+$check_sql = 'SELECT Fecha, Hora, Descripcion FROM detallealarma where 
+'.$this->sc_temp_addCondicion.' and AlarmaID IN (45,46) ORDER BY Fecha ASC, Hora ASC;';
+ 
+      $nm_select = $check_sql; 
+      $_SESSION['scriptcase']['sc_sql_ult_comando'] = $nm_select; 
+      $_SESSION['scriptcase']['sc_sql_ult_conexao'] = ''; 
+      if ($this->rs = $this->Db->Execute($nm_select)) 
+      { }
+      elseif (isset($GLOBALS["NM_ERRO_IBASE"]) && $GLOBALS["NM_ERRO_IBASE"] != 1)  
+      { 
+          $this->rs = false;
+          $this->rs_erro = $this->Db->ErrorMsg();
+      } 
+
+if (false == $this->rs )     
+{
+    
+ if (!isset($this->Campos_Mens_erro)){$this->Campos_Mens_erro = "";}
+ if (!empty($this->Campos_Mens_erro)){$this->Campos_Mens_erro .= "<br>";}$this->Campos_Mens_erro .= 'Error while accessing database.';
+;
+}
+else
+{
+$i=1;
+
+   while(!$this->rs->EOF)
+    {
+	   	$valida = false;
+		if($i>2 && $this->rs->fields[2] == "PermisoSalida"){
+			if($this->rs->fields[2] == "PermisoSalida"){
+				$valor .= " or ".$concat."'".$this->rs->fields[0]." ".$this->rs->fields[1]."' and "; 
+				$Salidas .= "Hora Inicio: ".$this->rs->fields[1];
+				}
+		}else{
+			if($this->rs->fields[2] == "PermisoSalida"){
+				$valor = " WHERE ".$concat."'".$this->rs->fields[0]." ".$this->rs->fields[1]."' and ";
+				$Salidas .= "Hora Inicio: ".$this->rs->fields[1];
+				
+				}
+		}
+		if($this->rs->fields[2] == "PermisoEntrada"){
+			$valor .= "'".$this->rs->fields[0]." ".$this->rs->fields[1]."') ";
+			$Salidas .= ", Hora Fin: ".$this->rs->fields[1]. "<br>";
+			$valida = true;
+		}
+	   
+	   $i++;
+		$this->rs->MoveNext();
+    }
+    $this->rs->Close();
+}
+if($valida === false){
+	$valor .= "";
+	}
+
+$this->sc_temp_Salidas = $Salidas;
+$this->nm_where_dinamico = $valor;
+if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['where_dinamico']) || $_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['where_dinamico'] != $this->nm_where_dinamico) {
+    $_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['where_dinamico'] = $this->nm_where_dinamico;
+    unset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['inicio']);
+}
+if (isset($this->sc_temp_addCondicion)) {$_SESSION['addCondicion'] = $this->sc_temp_addCondicion;}
+if (isset($this->sc_temp_Salidas)) {$_SESSION['Salidas'] = $this->sc_temp_Salidas;}
+$_SESSION['scriptcase']['grid_eventos_tlibre']['contr_erro'] = 'off'; 
+      if  (!empty($this->nm_where_dinamico)) 
+      {   
+          $_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['where_pesq'] .= $this->nm_where_dinamico;
+      }   
+      if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['json_name']))
+      {
+          $Pos = strrpos($_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['json_name'], ".");
+          if ($Pos === false) {
+              $_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['json_name'] .= ".json";
+          }
+          $this->Arquivo = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['json_name'];
+          $this->Arq_zip = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['json_name'];
+          $this->Tit_doc = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['json_name'];
+          $Pos = strrpos($_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['json_name'], ".");
+          if ($Pos !== false) {
+              $this->Arq_zip = substr($_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['json_name'], 0, $Pos);
+          }
+          $this->Arq_zip .= ".zip";
+          $this->Tit_zip  = $this->Arq_zip;
+          unset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['json_name']);
+      }
+      $this->arr_export = array('label' => array(), 'lines' => array());
+      $this->arr_span   = array();
+
+      if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['embutida'])
+      { 
+          $this->Json_f = $this->Ini->root . $this->Ini->path_imag_temp . "/" . $this->Arquivo;
+          $this->Zip_f = $this->Ini->root . $this->Ini->path_imag_temp . "/" . $this->Arq_zip;
+          $json_f = fopen($this->Ini->root . $this->Ini->path_imag_temp . "/" . $this->Arquivo, "w");
+      }
+      $this->nm_field_dinamico = array();
+      $this->nm_order_dinamico = array();
+      $nmgp_select_count = "SELECT count(*) AS countTest from " . $this->Ini->nm_tabela; 
+      if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_sybase))
+      { 
+          $nmgp_select = "SELECT str_replace (convert(char(10),FechaOperacion,102), '.', '-') + ' ' + convert(char(8),FechaOperacion,20), TurnoID, HoraEvento, CarrilID, Secuencial, Folio, PagoID, VehiculoID_CR, VehiculoID_ECT, VehiculoID_EAP, NumeroTarjeta, Placas, Consecutivo, CasetaID, str_replace (convert(char(10),FechaTurno,102), '.', '-') + ' ' + convert(char(8),FechaTurno,20), Importe_ECT, TarifaEE_ECT, Importe_CR, TarifaEE_CR, Importe_EAP, TarifaEE_EAP, ExcentoID, PagoID_ANA from " . $this->Ini->nm_tabela; 
+      } 
+      elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_mysql))
+      { 
+          $nmgp_select = "SELECT FechaOperacion, TurnoID, HoraEvento, CarrilID, Secuencial, Folio, PagoID, VehiculoID_CR, VehiculoID_ECT, VehiculoID_EAP, NumeroTarjeta, Placas, Consecutivo, CasetaID, FechaTurno, Importe_ECT, TarifaEE_ECT, Importe_CR, TarifaEE_CR, Importe_EAP, TarifaEE_EAP, ExcentoID, PagoID_ANA from " . $this->Ini->nm_tabela; 
+      } 
+      elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_mssql))
+      { 
+       $nmgp_select = "SELECT convert(char(23),FechaOperacion,121), TurnoID, HoraEvento, CarrilID, Secuencial, Folio, PagoID, VehiculoID_CR, VehiculoID_ECT, VehiculoID_EAP, NumeroTarjeta, Placas, Consecutivo, CasetaID, convert(char(23),FechaTurno,121), Importe_ECT, TarifaEE_ECT, Importe_CR, TarifaEE_CR, Importe_EAP, TarifaEE_EAP, ExcentoID, PagoID_ANA from " . $this->Ini->nm_tabela; 
+      } 
+      elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_oracle))
+      { 
+          $nmgp_select = "SELECT FechaOperacion, TurnoID, HoraEvento, CarrilID, Secuencial, Folio, PagoID, VehiculoID_CR, VehiculoID_ECT, VehiculoID_EAP, NumeroTarjeta, Placas, Consecutivo, CasetaID, FechaTurno, Importe_ECT, TarifaEE_ECT, Importe_CR, TarifaEE_CR, Importe_EAP, TarifaEE_EAP, ExcentoID, PagoID_ANA from " . $this->Ini->nm_tabela; 
+      } 
+      elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_informix))
+      { 
+          $nmgp_select = "SELECT EXTEND(FechaOperacion, YEAR TO DAY), TurnoID, HoraEvento, CarrilID, Secuencial, Folio, PagoID, VehiculoID_CR, VehiculoID_ECT, VehiculoID_EAP, NumeroTarjeta, Placas, Consecutivo, CasetaID, EXTEND(FechaTurno, YEAR TO DAY), Importe_ECT, TarifaEE_ECT, Importe_CR, TarifaEE_CR, Importe_EAP, TarifaEE_EAP, ExcentoID, PagoID_ANA from " . $this->Ini->nm_tabela; 
+      } 
+      else 
+      { 
+          $nmgp_select = "SELECT FechaOperacion, TurnoID, HoraEvento, CarrilID, Secuencial, Folio, PagoID, VehiculoID_CR, VehiculoID_ECT, VehiculoID_EAP, NumeroTarjeta, Placas, Consecutivo, CasetaID, FechaTurno, Importe_ECT, TarifaEE_ECT, Importe_CR, TarifaEE_CR, Importe_EAP, TarifaEE_EAP, ExcentoID, PagoID_ANA from " . $this->Ini->nm_tabela; 
+      } 
+      $nmgp_select .= " " . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['where_pesq'];
+      $nmgp_select_count .= " " . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['where_pesq'];
+      $nmgp_order_by = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['order_grid'];
+      $nmgp_select .= $nmgp_order_by; 
+      if (!empty($this->Ini->nm_col_dinamica)) 
+      {
+          foreach ($this->Ini->nm_col_dinamica as $nm_cada_col => $nm_nova_col)
+          {
+              $nmgp_select = str_replace($nm_cada_col, $nm_nova_col, $nmgp_select); 
+          }
+      }
+      $_SESSION['scriptcase']['sc_sql_ult_comando'] = $nmgp_select_count;
+      $rt = $this->Db->Execute($nmgp_select_count);
+      if ($rt === false && !$rt->EOF && $GLOBALS["NM_ERRO_IBASE"] != 1)
+      {
+         $this->Erro->mensagem(__FILE__, __LINE__, "banco", $this->Ini->Nm_lang['lang_errm_dber'], $this->Db->ErrorMsg());
+         exit;
+      }
+      $this->count_ger = $rt->fields[0];
+      $rt->Close();
+      $_SESSION['scriptcase']['sc_sql_ult_comando'] = $nmgp_select;
+      $rs = $this->Db->Execute($nmgp_select);
+      if ($rs === false && !$rs->EOF && $GLOBALS["NM_ERRO_IBASE"] != 1)
+      {
+         $this->Erro->mensagem(__FILE__, __LINE__, "banco", $this->Ini->Nm_lang['lang_errm_dber'], $this->Db->ErrorMsg());
+         exit;
+      }
+      $this->SC_seq_register = 0;
+      $this->json_registro = array();
+      $this->SC_seq_json   = 0;
+      $PB_tot = (isset($this->count_ger) && $this->count_ger > 0) ? "/" . $this->count_ger : "";
+      while (!$rs->EOF)
+      {
+         $this->SC_seq_register++;
+         if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['embutida'] && !$this->Ini->sc_export_ajax) {
+             $Mens_bar = NM_charset_to_utf8($this->Ini->Nm_lang['lang_othr_prcs']);
+             $this->pb->setProgressbarMessage($Mens_bar . ": " . $this->SC_seq_register . $PB_tot);
+             $this->pb->addSteps(1);
+         }
+         $this->fechaoperacion = $rs->fields[0] ;  
+         $this->turnoid = $rs->fields[1] ;  
+         $this->turnoid = (string)$this->turnoid;
+         $this->horaevento = $rs->fields[2] ;  
+         $this->carrilid = $rs->fields[3] ;  
+         $this->carrilid = (string)$this->carrilid;
+         $this->secuencial = $rs->fields[4] ;  
+         $this->secuencial = (string)$this->secuencial;
+         $this->folio = $rs->fields[5] ;  
+         $this->folio = (string)$this->folio;
+         $this->pagoid = $rs->fields[6] ;  
+         $this->vehiculoid_cr = $rs->fields[7] ;  
+         $this->vehiculoid_ect = $rs->fields[8] ;  
+         $this->vehiculoid_eap = $rs->fields[9] ;  
+         $this->numerotarjeta = $rs->fields[10] ;  
+         $this->placas = $rs->fields[11] ;  
+         $this->consecutivo = $rs->fields[12] ;  
+         $this->consecutivo = (string)$this->consecutivo;
+         $this->casetaid = $rs->fields[13] ;  
+         $this->fechaturno = $rs->fields[14] ;  
+         $this->importe_ect = $rs->fields[15] ;  
+         $this->importe_ect =  str_replace(",", ".", $this->importe_ect);
+         $this->importe_ect = (string)$this->importe_ect;
+         $this->tarifaee_ect = $rs->fields[16] ;  
+         $this->tarifaee_ect =  str_replace(",", ".", $this->tarifaee_ect);
+         $this->tarifaee_ect = (string)$this->tarifaee_ect;
+         $this->importe_cr = $rs->fields[17] ;  
+         $this->importe_cr =  str_replace(",", ".", $this->importe_cr);
+         $this->importe_cr = (string)$this->importe_cr;
+         $this->tarifaee_cr = $rs->fields[18] ;  
+         $this->tarifaee_cr =  str_replace(",", ".", $this->tarifaee_cr);
+         $this->tarifaee_cr = (string)$this->tarifaee_cr;
+         $this->importe_eap = $rs->fields[19] ;  
+         $this->importe_eap =  str_replace(",", ".", $this->importe_eap);
+         $this->importe_eap = (string)$this->importe_eap;
+         $this->tarifaee_eap = $rs->fields[20] ;  
+         $this->tarifaee_eap =  str_replace(",", ".", $this->tarifaee_eap);
+         $this->tarifaee_eap = (string)$this->tarifaee_eap;
+         $this->excentoid = $rs->fields[21] ;  
+         $this->excentoid = (string)$this->excentoid;
+         $this->pagoid_ana = $rs->fields[22] ;  
+         //----- lookup - casetaid
+         $this->look_casetaid = $this->casetaid; 
+         $this->Lookup->lookup_casetaid($this->look_casetaid, $this->casetaid) ; 
+         $this->look_casetaid = ($this->look_casetaid == "&nbsp;") ? "" : $this->look_casetaid; 
+         $this->sc_proc_grid = true; 
+         $_SESSION['scriptcase']['grid_eventos_tlibre']['contr_erro'] = 'on';
+if (!isset($_SESSION['modoOperacion'])) {$_SESSION['modoOperacion'] = "";}
+if (!isset($this->sc_temp_modoOperacion)) {$this->sc_temp_modoOperacion = (isset($_SESSION['modoOperacion'])) ? $_SESSION['modoOperacion'] : "";}
+ if($this->sc_temp_modoOperacion == "EAP"){
+	$this->totaleq  = $this->importe_eap +$this->tarifaee_eap ;
+	}else{
+	$this->totaleq  = $this->importe_ect +$this->tarifaee_ect ;
+	}
+$this->total  = $this->importe_cr  + $this->tarifaee_cr ;
+$this->diferencia  = $this->total -$this->totaleq ;
+
+
+if (isset($this->sc_temp_modoOperacion)) {$_SESSION['modoOperacion'] = $this->sc_temp_modoOperacion;}
+$_SESSION['scriptcase']['grid_eventos_tlibre']['contr_erro'] = 'off'; 
+         foreach ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['field_order'] as $Cada_col)
+         { 
+            if (!isset($this->NM_cmp_hidden[$Cada_col]) || $this->NM_cmp_hidden[$Cada_col] != "off")
+            { 
+                $NM_func_exp = "NM_export_" . $Cada_col;
+                $this->$NM_func_exp();
+            } 
+         } 
+         $this->SC_seq_json++;
+         $rs->MoveNext();
+      }
+      if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['embutida'])
+      { 
+          $_SESSION['scriptcase']['export_return'] = $this->json_registro;
+      }
+      else
+      { 
+          $result_json = json_encode($this->json_registro, JSON_UNESCAPED_UNICODE);
+          if ($result_json == false)
+          {
+              $oJson = new Services_JSON();
+              $result_json = $oJson->encode($this->json_registro);
+          }
+          fwrite($json_f, $result_json);
+          fclose($json_f);
+          if ($this->Tem_json_res)
+          { 
+              if (!$this->Ini->sc_export_ajax) {
+                  $this->PB_dif = intval ($this->PB_dif / 2);
+                  $Mens_bar  = NM_charset_to_utf8($this->Ini->Nm_lang['lang_othr_prcs']);
+                  $Mens_smry = NM_charset_to_utf8($this->Ini->Nm_lang['lang_othr_smry_titl']);
+                  $this->pb->setProgressbarMessage($Mens_bar . ": " . $Mens_smry);
+                  $this->pb->addSteps($this->PB_dif);
+              }
+              require_once($this->Ini->path_aplicacao . "grid_eventos_tlibre_res_json.class.php");
+              $this->Res = new grid_eventos_tlibre_res_json();
+              $this->prep_modulos("Res");
+              $_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['json_res_grid'] = true;
+              $this->Res->monta_json();
+          } 
+          if (!$this->Ini->sc_export_ajax) {
+              $Mens_bar = NM_charset_to_utf8($this->Ini->Nm_lang['lang_btns_export_finished']);
+              $this->pb->setProgressbarMessage($Mens_bar);
+              $this->pb->addSteps($this->PB_dif);
+          }
+          if ($this->Json_password != "" || $this->Tem_json_res)
+          { 
+              $str_zip    = "";
+              $Parm_pass  = ($this->Json_password != "") ? " -p" : "";
+              $Zip_f      = (FALSE !== strpos($this->Zip_f, ' ')) ? " \"" . $this->Zip_f . "\"" :  $this->Zip_f;
+              $Arq_input  = (FALSE !== strpos($this->Json_f, ' ')) ? " \"" . $this->Json_f . "\"" :  $this->Json_f;
+              if (is_file($Zip_f)) {
+                  unlink($Zip_f);
+              }
+              if (FALSE !== strpos(strtolower(php_uname()), 'windows')) 
+              {
+                  chdir($this->Ini->path_third . "/zip/windows");
+                  $str_zip = "zip.exe " . strtoupper($Parm_pass) . " -j " . $this->Json_password . " " . $Zip_f . " " . $Arq_input;
+              }
+              elseif (FALSE !== strpos(strtolower(php_uname()), 'linux')) 
+              {
+                  if (FALSE !== strpos(strtolower(php_uname()), 'i686')) 
+                  {
+                      chdir($this->Ini->path_third . "/zip/linux-i386/bin");
+                  }
+                  else
+                  {
+                      chdir($this->Ini->path_third . "/zip/linux-amd64/bin");
+                  }
+                  $str_zip = "./7za " . $Parm_pass . $this->Json_password . " a " . $Zip_f . " " . $Arq_input;
+              }
+              elseif (FALSE !== strpos(strtolower(php_uname()), 'darwin'))
+              {
+                  chdir($this->Ini->path_third . "/zip/mac/bin");
+                  $str_zip = "./7za " . $Parm_pass . $this->Json_password . " a " . $Zip_f . " " . $Arq_input;
+              }
+              if (!empty($str_zip)) {
+                  exec($str_zip);
+              }
+              // ----- ZIP log
+              $fp = @fopen(trim(str_replace(array(".zip",'"'), array(".log",""), $Zip_f)), 'w');
+              if ($fp)
+              {
+                  @fwrite($fp, $str_zip . "\r\n\r\n");
+                  @fclose($fp);
+              }
+              unlink($Arq_input);
+              $this->Arquivo = $this->Arq_zip;
+              $this->Json_f   = $this->Zip_f;
+              $this->Tit_doc = $this->Tit_zip;
+              if ($this->Tem_json_res)
+              { 
+                  $str_zip   = "";
+                  $Arq_res   = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['json_res_file']['json'];
+                  $Arq_input = (FALSE !== strpos($Arq_res, ' ')) ? " \"" . $Arq_res . "\"" :  $Arq_res;
+                  if (FALSE !== strpos(strtolower(php_uname()), 'windows')) 
+                  {
+                      $str_zip = "zip.exe " . strtoupper($Parm_pass) . " -j -u " . $this->Json_password . " " . $Zip_f . " " . $Arq_input;
+                  }
+                  elseif (FALSE !== strpos(strtolower(php_uname()), 'linux')) 
+                  {
+                      $str_zip = "./7za " . $Parm_pass . $this->Json_password . " a " . $Zip_f . " " . $Arq_input;
+                  }
+                  elseif (FALSE !== strpos(strtolower(php_uname()), 'darwin'))
+                  {
+                      $str_zip = "./7za " . $Parm_pass . $this->Json_password . " a " . $Zip_f . " " . $Arq_input;
+                  }
+                  if (!empty($str_zip)) {
+                      exec($str_zip);
+                  }
+                  // ----- ZIP log
+                  $fp = @fopen(trim(str_replace(array(".zip",'"'), array(".log",""), $Zip_f)), 'a');
+                  if ($fp)
+                  {
+                      @fwrite($fp, $str_zip . "\r\n\r\n");
+                      @fclose($fp);
+                  }
+                  unlink($_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['json_res_file']['json']);
+              }
+              unset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['json_res_grid']);
+          } 
+      }
+      if(isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['export_sel_columns']['field_order']))
+      {
+          $_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['field_order'] = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['export_sel_columns']['field_order'];
+          unset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['export_sel_columns']['field_order']);
+      }
+      if(isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['export_sel_columns']['usr_cmp_sel']))
+      {
+          $_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['usr_cmp_sel'] = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['export_sel_columns']['usr_cmp_sel'];
+          unset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['export_sel_columns']['usr_cmp_sel']);
+      }
+      $rs->Close();
+   }
+   //----- fechaoperacion
+   function NM_export_fechaoperacion()
+   {
+         if ($this->Json_format)
+         {
+             $conteudo_x =  $this->fechaoperacion;
+             nm_conv_limpa_dado($conteudo_x, "YYYY-MM-DD");
+             if (is_numeric($conteudo_x) && strlen($conteudo_x) > 0) 
+             { 
+                 $this->nm_data->SetaData($this->fechaoperacion, "YYYY-MM-DD  ");
+                 $this->fechaoperacion = $this->nm_data->FormataSaida($this->nm_data->FormatRegion("DT", "ddmmaaaa"));
+             } 
+         }
+         if ($this->Json_use_label)
+         {
+             $SC_Label = (isset($this->New_label['fechaoperacion'])) ? $this->New_label['fechaoperacion'] : "Fecha"; 
+         }
+         else
+         {
+             $SC_Label = "fechaoperacion"; 
+         }
+         $SC_Label = NM_charset_to_utf8($SC_Label); 
+         $this->json_registro[$this->SC_seq_json][$SC_Label] = $this->fechaoperacion;
+   }
+   //----- turnoid
+   function NM_export_turnoid()
+   {
+         if ($this->Json_format)
+         {
+             nmgp_Form_Num_Val($this->turnoid, $_SESSION['scriptcase']['reg_conf']['grup_num'], $_SESSION['scriptcase']['reg_conf']['dec_num'], "0", "S", "2", "", "N:" . $_SESSION['scriptcase']['reg_conf']['neg_num'] , $_SESSION['scriptcase']['reg_conf']['simb_neg'], $_SESSION['scriptcase']['reg_conf']['num_group_digit']) ; 
+         }
+         if ($this->Json_use_label)
+         {
+             $SC_Label = (isset($this->New_label['turnoid'])) ? $this->New_label['turnoid'] : "Turno"; 
+         }
+         else
+         {
+             $SC_Label = "turnoid"; 
+         }
+         $SC_Label = NM_charset_to_utf8($SC_Label); 
+         $this->json_registro[$this->SC_seq_json][$SC_Label] = $this->turnoid;
+   }
+   //----- horaevento
+   function NM_export_horaevento()
+   {
+         $this->horaevento = NM_charset_to_utf8($this->horaevento);
+         if ($this->Json_use_label)
+         {
+             $SC_Label = (isset($this->New_label['horaevento'])) ? $this->New_label['horaevento'] : "Hora"; 
+         }
+         else
+         {
+             $SC_Label = "horaevento"; 
+         }
+         $SC_Label = NM_charset_to_utf8($SC_Label); 
+         $this->json_registro[$this->SC_seq_json][$SC_Label] = $this->horaevento;
+   }
+   //----- carrilid
+   function NM_export_carrilid()
+   {
+         if ($this->Json_format)
+         {
+             nmgp_Form_Num_Val($this->carrilid, "", "", "0", "S", "2", "", "N:1", "-") ; 
+         }
+         if ($this->Json_use_label)
+         {
+             $SC_Label = (isset($this->New_label['carrilid'])) ? $this->New_label['carrilid'] : "Carril"; 
+         }
+         else
+         {
+             $SC_Label = "carrilid"; 
+         }
+         $SC_Label = NM_charset_to_utf8($SC_Label); 
+         $this->json_registro[$this->SC_seq_json][$SC_Label] = $this->carrilid;
+   }
+   //----- secuencial
+   function NM_export_secuencial()
+   {
+         if ($this->Json_format)
+         {
+             nmgp_Form_Num_Val($this->secuencial, "", "", "0", "S", "2", "", "N:1", "-") ; 
+         }
+         if ($this->Json_use_label)
+         {
+             $SC_Label = (isset($this->New_label['secuencial'])) ? $this->New_label['secuencial'] : "Secuencial"; 
+         }
+         else
+         {
+             $SC_Label = "secuencial"; 
+         }
+         $SC_Label = NM_charset_to_utf8($SC_Label); 
+         $this->json_registro[$this->SC_seq_json][$SC_Label] = $this->secuencial;
+   }
+   //----- folio
+   function NM_export_folio()
+   {
+         if ($this->Json_format)
+         {
+             nmgp_Form_Num_Val($this->folio, "", "", "0", "S", "2", "", "N:1", "-") ; 
+         }
+         if ($this->Json_use_label)
+         {
+             $SC_Label = (isset($this->New_label['folio'])) ? $this->New_label['folio'] : "Folio"; 
+         }
+         else
+         {
+             $SC_Label = "folio"; 
+         }
+         $SC_Label = NM_charset_to_utf8($SC_Label); 
+         $this->json_registro[$this->SC_seq_json][$SC_Label] = $this->folio;
+   }
+   //----- pagoid
+   function NM_export_pagoid()
+   {
+         $this->pagoid = NM_charset_to_utf8($this->pagoid);
+         if ($this->Json_use_label)
+         {
+             $SC_Label = (isset($this->New_label['pagoid'])) ? $this->New_label['pagoid'] : "Tipo Pago"; 
+         }
+         else
+         {
+             $SC_Label = "pagoid"; 
+         }
+         $SC_Label = NM_charset_to_utf8($SC_Label); 
+         $this->json_registro[$this->SC_seq_json][$SC_Label] = $this->pagoid;
+   }
+   //----- vehiculoid_cr
+   function NM_export_vehiculoid_cr()
+   {
+         $this->vehiculoid_cr = NM_charset_to_utf8($this->vehiculoid_cr);
+         if ($this->Json_use_label)
+         {
+             $SC_Label = (isset($this->New_label['vehiculoid_cr'])) ? $this->New_label['vehiculoid_cr'] : "Vehiculo CR"; 
+         }
+         else
+         {
+             $SC_Label = "vehiculoid_cr"; 
+         }
+         $SC_Label = NM_charset_to_utf8($SC_Label); 
+         $this->json_registro[$this->SC_seq_json][$SC_Label] = $this->vehiculoid_cr;
+   }
+   //----- vehiculoid_ect
+   function NM_export_vehiculoid_ect()
+   {
+         $this->vehiculoid_ect = NM_charset_to_utf8($this->vehiculoid_ect);
+         if ($this->Json_use_label)
+         {
+             $SC_Label = (isset($this->New_label['vehiculoid_ect'])) ? $this->New_label['vehiculoid_ect'] : "Vehiculo ECT"; 
+         }
+         else
+         {
+             $SC_Label = "vehiculoid_ect"; 
+         }
+         $SC_Label = NM_charset_to_utf8($SC_Label); 
+         $this->json_registro[$this->SC_seq_json][$SC_Label] = $this->vehiculoid_ect;
+   }
+   //----- vehiculoid_eap
+   function NM_export_vehiculoid_eap()
+   {
+         $this->vehiculoid_eap = NM_charset_to_utf8($this->vehiculoid_eap);
+         if ($this->Json_use_label)
+         {
+             $SC_Label = (isset($this->New_label['vehiculoid_eap'])) ? $this->New_label['vehiculoid_eap'] : "Vehiculo EAP"; 
+         }
+         else
+         {
+             $SC_Label = "vehiculoid_eap"; 
+         }
+         $SC_Label = NM_charset_to_utf8($SC_Label); 
+         $this->json_registro[$this->SC_seq_json][$SC_Label] = $this->vehiculoid_eap;
+   }
+   //----- total
+   function NM_export_total()
+   {
+         if ($this->Json_format)
+         {
+             nmgp_Form_Num_Val($this->total, $_SESSION['scriptcase']['reg_conf']['grup_val'], $_SESSION['scriptcase']['reg_conf']['dec_val'], "2", "S", "1", "", "V:" . $_SESSION['scriptcase']['reg_conf']['monet_f_pos'] . ":" . $_SESSION['scriptcase']['reg_conf']['monet_f_neg'], $_SESSION['scriptcase']['reg_conf']['simb_neg'], $_SESSION['scriptcase']['reg_conf']['unid_mont_group_digit']) ; 
+         }
+         if ($this->Json_use_label)
+         {
+             $SC_Label = (isset($this->New_label['total'])) ? $this->New_label['total'] : "ImporteCR"; 
+         }
+         else
+         {
+             $SC_Label = "total"; 
+         }
+         $SC_Label = NM_charset_to_utf8($SC_Label); 
+         $this->json_registro[$this->SC_seq_json][$SC_Label] = $this->total;
+   }
+   //----- diferencia
+   function NM_export_diferencia()
+   {
+         if ($this->Json_format)
+         {
+             nmgp_Form_Num_Val($this->diferencia, $_SESSION['scriptcase']['reg_conf']['grup_val'], $_SESSION['scriptcase']['reg_conf']['dec_val'], "2", "S", "1", "", "V:" . $_SESSION['scriptcase']['reg_conf']['monet_f_pos'] . ":" . $_SESSION['scriptcase']['reg_conf']['monet_f_neg'], $_SESSION['scriptcase']['reg_conf']['simb_neg'], $_SESSION['scriptcase']['reg_conf']['unid_mont_group_digit']) ; 
+         }
+         if ($this->Json_use_label)
+         {
+             $SC_Label = (isset($this->New_label['diferencia'])) ? $this->New_label['diferencia'] : "Diferencia"; 
+         }
+         else
+         {
+             $SC_Label = "diferencia"; 
+         }
+         $SC_Label = NM_charset_to_utf8($SC_Label); 
+         $this->json_registro[$this->SC_seq_json][$SC_Label] = $this->diferencia;
+   }
+   //----- totaleq
+   function NM_export_totaleq()
+   {
+         if ($this->Json_format)
+         {
+             nmgp_Form_Num_Val($this->totaleq, $_SESSION['scriptcase']['reg_conf']['grup_val'], $_SESSION['scriptcase']['reg_conf']['dec_val'], "2", "S", "1", "", "V:" . $_SESSION['scriptcase']['reg_conf']['monet_f_pos'] . ":" . $_SESSION['scriptcase']['reg_conf']['monet_f_neg'], $_SESSION['scriptcase']['reg_conf']['simb_neg'], $_SESSION['scriptcase']['reg_conf']['unid_mont_group_digit']) ; 
+         }
+         if ($this->Json_use_label)
+         {
+             $SC_Label = (isset($this->New_label['totaleq'])) ? $this->New_label['totaleq'] : "Marcado"; 
+         }
+         else
+         {
+             $SC_Label = "totaleq"; 
+         }
+         $SC_Label = NM_charset_to_utf8($SC_Label); 
+         $this->json_registro[$this->SC_seq_json][$SC_Label] = $this->totaleq;
+   }
+   //----- numerotarjeta
+   function NM_export_numerotarjeta()
+   {
+         $this->numerotarjeta = NM_charset_to_utf8($this->numerotarjeta);
+         if ($this->Json_use_label)
+         {
+             $SC_Label = (isset($this->New_label['numerotarjeta'])) ? $this->New_label['numerotarjeta'] : "TAG"; 
+         }
+         else
+         {
+             $SC_Label = "numerotarjeta"; 
+         }
+         $SC_Label = NM_charset_to_utf8($SC_Label); 
+         $this->json_registro[$this->SC_seq_json][$SC_Label] = $this->numerotarjeta;
+   }
+   //----- placas
+   function NM_export_placas()
+   {
+         $this->placas = NM_charset_to_utf8($this->placas);
+         if ($this->Json_use_label)
+         {
+             $SC_Label = (isset($this->New_label['placas'])) ? $this->New_label['placas'] : "Placas"; 
+         }
+         else
+         {
+             $SC_Label = "placas"; 
+         }
+         $SC_Label = NM_charset_to_utf8($SC_Label); 
+         $this->json_registro[$this->SC_seq_json][$SC_Label] = $this->placas;
+   }
+   //----- consecutivo
+   function NM_export_consecutivo()
+   {
+         if ($this->Json_format)
+         {
+             nmgp_Form_Num_Val($this->consecutivo, $_SESSION['scriptcase']['reg_conf']['grup_num'], $_SESSION['scriptcase']['reg_conf']['dec_num'], "0", "S", "2", "", "N:" . $_SESSION['scriptcase']['reg_conf']['neg_num'] , $_SESSION['scriptcase']['reg_conf']['simb_neg'], $_SESSION['scriptcase']['reg_conf']['num_group_digit']) ; 
+         }
+         if ($this->Json_use_label)
+         {
+             $SC_Label = (isset($this->New_label['consecutivo'])) ? $this->New_label['consecutivo'] : "Consecutivo"; 
+         }
+         else
+         {
+             $SC_Label = "consecutivo"; 
+         }
+         $SC_Label = NM_charset_to_utf8($SC_Label); 
+         $this->json_registro[$this->SC_seq_json][$SC_Label] = $this->consecutivo;
+   }
+   //----- casetaid
+   function NM_export_casetaid()
+   {
+         $this->look_casetaid = NM_charset_to_utf8($this->look_casetaid);
+         if ($this->Json_use_label)
+         {
+             $SC_Label = (isset($this->New_label['casetaid'])) ? $this->New_label['casetaid'] : "Caseta ID"; 
+         }
+         else
+         {
+             $SC_Label = "casetaid"; 
+         }
+         $SC_Label = NM_charset_to_utf8($SC_Label); 
+         $this->json_registro[$this->SC_seq_json][$SC_Label] = $this->look_casetaid;
+   }
+   //----- fechaturno
+   function NM_export_fechaturno()
+   {
+         if ($this->Json_format)
+         {
+             $conteudo_x =  $this->fechaturno;
+             nm_conv_limpa_dado($conteudo_x, "YYYY-MM-DD");
+             if (is_numeric($conteudo_x) && strlen($conteudo_x) > 0) 
+             { 
+                 $this->nm_data->SetaData($this->fechaturno, "YYYY-MM-DD  ");
+                 $this->fechaturno = $this->nm_data->FormataSaida($this->nm_data->FormatRegion("DT", "ddmmaaaa"));
+             } 
+         }
+         if ($this->Json_use_label)
+         {
+             $SC_Label = (isset($this->New_label['fechaturno'])) ? $this->New_label['fechaturno'] : "Fecha"; 
+         }
+         else
+         {
+             $SC_Label = "fechaturno"; 
+         }
+         $SC_Label = NM_charset_to_utf8($SC_Label); 
+         $this->json_registro[$this->SC_seq_json][$SC_Label] = $this->fechaturno;
+   }
+
+   function nm_conv_data_db($dt_in, $form_in, $form_out)
+   {
+       $dt_out = $dt_in;
+       if (strtoupper($form_in) == "DB_FORMAT") {
+           if ($dt_out == "null" || $dt_out == "")
+           {
+               $dt_out = "";
+               return $dt_out;
+           }
+           $form_in = "AAAA-MM-DD";
+       }
+       if (strtoupper($form_out) == "DB_FORMAT") {
+           if (empty($dt_out))
+           {
+               $dt_out = "null";
+               return $dt_out;
+           }
+           $form_out = "AAAA-MM-DD";
+       }
+       if (strtoupper($form_out) == "SC_FORMAT_REGION") {
+           $this->nm_data->SetaData($dt_in, strtoupper($form_in));
+           $prep_out  = (strpos(strtolower($form_in), "dd") !== false) ? "dd" : "";
+           $prep_out .= (strpos(strtolower($form_in), "mm") !== false) ? "mm" : "";
+           $prep_out .= (strpos(strtolower($form_in), "aa") !== false) ? "aaaa" : "";
+           $prep_out .= (strpos(strtolower($form_in), "yy") !== false) ? "aaaa" : "";
+           return $this->nm_data->FormataSaida($this->nm_data->FormatRegion("DT", $prep_out));
+       }
+       else {
+           nm_conv_form_data($dt_out, $form_in, $form_out);
+           return $dt_out;
+       }
+   }
+   function progress_bar_end()
+   {
+      unset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['json_file']);
+      if (is_file($this->Ini->root . $this->Ini->path_imag_temp . "/" . $this->Arquivo))
+      {
+          $_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['json_file'] = $this->Ini->root . $this->Ini->path_imag_temp . "/" . $this->Arquivo;
+      }
+      $path_doc_md5 = md5($this->Ini->path_imag_temp . "/" . $this->Arquivo);
+      $_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre'][$path_doc_md5][0] = $this->Ini->path_imag_temp . "/" . $this->Arquivo;
+      $_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre'][$path_doc_md5][1] = $this->Tit_doc;
+      $Mens_bar = $this->Ini->Nm_lang['lang_othr_file_msge'];
+      if ($_SESSION['scriptcase']['charset'] != "UTF-8") {
+          $Mens_bar = sc_convert_encoding($Mens_bar, "UTF-8", $_SESSION['scriptcase']['charset']);
+      }
+      $this->pb->setProgressbarMessage($Mens_bar);
+      $this->pb->setDownloadLink($this->Ini->path_imag_temp . "/" . $this->Arquivo);
+      $this->pb->setDownloadMd5($path_doc_md5);
+      $this->pb->completed();
+   }
+   function monta_html()
+   {
+      global $nm_url_saida, $nm_lang;
+      include($this->Ini->path_btn . $this->Ini->Str_btn_grid);
+      unset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['json_file']);
+      if (is_file($this->Ini->root . $this->Ini->path_imag_temp . "/" . $this->Arquivo))
+      {
+          $_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['json_file'] = $this->Ini->root . $this->Ini->path_imag_temp . "/" . $this->Arquivo;
+      }
+      $path_doc_md5 = md5($this->Ini->path_imag_temp . "/" . $this->Arquivo);
+      $_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre'][$path_doc_md5][0] = $this->Ini->path_imag_temp . "/" . $this->Arquivo;
+      $_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre'][$path_doc_md5][1] = $this->Tit_doc;
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+            "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML<?php echo $_SESSION['scriptcase']['reg_conf']['html_dir'] ?>>
+<HEAD>
+ <TITLE><?php echo $this->Ini->Nm_lang['lang_othr_grid_title'] ?> Bitácora de eventos :: JSON</TITLE>
+ <META http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['scriptcase']['charset_html'] ?>" />
+<?php
+if ($_SESSION['scriptcase']['proc_mobile'])
+{
+?>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<?php
+}
+?>
+ <META http-equiv="Expires" content="Fri, Jan 01 1900 00:00:00 GMT"/>
+ <META http-equiv="Last-Modified" content="<?php echo gmdate("D, d M Y H:i:s"); ?> GMT"/>
+ <META http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate"/>
+ <META http-equiv="Cache-Control" content="post-check=0, pre-check=0"/>
+ <META http-equiv="Pragma" content="no-cache"/>
+ <link rel="shortcut icon" href="../_lib/img/scriptcase__NM__ico__NM__favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../_lib/css/<?php echo $this->Ini->str_schema_all ?>_export.css" /> 
+  <link rel="stylesheet" type="text/css" href="../_lib/css/<?php echo $this->Ini->str_schema_all ?>_export<?php echo $_SESSION['scriptcase']['reg_conf']['css_dir'] ?>.css" /> 
+ <?php
+ if(isset($this->Ini->str_google_fonts) && !empty($this->Ini->str_google_fonts))
+ {
+ ?>
+    <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->str_google_fonts ?>" />
+ <?php
+ }
+ ?>
+  <link rel="stylesheet" type="text/css" href="../_lib/buttons/<?php echo $this->Ini->Str_btn_css ?>" /> 
+</HEAD>
+<BODY class="scExportPage">
+<?php echo $this->Ini->Ajax_result_set ?>
+<table style="border-collapse: collapse; border-width: 0; height: 100%; width: 100%"><tr><td style="padding: 0; text-align: center; vertical-align: middle">
+ <table class="scExportTable" align="center">
+  <tr>
+   <td class="scExportTitle" style="height: 25px">JSON</td>
+  </tr>
+  <tr>
+   <td class="scExportLine" style="width: 100%">
+    <table style="border-collapse: collapse; border-width: 0; width: 100%"><tr><td class="scExportLineFont" style="padding: 3px 0 0 0" id="idMessage">
+    <?php echo $this->Ini->Nm_lang['lang_othr_file_msge'] ?>
+    </td><td class="scExportLineFont" style="text-align:right; padding: 3px 0 0 0">
+     <?php echo nmButtonOutput($this->arr_buttons, "bdownload", "document.Fdown.submit()", "document.Fdown.submit()", "idBtnDown", "", "", "", "", "", "", $this->Ini->path_botoes, "", "", "", "", "", "only_text", "text_right", "", "", "", "", "", "", "");
+ ?>
+     <?php echo nmButtonOutput($this->arr_buttons, "bvoltar", "document.F0.submit()", "document.F0.submit()", "idBtnBack", "", "", "", "", "", "", $this->Ini->path_botoes, "", "", "", "", "", "only_text", "text_right", "", "", "", "", "", "", "");
+ ?>
+    </td></tr></table>
+   </td>
+  </tr>
+ </table>
+</td></tr></table>
+<form name="Fview" method="get" action="<?php echo $this->Ini->path_imag_temp . "/" . $this->Arquivo_view ?>" target="_blank" style="display: none"> 
+</form>
+<form name="Fdown" method="get" action="grid_eventos_tlibre_download.php" target="_blank" style="display: none"> 
+<input type="hidden" name="script_case_init" value="<?php echo NM_encode_input($this->Ini->sc_page); ?>"> 
+<input type="hidden" name="nm_tit_doc" value="grid_eventos_tlibre"> 
+<input type="hidden" name="nm_name_doc" value="<?php echo $path_doc_md5 ?>"> 
+</form>
+<FORM name="F0" method=post action="./" style="display: none"> 
+<INPUT type="hidden" name="script_case_init" value="<?php echo NM_encode_input($this->Ini->sc_page); ?>"> 
+<INPUT type="hidden" name="nmgp_opcao" value="<?php echo NM_encode_input($_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos_tlibre']['json_return']); ?>"> 
+</FORM> 
+</BODY>
+</HTML>
+<?php
+   }
+   function nm_gera_mask(&$nm_campo, $nm_mask)
+   { 
+      $trab_campo = $nm_campo;
+      $trab_mask  = $nm_mask;
+      $tam_campo  = strlen($nm_campo);
+      $trab_saida = "";
+      $str_highlight_ini = "";
+      $str_highlight_fim = "";
+      if(substr($nm_campo, 0, 23) == '<div class="highlight">' && substr($nm_campo, -6) == '</div>')
+      {
+           $str_highlight_ini = substr($nm_campo, 0, 23);
+           $str_highlight_fim = substr($nm_campo, -6);
+
+           $trab_campo = substr($nm_campo, 23, -6);
+           $tam_campo  = strlen($trab_campo);
+      }      $mask_num = false;
+      for ($x=0; $x < strlen($trab_mask); $x++)
+      {
+          if (substr($trab_mask, $x, 1) == "#")
+          {
+              $mask_num = true;
+              break;
+          }
+      }
+      if ($mask_num )
+      {
+          $ver_duas = explode(";", $trab_mask);
+          if (isset($ver_duas[1]) && !empty($ver_duas[1]))
+          {
+              $cont1 = count(explode("#", $ver_duas[0])) - 1;
+              $cont2 = count(explode("#", $ver_duas[1])) - 1;
+              if ($tam_campo >= $cont2)
+              {
+                  $trab_mask = $ver_duas[1];
+              }
+              else
+              {
+                  $trab_mask = $ver_duas[0];
+              }
+          }
+          $tam_mask = strlen($trab_mask);
+          $xdados = 0;
+          for ($x=0; $x < $tam_mask; $x++)
+          {
+              if (substr($trab_mask, $x, 1) == "#" && $xdados < $tam_campo)
+              {
+                  $trab_saida .= substr($trab_campo, $xdados, 1);
+                  $xdados++;
+              }
+              elseif ($xdados < $tam_campo)
+              {
+                  $trab_saida .= substr($trab_mask, $x, 1);
+              }
+          }
+          if ($xdados < $tam_campo)
+          {
+              $trab_saida .= substr($trab_campo, $xdados);
+          }
+          $nm_campo = $str_highlight_ini . $trab_saida . $str_highlight_ini;
+          return;
+      }
+      for ($ix = strlen($trab_mask); $ix > 0; $ix--)
+      {
+           $char_mask = substr($trab_mask, $ix - 1, 1);
+           if ($char_mask != "x" && $char_mask != "z")
+           {
+               $trab_saida = $char_mask . $trab_saida;
+           }
+           else
+           {
+               if ($tam_campo != 0)
+               {
+                   $trab_saida = substr($trab_campo, $tam_campo - 1, 1) . $trab_saida;
+                   $tam_campo--;
+               }
+               else
+               {
+                   $trab_saida = "0" . $trab_saida;
+               }
+           }
+      }
+      if ($tam_campo != 0)
+      {
+          $trab_saida = substr($trab_campo, 0, $tam_campo) . $trab_saida;
+          $trab_mask  = str_repeat("z", $tam_campo) . $trab_mask;
+      }
+   
+      $iz = 0; 
+      for ($ix = 0; $ix < strlen($trab_mask); $ix++)
+      {
+           $char_mask = substr($trab_mask, $ix, 1);
+           if ($char_mask != "x" && $char_mask != "z")
+           {
+               if ($char_mask == "." || $char_mask == ",")
+               {
+                   $trab_saida = substr($trab_saida, 0, $iz) . substr($trab_saida, $iz + 1);
+               }
+               else
+               {
+                   $iz++;
+               }
+           }
+           elseif ($char_mask == "x" || substr($trab_saida, $iz, 1) != "0")
+           {
+               $ix = strlen($trab_mask) + 1;
+           }
+           else
+           {
+               $trab_saida = substr($trab_saida, 0, $iz) . substr($trab_saida, $iz + 1);
+           }
+      }
+      $nm_campo = $str_highlight_ini . $trab_saida . $str_highlight_ini;
+   } 
+}
+
+?>

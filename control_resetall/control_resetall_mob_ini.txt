@@ -1,0 +1,7 @@
+control_resetall_mob.php
+BackOffice_Acapulco
+control_resetall_mob
+SIM
+contr
+control_resetall
+LigMd5

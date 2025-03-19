@@ -1,0 +1,22 @@
+.css_fechaoperacion_label, .css_fechaoperacion_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_fechaoperacion_grid_line, .css_fechaoperacion_grid_line:hover {vertical-align: top;text-align: center;}
+.css_fecha_label, .css_fecha_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_fecha_grid_line, .css_fecha_grid_line:hover {vertical-align: top;text-align: center;}
+.css_tipooperacion_label, .css_tipooperacion_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_tipooperacion_grid_line, .css_tipooperacion_grid_line:hover {vertical-align: top;text-align: right;}
+.css_importe_label, .css_importe_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_importe_grid_line, .css_importe_grid_line:hover {vertical-align: top;text-align: right;}
+.css_tipomoneda_label, .css_tipomoneda_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_tipomoneda_grid_line, .css_tipomoneda_grid_line:hover {vertical-align: top;text-align: right;}
+.css_retiroid_label, .css_retiroid_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_retiroid_grid_line, .css_retiroid_grid_line:hover {vertical-align: top;text-align: right;}
+.css_casetaid_label, .css_casetaid_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_casetaid_grid_line, .css_casetaid_grid_line:hover {vertical-align: top;text-align: right;}
+.css_usuarioid_label, .css_usuarioid_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_usuarioid_grid_line, .css_usuarioid_grid_line:hover {vertical-align: top;text-align: right;}
+.css_carrilid_label, .css_carrilid_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_carrilid_grid_line, .css_carrilid_grid_line:hover {vertical-align: top;text-align: right;}
+.css_cuerpo_label, .css_cuerpo_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_cuerpo_grid_line, .css_cuerpo_grid_line:hover {vertical-align: top;text-align: right;}
+.css_carrilnacional_label, .css_carrilnacional_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_carrilnacional_grid_line, .css_carrilnacional_grid_line:hover {vertical-align: top;text-align: right;}

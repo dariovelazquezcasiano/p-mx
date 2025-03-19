@@ -1,0 +1,54 @@
+.css_casetaid_label, .css_casetaid_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_casetaid_grid_line, .css_casetaid_grid_line:hover {vertical-align: top;text-align: right;}
+.css_fechaoperacion_label, .css_fechaoperacion_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_fechaoperacion_grid_line, .css_fechaoperacion_grid_line:hover {vertical-align: top;text-align: center;}
+.css_horaevento_label, .css_horaevento_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_horaevento_grid_line, .css_horaevento_grid_line:hover {vertical-align: top;text-align: center;}
+.css_turnoid_label, .css_turnoid_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_turnoid_grid_line, .css_turnoid_grid_line:hover {vertical-align: top;text-align: right;}
+.css_carrilid_label, .css_carrilid_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_carrilid_grid_line, .css_carrilid_grid_line:hover {vertical-align: top;text-align: right;}
+.css_cuerpo_label, .css_cuerpo_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_cuerpo_grid_line, .css_cuerpo_grid_line:hover {vertical-align: top;text-align: right;}
+.css_usuarioid_label, .css_usuarioid_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_usuarioid_grid_line, .css_usuarioid_grid_line:hover {vertical-align: top;text-align: right;}
+.css_secuencial_label, .css_secuencial_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_secuencial_grid_line, .css_secuencial_grid_line:hover {vertical-align: top;text-align: right;}
+.css_folio_label, .css_folio_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_folio_grid_line, .css_folio_grid_line:hover {vertical-align: top;text-align: right;}
+.css_vehiculoid_ect_label, .css_vehiculoid_ect_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_vehiculoid_ect_grid_line, .css_vehiculoid_ect_grid_line:hover {vertical-align: top;text-align: right;}
+.css_vehiculoid_cr_label, .css_vehiculoid_cr_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_vehiculoid_cr_grid_line, .css_vehiculoid_cr_grid_line:hover {vertical-align: top;text-align: right;}
+.css_vehiculoid_eap_label, .css_vehiculoid_eap_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_vehiculoid_eap_grid_line, .css_vehiculoid_eap_grid_line:hover {vertical-align: top;text-align: right;}
+.css_pagoid_ana_label, .css_pagoid_ana_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_pagoid_ana_grid_line, .css_pagoid_ana_grid_line:hover {vertical-align: top;text-align: right;}
+.css_excentoid_label, .css_excentoid_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_excentoid_grid_line, .css_excentoid_grid_line:hover {font-weight:bold;vertical-align: top;text-align: right;}
+.css_placas_label, .css_placas_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_placas_grid_line, .css_placas_grid_line:hover {vertical-align: top;text-align: right;}
+.css_numerotarjeta_label, .css_numerotarjeta_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_numerotarjeta_grid_line, .css_numerotarjeta_grid_line:hover {vertical-align: top;text-align: right;}
+.css_vehiculoid_ana_label, .css_vehiculoid_ana_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_vehiculoid_ana_grid_line, .css_vehiculoid_ana_grid_line:hover {vertical-align: top;text-align: right;}
+.css_cantidadeje_ana_label, .css_cantidadeje_ana_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_cantidadeje_ana_grid_line, .css_cantidadeje_ana_grid_line:hover {vertical-align: top;text-align: right;}
+.css_importe_ana_label, .css_importe_ana_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_importe_ana_grid_line, .css_importe_ana_grid_line:hover {vertical-align: top;text-align: right;}
+.css_tarifaee_ana_label, .css_tarifaee_ana_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_tarifaee_ana_grid_line, .css_tarifaee_ana_grid_line:hover {vertical-align: top;text-align: right;}
+.css_tipotlp_label, .css_tipotlp_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_tipotlp_grid_line, .css_tipotlp_grid_line:hover {vertical-align: top;text-align: right;}
+.css_operadortlp_label, .css_operadortlp_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_operadortlp_grid_line, .css_operadortlp_grid_line:hover {vertical-align: top;text-align: right;}
+.css_cantidadejes_label, .css_cantidadejes_label:hover {text-align:;vertical-align:middle;justify-content:;font-weight:bold;}
+.css_cantidadejes_grid_line, .css_cantidadejes_grid_line:hover {text-align: right;}
+.css_cancelado_label, .css_cancelado_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_cancelado_grid_line, .css_cancelado_grid_line:hover {vertical-align: top;text-align: right;}
+.css_pagoid_label, .css_pagoid_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_pagoid_grid_line, .css_pagoid_grid_line:hover {vertical-align: top;text-align: right;}
+.css_categoriatlp_label, .css_categoriatlp_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_categoriatlp_grid_line, .css_categoriatlp_grid_line:hover {vertical-align: top;text-align: right;}
+.css_imagen_label, .css_imagen_label:hover {text-align:;vertical-align:middle;justify-content:;font-weight:bold;}
+.css_imagen_grid_line, .css_imagen_grid_line:hover {text-align: center;}

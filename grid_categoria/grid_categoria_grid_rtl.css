@@ -1,0 +1,8 @@
+.css_descripcion_label, .css_descripcion_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_descripcion_grid_line, .css_descripcion_grid_line:hover {vertical-align: top;text-align: right;}
+.css_efectivo_label, .css_efectivo_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_efectivo_grid_line, .css_efectivo_grid_line:hover {vertical-align: top;text-align: right;}
+.css_categoriapago_label, .css_categoriapago_label:hover {text-align:;vertical-align:middle;justify-content:;font-weight:bold;}
+.css_categoriapago_grid_line, .css_categoriapago_grid_line:hover {text-align: center;}
+.css_categoriaid_label, .css_categoriaid_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_categoriaid_grid_line, .css_categoriaid_grid_line:hover {vertical-align: top;text-align: right;}

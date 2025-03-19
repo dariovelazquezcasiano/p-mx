@@ -1,0 +1,104 @@
+.css_consecutivo_det_label, .css_consecutivo_det_label:hover {text-align: right;vertical-align: middle;}
+.css_consecutivo_det_line, .css_consecutivo_det_line:hover {height:0px;text-align: right;}
+.css_casetaid_det_label, .css_casetaid_det_label:hover {text-align: right;vertical-align: middle;}
+.css_casetaid_det_line, .css_casetaid_det_line:hover {height:0px;text-align: right;}
+.css_fechaoperacion_det_label, .css_fechaoperacion_det_label:hover {text-align: right;vertical-align: middle;}
+.css_fechaoperacion_det_line, .css_fechaoperacion_det_line:hover {height:0px;text-align: right;}
+.css_fechaturno_det_label, .css_fechaturno_det_label:hover {text-align: right;vertical-align: middle;}
+.css_fechaturno_det_line, .css_fechaturno_det_line:hover {height:0px;text-align: right;}
+.css_turnoid_det_label, .css_turnoid_det_label:hover {text-align: right;vertical-align: middle;}
+.css_turnoid_det_line, .css_turnoid_det_line:hover {height:0px;text-align: right;}
+.css_horaevento_det_label, .css_horaevento_det_label:hover {text-align: right;vertical-align: middle;}
+.css_horaevento_det_line, .css_horaevento_det_line:hover {height:0px;text-align: right;}
+.css_tramoid_det_label, .css_tramoid_det_label:hover {text-align: right;vertical-align: middle;}
+.css_tramoid_det_line, .css_tramoid_det_line:hover {height:0px;text-align: right;}
+.css_carrilid_det_label, .css_carrilid_det_label:hover {text-align: right;vertical-align: middle;}
+.css_carrilid_det_line, .css_carrilid_det_line:hover {height:0px;text-align: right;}
+.css_cuerpo_det_label, .css_cuerpo_det_label:hover {text-align: right;vertical-align: middle;}
+.css_cuerpo_det_line, .css_cuerpo_det_line:hover {height:0px;text-align: right;}
+.css_secuencial_det_label, .css_secuencial_det_label:hover {text-align: right;vertical-align: middle;}
+.css_secuencial_det_line, .css_secuencial_det_line:hover {height:0px;text-align: right;}
+.css_folio_det_label, .css_folio_det_label:hover {text-align: right;vertical-align: middle;}
+.css_folio_det_line, .css_folio_det_line:hover {height:0px;text-align: right;}
+.css_vehiculoid_ect_det_label, .css_vehiculoid_ect_det_label:hover {text-align: right;vertical-align: middle;}
+.css_vehiculoid_ect_det_line, .css_vehiculoid_ect_det_line:hover {height:0px;text-align: right;}
+.css_clasevehiculo_ect_det_label, .css_clasevehiculo_ect_det_label:hover {text-align: right;vertical-align: middle;}
+.css_clasevehiculo_ect_det_line, .css_clasevehiculo_ect_det_line:hover {height:0px;text-align: right;}
+.css_importe_ect_det_label, .css_importe_ect_det_label:hover {text-align: right;vertical-align: middle;}
+.css_importe_ect_det_line, .css_importe_ect_det_line:hover {height:0px;text-align: right;}
+.css_cantidadeje_ect_det_label, .css_cantidadeje_ect_det_label:hover {text-align: right;vertical-align: middle;}
+.css_cantidadeje_ect_det_line, .css_cantidadeje_ect_det_line:hover {height:0px;text-align: right;}
+.css_tarifaee_ect_det_label, .css_tarifaee_ect_det_label:hover {text-align: right;vertical-align: middle;}
+.css_tarifaee_ect_det_line, .css_tarifaee_ect_det_line:hover {height:0px;text-align: right;}
+.css_vehiculoid_cr_det_label, .css_vehiculoid_cr_det_label:hover {text-align: right;vertical-align: middle;}
+.css_vehiculoid_cr_det_line, .css_vehiculoid_cr_det_line:hover {height:0px;text-align: right;}
+.css_clasevehiculo_cr_det_label, .css_clasevehiculo_cr_det_label:hover {text-align: right;vertical-align: middle;}
+.css_clasevehiculo_cr_det_line, .css_clasevehiculo_cr_det_line:hover {height:0px;text-align: right;}
+.css_importe_cr_det_label, .css_importe_cr_det_label:hover {text-align: right;vertical-align: middle;}
+.css_importe_cr_det_line, .css_importe_cr_det_line:hover {height:0px;text-align: right;}
+.css_cantidadeje_cr_det_label, .css_cantidadeje_cr_det_label:hover {text-align: right;vertical-align: middle;}
+.css_cantidadeje_cr_det_line, .css_cantidadeje_cr_det_line:hover {height:0px;text-align: right;}
+.css_tarifaee_cr_det_label, .css_tarifaee_cr_det_label:hover {text-align: right;vertical-align: middle;}
+.css_tarifaee_cr_det_line, .css_tarifaee_cr_det_line:hover {height:0px;text-align: right;}
+.css_vehiculoid_eap_det_label, .css_vehiculoid_eap_det_label:hover {text-align: right;vertical-align: middle;}
+.css_vehiculoid_eap_det_line, .css_vehiculoid_eap_det_line:hover {height:0px;text-align: right;}
+.css_clasevehiculo_eap_det_label, .css_clasevehiculo_eap_det_label:hover {text-align: right;vertical-align: middle;}
+.css_clasevehiculo_eap_det_line, .css_clasevehiculo_eap_det_line:hover {height:0px;text-align: right;}
+.css_importe_eap_det_label, .css_importe_eap_det_label:hover {text-align: right;vertical-align: middle;}
+.css_importe_eap_det_line, .css_importe_eap_det_line:hover {height:0px;text-align: right;}
+.css_cantidadeje_eap_det_label, .css_cantidadeje_eap_det_label:hover {text-align: right;vertical-align: middle;}
+.css_cantidadeje_eap_det_line, .css_cantidadeje_eap_det_line:hover {height:0px;text-align: right;}
+.css_tarifaee_eap_det_label, .css_tarifaee_eap_det_label:hover {text-align: right;vertical-align: middle;}
+.css_tarifaee_eap_det_line, .css_tarifaee_eap_det_line:hover {height:0px;text-align: right;}
+.css_pagoid_det_label, .css_pagoid_det_label:hover {text-align: right;vertical-align: middle;}
+.css_pagoid_det_line, .css_pagoid_det_line:hover {height:0px;text-align: right;}
+.css_excentoid_det_label, .css_excentoid_det_label:hover {text-align: right;vertical-align: middle;}
+.css_excentoid_det_line, .css_excentoid_det_line:hover {height:0px;text-align: right;}
+.css_usuarioid_det_label, .css_usuarioid_det_label:hover {text-align: right;vertical-align: middle;}
+.css_usuarioid_det_line, .css_usuarioid_det_line:hover {height:0px;text-align: right;}
+.css_placas_det_label, .css_placas_det_label:hover {text-align: right;vertical-align: middle;}
+.css_placas_det_line, .css_placas_det_line:hover {height:0px;text-align: right;}
+.css_numerotarjeta_det_label, .css_numerotarjeta_det_label:hover {text-align: right;vertical-align: middle;}
+.css_numerotarjeta_det_line, .css_numerotarjeta_det_line:hover {height:0px;text-align: right;}
+.css_tipotarjeta_det_label, .css_tipotarjeta_det_label:hover {text-align: right;vertical-align: middle;}
+.css_tipotarjeta_det_line, .css_tipotarjeta_det_line:hover {height:0px;text-align: right;}
+.css_fechaenvio_det_label, .css_fechaenvio_det_label:hover {text-align: right;vertical-align: middle;}
+.css_fechaenvio_det_line, .css_fechaenvio_det_line:hover {height:0px;text-align: right;}
+.css_codigofacturacion_det_label, .css_codigofacturacion_det_label:hover {text-align: right;vertical-align: middle;}
+.css_codigofacturacion_det_line, .css_codigofacturacion_det_line:hover {height:0px;text-align: right;}
+.css_vehiculoid_ana_det_label, .css_vehiculoid_ana_det_label:hover {text-align: right;vertical-align: middle;}
+.css_vehiculoid_ana_det_line, .css_vehiculoid_ana_det_line:hover {height:0px;text-align: right;}
+.css_clasevehiculo_ana_det_label, .css_clasevehiculo_ana_det_label:hover {text-align: right;vertical-align: middle;}
+.css_clasevehiculo_ana_det_line, .css_clasevehiculo_ana_det_line:hover {height:0px;text-align: right;}
+.css_importe_ana_det_label, .css_importe_ana_det_label:hover {text-align: right;vertical-align: middle;}
+.css_importe_ana_det_line, .css_importe_ana_det_line:hover {height:0px;text-align: right;}
+.css_pagoid_ana_det_label, .css_pagoid_ana_det_label:hover {text-align: right;vertical-align: middle;}
+.css_pagoid_ana_det_line, .css_pagoid_ana_det_line:hover {height:0px;text-align: right;}
+.css_estatusana_det_label, .css_estatusana_det_label:hover {text-align: right;vertical-align: middle;}
+.css_estatusana_det_line, .css_estatusana_det_line:hover {height:0px;text-align: right;}
+.css_fld_ar_sct_det_label, .css_fld_ar_sct_det_label:hover {text-align: right;vertical-align: middle;}
+.css_fld_ar_sct_det_line, .css_fld_ar_sct_det_line:hover {height:0px;text-align: right;}
+.css_cantidadeje_ana_det_label, .css_cantidadeje_ana_det_label:hover {text-align: right;vertical-align: middle;}
+.css_cantidadeje_ana_det_line, .css_cantidadeje_ana_det_line:hover {height:0px;text-align: right;}
+.css_tarifaee_ana_det_label, .css_tarifaee_ana_det_label:hover {text-align: right;vertical-align: middle;}
+.css_tarifaee_ana_det_line, .css_tarifaee_ana_det_line:hover {height:0px;text-align: right;}
+.css_fechamodificadoana_det_label, .css_fechamodificadoana_det_label:hover {text-align: right;vertical-align: middle;}
+.css_fechamodificadoana_det_line, .css_fechamodificadoana_det_line:hover {height:0px;text-align: right;}
+.css_eludidoextra_det_label, .css_eludidoextra_det_label:hover {text-align: right;vertical-align: middle;}
+.css_eludidoextra_det_line, .css_eludidoextra_det_line:hover {height:0px;text-align: right;}
+.css_revisado_det_label, .css_revisado_det_label:hover {text-align: right;vertical-align: middle;}
+.css_revisado_det_line, .css_revisado_det_line:hover {height:0px;text-align: right;}
+.css_fechamarcacioncr_det_label, .css_fechamarcacioncr_det_label:hover {text-align: right;vertical-align: middle;}
+.css_fechamarcacioncr_det_line, .css_fechamarcacioncr_det_line:hover {height:0px;text-align: right;}
+.css_fechadeteccionect_det_label, .css_fechadeteccionect_det_label:hover {text-align: right;vertical-align: middle;}
+.css_fechadeteccionect_det_line, .css_fechadeteccionect_det_line:hover {height:0px;text-align: right;}
+.css_fechadeteccioneap_det_label, .css_fechadeteccioneap_det_label:hover {text-align: right;vertical-align: middle;}
+.css_fechadeteccioneap_det_line, .css_fechadeteccioneap_det_line:hover {height:0px;text-align: right;}
+.css_tramoidorigen_det_label, .css_tramoidorigen_det_label:hover {text-align: right;vertical-align: middle;}
+.css_tramoidorigen_det_line, .css_tramoidorigen_det_line:hover {height:0px;text-align: right;}
+.css_operacionid_det_label, .css_operacionid_det_label:hover {text-align: right;vertical-align: middle;}
+.css_operacionid_det_line, .css_operacionid_det_line:hover {height:0px;text-align: right;}
+.css_residente_det_label, .css_residente_det_label:hover {text-align: right;vertical-align: middle;}
+.css_residente_det_line, .css_residente_det_line:hover {height:0px;text-align: right;}
+.css_impana_det_label, .css_impana_det_label:hover {text-align: right;vertical-align: middle;}
+.css_impana_det_line, .css_impana_det_line:hover {height:0px;text-align: right;}

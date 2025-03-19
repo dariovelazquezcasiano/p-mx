@@ -1,0 +1,18 @@
+.css_carril_label, .css_carril_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_carril_grid_line, .css_carril_grid_line:hover {vertical-align: top;text-align: right;}
+.css_descripcion_label, .css_descripcion_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_descripcion_grid_line, .css_descripcion_grid_line:hover {vertical-align: top;text-align: right;}
+.css_marca_label, .css_marca_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_marca_grid_line, .css_marca_grid_line:hover {vertical-align: top;text-align: right;}
+.css_modelo_label, .css_modelo_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_modelo_grid_line, .css_modelo_grid_line:hover {vertical-align: top;text-align: right;}
+.css_localizacion_label, .css_localizacion_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_localizacion_grid_line, .css_localizacion_grid_line:hover {vertical-align: top;text-align: right;}
+.css_numero_serie_label, .css_numero_serie_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_numero_serie_grid_line, .css_numero_serie_grid_line:hover {vertical-align: top;text-align: right;}
+.css_cantidad_label, .css_cantidad_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_cantidad_grid_line, .css_cantidad_grid_line:hover {vertical-align: top;text-align: right;}
+.css_status_label, .css_status_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_status_grid_line, .css_status_grid_line:hover {vertical-align: top;text-align: right;}
+.css_id_label, .css_id_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_id_grid_line, .css_id_grid_line:hover {vertical-align: top;text-align: right;}

@@ -1,0 +1,18 @@
+.css_casetaid_label, .css_casetaid_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_casetaid_grid_line, .css_casetaid_grid_line:hover {vertical-align: top;text-align: right;}
+.css_turnoid_label, .css_turnoid_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_turnoid_grid_line, .css_turnoid_grid_line:hover {vertical-align: top;text-align: right;}
+.css_carrilid_label, .css_carrilid_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_carrilid_grid_line, .css_carrilid_grid_line:hover {vertical-align: top;text-align: right;}
+.css_fechaoperacion_label, .css_fechaoperacion_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_fechaoperacion_grid_line, .css_fechaoperacion_grid_line:hover {vertical-align: top;text-align: center;}
+.css_horainicio_label, .css_horainicio_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_horainicio_grid_line, .css_horainicio_grid_line:hover {vertical-align: top;text-align: center;}
+.css_fechafin_label, .css_fechafin_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_fechafin_grid_line, .css_fechafin_grid_line:hover {vertical-align: top;text-align: center;}
+.css_horafin_label, .css_horafin_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_horafin_grid_line, .css_horafin_grid_line:hover {vertical-align: top;text-align: center;}
+.css_liga_label, .css_liga_label:hover {text-align:;vertical-align:middle;justify-content:;font-weight:bold;}
+.css_liga_grid_line, .css_liga_grid_line:hover {text-align: center;}
+.css_cuerpo_label, .css_cuerpo_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_cuerpo_grid_line, .css_cuerpo_grid_line:hover {vertical-align: top;text-align: right;}

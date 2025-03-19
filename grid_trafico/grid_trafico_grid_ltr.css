@@ -1,0 +1,53 @@
+.css_hora_label, .css_hora_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_hora_grid_line, .css_hora_grid_line:hover {vertical-align: top;text-align: center;}
+.css_a_label, .css_a_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_a_grid_line, .css_a_grid_line:hover {vertical-align: top;text-align: right;}
+.css_a_tot_ger, .css_a_tot_ger:hover {text-align: right;}
+.css_ar_label, .css_ar_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_ar_grid_line, .css_ar_grid_line:hover {vertical-align: top;text-align: right;}
+.css_ar_tot_ger, .css_ar_tot_ger:hover {text-align: right;}
+.css_m_label, .css_m_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_m_grid_line, .css_m_grid_line:hover {vertical-align: top;text-align: right;}
+.css_m_tot_ger, .css_m_tot_ger:hover {text-align: right;}
+.css_b2_label, .css_b2_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_b2_grid_line, .css_b2_grid_line:hover {vertical-align: top;text-align: right;}
+.css_b2_tot_ger, .css_b2_tot_ger:hover {text-align: right;}
+.css_b3_label, .css_b3_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_b3_grid_line, .css_b3_grid_line:hover {vertical-align: top;text-align: right;}
+.css_b3_tot_ger, .css_b3_tot_ger:hover {text-align: right;}
+.css_b4_label, .css_b4_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_b4_grid_line, .css_b4_grid_line:hover {vertical-align: top;text-align: right;}
+.css_b4_tot_ger, .css_b4_tot_ger:hover {text-align: right;}
+.css_c2_label, .css_c2_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_c2_grid_line, .css_c2_grid_line:hover {vertical-align: top;text-align: right;}
+.css_c2_tot_ger, .css_c2_tot_ger:hover {text-align: right;}
+.css_c3_label, .css_c3_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_c3_grid_line, .css_c3_grid_line:hover {vertical-align: top;text-align: right;}
+.css_c3_tot_ger, .css_c3_tot_ger:hover {text-align: right;}
+.css_c4_label, .css_c4_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_c4_grid_line, .css_c4_grid_line:hover {vertical-align: top;text-align: right;}
+.css_c4_tot_ger, .css_c4_tot_ger:hover {text-align: right;}
+.css_c5_label, .css_c5_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_c5_grid_line, .css_c5_grid_line:hover {vertical-align: top;text-align: right;}
+.css_c5_tot_ger, .css_c5_tot_ger:hover {text-align: right;}
+.css_c6_label, .css_c6_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_c6_grid_line, .css_c6_grid_line:hover {vertical-align: top;text-align: right;}
+.css_c6_tot_ger, .css_c6_tot_ger:hover {text-align: right;}
+.css_c7_label, .css_c7_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_c7_grid_line, .css_c7_grid_line:hover {vertical-align: top;text-align: right;}
+.css_c7_tot_ger, .css_c7_tot_ger:hover {text-align: right;}
+.css_c8_label, .css_c8_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_c8_grid_line, .css_c8_grid_line:hover {vertical-align: top;text-align: right;}
+.css_c8_tot_ger, .css_c8_tot_ger:hover {text-align: right;}
+.css_c9_label, .css_c9_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_c9_grid_line, .css_c9_grid_line:hover {vertical-align: top;text-align: right;}
+.css_c9_tot_ger, .css_c9_tot_ger:hover {text-align: right;}
+.css_exe_label, .css_exe_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_exe_grid_line, .css_exe_grid_line:hover {vertical-align: top;text-align: right;}
+.css_exe_tot_ger, .css_exe_tot_ger:hover {text-align: right;}
+.css_elu_label, .css_elu_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_elu_grid_line, .css_elu_grid_line:hover {vertical-align: top;text-align: right;}
+.css_elu_tot_ger, .css_elu_tot_ger:hover {text-align: right;}
+.css_total_label, .css_total_label:hover {text-align:;vertical-align:middle;justify-content:;font-weight:bold;}
+.css_total_grid_line, .css_total_grid_line:hover {background-color:#E2E2E2;font-weight:bold;text-align: right;}
+.css_total_tot_ger, .css_total_tot_ger:hover {text-align: right;}

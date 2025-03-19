@@ -1,0 +1,20 @@
+.css_casetaid_label, .css_casetaid_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_casetaid_grid_line, .css_casetaid_grid_line:hover {vertical-align: top;text-align: right;}
+.css_tipopagoid_label, .css_tipopagoid_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_tipopagoid_grid_line, .css_tipopagoid_grid_line:hover {vertical-align: top;text-align: right;}
+.css_vehiculoid_label, .css_vehiculoid_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_vehiculoid_grid_line, .css_vehiculoid_grid_line:hover {vertical-align: top;text-align: right;}
+.css_fechainicio_label, .css_fechainicio_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_fechainicio_grid_line, .css_fechainicio_grid_line:hover {vertical-align: top;text-align: center;}
+.css_fechafin_label, .css_fechafin_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
+.css_fechafin_grid_line, .css_fechafin_grid_line:hover {vertical-align: top;text-align: center;}
+.css_importe_label, .css_importe_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_importe_grid_line, .css_importe_grid_line:hover {vertical-align: top;text-align: right;}
+.css_importeejeligero_label, .css_importeejeligero_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_importeejeligero_grid_line, .css_importeejeligero_grid_line:hover {vertical-align: top;text-align: right;}
+.css_importeejepesado_label, .css_importeejepesado_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_importeejepesado_grid_line, .css_importeejepesado_grid_line:hover {vertical-align: top;text-align: right;}
+.css_activo_label, .css_activo_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
+.css_activo_grid_line, .css_activo_grid_line:hover {vertical-align: top;text-align: right;}
+.css_tramoid_label, .css_tramoid_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
+.css_tramoid_grid_line, .css_tramoid_grid_line:hover {vertical-align: top;text-align: right;}

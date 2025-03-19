@@ -1,0 +1,7 @@
+index.php
+BackOffice_Acapulco
+grid_estadodispositivos
+SIM
+cons
+grid_estadodispositivos
+LigMd5

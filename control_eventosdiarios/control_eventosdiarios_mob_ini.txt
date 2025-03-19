@@ -1,0 +1,7 @@
+control_eventosdiarios_mob.php
+BackOffice_Acapulco
+control_eventosdiarios_mob
+SIM
+contr
+control_eventosdiarios
+LigMd5
