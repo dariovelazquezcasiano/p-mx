@@ -48,6 +48,6 @@
 .css_elu_label, .css_elu_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
 .css_elu_grid_line, .css_elu_grid_line:hover {vertical-align: top;text-align: right;}
 .css_elu_tot_ger, .css_elu_tot_ger:hover {text-align: right;}
-.css_total_label, .css_total_label:hover {text-align:;vertical-align:middle;justify-content:;font-weight:bold;}
+.css_total_label, .css_total_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
 .css_total_grid_line, .css_total_grid_line:hover {background-color:#E2E2E2;font-weight:bold;text-align: right;}
 .css_total_tot_ger, .css_total_tot_ger:hover {text-align: right;}

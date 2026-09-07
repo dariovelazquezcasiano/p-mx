@@ -238,7 +238,7 @@ class aforo_liquidacion_vw_ini
       $this->nm_autor_alt    = "admin"; 
       $this->nm_dt_ult_alt   = "20230315"; 
       $this->nm_hr_ult_alt   = "145907"; 
-      $this->Apl_paginacao   = "FULL"; 
+      $this->Apl_paginacao   = "PARCIAL";
       $temp_bug_list         = explode(" ", microtime()); 
       list($NM_usec, $NM_sec) = $temp_bug_list; 
       $this->nm_timestamp    = (float) $NM_sec; 

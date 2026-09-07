@@ -42,7 +42,7 @@
 .css_tipotlp_grid_line, .css_tipotlp_grid_line:hover {vertical-align: top;text-align: right;}
 .css_operadortlp_label, .css_operadortlp_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
 .css_operadortlp_grid_line, .css_operadortlp_grid_line:hover {vertical-align: top;text-align: right;}
-.css_cantidadejes_label, .css_cantidadejes_label:hover {text-align:;vertical-align:middle;justify-content:;font-weight:bold;}
+.css_cantidadejes_label, .css_cantidadejes_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
 .css_cantidadejes_grid_line, .css_cantidadejes_grid_line:hover {text-align: right;}
 .css_cancelado_label, .css_cancelado_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
 .css_cancelado_grid_line, .css_cancelado_grid_line:hover {vertical-align: top;text-align: right;}
@@ -50,5 +50,5 @@
 .css_pagoid_grid_line, .css_pagoid_grid_line:hover {vertical-align: top;text-align: right;}
 .css_categoriatlp_label, .css_categoriatlp_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
 .css_categoriatlp_grid_line, .css_categoriatlp_grid_line:hover {vertical-align: top;text-align: right;}
-.css_imagen_label, .css_imagen_label:hover {text-align:;vertical-align:middle;justify-content:;font-weight:bold;}
+.css_imagen_label, .css_imagen_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
 .css_imagen_grid_line, .css_imagen_grid_line:hover {text-align: center;}

@@ -16,15 +16,15 @@
 .css_administradorid_grid_line, .css_administradorid_grid_line:hover {vertical-align: top;text-align: right;}
 .css_encargadoturnoid_pre_label, .css_encargadoturnoid_pre_label:hover {text-align:left;vertical-align:middle;justify-content:left;font-weight:bold;}
 .css_encargadoturnoid_pre_grid_line, .css_encargadoturnoid_pre_grid_line:hover {vertical-align: top;text-align: right;}
-.css_preliquidar_label, .css_preliquidar_label:hover {text-align:;vertical-align:middle;justify-content:;font-weight:bold;}
+.css_preliquidar_label, .css_preliquidar_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
 .css_preliquidar_grid_line, .css_preliquidar_grid_line:hover {text-align: center;}
-.css_preliquidado_label, .css_preliquidado_label:hover {text-align:;vertical-align:middle;justify-content:;font-weight:bold;}
+.css_preliquidado_label, .css_preliquidado_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
 .css_preliquidado_grid_line, .css_preliquidado_grid_line:hover {text-align: center;}
-.css_preliquidacion_label, .css_preliquidacion_label:hover {text-align:;vertical-align:middle;justify-content:;font-weight:bold;}
+.css_preliquidacion_label, .css_preliquidacion_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
 .css_preliquidacion_grid_line, .css_preliquidacion_grid_line:hover {text-align: center;}
-.css_comparativo_label, .css_comparativo_label:hover {text-align:;vertical-align:middle;justify-content:;font-weight:bold;}
+.css_comparativo_label, .css_comparativo_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
 .css_comparativo_grid_line, .css_comparativo_grid_line:hover {text-align: center;}
-.css_bitacora_label, .css_bitacora_label:hover {text-align:;vertical-align:middle;justify-content:;font-weight:bold;}
+.css_bitacora_label, .css_bitacora_label:hover {text-align:center;vertical-align:middle;justify-content:center;font-weight:bold;}
 .css_bitacora_grid_line, .css_bitacora_grid_line:hover {text-align: center;}
 .css_consecutivo_label, .css_consecutivo_label:hover {text-align:right;vertical-align:middle;justify-content:right;font-weight:bold;}
 .css_consecutivo_grid_line, .css_consecutivo_grid_line:hover {vertical-align: top;text-align: right;}

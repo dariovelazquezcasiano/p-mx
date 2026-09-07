@@ -1,5 +1,7 @@
 <?php
 
+require_once dirname(__DIR__) . '/_lib/lib/php/peaje_aforo_cache.php';
+
 class grid_aforo_xml
 {
    var $Db;
@@ -505,42 +507,7 @@ switch (substr($this->clasevehiculo_ana , 0, 1)) {
 
 
 
-$check_sql = "SELECT V1 FROM carril WHERE CasetaID = ".$this->casetaid ." and CarrilID = ".$this->carrilid ;
- 
-      $nm_select = $check_sql; 
-      $_SESSION['scriptcase']['sc_sql_ult_comando'] = $nm_select; 
-      $_SESSION['scriptcase']['sc_sql_ult_conexao'] = ''; 
-      $this->rs = array();
-      if ($SCrx = $this->Db->Execute($nm_select)) 
-      { 
-          $SCy = 0; 
-          $nm_count = $SCrx->FieldCount();
-          while (!$SCrx->EOF)
-          { 
-                 for ($SCx = 0; $SCx < $nm_count; $SCx++)
-                 { 
-                        $this->rs[$SCy] [$SCx] = $SCrx->fields[$SCx];
-                 }
-                 $SCy++; 
-                 $SCrx->MoveNext();
-          } 
-          $SCrx->Close();
-      } 
-      elseif (isset($GLOBALS["NM_ERRO_IBASE"]) && $GLOBALS["NM_ERRO_IBASE"] != 1)  
-      { 
-          $this->rs = false;
-          $this->rs_erro = $this->Db->ErrorMsg();
-      } 
-
-
-if (isset($this->rs[0][0]))     
-{
-    $canal_carril = $this->rs[0][0];
-	}
-		else     
-{
-	$canal_carril = 99;
-}
+$canal_carril = peaje_aforo_carril_v1($this->Db, $this->casetaid, $this->carrilid);
 
 switch ($modoImagen) {
 	case 1:
