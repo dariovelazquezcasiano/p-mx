@@ -1,1 +1,0 @@
-{"steps":5,"count":5,"message":"Archivo generado con \u00e9xito","link":"\/demo2\/_lib\/tmp\/sc_xls_20250307235752_326_grid_eventos_resumen.xlsx","md5":"c05b06b8fe905ec51ccae1c9cf9107c0","returnUrl":".\/","returnOption":"volta_grid","complete":true}

@@ -1,6 +1,0 @@
-wkhtmltopdf  --page-size Letter --orientation Landscape --header-right "[page]" http://localhost/demo2/_lib/tmp/sc_grid_aforo_html_v93omjc4b7fdv85tvlq2ujh77f.html C:/xampp2/htdocs/demo2/_lib/tmp/bitacora.pdf
-
-
-
-
-

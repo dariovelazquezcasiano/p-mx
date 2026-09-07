@@ -1,6 +1,0 @@
-wkhtmltopdf   --page-size Letter --orientation Portrait --header-right "[page]" http://localhost/demo2/_lib/tmp/sc_evalua_dat_aforo_mes_html_r3h3v36lkvodbdh6kef7hhek0m.html C:/xampp2/htdocs/demo2/_lib/tmp/sc_pdf_7a32c1c06f3c4d33d4c08845b8febff6_evalua_dat_aforo_mes.pdf
-
-
-
-
-
