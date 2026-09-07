@@ -1,5 +1,7 @@
 <?php
 //
+require_once dirname(__DIR__) . '/_lib/lib/php/peaje_password.php';
+
 class seg_Login_mob_apl
 {
    var $has_where_params = false;
@@ -1838,17 +1840,16 @@ if (isset($this->NM_ajax_flag) && $this->NM_ajax_flag)
 if (!isset($this->sc_temp_usr_name)) {$this->sc_temp_usr_name = (isset($_SESSION['usr_name'])) ? $_SESSION['usr_name'] : "";}
 if (!isset($this->sc_temp_usr_priv_admin)) {$this->sc_temp_usr_priv_admin = (isset($_SESSION['usr_priv_admin'])) ? $_SESSION['usr_priv_admin'] : "";}
   $slogin = $this->Db->qstr($this->login );
-$spswd = $this->Db->qstr(hash("md5",$this->pswd ));
 
 $sql = "SELECT 
 		priv_admin,
 		active, 
 		name, 
 		email,
-		caseta
+		caseta,
+		pswd
 	      FROM seg_users 
-	      WHERE login = $slogin
-		AND pswd = ".$spswd."";
+	      WHERE login = $slogin";
 	
  
       $nm_select = $sql; 
@@ -1877,7 +1878,14 @@ $sql = "SELECT
       } 
 
 	
-if(count($this->rs) == 0)
+$peaje_stored_pswd = "";
+$peaje_pswd_ok = false;
+if(is_array($this->rs) && count($this->rs) > 0)
+{
+	$peaje_stored_pswd = isset($this->rs[0][5]) ? $this->rs[0][5] : "";
+	$peaje_pswd_ok = peaje_password_verify($this->pswd, $peaje_stored_pswd);
+}
+if(!$peaje_pswd_ok)
 {
 	$this->NM_gera_log_insert("User", 'login Fail',  $this->Ini->Nm_lang['lang_login_fail']  . $this->login );
 	;
@@ -1915,6 +1923,12 @@ else if($this->rs[0][1] == 'Y')
 			$_SESSION["fld_usuarios"]   = $fld_usuarios;
 			$_SESSION["fld_caseta"]   = $fld_caseta;
 			$_SESSION["modoOperacion"]   = $modoOperacion;
+
+			if (peaje_password_needs_rehash($peaje_stored_pswd)) {
+				$peaje_new_pswd = $this->Db->qstr(peaje_password_hash($this->pswd));
+				$peaje_update_sql = "UPDATE seg_users SET pswd = " . $peaje_new_pswd . " WHERE login = " . $slogin;
+				$this->Db->Execute($peaje_update_sql);
+			}
 			
 			$check_sql = "SELECT g.description FROM seg_groups g LEFT JOIN seg_users_groups ug ON ug.group_id = g.group_id WHERE ug.login = $slogin";
 		 

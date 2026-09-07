@@ -1,5 +1,7 @@
 <?php
 //
+require_once dirname(__DIR__) . '/_lib/lib/php/peaje_password.php';
+
 class seg_form_edit_users_apl
 {
    var $has_where_params = false;
@@ -3342,7 +3344,9 @@ if (isset($this->NM_ajax_flag) && $this->NM_ajax_flag)
     exit;
 }
 }
-$this->pswd  = hash("md5",$this->pswd );
+if ($this->pswd != "" && $this->pswd != "null" && $this->pswd != $this->nmgp_dados_select['pswd']) {
+    $this->pswd = peaje_password_hash($this->pswd);
+}
 if (isset($this->NM_ajax_flag) && $this->NM_ajax_flag)
 {
     if (($original_confirm_pswd != $this->confirm_pswd || (isset($bFlagRead_confirm_pswd) && $bFlagRead_confirm_pswd)))

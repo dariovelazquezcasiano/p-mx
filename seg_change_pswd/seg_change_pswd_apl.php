@@ -1,5 +1,7 @@
 <?php
 //
+require_once dirname(__DIR__) . '/_lib/lib/php/peaje_password.php';
+
 class seg_change_pswd_apl
 {
    var $has_where_params = false;
@@ -1856,12 +1858,18 @@ if($this->pswd  != $this->confirm_pswd )
 }
 }
 
-$spswd = $this->Db->qstr(hash("md5",$this->pswd ));
-$sold_pswd = ( isset($this->sc_temp_act_code) && !empty($this->sc_temp_act_code) ) ? "activation_code= ". $this->Db->qstr($this->sc_temp_act_code) : " pswd = ". $this->Db->qstr(hash("md5",$this->old_pswd ));
+$spswd = $this->Db->qstr(peaje_password_hash($this->pswd));
+$slogin = $this->Db->qstr($this->sc_temp_sm_global_login);
+$peaje_check_by_password = true;
+if (isset($this->sc_temp_act_code) && !empty($this->sc_temp_act_code)) {
+	$sold_pswd = "activation_code= ". $this->Db->qstr($this->sc_temp_act_code);
+	$sql = "SELECT count(*) FROM seg_users WHERE ". $sold_pswd ." AND login = ". $slogin;
+	$peaje_check_by_password = false;
+} else {
+	$sql = "SELECT pswd FROM seg_users WHERE login = ". $slogin;
+}
 unset($this->sc_temp_act_code);
 
-
-$sql = "SELECT count(*) FROM seg_users WHERE ". $sold_pswd ." AND login = '". $this->sc_temp_sm_global_login ."'";
 
  
       $nm_select = $sql; 
@@ -1890,7 +1898,12 @@ $sql = "SELECT count(*) FROM seg_users WHERE ". $sold_pswd ." AND login = '". $t
       } 
 
 
-if($this->rs === FALSE || $this->rs[0][0] == 0)
+$peaje_old_pswd_ok = false;
+if($this->rs !== FALSE && is_array($this->rs) && count($this->rs) > 0)
+{
+	$peaje_old_pswd_ok = $peaje_check_by_password ? peaje_password_verify($this->old_pswd, $this->rs[0][0]) : ((int) $this->rs[0][0] > 0);
+}
+if(!$peaje_old_pswd_ok)
 {
 	
  if (!isset($this->Campos_Mens_erro)){$this->Campos_Mens_erro = "";}
@@ -1954,7 +1967,7 @@ $_SESSION['scriptcase']['seg_change_pswd']['contr_erro'] = 'off';
               $_SESSION['scriptcase']['seg_change_pswd']['contr_erro'] = 'on';
 if (!isset($this->sc_temp_act_code)) {$this->sc_temp_act_code = (isset($_SESSION['act_code'])) ? $_SESSION['act_code'] : "";}
 if (!isset($this->sc_temp_sm_global_login)) {$this->sc_temp_sm_global_login = (isset($_SESSION['sm_global_login'])) ? $_SESSION['sm_global_login'] : "";}
- 	$sql = "UPDATE seg_users SET pswd = ".($spswd).", activation_code = '' WHERE login = '". $this->sc_temp_sm_global_login . "'";
+	$sql = "UPDATE seg_users SET pswd = ".($spswd).", activation_code = '' WHERE login = ". $slogin;
 
 	
      $nm_select = $sql; 

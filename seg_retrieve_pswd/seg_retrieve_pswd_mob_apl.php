@@ -1,5 +1,7 @@
 <?php
 //
+require_once dirname(__DIR__) . '/_lib/lib/php/peaje_password.php';
+
 class seg_retrieve_pswd_mob_apl
 {
    var $has_where_params = false;
@@ -2502,7 +2504,7 @@ function search_email($param_login)
 {
 $_SESSION['scriptcase']['seg_retrieve_pswd_mob']['contr_erro'] = 'on';
   
-$sql = "SELECT email FROM seg_users WHERE login = '".$param_login."'";
+$sql = "SELECT email FROM seg_users WHERE login = ". $this->Db->qstr($param_login);
 
  
       $nm_select = $sql; 
@@ -2571,9 +2573,9 @@ $act_code = $this->act_code();
 $sql = "UPDATE 
 		seg_users
 	    SET
-	    	activation_code = '". $act_code ."'
+		activation_code = ". $this->Db->qstr($act_code) ."
 	    WHERE
-	        login = '". $this->sc_temp_usr_login ."'";
+	        login = ". $this->Db->qstr($this->sc_temp_usr_login);
 
 
      $nm_select = $sql; 
@@ -2706,7 +2708,7 @@ $_SESSION['scriptcase']['seg_retrieve_pswd_mob']['contr_erro'] = 'on';
 if (!isset($this->sc_temp_usr_login)) {$this->sc_temp_usr_login = (isset($_SESSION['usr_login'])) ? $_SESSION['usr_login'] : "";}
   
 $pswd = $this->act_code();
-$sql  = "UPDATE seg_users SET pswd = '". hash("md5",$pswd) ."' WHERE login = '". $this->sc_temp_usr_login ."'";
+$sql  = "UPDATE seg_users SET pswd = ". $this->Db->qstr(peaje_password_hash($pswd)) ." WHERE login = ". $this->Db->qstr($this->sc_temp_usr_login);
 
      $nm_select = $sql; 
          $_SESSION['scriptcase']['sc_sql_ult_comando'] = $nm_select;
