@@ -4135,7 +4135,7 @@ $max = strlen($chars)-1;
 $act_code = "new_";
 for($i=0; $i < 28; $i++)
 {
-	$act_code .= $chars{mt_rand(0, $max)};
+	$act_code .= $chars[mt_rand(0, $max)];
 }
 
 return $act_code;

@@ -628,7 +628,7 @@ $this->displayAppHeader();
 <span id="id_read_on_archivo" class="scFormLinkOdd sc-ui-readonly-archivo css_archivo_line" style="<?php echo $sStyleReadLab_archivo; ?>"><?php echo $this->form_format_readonly("archivo", $this->archivo) ?></span><span id="id_read_off_archivo" class="css_read_off_archivo" style="white-space: nowrap;<?php echo $sStyleReadInp_archivo; ?>"><span style="display:inline-block"><span id="sc-id-upload-select-archivo" class="fileinput-button fileinput-button-padding scButton_default">
  <span><?php echo $this->Ini->Nm_lang['lang_select_file'] ?></span>
 
- <input class="sc-js-input scFormObjectOdd css_archivo_obj<?php echo $this->classes_100perc_fields['input'] ?>" style="" title="<?php echo $this->Ini->Nm_lang['lang_select_file'] ?>" type="file" name="archivo[]" id="id_sc_field_archivo" ></span></span>
+ <input class="sc-js-input scFormObjectOdd css_archivo_obj<?php echo $this->classes_100perc_fields['input'] ?>" style="" title="<?php echo $this->Ini->Nm_lang['lang_select_file'] ?>" type="file" name="archivo[]" id="id_sc_field_archivo" accept=".xlsx" ></span></span>
 <?php
    $sCheckInsert = "";
 ?>

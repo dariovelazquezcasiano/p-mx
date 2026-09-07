@@ -414,8 +414,8 @@ class control_importaArchivo_mob_apl
           'upload_dir'         => $this->Ini->root . $this->Ini->path_imag_temp . '/',
           'upload_url'         => $this->Ini->path_imag_temp . '/',
           'upload_type'        => 'single',
-          'upload_allowed_type'  => '/\.(txt||txt)$/i',
-          'upload_max_size'  => null,
+          'upload_allowed_type'  => '/\.txt$/i',
+          'upload_max_size'  => 10485760,
           'upload_file_height' => '',
           'upload_file_width'  => '',
           'upload_file_aspect' => '',
@@ -1950,7 +1950,10 @@ $_SESSION['scriptcase']['control_importaArchivo_mob']['contr_erro'] = 'off';
                 }
                 $pathParts = pathinfo(sc_upload_unprotect_chars($sTestFile));
                 $fileSize = filesize(sc_upload_unprotect_chars($sTestFile));
-                $sizeErrorSuffix = '';
+                $sizeErrorSuffix = ' (max. 10 MB)';
+                if (false !== $fileSize && $fileSize > 10485760) {
+                    $hasError = true;
+                }
                 if ($hasError) {
                     $Campos_Crit .= "Archivo: " . $this->Ini->Nm_lang['lang_errm_file_size'] . $sizeErrorSuffix;
                     if (!isset($Campos_Erros['archivo']))

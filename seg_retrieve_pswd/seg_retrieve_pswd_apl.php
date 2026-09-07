@@ -2484,7 +2484,7 @@ $max = strlen($chars)-1;
 $act_code = "";
 for($i=0; $i < 20; $i++)
 {
-	$act_code .= $chars{mt_rand(0, $max)};
+	$act_code .= $chars[mt_rand(0, $max)];
 }
 
 return $act_code;

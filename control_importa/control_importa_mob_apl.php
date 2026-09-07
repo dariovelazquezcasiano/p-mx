@@ -409,8 +409,8 @@ class control_importa_mob_apl
           'upload_dir'         => $this->Ini->root . $this->Ini->path_imag_temp . '/',
           'upload_url'         => $this->Ini->path_imag_temp . '/',
           'upload_type'        => 'single',
-          'upload_allowed_type'  => '/.+$/i',
-          'upload_max_size'  => null,
+          'upload_allowed_type'  => '/\.(csv|txt)$/i',
+          'upload_max_size'  => 10485760,
           'upload_file_height' => '',
           'upload_file_width'  => '',
           'upload_file_aspect' => '',
@@ -1813,7 +1813,7 @@ $_SESSION['scriptcase']['control_importa_mob']['contr_erro'] = 'off';
             }
             $this->archivo = sc_upload_unprotect_chars($this->archivo, true);
             $this->archivo_scfile_name = sc_upload_unprotect_chars($this->archivo_scfile_name, true);
-            if ("" != $this->archivo && "S" != $this->archivo_limpa && !$teste_validade->ArqExtensao($this->archivo, array()))
+            if ("" != $this->archivo && "S" != $this->archivo_limpa && !$teste_validade->ArqExtensao($this->archivo, array('csv', 'txt')))
             {
                 $hasError = true;
                 $Campos_Crit .= "Archivo: " . $this->Ini->Nm_lang['lang_errm_file_invl']; 
@@ -1827,6 +1827,24 @@ $_SESSION['scriptcase']['control_importa_mob']['contr_erro'] = 'off';
                     $this->NM_ajax_info['errList']['archivo'] = array();
                 }
                 $this->NM_ajax_info['errList']['archivo'][] = $this->Ini->Nm_lang['lang_errm_file_invl'];
+            }
+            if (!$hasError && "" != $this->archivo && "S" != $this->archivo_limpa) {
+                $fileSize = filesize(sc_upload_unprotect_chars($sTestFile));
+                $sizeErrorSuffix = ' (max. 10 MB)';
+                if (false !== $fileSize && $fileSize > 10485760) {
+                    $hasError = true;
+                    $Campos_Crit .= "Archivo: " . $this->Ini->Nm_lang['lang_errm_file_size'] . $sizeErrorSuffix;
+                    if (!isset($Campos_Erros['archivo']))
+                    {
+                        $Campos_Erros['archivo'] = array();
+                    }
+                    $Campos_Erros['archivo'][] = $this->Ini->Nm_lang['lang_errm_file_size'] . $sizeErrorSuffix;
+                    if (!isset($this->NM_ajax_info['errList']['archivo']) || !is_array($this->NM_ajax_info['errList']['archivo']))
+                    {
+                        $this->NM_ajax_info['errList']['archivo'] = array();
+                    }
+                    $this->NM_ajax_info['errList']['archivo'][] = $this->Ini->Nm_lang['lang_errm_file_size'] . $sizeErrorSuffix;
+                }
             }
         }
         if ($hasError) {
