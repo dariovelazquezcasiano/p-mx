@@ -2,7 +2,8 @@
    include_once('grid_alarma_session.php');
    @ini_set('session.cookie_httponly', 1);
    @ini_set('session.use_only_cookies', 1);
-   @ini_set('session.cookie_secure', 0);
+   @ini_set('session.cookie_samesite', 'Lax');
+   @ini_set('session.cookie_secure', (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 1 : 0);
    @session_start() ;
    $_SESSION['scriptcase']['grid_alarma']['glo_nm_perfil']          = "conn_mysql";
    $_SESSION['scriptcase']['grid_alarma']['glo_nm_path_prod']       = "";

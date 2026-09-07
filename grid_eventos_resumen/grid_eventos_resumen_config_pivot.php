@@ -3,6 +3,7 @@
 /*
 @ini_set('session.cookie_httponly', 1);
 @ini_set('session.use_only_cookies', 1);
+@ini_set('session.cookie_samesite', 'Lax');
 */
 
 include_once('grid_eventos_resumen_session.php');
