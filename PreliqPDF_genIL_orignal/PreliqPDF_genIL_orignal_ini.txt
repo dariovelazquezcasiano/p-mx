@@ -1,7 +1,0 @@
-index.php
-BackOffice_Acapulco
-PreliqPDF_genIL_orignal
-SIM
-blank
-PreliqPDF_genIL_orignal
-LigMd5

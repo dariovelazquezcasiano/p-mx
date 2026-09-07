@@ -1,7 +1,0 @@
-index.php
-BackOffice_Acapulco
-pdf_incidencias_copia
-SIM
-blank
-pdf_incidencias_copia
-LigMd5

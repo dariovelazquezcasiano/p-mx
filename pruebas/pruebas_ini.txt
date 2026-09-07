@@ -1,7 +1,0 @@
-index.php
-BackOffice_Acapulco
-pruebas
-SIM
-blank
-pruebas
-LigMd5

@@ -1,7 +1,0 @@
-index.php
-BackOffice_Acapulco
-test_form
-SIM
-form
-test_form
-LigMd5
