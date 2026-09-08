@@ -2654,12 +2654,12 @@ ob_start();
             $_SESSION['Sec_finL'] = $_GET["sec_finl"];
             nm_limpa_str_form_aforo_liquidacionCR_mob($_SESSION['Sec_finL']);
         }
-        if (isset($_POST["sm_global_login"])) 
+        if (isset($_POST["sm_global_login"]) && !isset($_SESSION['sm_global_login']))
         {
             $_SESSION['sm_global_login'] = $_POST["sm_global_login"];
             nm_limpa_str_form_aforo_liquidacionCR_mob($_SESSION['sm_global_login']);
         }
-        if (isset($_GET["sm_global_login"])) 
+        if (isset($_GET["sm_global_login"]) && !isset($_SESSION['sm_global_login']))
         {
             $_SESSION['sm_global_login'] = $_GET["sm_global_login"];
             nm_limpa_str_form_aforo_liquidacionCR_mob($_SESSION['sm_global_login']);

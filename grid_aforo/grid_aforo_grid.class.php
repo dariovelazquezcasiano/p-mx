@@ -1,5 +1,6 @@
 <?php
 require_once dirname(__DIR__) . '/_lib/lib/php/peaje_aforo_cache.php';
+require_once dirname(__DIR__) . '/_lib/lib/php/peaje_sql_guard.php';
 
 class grid_aforo_grid
 {
@@ -7507,7 +7508,7 @@ if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_aforo']['opcao'] != "pdf"
        {
            $casetaid = substr($casetaid, 0, $tmp_pos);
        }
-       $nm_comando = "SELECT ExcentoID, Dependencia  FROM excentos  WHERE CasetaID = '$casetaid' ORDER BY Dependencia"; 
+       $nm_comando = "SELECT ExcentoID, Dependencia  FROM excentos  WHERE CasetaID = " . peaje_sql_int($casetaid, '0') . " ORDER BY Dependencia";
        $_SESSION['scriptcase']['sc_sql_ult_comando'] = $nm_comando; 
        $_SESSION['scriptcase']['sc_sql_ult_conexao'] = ''; 
       if ($rs = $this->Db->Execute($nm_comando)) 

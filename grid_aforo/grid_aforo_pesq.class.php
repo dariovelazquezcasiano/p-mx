@@ -1,4 +1,5 @@
 <?php
+require_once dirname(__DIR__) . '/_lib/lib/php/peaje_sql_guard.php';
 
 class grid_aforo_pesq
 {
@@ -349,7 +350,7 @@ class grid_aforo_pesq
             $excentoid_look = (is_string($excentoid) ? substr($this->Db->qstr($excentoid), 1, -1) : $excentoid); 
       $nmgp_def_dados = array(); 
       $nmgp_def_dados[] = array("" => NM_charset_to_utf8("")); 
-      $nm_comando = "SELECT ExcentoID, Dependencia  FROM excentos  WHERE CasetaID = '$casetaid' ORDER BY Dependencia"; 
+      $nm_comando = "SELECT ExcentoID, Dependencia  FROM excentos  WHERE CasetaID = " . peaje_sql_int($casetaid, '0') . " ORDER BY Dependencia";
       unset($cmp1,$cmp2);
       $_SESSION['scriptcase']['sc_sql_ult_comando'] = $nm_comando; 
       $_SESSION['scriptcase']['sc_sql_ult_conexao'] = ''; 
@@ -3600,7 +3601,7 @@ foreach ($Arr_format as $Part_date)
 <?php
       $excentoid_look = (is_string($excentoid) ? substr($this->Db->qstr($excentoid), 1, -1) : $excentoid); 
       $nmgp_def_dados = "" ; 
-      $nm_comando = "SELECT ExcentoID, Dependencia  FROM excentos  WHERE CasetaID = '$casetaid' ORDER BY Dependencia"; 
+      $nm_comando = "SELECT ExcentoID, Dependencia  FROM excentos  WHERE CasetaID = " . peaje_sql_int($casetaid, '0') . " ORDER BY Dependencia";
       unset($cmp1,$cmp2);
       $_SESSION['scriptcase']['sc_sql_ult_comando'] = $nm_comando; 
       $_SESSION['scriptcase']['sc_sql_ult_conexao'] = ''; 

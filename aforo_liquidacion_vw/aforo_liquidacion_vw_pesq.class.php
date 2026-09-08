@@ -1,4 +1,5 @@
 <?php
+require_once dirname(__DIR__) . '/_lib/lib/php/peaje_sql_guard.php';
 
 class aforo_liquidacion_vw_pesq
 {
@@ -2795,20 +2796,23 @@ else
             }
          }
       }
+      $sqlmodoOperacion = peaje_liquidacion_discrepancia_sql(isset($_SESSION['modoOperacion']) ? $_SESSION['modoOperacion'] : '');
+      $sqlmodoOperacionSum = peaje_liquidacion_discrepancia_sql(isset($_SESSION['modoOperacion']) ? $_SESSION['modoOperacion'] : '', 'dat_aforo');
+      $_SESSION['sqlmodoOperacion'] = $sqlmodoOperacion;
       if (is_array($discrepancia) && count($discrepancia) != 0)
       {
          $this->and_or();
          if ($discrepancia_cond == "df" || $discrepancia_cond == "np")
          {
-             $this->comando        .= " " . $_SESSION['sqlmodoOperacion'] . " not in (";
-             $this->comando_sum    .= " dat_aforo." . $_SESSION['sqlmodoOperacion'] . " not in (";
-             $this->comando_filtro .= " " . $_SESSION['sqlmodoOperacion'] . " not in (";
+             $this->comando        .= " " . $sqlmodoOperacion . " not in (";
+             $this->comando_sum    .= " " . $sqlmodoOperacionSum . " not in (";
+             $this->comando_filtro .= " " . $sqlmodoOperacion . " not in (";
          }
          else
          {
-             $this->comando        .= " " . $_SESSION['sqlmodoOperacion'] . " in (";
-             $this->comando_sum    .= " dat_aforo." . $_SESSION['sqlmodoOperacion'] . " in (";
-             $this->comando_filtro .= " " . $_SESSION['sqlmodoOperacion'] . " in (";
+             $this->comando        .= " " . $sqlmodoOperacion . " in (";
+             $this->comando_sum    .= " " . $sqlmodoOperacionSum . " in (";
+             $this->comando_filtro .= " " . $sqlmodoOperacion . " in (";
          }
          $x                     = count($discrepancia);
          $xx                    = 0;
@@ -2851,7 +2855,7 @@ else
       }
       elseif (isset($discrepancia) && ($discrepancia_cond == "nu" || $discrepancia_cond == "nn" || $discrepancia_cond == "ep" || $discrepancia_cond == "ne"))
       {
-         $this->monta_condicao("" . $_SESSION['sqlmodoOperacion'] . "", $discrepancia_cond, "", "", "discrepancia", "BIGINT", false);
+         $this->monta_condicao("" . $sqlmodoOperacion . "", $discrepancia_cond, "", "", "discrepancia", "BIGINT", false);
       }
    }
 

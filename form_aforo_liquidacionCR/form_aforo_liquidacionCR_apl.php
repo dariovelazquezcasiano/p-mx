@@ -1,5 +1,7 @@
 <?php
 //
+require_once dirname(__DIR__) . '/_lib/lib/php/peaje_sql_guard.php';
+
 class form_aforo_liquidacionCR_apl
 {
    var $has_where_params = false;
@@ -2755,7 +2757,7 @@ if (!isset($this->sc_temp_TurnoID)) {$this->sc_temp_TurnoID = (isset($_SESSION['
 if (!isset($this->sc_temp_FechaOperacion)) {$this->sc_temp_FechaOperacion = (isset($_SESSION['FechaOperacion'])) ? $_SESSION['FechaOperacion'] : "";}
 if (!isset($this->sc_temp_CasetaID)) {$this->sc_temp_CasetaID = (isset($_SESSION['CasetaID'])) ? $_SESSION['CasetaID'] : "";}
   
-     $nm_select ="UPDATE aforo SET EstatusANA = 1 WHERE CasetaID = '$this->sc_temp_CasetaID' and FechaOperacion = '$this->sc_temp_FechaOperacion' and TurnoID = '$this->sc_temp_TurnoID' and CarrilID = '$this->sc_temp_CarrilID' and Cuerpo = '$this->sc_temp_Cuerpo' and Secuencial BETWEEN '$this->sc_temp_Sec_iniL' and '$this->sc_temp_Sec_finL' and EstatusANA = 0"; 
+     $nm_select ="UPDATE aforo SET EstatusANA = 1 WHERE CasetaID = " . peaje_sql_int($this->sc_temp_CasetaID, '0') . " and FechaOperacion = " . peaje_sql_qstr($this->Db, $this->sc_temp_FechaOperacion) . " and TurnoID = " . peaje_sql_int($this->sc_temp_TurnoID, '0') . " and CarrilID = " . peaje_sql_int($this->sc_temp_CarrilID, '0') . " and Cuerpo = " . peaje_sql_qstr($this->Db, $this->sc_temp_Cuerpo) . " and Secuencial BETWEEN " . peaje_sql_int($this->sc_temp_Sec_iniL, '0') . " and " . peaje_sql_int($this->sc_temp_Sec_finL, '0') . " and EstatusANA = 0";
          $_SESSION['scriptcase']['sc_sql_ult_comando'] = $nm_select;
       $_SESSION['scriptcase']['sc_sql_ult_conexao'] = ''; 
          $rf = $this->Db->Execute($nm_select);
@@ -4895,7 +4897,7 @@ $_SESSION['sc_session'][$this->Ini->sc_page]['form_aforo_liquidacionCR']['Lookup
    } 
    $nm_nao_carga = false;
    $nmgp_def_dados = "" ; 
-   $nm_comando = "SELECT ExcentoID, Dependencia  FROM excentos  Where CasetaID = '$this->casetaid' ORDER BY Dependencia";
+   $nm_comando = "SELECT ExcentoID, Dependencia  FROM excentos  Where CasetaID = " . peaje_sql_int($this->casetaid, '0') . " ORDER BY Dependencia";
    $_SESSION['scriptcase']['sc_sql_ult_comando'] = $nm_comando;
    $_SESSION['scriptcase']['sc_sql_ult_conexao'] = '';
    if ($nm_comando != "" && $rs = $this->Db->Execute($nm_comando))
@@ -5409,32 +5411,9 @@ $clase = $grupo . $d;
 $this->cantidadeje_ana  = $c;
 $this->clasevehiculo_ana  = $clase;
 
-$tarifa_sql = "SELECT importe, ImporteEjeLigero,ImporteEjePesado FROM tarifa WHERE VehiculoID = '".$tipo."' and CasetaID = ".$this->casetaid ." AND TipoPagoID = '".$PagoID_ANA."' AND (FechaInicio <= '".$this->fechaturno ." ". $this->horaevento  ."' and FechaFin >= '".$this->fechaturno ." ". $this->horaevento ."')";
-	 
-      $nm_select = $tarifa_sql; 
-      $_SESSION['scriptcase']['sc_sql_ult_comando'] = $nm_select; 
-      $_SESSION['scriptcase']['sc_sql_ult_conexao'] = ''; 
-      $this->rs = array();
-      if ($SCrx = $this->Db->Execute($nm_select)) 
-      { 
-          $SCy = 0; 
-          $nm_count = $SCrx->FieldCount();
-          while (!$SCrx->EOF)
-          { 
-                 for ($SCx = 0; $SCx < $nm_count; $SCx++)
-                 { 
-                      $this->rs[$SCy] [$SCx] = $SCrx->fields[$SCx];
-                 }
-                 $SCy++; 
-                 $SCrx->MoveNext();
-          } 
-          $SCrx->Close();
-      } 
-      elseif (isset($GLOBALS["NM_ERRO_IBASE"]) && $GLOBALS["NM_ERRO_IBASE"] != 1)  
-      { 
-          $this->rs = false;
-          $this->rs_erro = $this->Db->ErrorMsg();
-      } 
+$fechaHoraEvento = $this->fechaturno . " " . $this->horaevento;
+$tarifa_sql = "";
+$this->rs = peaje_tarifa_lookup($this->Db, $tipo, $this->casetaid, $PagoID_ANA, $fechaHoraEvento, $tarifa_sql, $this->rs_erro);
 
 	if (isset($this->rs[0][0])){
 		$this->importe_ana  = $this->rs[0][0];
@@ -8156,32 +8135,9 @@ if (isset($this->rs[0][0])) {
 	}
 	else{
 	}
-$tarifa_sql = "SELECT importe, ImporteEjeLigero,ImporteEjePesado FROM tarifa WHERE VehiculoID = '".$fld_tipo."' and CasetaID = ".$this->casetaid ." AND TipoPagoID = '".$this->pagoid ."'  AND (FechaInicio <= '".$this->fechaturno ." ".$this->horaevento  ."' and FechaFin >= '".$this->fechaturno ." ".$this->horaevento ."')";
-	 
-      $nm_select = $tarifa_sql; 
-      $_SESSION['scriptcase']['sc_sql_ult_comando'] = $nm_select; 
-      $_SESSION['scriptcase']['sc_sql_ult_conexao'] = ''; 
-      $this->rs = array();
-      if ($SCrx = $this->Db->Execute($nm_select)) 
-      { 
-          $SCy = 0; 
-          $nm_count = $SCrx->FieldCount();
-          while (!$SCrx->EOF)
-          { 
-                 for ($SCx = 0; $SCx < $nm_count; $SCx++)
-                 { 
-                      $this->rs[$SCy] [$SCx] = $SCrx->fields[$SCx];
-                 }
-                 $SCy++; 
-                 $SCrx->MoveNext();
-          } 
-          $SCrx->Close();
-      } 
-      elseif (isset($GLOBALS["NM_ERRO_IBASE"]) && $GLOBALS["NM_ERRO_IBASE"] != 1)  
-      { 
-          $this->rs = false;
-          $this->rs_erro = $this->Db->ErrorMsg();
-      } 
+$fechaHoraEvento = $this->fechaturno . " " . $this->horaevento;
+$tarifa_sql = "";
+$this->rs = peaje_tarifa_lookup($this->Db, $fld_tipo, $this->casetaid, $this->pagoid, $fechaHoraEvento, $tarifa_sql, $this->rs_erro);
 
 	if (isset($this->rs[0][0])){
 		$this->importe_ana  = $this->rs[0][0];
@@ -9012,7 +8968,7 @@ else
    {
        $_SESSION['sc_session'][$this->Ini->sc_page]['form_aforo_liquidacionCR']['Lookup_excentoid'] = array(); 
     }
-   $nm_comando = "SELECT ExcentoID, Dependencia  FROM excentos  Where CasetaID = '$this->casetaid' ORDER BY Dependencia";
+   $nm_comando = "SELECT ExcentoID, Dependencia  FROM excentos  Where CasetaID = " . peaje_sql_int($this->casetaid, '0') . " ORDER BY Dependencia";
    $_SESSION['scriptcase']['sc_sql_ult_comando'] = $nm_comando;
    $_SESSION['scriptcase']['sc_sql_ult_conexao'] = '';
    if ($nm_comando != "" && $rs = $this->Db->Execute($nm_comando))

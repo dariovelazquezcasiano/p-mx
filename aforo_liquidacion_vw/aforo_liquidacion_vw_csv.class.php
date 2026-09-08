@@ -1,4 +1,5 @@
 <?php
+require_once dirname(__DIR__) . '/_lib/lib/php/peaje_sql_guard.php';
 
 class aforo_liquidacion_vw_csv
 {
@@ -87,14 +88,20 @@ class aforo_liquidacion_vw_csv
                }
           }
       }
-      if (!isset($sqlmodoOperacion) && isset($sqlmodooperacion)) 
+      if (!isset($modoOperacion) && isset($modooperacion))
       {
-         $sqlmodoOperacion = $sqlmodooperacion;
+         $modoOperacion = $modooperacion;
       }
-      if (isset($sqlmodoOperacion)) 
+      $modoOperacion = peaje_liquidacion_modo_operacion(isset($_SESSION['modoOperacion']) ? $_SESSION['modoOperacion'] : (isset($modoOperacion) ? $modoOperacion : ''));
+      $_SESSION['modoOperacion'] = $modoOperacion;
+      $_SESSION['sqlmodoOperacion'] = peaje_liquidacion_discrepancia_sql($modoOperacion);
+      if (isset($sqlmodoOperacion))
       {
-          $_SESSION['sqlmodoOperacion'] = $sqlmodoOperacion;
-          nm_limpa_str_aforo_liquidacion_vw($_SESSION["sqlmodoOperacion"]);
+         unset($sqlmodoOperacion);
+      }
+      if (isset($sqlmodooperacion))
+      {
+         unset($sqlmodooperacion);
       }
       if (!isset($CasetaID) && isset($casetaid)) 
       {
@@ -450,31 +457,33 @@ $_SESSION['scriptcase']['aforo_liquidacion_vw']['contr_erro'] = 'off';
       } 
       $this->nm_field_dinamico = array();
       $this->nm_order_dinamico = array();
-      $nmgp_select_count = "SELECT count(*) AS countTest from " . $this->Ini->nm_tabela; 
+      $nmgp_select_count = "SELECT count(*) AS countTest from " . $this->Ini->nm_tabela;
+      $sqlmodoOperacion = peaje_liquidacion_discrepancia_sql(isset($_SESSION['modoOperacion']) ? $_SESSION['modoOperacion'] : '');
+      $_SESSION['sqlmodoOperacion'] = $sqlmodoOperacion;
       if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_sybase))
-      { 
-          $nmgp_select = "SELECT str_replace (convert(char(10),HoraEvento,102), '.', '-') + ' ' + convert(char(8),HoraEvento,20), Secuencial, Folio, VehiculoID_ECT, VehiculoID_CR, VehiculoID_EAP, PagoID, VehiculoID_ANA, PagoID_ANA, Placas, NumeroTarjeta, EstatusANA, " . $_SESSION['sqlmodoOperacion'] . " as discrepancia, Consecutivo, CasetaID, TurnoID, CarrilID, Cuerpo from " . $this->Ini->nm_tabela; 
-      } 
+      {
+          $nmgp_select = "SELECT str_replace (convert(char(10),HoraEvento,102), '.', '-') + ' ' + convert(char(8),HoraEvento,20), Secuencial, Folio, VehiculoID_ECT, VehiculoID_CR, VehiculoID_EAP, PagoID, VehiculoID_ANA, PagoID_ANA, Placas, NumeroTarjeta, EstatusANA, " . $sqlmodoOperacion . " as discrepancia, Consecutivo, CasetaID, TurnoID, CarrilID, Cuerpo from " . $this->Ini->nm_tabela;
+      }
       elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_mysql))
-      { 
-          $nmgp_select = "SELECT HoraEvento, Secuencial, Folio, VehiculoID_ECT, VehiculoID_CR, VehiculoID_EAP, PagoID, VehiculoID_ANA, PagoID_ANA, Placas, NumeroTarjeta, EstatusANA, " . $_SESSION['sqlmodoOperacion'] . " as discrepancia, Consecutivo, CasetaID, TurnoID, CarrilID, Cuerpo from " . $this->Ini->nm_tabela; 
-      } 
+      {
+          $nmgp_select = "SELECT HoraEvento, Secuencial, Folio, VehiculoID_ECT, VehiculoID_CR, VehiculoID_EAP, PagoID, VehiculoID_ANA, PagoID_ANA, Placas, NumeroTarjeta, EstatusANA, " . $sqlmodoOperacion . " as discrepancia, Consecutivo, CasetaID, TurnoID, CarrilID, Cuerpo from " . $this->Ini->nm_tabela;
+      }
       elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_mssql))
-      { 
-       $nmgp_select = "SELECT convert(char(23),HoraEvento,121), Secuencial, Folio, VehiculoID_ECT, VehiculoID_CR, VehiculoID_EAP, PagoID, VehiculoID_ANA, PagoID_ANA, Placas, NumeroTarjeta, EstatusANA, " . $_SESSION['sqlmodoOperacion'] . " as discrepancia, Consecutivo, CasetaID, TurnoID, CarrilID, Cuerpo from " . $this->Ini->nm_tabela; 
-      } 
+      {
+       $nmgp_select = "SELECT convert(char(23),HoraEvento,121), Secuencial, Folio, VehiculoID_ECT, VehiculoID_CR, VehiculoID_EAP, PagoID, VehiculoID_ANA, PagoID_ANA, Placas, NumeroTarjeta, EstatusANA, " . $sqlmodoOperacion . " as discrepancia, Consecutivo, CasetaID, TurnoID, CarrilID, Cuerpo from " . $this->Ini->nm_tabela;
+      }
       elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_oracle))
-      { 
-          $nmgp_select = "SELECT HoraEvento, Secuencial, Folio, VehiculoID_ECT, VehiculoID_CR, VehiculoID_EAP, PagoID, VehiculoID_ANA, PagoID_ANA, Placas, NumeroTarjeta, EstatusANA, " . $_SESSION['sqlmodoOperacion'] . " as discrepancia, Consecutivo, CasetaID, TurnoID, CarrilID, Cuerpo from " . $this->Ini->nm_tabela; 
-      } 
+      {
+          $nmgp_select = "SELECT HoraEvento, Secuencial, Folio, VehiculoID_ECT, VehiculoID_CR, VehiculoID_EAP, PagoID, VehiculoID_ANA, PagoID_ANA, Placas, NumeroTarjeta, EstatusANA, " . $sqlmodoOperacion . " as discrepancia, Consecutivo, CasetaID, TurnoID, CarrilID, Cuerpo from " . $this->Ini->nm_tabela;
+      }
       elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_informix))
-      { 
-          $nmgp_select = "SELECT HoraEvento, Secuencial, Folio, VehiculoID_ECT, VehiculoID_CR, VehiculoID_EAP, PagoID, VehiculoID_ANA, PagoID_ANA, Placas, NumeroTarjeta, EstatusANA, " . $_SESSION['sqlmodoOperacion'] . " as discrepancia, Consecutivo, CasetaID, TurnoID, CarrilID, Cuerpo from " . $this->Ini->nm_tabela; 
-      } 
-      else 
-      { 
-          $nmgp_select = "SELECT HoraEvento, Secuencial, Folio, VehiculoID_ECT, VehiculoID_CR, VehiculoID_EAP, PagoID, VehiculoID_ANA, PagoID_ANA, Placas, NumeroTarjeta, EstatusANA, " . $_SESSION['sqlmodoOperacion'] . " as discrepancia, Consecutivo, CasetaID, TurnoID, CarrilID, Cuerpo from " . $this->Ini->nm_tabela; 
-      } 
+      {
+          $nmgp_select = "SELECT HoraEvento, Secuencial, Folio, VehiculoID_ECT, VehiculoID_CR, VehiculoID_EAP, PagoID, VehiculoID_ANA, PagoID_ANA, Placas, NumeroTarjeta, EstatusANA, " . $sqlmodoOperacion . " as discrepancia, Consecutivo, CasetaID, TurnoID, CarrilID, Cuerpo from " . $this->Ini->nm_tabela;
+      }
+      else
+      {
+          $nmgp_select = "SELECT HoraEvento, Secuencial, Folio, VehiculoID_ECT, VehiculoID_CR, VehiculoID_EAP, PagoID, VehiculoID_ANA, PagoID_ANA, Placas, NumeroTarjeta, EstatusANA, " . $sqlmodoOperacion . " as discrepancia, Consecutivo, CasetaID, TurnoID, CarrilID, Cuerpo from " . $this->Ini->nm_tabela;
+      }
       $nmgp_select .= " " . $_SESSION['sc_session'][$this->Ini->sc_page]['aforo_liquidacion_vw']['where_pesq'];
       $nmgp_select_count .= " " . $_SESSION['sc_session'][$this->Ini->sc_page]['aforo_liquidacion_vw']['where_pesq'];
       $nmgp_order_by = $_SESSION['sc_session'][$this->Ini->sc_page]['aforo_liquidacion_vw']['order_grid'];

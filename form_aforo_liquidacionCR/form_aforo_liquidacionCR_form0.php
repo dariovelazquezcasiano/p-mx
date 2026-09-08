@@ -1,4 +1,5 @@
 <?php
+require_once dirname(__DIR__) . '/_lib/lib/php/peaje_sql_guard.php';
 
 if (!isset($this->NM_ajax_info['param']['buffer_output']) || !$this->NM_ajax_info['param']['buffer_output'])
 {
@@ -1252,7 +1253,7 @@ else
    {
        $_SESSION['sc_session'][$this->Ini->sc_page]['form_aforo_liquidacionCR']['Lookup_excentoid'] = array(); 
     }
-   $nm_comando = "SELECT ExcentoID, Dependencia  FROM excentos  Where CasetaID = '$this->casetaid' ORDER BY Dependencia";
+   $nm_comando = "SELECT ExcentoID, Dependencia  FROM excentos  Where CasetaID = " . peaje_sql_int($this->casetaid, '0') . " ORDER BY Dependencia";
    $_SESSION['scriptcase']['sc_sql_ult_comando'] = $nm_comando;
    $_SESSION['scriptcase']['sc_sql_ult_conexao'] = '';
    if ($nm_comando != "" && $rs = $this->Db->Execute($nm_comando))
