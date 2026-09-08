@@ -1,5 +1,6 @@
 <?php
    include_once('aforo_liquidacion_vw_session.php');
+   require_once dirname(__DIR__) . '/_lib/lib/php/peaje_sql_guard.php';
    @ini_set('session.cookie_httponly', 1);
    @ini_set('session.use_only_cookies', 1);
    @ini_set('session.cookie_samesite', 'Lax');
@@ -994,15 +995,18 @@ class aforo_liquidacion_vw_ini
       { 
           $this->conectDB();
           $_SESSION['scriptcase']['aforo_liquidacion_vw']['contr_erro'] = 'on';
-if (!isset($_SESSION['sqlmodoOperacion'])) {$_SESSION['sqlmodoOperacion'] = "";}
-if (!isset($this->sc_temp_sqlmodoOperacion)) {$this->sc_temp_sqlmodoOperacion = (isset($_SESSION['sqlmodoOperacion'])) ? $_SESSION['sqlmodoOperacion'] : "";}
 if (!isset($_SESSION['modoOperacion'])) {$_SESSION['modoOperacion'] = "";}
+$_SESSION['modoOperacion'] = peaje_liquidacion_modo_operacion($_SESSION['modoOperacion']);
+$_SESSION['sqlmodoOperacion'] = peaje_liquidacion_discrepancia_sql($_SESSION['modoOperacion']);
 if (!isset($this->sc_temp_modoOperacion)) {$this->sc_temp_modoOperacion = (isset($_SESSION['modoOperacion'])) ? $_SESSION['modoOperacion'] : "";}
+if (!isset($this->sc_temp_sqlmodoOperacion)) {$this->sc_temp_sqlmodoOperacion = (isset($_SESSION['sqlmodoOperacion'])) ? $_SESSION['sqlmodoOperacion'] : "";}
 if (!isset($_SESSION['CarrilID'])) {$_SESSION['CarrilID'] = "";}
 if (!isset($this->sc_temp_CarrilID)) {$this->sc_temp_CarrilID = (isset($_SESSION['CarrilID'])) ? $_SESSION['CarrilID'] : "";}
 if (!isset($_SESSION['CasetaID'])) {$_SESSION['CasetaID'] = "";}
 if (!isset($this->sc_temp_CasetaID)) {$this->sc_temp_CasetaID = (isset($_SESSION['CasetaID'])) ? $_SESSION['CasetaID'] : "";}
- $sqlModoOperacion = "SELECT ModoOperacion FROM carril WHERE CasetaID = $this->sc_temp_CasetaID AND CarrilID = $this->sc_temp_CarrilID";
+$casetaIdSql = peaje_sql_int($this->sc_temp_CasetaID, '0');
+$carrilIdSql = peaje_sql_int($this->sc_temp_CarrilID, '0');
+ $sqlModoOperacion = "SELECT ModoOperacion FROM carril WHERE CasetaID = " . $casetaIdSql . " AND CarrilID = " . $carrilIdSql;
 $this->sc_temp_modoOperacion = 'ECT';
 $modoOperacion = 'ECT';
  
@@ -1032,11 +1036,13 @@ $modoOperacion = 'ECT';
       } 
 
 if(!empty($this->sq1 )){
-	$modoOperacion = $this->sq1[0][0];
+	$modoOperacion = peaje_liquidacion_modo_operacion($this->sq1[0][0]);
 	$this->sc_temp_modoOperacion = $modoOperacion;
 }
 
-$this->sc_temp_sqlmodoOperacion = "IF(VehiculoID_CR<>VehiculoID_$modoOperacion and concat(VehiculoID_$modoOperacion,VehiculoID_CR) not in ('T02CT02B','T03CT03B','T04CT04B','T02BT02C','T03BT03C','T04BT04C'), 1, 0)";
+$modoOperacion = peaje_liquidacion_modo_operacion($modoOperacion);
+$this->sc_temp_modoOperacion = $modoOperacion;
+$this->sc_temp_sqlmodoOperacion = peaje_liquidacion_discrepancia_sql($modoOperacion);
 
 if($modoOperacion == "EAP"){
 	
@@ -2057,8 +2063,7 @@ class aforo_liquidacion_vw_apl
           }
           if (isset($sqlmodoOperacion)) 
           {
-              $_SESSION['sqlmodoOperacion'] = $sqlmodoOperacion;
-              nm_limpa_str_aforo_liquidacion_vw($_SESSION["sqlmodoOperacion"]);
+              unset($sqlmodoOperacion);
           }
           if (!isset($CasetaID) && isset($casetaid)) 
           {
@@ -2141,6 +2146,8 @@ class aforo_liquidacion_vw_apl
               $_SESSION['modoOperacion'] = $modoOperacion;
               nm_limpa_str_aforo_liquidacion_vw($_SESSION["modoOperacion"]);
           }
+          $_SESSION['modoOperacion'] = peaje_liquidacion_modo_operacion($_SESSION['modoOperacion']);
+          $_SESSION['sqlmodoOperacion'] = peaje_liquidacion_discrepancia_sql($_SESSION['modoOperacion']);
       } 
       if ($Parms_form_pdf)
       { 
@@ -2986,7 +2993,15 @@ class aforo_liquidacion_vw_apl
       { 
          unset($_SESSION['sc_session'][$this->Ini->sc_page]['aforo_liquidacion_vw']['use_pass_pdf']);
          $_SESSION['sc_session'][$this->Ini->sc_page]['aforo_liquidacion_vw']['prim_cons'] = true;  
-         $_SESSION['sc_session'][$this->Ini->sc_page]['aforo_liquidacion_vw']['where_orig'] = " where (CasetaID = '" . $_SESSION['CasetaID'] . "' and FechaOperacion = '" . $_SESSION['FechaOperacion'] . "' and TurnoID = '" . $_SESSION['TurnoID'] . "' and CarrilID = '" . $_SESSION['CarrilID'] . "' and Cuerpo = '" . $_SESSION['Cuerpo'] . "' and OperacionID = " . $_SESSION['OperacionID'] . "  and CONCAT(FechaOperacion,' ',HoraEvento) >= '" . $_SESSION['FHI'] . "' and CONCAT(FechaTurno,' ',HoraEvento) <= '" . $_SESSION['FHF'] . "')";
+         $casetaIdSql = peaje_sql_int(isset($_SESSION['CasetaID']) ? $_SESSION['CasetaID'] : '', '0');
+         $turnoIdSql = peaje_sql_int(isset($_SESSION['TurnoID']) ? $_SESSION['TurnoID'] : '', '0');
+         $carrilIdSql = peaje_sql_int(isset($_SESSION['CarrilID']) ? $_SESSION['CarrilID'] : '', '0');
+         $operacionIdSql = peaje_sql_int(isset($_SESSION['OperacionID']) ? $_SESSION['OperacionID'] : '', '0');
+         $fechaOperacionSql = peaje_sql_qstr($this->Db, isset($_SESSION['FechaOperacion']) ? $_SESSION['FechaOperacion'] : '');
+         $cuerpoSql = peaje_sql_qstr($this->Db, isset($_SESSION['Cuerpo']) ? $_SESSION['Cuerpo'] : '');
+         $fhiSql = peaje_sql_qstr($this->Db, isset($_SESSION['FHI']) ? $_SESSION['FHI'] : '');
+         $fhfSql = peaje_sql_qstr($this->Db, isset($_SESSION['FHF']) ? $_SESSION['FHF'] : '');
+         $_SESSION['sc_session'][$this->Ini->sc_page]['aforo_liquidacion_vw']['where_orig'] = " where (CasetaID = " . $casetaIdSql . " and FechaOperacion = " . $fechaOperacionSql . " and TurnoID = " . $turnoIdSql . " and CarrilID = " . $carrilIdSql . " and Cuerpo = " . $cuerpoSql . " and OperacionID = " . $operacionIdSql . "  and CONCAT(FechaOperacion,' ',HoraEvento) >= " . $fhiSql . " and CONCAT(FechaTurno,' ',HoraEvento) <= " . $fhfSql . ")";
          $_SESSION['sc_session'][$this->Ini->sc_page]['aforo_liquidacion_vw']['where_pesq']        = $_SESSION['sc_session'][$this->Ini->sc_page]['aforo_liquidacion_vw']['where_orig'];  
          $_SESSION['sc_session'][$this->Ini->sc_page]['aforo_liquidacion_vw']['where_pesq_ant']    = $_SESSION['sc_session'][$this->Ini->sc_page]['aforo_liquidacion_vw']['where_orig'];  
          $_SESSION['sc_session'][$this->Ini->sc_page]['aforo_liquidacion_vw']['cond_pesq']         = ""; 
@@ -4656,7 +4671,7 @@ $_SESSION['sc_session'][$this->Ini->sc_page]['aforo_liquidacion_vw'][$path_doc_m
    }
    if (isset($sqlmodoOperacion)) 
    {
-       $_SESSION['sqlmodoOperacion'] = $sqlmodoOperacion;
+       unset($sqlmodoOperacion);
    }
    if (isset($CasetaID)) 
    {
@@ -4694,6 +4709,8 @@ $_SESSION['sc_session'][$this->Ini->sc_page]['aforo_liquidacion_vw'][$path_doc_m
    {
        $_SESSION['modoOperacion'] = $modoOperacion;
    }
+   $_SESSION['modoOperacion'] = peaje_liquidacion_modo_operacion(isset($_SESSION['modoOperacion']) ? $_SESSION['modoOperacion'] : '');
+   $_SESSION['sqlmodoOperacion'] = peaje_liquidacion_discrepancia_sql($_SESSION['modoOperacion']);
    if (!empty($glo_perfil))  
    { 
       $_SESSION['scriptcase']['glo_perfil'] = $glo_perfil;
@@ -4813,12 +4830,11 @@ $_SESSION['sc_session'][$this->Ini->sc_page]['aforo_liquidacion_vw'][$path_doc_m
            }
            if (!isset($sqlmodoOperacion) && isset($sqlmodooperacion)) 
            {
-               $_SESSION["sqlmodoOperacion"] = $sqlmodooperacion;
+               unset($sqlmodooperacion);
            }
            if (isset($sqlmodoOperacion)) 
            {
-               $_SESSION['sqlmodoOperacion'] = $sqlmodoOperacion;
-               nm_limpa_str_aforo_liquidacion_vw($_SESSION["sqlmodoOperacion"]);
+               unset($sqlmodoOperacion);
            }
            if (!isset($CasetaID) && isset($casetaid)) 
            {
@@ -4901,6 +4917,8 @@ $_SESSION['sc_session'][$this->Ini->sc_page]['aforo_liquidacion_vw'][$path_doc_m
                $_SESSION['modoOperacion'] = $modoOperacion;
                nm_limpa_str_aforo_liquidacion_vw($_SESSION["modoOperacion"]);
            }
+           $_SESSION['modoOperacion'] = peaje_liquidacion_modo_operacion($_SESSION['modoOperacion']);
+           $_SESSION['sqlmodoOperacion'] = peaje_liquidacion_discrepancia_sql($_SESSION['modoOperacion']);
            $NMSC_conf_apl = array();
            if (isset($NMSC_inicial))
            {
@@ -5168,29 +5186,9 @@ $_SESSION['sc_session'][$this->Ini->sc_page]['aforo_liquidacion_vw'][$path_doc_m
        { 
            $_SESSION['sc_session'][$script_case_init]['aforo_liquidacion_vw']['opcao'] = $nmgp_opcao ;  
        }   
-       if (isset($_POST["sqlmodoOperacion"])) 
-       {
-           $_SESSION["sqlmodoOperacion"] = $_POST["sqlmodoOperacion"];
-           nm_limpa_str_aforo_liquidacion_vw($_SESSION["sqlmodoOperacion"]);
-       }
-       if (!isset($_POST["sqlmodoOperacion"]) && isset($_POST["sqlmodooperacion"])) 
-       {
-           $_SESSION["sqlmodoOperacion"] = $_POST["sqlmodooperacion"];
-           nm_limpa_str_aforo_liquidacion_vw($_SESSION["sqlmodoOperacion"]);
-       }
-       if (isset($_GET["sqlmodoOperacion"])) 
-       {
-           $_SESSION["sqlmodoOperacion"] = $_GET["sqlmodoOperacion"];
-           nm_limpa_str_aforo_liquidacion_vw($_SESSION["sqlmodoOperacion"]);
-       }
-       if (!isset($_GET["sqlmodoOperacion"]) && isset($_GET["sqlmodooperacion"])) 
-       {
-           $_SESSION["sqlmodoOperacion"] = $_GET["sqlmodooperacion"];
-           nm_limpa_str_aforo_liquidacion_vw($_SESSION["sqlmodoOperacion"]);
-       }
        if (!isset($_SESSION["sqlmodoOperacion"])) 
        {
-           $_SESSION["sqlmodoOperacion"] = "";
+           $_SESSION["sqlmodoOperacion"] = peaje_liquidacion_discrepancia_sql(isset($_SESSION["modoOperacion"]) ? $_SESSION["modoOperacion"] : "");
        }
        if (isset($_POST["CasetaID"])) 
        {
@@ -5408,6 +5406,8 @@ $_SESSION['sc_session'][$this->Ini->sc_page]['aforo_liquidacion_vw'][$path_doc_m
        {
            $_SESSION["modoOperacion"] = "";
        }
+       $_SESSION["modoOperacion"] = peaje_liquidacion_modo_operacion($_SESSION["modoOperacion"]);
+       $_SESSION["sqlmodoOperacion"] = peaje_liquidacion_discrepancia_sql($_SESSION["modoOperacion"]);
        if (!isset($_SESSION['sc_session'][$script_case_init]['aforo_liquidacion_vw']['mostra_edit'])) 
        {
            $_SESSION['sc_session'][$script_case_init]['aforo_liquidacion_vw']['mostra_edit'] = "S";

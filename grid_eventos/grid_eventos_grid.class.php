@@ -1,4 +1,6 @@
 <?php
+require_once dirname(__DIR__) . '/_lib/lib/php/peaje_sql_guard.php';
+
 class grid_eventos_grid
 {
    var $Ini;
@@ -483,37 +485,41 @@ switch ($autopista) {
 		break;
 }
 
-$Caseta = "WHERE CasetaID = '".$this->sc_temp_CasetaID."'" ;
+$casetaIdSql = peaje_sql_int($this->sc_temp_CasetaID, '');
+$Caseta = ($casetaIdSql === '') ? "WHERE 1 = 0" : "WHERE CasetaID = " . $casetaIdSql;
 $Turno = "";
 $TipoPago = "";
 $Carril = "";
-$FechaOperacion = " AND FechaOperacion = '".$this->sc_temp_FechaOperacion."' ";
+$FechaOperacion = " AND FechaOperacion = ". peaje_sql_qstr($this->Db, $this->sc_temp_FechaOperacion) . " ";
 $Discrep= "";
 
 $discrepancia = $this->sc_temp_Discrepancia;
 $this->sc_temp_DiscID = "";
 if($this->sc_temp_PagoID<>""){
 	$this->sc_temp_NomPagoID = $this->sc_temp_PagoID;
-	$TipoPago = " AND PagoID = '".$this->sc_temp_PagoID."' ";
+	$TipoPago = " AND PagoID = ". peaje_sql_qstr($this->Db, $this->sc_temp_PagoID) . " ";
 	}else{
 	$this->sc_temp_NomPagoID = "Todos";
 	}
 if($this->sc_temp_CarrilID<>""){
 	$this->sc_temp_NomCarrilID = $this->sc_temp_CarrilID;
-	$Carril = " AND CarrilID = '".$this->sc_temp_CarrilID."' ";
+	$carrilIdSql = peaje_sql_int($this->sc_temp_CarrilID, '');
+	$Carril = ($carrilIdSql === '') ? " AND 1 = 0 " : " AND CarrilID = " . $carrilIdSql . " ";
 	}else{
 	$this->sc_temp_NomCarrilID = "Todos";
 	}
 if($this->sc_temp_TurnoID<>""){
 	$this->sc_temp_NomTurnoID = $this->sc_temp_TurnoID;
-	$Turno = " AND TurnoID = '".$this->sc_temp_TurnoID."' ";
+	$turnoIdSql = peaje_sql_int($this->sc_temp_TurnoID, '');
+	$Turno = ($turnoIdSql === '') ? " AND 1 = 0 " : " AND TurnoID = " . $turnoIdSql . " ";
 	$this->NM_cmp_hidden["turnoid"] = "off";if (!isset($this->NM_ajax_event) || !$this->NM_ajax_event) {$_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos']['php_cmp_sel']["turnoid"] = "off"; }
 	}else{
 	$this->sc_temp_NomTurnoID = "Todos";
 	$this->NM_cmp_hidden["turnoid"] = "on";if (!isset($this->NM_ajax_event) || !$this->NM_ajax_event) {$_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos']['php_cmp_sel']["turnoid"] = "on"; }
 	}
 $sql_where = "CasetaID = and TurnoID = and TipoPago = and FechaOperacion = '' and Carril = '' ";
-if($discrepancia[0]==1){
+$discrepanciaFlag = is_array($discrepancia) ? (isset($discrepancia[0]) ? $discrepancia[0] : '') : substr((string) $discrepancia, 0, 1);
+if((string) $discrepanciaFlag == "1"){
 	$this->sc_temp_DiscID .= "Con Discrepancia";
 	$Discrep = " AND (VehiculoID_CR <> VehiculoID_ECT and Cancelado = 0 and PagoID not in ('MAN','RHZ','RVS','GE','DE') and concat(VehiculoID_ECT,VehiculoID_CR) not in  ('T02CT02B','T03CT03B','T04CT04B','T02BT02C','T03BT03C','T04BT04C'))  ";
 	}
@@ -3585,6 +3591,7 @@ if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_eventos']['proc_pdf']) {
           $_SESSION['scriptcase']['grid_eventos']['contr_erro'] = 'on';
 if (!isset($_SESSION['modoOperacion'])) {$_SESSION['modoOperacion'] = "";}
 if (!isset($this->sc_temp_modoOperacion)) {$this->sc_temp_modoOperacion = (isset($_SESSION['modoOperacion'])) ? $_SESSION['modoOperacion'] : "";}
+$this->sc_temp_modoOperacion = peaje_liquidacion_modo_operacion($this->sc_temp_modoOperacion);
  if($this->sc_temp_modoOperacion == "EAP"){
 	$this->totaleq  = $this->importe_eap +$this->tarifaee_eap ;
 	}else{
@@ -4583,6 +4590,7 @@ $_SESSION['scriptcase']['grid_eventos']['contr_erro'] = 'off';
          $_SESSION['scriptcase']['grid_eventos']['contr_erro'] = 'on';
 if (!isset($_SESSION['modoOperacion'])) {$_SESSION['modoOperacion'] = "";}
 if (!isset($this->sc_temp_modoOperacion)) {$this->sc_temp_modoOperacion = (isset($_SESSION['modoOperacion'])) ? $_SESSION['modoOperacion'] : "";}
+$this->sc_temp_modoOperacion = peaje_liquidacion_modo_operacion($this->sc_temp_modoOperacion);
  if($this->sc_temp_modoOperacion == "EAP"){
 	$this->totaleq  = $this->importe_eap +$this->tarifaee_eap ;
 	}else{
