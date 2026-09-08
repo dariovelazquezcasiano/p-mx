@@ -107,6 +107,59 @@ if (!function_exists('peaje_trafico_hora_sql')) {
     }
 }
 
+if (!function_exists('peaje_trafico_metricas_sql')) {
+    function peaje_trafico_metricas_sql()
+    {
+        return "SUM(IF(ClaseVehiculo_ANA = 'A',1,0)) as a, "
+            . "SUM(IF(ClaseVehiculo_ANA LIKE 'A_%' && CasetaID != 15,1,0)) as ar, "
+            . "SUM(IF(ClaseVehiculo_ANA = 'M',1,0)) as m, "
+            . "SUM(IF(ClaseVehiculo_ANA = 'B2',1,0)) as b2, "
+            . "SUM(IF(ClaseVehiculo_ANA = 'B3',1,0)) as b3, "
+            . "SUM(IF(ClaseVehiculo_ANA = 'B4',1,0)) as b4, "
+            . "SUM(IF(ClaseVehiculo_ANA = 'C2',1,0)) as c2, "
+            . "SUM(IF(ClaseVehiculo_ANA = 'C3',1,0)) as c3, "
+            . "SUM(IF(ClaseVehiculo_ANA = 'C4',1,0)) as c4, "
+            . "SUM(IF(ClaseVehiculo_ANA = 'C5',1,0)) as c5, "
+            . "SUM(IF(ClaseVehiculo_ANA = 'C6',1,0)) as c6, "
+            . "SUM(IF(ClaseVehiculo_ANA = 'C7',1,0)) as c7, "
+            . "SUM(IF(ClaseVehiculo_ANA = 'C8',1,0)) as c8, "
+            . "SUM(IF(ClaseVehiculo_ANA = 'C9' || ClaseVehiculo_ANA LIKE 'C__',1,0)) as c9, "
+            . "SUM(IF(PagoID_ANA = 'EXE' || PagoID_ANA = 'VSC' || PagoID_ANA = 'RSP' && CasetaID != 15,1,0)) as exe, "
+            . "SUM(IF(PagoID_ANA = 'ELU',1,0)) as elu";
+    }
+}
+
+if (!function_exists('peaje_trafico_fecha_operacion_sql')) {
+    function peaje_trafico_fecha_operacion_sql($databaseType, $basesSybase = array(), $basesMssql = array(), $basesInformix = array())
+    {
+        $databaseType = strtolower((string) $databaseType);
+
+        if (in_array($databaseType, $basesSybase)) {
+            return "str_replace (convert(char(10),FechaOperacion,102), '.', '-') + ' ' + convert(char(8),FechaOperacion,20)";
+        }
+
+        if (in_array($databaseType, $basesMssql)) {
+            return "convert(char(23),FechaOperacion,121)";
+        }
+
+        if (in_array($databaseType, $basesInformix)) {
+            return "EXTEND(FechaOperacion, YEAR TO DAY)";
+        }
+
+        return "FechaOperacion";
+    }
+}
+
+if (!function_exists('peaje_trafico_select_sql')) {
+    function peaje_trafico_select_sql($tableName, $databaseType, $basesSybase = array(), $basesMssql = array(), $basesInformix = array())
+    {
+        return "SELECT " . peaje_trafico_hora_sql()
+            . " as hora, " . peaje_trafico_metricas_sql()
+            . ", CasetaID, " . peaje_trafico_fecha_operacion_sql($databaseType, $basesSybase, $basesMssql, $basesInformix)
+            . " from " . $tableName;
+    }
+}
+
 if (!function_exists('peaje_liquidacion_modo_operacion')) {
     function peaje_liquidacion_modo_operacion($value)
     {

@@ -7921,8 +7921,8 @@ else
 {
    while(!$this->rs->EOF)
     {
-	$PagoEfectivoANA .= "PagoID_ANA = '".$this->rs->fields[0] . "' OR ";
-   
+	$PagoEfectivoANA .= "PagoID_ANA = " . peaje_sql_qstr($this->Db, $this->rs->fields[0]) . " OR ";
+
 	 $this->rs->MoveNext();
     }
     $this->rs->Close();
@@ -8106,7 +8106,7 @@ function actualiza_tarifas()
 $_SESSION['scriptcase']['form_aforo_liquidacionCR_mob']['contr_erro'] = 'on';
   
 
-$tarifa_sql = "SELECT fld_tipo_pago, fld_ee, fld_tipo, fld_grupo FROM cat_tipoveh WHERE fld_tipo_equipo = '".$this->vehiculoid_ana ."'";
+$tarifa_sql = "SELECT fld_tipo_pago, fld_ee, fld_tipo, fld_grupo FROM cat_tipoveh WHERE fld_tipo_equipo = " . peaje_sql_qstr($this->Db, $this->vehiculoid_ana);
  
       $nm_select = $tarifa_sql; 
       $_SESSION['scriptcase']['sc_sql_ult_comando'] = $nm_select; 
@@ -8184,7 +8184,7 @@ function saca_tarifa($fecha_ini, $fecha_fin, $eje, $caseta)
 $_SESSION['scriptcase']['form_aforo_liquidacionCR_mob']['contr_erro'] = 'on';
   
 $check_sql = "SELECT fld_tarifa FROM cat_tarifas
-WHERE fld_grupo = '$eje' and fld_caseta = '$caseta' and (fld_fecha_ini >= '$fecha_ini' and fld_fecha_fin <= '$fecha_fin')";
+WHERE fld_grupo = " . peaje_sql_qstr($this->Db, $eje) . " and fld_caseta = " . peaje_sql_int($caseta, '0') . " and (fld_fecha_ini >= " . peaje_sql_qstr($this->Db, $fecha_ini) . " and fld_fecha_fin <= " . peaje_sql_qstr($this->Db, $fecha_fin) . ")";
  
       $nm_select = $check_sql; 
       $_SESSION['scriptcase']['sc_sql_ult_comando'] = $nm_select; 
@@ -8230,7 +8230,7 @@ $fechaLog = date('Y-m-d H:i:s');
 $loginLog = $this->sc_temp_sm_global_login; 
 $ipLog = $_SERVER['REMOTE_ADDR'];  
 
-     $nm_select ="INSERT INTO sec_application_logs (Application_Name, Date_Time, Login, Ip_User, Action_Held, tabla, llave)                VALUES ('$aplicacion', '$fechaLog', '$loginLog', '$ipLog', '$accion', '$tablaLog', '$key')"; 
+     $nm_select ="INSERT INTO sec_application_logs (Application_Name, Date_Time, Login, Ip_User, Action_Held, tabla, llave)                VALUES (" . peaje_sql_qstr($this->Db, $aplicacion) . ", " . peaje_sql_qstr($this->Db, $fechaLog) . ", " . peaje_sql_qstr($this->Db, $loginLog) . ", " . peaje_sql_qstr($this->Db, $ipLog) . ", " . peaje_sql_qstr($this->Db, $accion) . ", " . peaje_sql_qstr($this->Db, $tablaLog) . ", " . peaje_sql_qstr($this->Db, $key) . ")";
          $_SESSION['scriptcase']['sc_sql_ult_comando'] = $nm_select;
       $_SESSION['scriptcase']['sc_sql_ult_conexao'] = ''; 
          $rf = $this->Db->Execute($nm_select);
@@ -8269,7 +8269,7 @@ $_SESSION['scriptcase']['form_aforo_liquidacionCR_mob']['contr_erro'] = 'off';
 function leeConfig($ident, $clasif, &$obj = NULL) {
 $_SESSION['scriptcase']['form_aforo_liquidacionCR_mob']['contr_erro'] = 'on';
    
- $sql = "select params from sec_configura where identidad = '$ident' and clasifica = '$clasif'"; 
+ $sql = "select params from sec_configura where identidad = " . peaje_sql_qstr($this->Db, $ident) . " and clasifica = " . peaje_sql_qstr($this->Db, $clasif);
   
       $nm_select = $sql; 
       $_SESSION['scriptcase']['sc_sql_ult_comando'] = $nm_select; 
@@ -8332,15 +8332,15 @@ if (!isset($this->sc_temp_CasetaID)) {$this->sc_temp_CasetaID = (isset($_SESSION
 		$fechaHorafin = date('Y-m-d H:i:s');
 
 
-		$sqlUpdateFechaFinDictamen = "UPDATE detalleturno SET FechaFinDictamen = '$fechaHorafin'
-					   WHERE CasetaID = $this->sc_temp_CasetaID 
-					   AND FechaOperacion = '$this->sc_temp_FechaOperacion' 
-					   AND TurnoID = $this->sc_temp_TurnoID 
-					   AND CarrilID = $this->sc_temp_CarrilID 
-					   AND Cuerpo = '$this->sc_temp_Cuerpo' 
-					   AND OperacionID = $this->sc_temp_OperacionID 
-					   AND CONCAT(FechaTurno,' ',HoraInicio) = '$this->sc_temp_FHI'
-					   AND CONCAT(FechaFin,' ',HoraFin) = '$this->sc_temp_FHF'";
+		$sqlUpdateFechaFinDictamen = "UPDATE detalleturno SET FechaFinDictamen = " . peaje_sql_qstr($this->Db, $fechaHorafin)
+					   . " WHERE CasetaID = " . peaje_sql_int($this->sc_temp_CasetaID, '0')
+					   . " AND FechaOperacion = " . peaje_sql_qstr($this->Db, $this->sc_temp_FechaOperacion)
+					   . " AND TurnoID = " . peaje_sql_int($this->sc_temp_TurnoID, '0')
+					   . " AND CarrilID = " . peaje_sql_int($this->sc_temp_CarrilID, '0')
+					   . " AND Cuerpo = " . peaje_sql_qstr($this->Db, $this->sc_temp_Cuerpo)
+					   . " AND OperacionID = " . peaje_sql_int($this->sc_temp_OperacionID, '0')
+					   . " AND CONCAT(FechaTurno,' ',HoraInicio) = " . peaje_sql_qstr($this->Db, $this->sc_temp_FHI)
+					   . " AND CONCAT(FechaFin,' ',HoraFin) = " . peaje_sql_qstr($this->Db, $this->sc_temp_FHF);
 
 		 
       $nm_select = $sqlUpdateFechaFinDictamen; 

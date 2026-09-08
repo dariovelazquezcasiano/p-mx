@@ -1,4 +1,5 @@
 <?php
+require_once dirname(__DIR__) . '/_lib/lib/php/peaje_sql_guard.php';
 
 class grid_trafico_json
 {
@@ -275,34 +276,12 @@ class grid_trafico_json
       $this->nm_field_dinamico = array();
       $this->nm_order_dinamico = array();
       $nmgp_select_count = "SELECT count(*) AS countTest from " . $this->Ini->nm_tabela; 
-      if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_sybase))
-      { 
-          $nmgp_select = "SELECT IF(FechaOperacion != FechaTurno && TurnoID = 3,23,HOUR(HoraEvento)) as hora, SUM(IF(ClaseVehiculo_ANA = 'A',1,0)) as a, SUM(IF(ClaseVehiculo_ANA LIKE 'A_%' && CasetaID != 15,1,0)) as ar, SUM(IF(ClaseVehiculo_ANA = 'M',1,0)) as m, SUM(IF(ClaseVehiculo_ANA = 'B2',1,0)) as b2, SUM(IF(ClaseVehiculo_ANA = 'B3',1,0)) as b3, SUM(IF(ClaseVehiculo_ANA = 'B4',1,0)) as b4, SUM(IF(ClaseVehiculo_ANA = 'C2',1,0)) as c2, SUM(IF(ClaseVehiculo_ANA = 'C3',1,0)) as c3, SUM(IF(ClaseVehiculo_ANA = 'C4',1,0)) as c4, SUM(IF(ClaseVehiculo_ANA = 'C5',1,0)) as c5, SUM(IF(ClaseVehiculo_ANA = 'C6',1,0)) as c6, SUM(IF(ClaseVehiculo_ANA = 'C7',1,0)) as c7, SUM(IF(ClaseVehiculo_ANA = 'C8',1,0)) as c8, SUM(IF(ClaseVehiculo_ANA = 'C9' || ClaseVehiculo_ANA LIKE 'C__',1,0)) as c9, SUM(IF(PagoID_ANA = 'EXE' || PagoID_ANA = 'VSC' || PagoID_ANA = 'RSP' && CasetaID != 15,1,0)) as exe, SUM(IF(PagoID_ANA = 'ELU',1,0)) as elu, CasetaID, str_replace (convert(char(10),FechaOperacion,102), '.', '-') + ' ' + convert(char(8),FechaOperacion,20) from " . $this->Ini->nm_tabela; 
-      } 
-      elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_mysql))
-      { 
-          $nmgp_select = "SELECT IF(FechaOperacion != FechaTurno && TurnoID = 3,23,HOUR(HoraEvento)) as hora, SUM(IF(ClaseVehiculo_ANA = 'A',1,0)) as a, SUM(IF(ClaseVehiculo_ANA LIKE 'A_%' && CasetaID != 15,1,0)) as ar, SUM(IF(ClaseVehiculo_ANA = 'M',1,0)) as m, SUM(IF(ClaseVehiculo_ANA = 'B2',1,0)) as b2, SUM(IF(ClaseVehiculo_ANA = 'B3',1,0)) as b3, SUM(IF(ClaseVehiculo_ANA = 'B4',1,0)) as b4, SUM(IF(ClaseVehiculo_ANA = 'C2',1,0)) as c2, SUM(IF(ClaseVehiculo_ANA = 'C3',1,0)) as c3, SUM(IF(ClaseVehiculo_ANA = 'C4',1,0)) as c4, SUM(IF(ClaseVehiculo_ANA = 'C5',1,0)) as c5, SUM(IF(ClaseVehiculo_ANA = 'C6',1,0)) as c6, SUM(IF(ClaseVehiculo_ANA = 'C7',1,0)) as c7, SUM(IF(ClaseVehiculo_ANA = 'C8',1,0)) as c8, SUM(IF(ClaseVehiculo_ANA = 'C9' || ClaseVehiculo_ANA LIKE 'C__',1,0)) as c9, SUM(IF(PagoID_ANA = 'EXE' || PagoID_ANA = 'VSC' || PagoID_ANA = 'RSP' && CasetaID != 15,1,0)) as exe, SUM(IF(PagoID_ANA = 'ELU',1,0)) as elu, CasetaID, FechaOperacion from " . $this->Ini->nm_tabela; 
-      } 
-      elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_mssql))
-      { 
-       $nmgp_select = "SELECT IF(FechaOperacion != FechaTurno && TurnoID = 3,23,HOUR(HoraEvento)) as hora, SUM(IF(ClaseVehiculo_ANA = 'A',1,0)) as a, SUM(IF(ClaseVehiculo_ANA LIKE 'A_%' && CasetaID != 15,1,0)) as ar, SUM(IF(ClaseVehiculo_ANA = 'M',1,0)) as m, SUM(IF(ClaseVehiculo_ANA = 'B2',1,0)) as b2, SUM(IF(ClaseVehiculo_ANA = 'B3',1,0)) as b3, SUM(IF(ClaseVehiculo_ANA = 'B4',1,0)) as b4, SUM(IF(ClaseVehiculo_ANA = 'C2',1,0)) as c2, SUM(IF(ClaseVehiculo_ANA = 'C3',1,0)) as c3, SUM(IF(ClaseVehiculo_ANA = 'C4',1,0)) as c4, SUM(IF(ClaseVehiculo_ANA = 'C5',1,0)) as c5, SUM(IF(ClaseVehiculo_ANA = 'C6',1,0)) as c6, SUM(IF(ClaseVehiculo_ANA = 'C7',1,0)) as c7, SUM(IF(ClaseVehiculo_ANA = 'C8',1,0)) as c8, SUM(IF(ClaseVehiculo_ANA = 'C9' || ClaseVehiculo_ANA LIKE 'C__',1,0)) as c9, SUM(IF(PagoID_ANA = 'EXE' || PagoID_ANA = 'VSC' || PagoID_ANA = 'RSP' && CasetaID != 15,1,0)) as exe, SUM(IF(PagoID_ANA = 'ELU',1,0)) as elu, CasetaID, convert(char(23),FechaOperacion,121) from " . $this->Ini->nm_tabela; 
-      } 
-      elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_oracle))
-      { 
-          $nmgp_select = "SELECT IF(FechaOperacion != FechaTurno && TurnoID = 3,23,HOUR(HoraEvento)) as hora, SUM(IF(ClaseVehiculo_ANA = 'A',1,0)) as a, SUM(IF(ClaseVehiculo_ANA LIKE 'A_%' && CasetaID != 15,1,0)) as ar, SUM(IF(ClaseVehiculo_ANA = 'M',1,0)) as m, SUM(IF(ClaseVehiculo_ANA = 'B2',1,0)) as b2, SUM(IF(ClaseVehiculo_ANA = 'B3',1,0)) as b3, SUM(IF(ClaseVehiculo_ANA = 'B4',1,0)) as b4, SUM(IF(ClaseVehiculo_ANA = 'C2',1,0)) as c2, SUM(IF(ClaseVehiculo_ANA = 'C3',1,0)) as c3, SUM(IF(ClaseVehiculo_ANA = 'C4',1,0)) as c4, SUM(IF(ClaseVehiculo_ANA = 'C5',1,0)) as c5, SUM(IF(ClaseVehiculo_ANA = 'C6',1,0)) as c6, SUM(IF(ClaseVehiculo_ANA = 'C7',1,0)) as c7, SUM(IF(ClaseVehiculo_ANA = 'C8',1,0)) as c8, SUM(IF(ClaseVehiculo_ANA = 'C9' || ClaseVehiculo_ANA LIKE 'C__',1,0)) as c9, SUM(IF(PagoID_ANA = 'EXE' || PagoID_ANA = 'VSC' || PagoID_ANA = 'RSP' && CasetaID != 15,1,0)) as exe, SUM(IF(PagoID_ANA = 'ELU',1,0)) as elu, CasetaID, FechaOperacion from " . $this->Ini->nm_tabela; 
-      } 
-      elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_informix))
-      { 
-          $nmgp_select = "SELECT IF(FechaOperacion != FechaTurno && TurnoID = 3,23,HOUR(HoraEvento)) as hora, SUM(IF(ClaseVehiculo_ANA = 'A',1,0)) as a, SUM(IF(ClaseVehiculo_ANA LIKE 'A_%' && CasetaID != 15,1,0)) as ar, SUM(IF(ClaseVehiculo_ANA = 'M',1,0)) as m, SUM(IF(ClaseVehiculo_ANA = 'B2',1,0)) as b2, SUM(IF(ClaseVehiculo_ANA = 'B3',1,0)) as b3, SUM(IF(ClaseVehiculo_ANA = 'B4',1,0)) as b4, SUM(IF(ClaseVehiculo_ANA = 'C2',1,0)) as c2, SUM(IF(ClaseVehiculo_ANA = 'C3',1,0)) as c3, SUM(IF(ClaseVehiculo_ANA = 'C4',1,0)) as c4, SUM(IF(ClaseVehiculo_ANA = 'C5',1,0)) as c5, SUM(IF(ClaseVehiculo_ANA = 'C6',1,0)) as c6, SUM(IF(ClaseVehiculo_ANA = 'C7',1,0)) as c7, SUM(IF(ClaseVehiculo_ANA = 'C8',1,0)) as c8, SUM(IF(ClaseVehiculo_ANA = 'C9' || ClaseVehiculo_ANA LIKE 'C__',1,0)) as c9, SUM(IF(PagoID_ANA = 'EXE' || PagoID_ANA = 'VSC' || PagoID_ANA = 'RSP' && CasetaID != 15,1,0)) as exe, SUM(IF(PagoID_ANA = 'ELU',1,0)) as elu, CasetaID, EXTEND(FechaOperacion, YEAR TO DAY) from " . $this->Ini->nm_tabela; 
-      } 
-      else 
-      { 
-          $nmgp_select = "SELECT IF(FechaOperacion != FechaTurno && TurnoID = 3,23,HOUR(HoraEvento)) as hora, SUM(IF(ClaseVehiculo_ANA = 'A',1,0)) as a, SUM(IF(ClaseVehiculo_ANA LIKE 'A_%' && CasetaID != 15,1,0)) as ar, SUM(IF(ClaseVehiculo_ANA = 'M',1,0)) as m, SUM(IF(ClaseVehiculo_ANA = 'B2',1,0)) as b2, SUM(IF(ClaseVehiculo_ANA = 'B3',1,0)) as b3, SUM(IF(ClaseVehiculo_ANA = 'B4',1,0)) as b4, SUM(IF(ClaseVehiculo_ANA = 'C2',1,0)) as c2, SUM(IF(ClaseVehiculo_ANA = 'C3',1,0)) as c3, SUM(IF(ClaseVehiculo_ANA = 'C4',1,0)) as c4, SUM(IF(ClaseVehiculo_ANA = 'C5',1,0)) as c5, SUM(IF(ClaseVehiculo_ANA = 'C6',1,0)) as c6, SUM(IF(ClaseVehiculo_ANA = 'C7',1,0)) as c7, SUM(IF(ClaseVehiculo_ANA = 'C8',1,0)) as c8, SUM(IF(ClaseVehiculo_ANA = 'C9' || ClaseVehiculo_ANA LIKE 'C__',1,0)) as c9, SUM(IF(PagoID_ANA = 'EXE' || PagoID_ANA = 'VSC' || PagoID_ANA = 'RSP' && CasetaID != 15,1,0)) as exe, SUM(IF(PagoID_ANA = 'ELU',1,0)) as elu, CasetaID, FechaOperacion from " . $this->Ini->nm_tabela; 
-      } 
+      $horaExpr = peaje_trafico_hora_sql();
+      $nmgp_select = peaje_trafico_select_sql($this->Ini->nm_tabela, $this->Ini->nm_tpbanco, $this->Ini->nm_bases_sybase, $this->Ini->nm_bases_mssql, $this->Ini->nm_bases_informix);
       $nmgp_select .= " " . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_trafico']['where_pesq'];
       $nmgp_select_count .= " " . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_trafico']['where_pesq'];
-      $nmgp_select .= " group by IF(FechaOperacion != FechaTurno && TurnoID = 3, 23,HOUR(HoraEvento))"; 
-      $nmgp_select_count .= " group by IF(FechaOperacion != FechaTurno && TurnoID = 3, 23,HOUR(HoraEvento))"; 
+      $nmgp_select .= " group by " . $horaExpr;
+      $nmgp_select_count .= " group by " . $horaExpr;
       $nmgp_order_by = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_trafico']['order_grid'];
       $nmgp_select .= $nmgp_order_by; 
       $_SESSION['scriptcase']['sc_sql_ult_comando'] = $nmgp_select_count;
