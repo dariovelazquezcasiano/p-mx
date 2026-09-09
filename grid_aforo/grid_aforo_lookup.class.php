@@ -1,4 +1,6 @@
 <?php
+require_once dirname(__DIR__) . '/_lib/lib/php/peaje_sql_guard.php';
+
 class grid_aforo_lookup
 {
 //  
@@ -20,7 +22,7 @@ class grid_aforo_lookup
           $save_conteudo1 = ""; 
           return ; 
       } 
-      $nm_comando = "select Dependencia from excentos where ExcentoID = $excentoid and CasetaID = " . substr($this->Db->qstr($casetaid), 1 , -1) . " order by Dependencia" ; 
+      $nm_comando = "select Dependencia from excentos where ExcentoID = " . peaje_sql_int($excentoid, '0') . " and CasetaID = " . peaje_sql_int($casetaid, '0') . " order by Dependencia" ;
       $conteudo = "" ; 
       $_SESSION['scriptcase']['sc_sql_ult_comando'] = $nm_comando; 
       $_SESSION['scriptcase']['sc_sql_ult_conexao'] = ''; 
