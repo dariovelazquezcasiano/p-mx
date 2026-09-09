@@ -1,5 +1,6 @@
 <?php
    include_once('PreliquidacionPDF_gen_session.php');
+   require_once dirname(__DIR__) . '/_lib/lib/php/peaje_config.php';
    @ini_set('session.cookie_httponly', 1);
    @ini_set('session.use_only_cookies', 1);
    @ini_set('session.cookie_samesite', 'Lax');
@@ -2098,41 +2099,13 @@ $_SESSION['scriptcase']['PreliquidacionPDF_gen']['contr_erro'] = 'off';
 function leeConfig($ident, $clasif, &$obj = NULL) {
 $_SESSION['scriptcase']['PreliquidacionPDF_gen']['contr_erro'] = 'on';
    
- $sql = "select params from sec_configura where identidad = '$ident' and clasifica = '$clasif'"; 
-  
-      $nm_select = $sql; 
-      $_SESSION['scriptcase']['sc_sql_ult_comando'] = $nm_select; 
-      $_SESSION['scriptcase']['sc_sql_ult_conexao'] = ''; 
-      $rs = array();
-      if ($SCrx = $this->Db->Execute($nm_select)) 
-      { 
-          $SCy = 0; 
-          $nm_count = $SCrx->FieldCount();
-          while (!$SCrx->EOF)
-          { 
-                 for ($SCx = 0; $SCx < $nm_count; $SCx++)
-                 { 
-                        $rs[$SCy] [$SCx] = $SCrx->fields[$SCx];
-                 }
-                 $SCy++; 
-                 $SCrx->MoveNext();
-          } 
-          $SCrx->Close();
-      } 
-      elseif (isset($GLOBALS["NM_ERRO_IBASE"]) && $GLOBALS["NM_ERRO_IBASE"] != 1)  
-      { 
-          $rs = false;
-          $rs_erro = $this->Db->ErrorMsg();
-      } 
- 
- if (isset($rs[0][0])){ 
-    $ruta = $rs[0][0];   
-}else{ 
-    $ruta = 'ERROR: No está registrada la identificación: '.$ident.', clasificación: '.$clasif.'<br />';   
-} 
- if (is_object($obj)) { 
-    $_SESSION['sc_session'][$obj->Ini->sc_page][$obj->Ini->nm_cod_apl]['path_doc'] = $obj->Ini->path_doc = $ruta; 
- } else return $ruta;
+$ruta = peaje_config_value($this->Db, $ident, $clasif);
+if (is_object($obj)) {
+    peaje_config_apply_path_doc($ruta, $obj);
+} else {
+    $_SESSION['scriptcase']['PreliquidacionPDF_gen']['contr_erro'] = 'off';
+    return $ruta;
+}
 $_SESSION['scriptcase']['PreliquidacionPDF_gen']['contr_erro'] = 'off';
 }
 function guardaIdAplicacion() {
