@@ -7,6 +7,8 @@
 - Se agregaron indices para liquidacion en `database/migrations/2026-09-08_cruces_liquidacion_indexes.sql`.
 - Se agregaron indices complementarios de catalogos en `database/migrations/2026-09-09_cruces_catalog_indexes.sql`.
 - Se reforzaron cookies de sesion en entradas principales de login, menu, aforo, trafico, liquidacion y dashboards.
+- Se normalizo `sqlmodoOperacion` para que solo genere expresiones de discrepancia validas para `ECT` o `EAP`.
+- Se centralizo el `SELECT/UPDATE` de inicio y fin de dictamen de `detalleturno` para evitar SQL manual repetido en grid, forms y exports.
 - Se agrego `tools/peaje_smoke.ps1` para revisar rapidamente que las paginas principales respondan sin errores PHP visibles.
 - Se agrego `database/diagnostics/2026-09-09_cruces_explain.sql` para repetir mediciones con `EXPLAIN` cuando haya mas datos.
 

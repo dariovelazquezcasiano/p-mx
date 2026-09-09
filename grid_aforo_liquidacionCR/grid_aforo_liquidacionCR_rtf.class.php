@@ -1,5 +1,7 @@
 <?php
 
+require_once dirname(__DIR__) . '/_lib/lib/php/peaje_sql_guard.php';
+
 class grid_aforo_liquidacionCR_rtf
 {
    var $Db;
@@ -90,8 +92,7 @@ class grid_aforo_liquidacionCR_rtf
       }
       if (isset($sqlmodoOperacion)) 
       {
-          $_SESSION['sqlmodoOperacion'] = $sqlmodoOperacion;
-          nm_limpa_str_grid_aforo_liquidacionCR($_SESSION["sqlmodoOperacion"]);
+          $_SESSION['sqlmodoOperacion'] = peaje_liquidacion_discrepancia_normalize_sql($sqlmodoOperacion);
       }
       if (!isset($CasetaID) && isset($casetaid)) 
       {
@@ -293,15 +294,17 @@ if (!isset($this->sc_temp_CasetaID)) {$this->sc_temp_CasetaID = (isset($_SESSION
 
 
 
-$sqlInicioDictamen = "SELECT FechaInicioDictamen FROM `detalleturno` 
-					   WHERE CasetaID = $this->sc_temp_CasetaID 
-					   AND FechaOperacion = '$this->sc_temp_FechaOperacion' 
-					   AND TurnoID = $this->sc_temp_TurnoID 
-					   AND CarrilID = $this->sc_temp_CarrilID 
-					   AND Cuerpo = '$this->sc_temp_Cuerpo' 
-					   AND OperacionID = $this->sc_temp_OperacionID 
-					   AND CONCAT(FechaTurno,' ',HoraInicio) = '$this->sc_temp_FHI' 
-					   AND CONCAT(FechaFin,' ',HoraFin) = '$this->sc_temp_FHF'";
+$sqlInicioDictamen = peaje_detalleturno_inicio_dictamen_select_sql(
+    $this->Db,
+    $this->sc_temp_CasetaID,
+    $this->sc_temp_FechaOperacion,
+    $this->sc_temp_TurnoID,
+    $this->sc_temp_CarrilID,
+    $this->sc_temp_Cuerpo,
+    $this->sc_temp_OperacionID,
+    $this->sc_temp_FHI,
+    $this->sc_temp_FHF
+);
 
 
  
@@ -338,15 +341,18 @@ if(!empty($this->fd )){
 		$fechaHora = date('Y-m-d H:i:s');
 		
 		
-		$sqlUpdateFechaInicioDictamen = "UPDATE detalleturno SET FechaInicioDictamen = '$fechaHora'
-					   WHERE CasetaID = $this->sc_temp_CasetaID 
-					   AND FechaOperacion = '$this->sc_temp_FechaOperacion' 
-					   AND TurnoID = $this->sc_temp_TurnoID 
-					   AND CarrilID = $this->sc_temp_CarrilID 
-					   AND Cuerpo = '$this->sc_temp_Cuerpo' 
-					   AND OperacionID = $this->sc_temp_OperacionID 
-					   AND CONCAT(FechaTurno,' ',HoraInicio) = '$this->sc_temp_FHI' 
-					   AND CONCAT(FechaFin,' ',HoraFin) = '$this->sc_temp_FHF'";
+		$sqlUpdateFechaInicioDictamen = peaje_detalleturno_inicio_dictamen_update_sql(
+            $this->Db,
+            $fechaHora,
+            $this->sc_temp_CasetaID,
+            $this->sc_temp_FechaOperacion,
+            $this->sc_temp_TurnoID,
+            $this->sc_temp_CarrilID,
+            $this->sc_temp_Cuerpo,
+            $this->sc_temp_OperacionID,
+            $this->sc_temp_FHI,
+            $this->sc_temp_FHF
+        );
 		
 		 
       $nm_select = $sqlUpdateFechaInicioDictamen; 

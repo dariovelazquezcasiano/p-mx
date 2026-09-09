@@ -181,3 +181,72 @@ if (!function_exists('peaje_liquidacion_discrepancia_sql')) {
             . "('T02CT02B','T03CT03B','T04CT04B','T02BT02C','T03BT03C','T04BT04C'), 1, 0)";
     }
 }
+
+if (!function_exists('peaje_liquidacion_discrepancia_normalize_sql')) {
+    function peaje_liquidacion_discrepancia_normalize_sql($value)
+    {
+        $value = strtoupper((string) $value);
+        $modoOperacion = (strpos($value, 'VEHICULOID_EAP') !== false || trim($value) === 'EAP') ? 'EAP' : 'ECT';
+        return peaje_liquidacion_discrepancia_sql($modoOperacion);
+    }
+}
+
+if (!function_exists('peaje_carril_modo_operacion_sql')) {
+    function peaje_carril_modo_operacion_sql($db, $casetaId, $carrilId)
+    {
+        return "SELECT ModoOperacion FROM carril WHERE CasetaID = " . peaje_sql_int($casetaId, '0')
+            . " AND CarrilID = " . peaje_sql_int($carrilId, '0');
+    }
+}
+
+if (!function_exists('peaje_carril_modo_operacion')) {
+    function peaje_carril_modo_operacion($db, $casetaId, $carrilId, &$sql = null, &$error = null)
+    {
+        $sql = peaje_carril_modo_operacion_sql($db, $casetaId, $carrilId);
+        $rows = peaje_db_fetch_all($db, $sql, $error);
+
+        if ($rows !== false && !empty($rows) && isset($rows[0][0])) {
+            return peaje_liquidacion_modo_operacion($rows[0][0]);
+        }
+
+        return 'ECT';
+    }
+}
+
+if (!function_exists('peaje_detalleturno_dictamen_where_sql')) {
+    function peaje_detalleturno_dictamen_where_sql($db, $casetaId, $fechaOperacion, $turnoId, $carrilId, $cuerpo, $operacionId, $fechaHoraInicio, $fechaHoraFin)
+    {
+        return " WHERE CasetaID = " . peaje_sql_int($casetaId, '0')
+            . " AND FechaOperacion = " . peaje_sql_qstr($db, $fechaOperacion)
+            . " AND TurnoID = " . peaje_sql_int($turnoId, '0')
+            . " AND CarrilID = " . peaje_sql_int($carrilId, '0')
+            . " AND Cuerpo = " . peaje_sql_qstr($db, $cuerpo)
+            . " AND OperacionID = " . peaje_sql_qstr($db, $operacionId)
+            . " AND CONCAT(FechaTurno,' ',HoraInicio) = " . peaje_sql_qstr($db, $fechaHoraInicio)
+            . " AND CONCAT(FechaFin,' ',HoraFin) = " . peaje_sql_qstr($db, $fechaHoraFin);
+    }
+}
+
+if (!function_exists('peaje_detalleturno_inicio_dictamen_select_sql')) {
+    function peaje_detalleturno_inicio_dictamen_select_sql($db, $casetaId, $fechaOperacion, $turnoId, $carrilId, $cuerpo, $operacionId, $fechaHoraInicio, $fechaHoraFin)
+    {
+        return "SELECT FechaInicioDictamen FROM `detalleturno`"
+            . peaje_detalleturno_dictamen_where_sql($db, $casetaId, $fechaOperacion, $turnoId, $carrilId, $cuerpo, $operacionId, $fechaHoraInicio, $fechaHoraFin);
+    }
+}
+
+if (!function_exists('peaje_detalleturno_inicio_dictamen_update_sql')) {
+    function peaje_detalleturno_inicio_dictamen_update_sql($db, $fechaHora, $casetaId, $fechaOperacion, $turnoId, $carrilId, $cuerpo, $operacionId, $fechaHoraInicio, $fechaHoraFin)
+    {
+        return "UPDATE detalleturno SET FechaInicioDictamen = " . peaje_sql_qstr($db, $fechaHora)
+            . peaje_detalleturno_dictamen_where_sql($db, $casetaId, $fechaOperacion, $turnoId, $carrilId, $cuerpo, $operacionId, $fechaHoraInicio, $fechaHoraFin);
+    }
+}
+
+if (!function_exists('peaje_detalleturno_fin_dictamen_update_sql')) {
+    function peaje_detalleturno_fin_dictamen_update_sql($db, $fechaHora, $casetaId, $fechaOperacion, $turnoId, $carrilId, $cuerpo, $operacionId, $fechaHoraInicio, $fechaHoraFin)
+    {
+        return "UPDATE detalleturno SET FechaFinDictamen = " . peaje_sql_qstr($db, $fechaHora)
+            . peaje_detalleturno_dictamen_where_sql($db, $casetaId, $fechaOperacion, $turnoId, $carrilId, $cuerpo, $operacionId, $fechaHoraInicio, $fechaHoraFin);
+    }
+}

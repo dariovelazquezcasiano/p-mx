@@ -1,5 +1,6 @@
 <?php
    include_once('grid_aforo_liquidacionCR_session.php');
+   require_once dirname(__DIR__) . '/_lib/lib/php/peaje_sql_guard.php';
    @ini_set('session.cookie_httponly', 1);
    @ini_set('session.use_only_cookies', 1);
    @ini_set('session.use_strict_mode', 1);
@@ -1030,41 +1031,11 @@ if (!isset($_SESSION['CarrilID'])) {$_SESSION['CarrilID'] = "";}
 if (!isset($this->sc_temp_CarrilID)) {$this->sc_temp_CarrilID = (isset($_SESSION['CarrilID'])) ? $_SESSION['CarrilID'] : "";}
 if (!isset($_SESSION['CasetaID'])) {$_SESSION['CasetaID'] = "";}
 if (!isset($this->sc_temp_CasetaID)) {$this->sc_temp_CasetaID = (isset($_SESSION['CasetaID'])) ? $_SESSION['CasetaID'] : "";}
- $sqlModoOperacion = "SELECT ModoOperacion FROM carril WHERE CasetaID = $this->sc_temp_CasetaID AND CarrilID = $this->sc_temp_CarrilID";
-$this->sc_temp_modoOperacion = 'ECT';
-$modoOperacion = 'ECT';
- 
-      $nm_select = $sqlModoOperacion; 
-      $_SESSION['scriptcase']['sc_sql_ult_comando'] = $nm_select; 
-      $_SESSION['scriptcase']['sc_sql_ult_conexao'] = ''; 
-      $this->sq1 = array();
-      if ($SCrx = $this->Db->Execute($nm_select)) 
-      { 
-          $SCy = 0; 
-          $nm_count = $SCrx->FieldCount();
-          while (!$SCrx->EOF)
-          { 
-                 for ($SCx = 0; $SCx < $nm_count; $SCx++)
-                 { 
-                        $this->sq1[$SCy] [$SCx] = $SCrx->fields[$SCx];
-                 }
-                 $SCy++; 
-                 $SCrx->MoveNext();
-          } 
-          $SCrx->Close();
-      } 
-      elseif (isset($GLOBALS["NM_ERRO_IBASE"]) && $GLOBALS["NM_ERRO_IBASE"] != 1)  
-      { 
-          $this->sq1 = false;
-          $this->sq1_erro = $this->Db->ErrorMsg();
-      } 
+$sqlModoOperacion = peaje_carril_modo_operacion_sql($this->Db, $this->sc_temp_CasetaID, $this->sc_temp_CarrilID);
+$this->sc_temp_modoOperacion = peaje_carril_modo_operacion($this->Db, $this->sc_temp_CasetaID, $this->sc_temp_CarrilID, $sqlModoOperacion);
+$modoOperacion = $this->sc_temp_modoOperacion;
 
-if(!empty($this->sq1 )){
-	$modoOperacion = $this->sq1[0][0];
-	$this->sc_temp_modoOperacion = $modoOperacion;
-}
-
-$this->sc_temp_sqlmodoOperacion = "IF(VehiculoID_CR<>VehiculoID_$modoOperacion and concat(VehiculoID_$modoOperacion,VehiculoID_CR) not in ('T02CT02B','T03CT03B','T04CT04B','T02BT02C','T03BT03C','T04BT04C'), 1, 0)";
+$this->sc_temp_sqlmodoOperacion = peaje_liquidacion_discrepancia_sql($modoOperacion);
 
 
 if($modoOperacion == "EAP"){
@@ -2090,8 +2061,7 @@ class grid_aforo_liquidacionCR_apl
           }
           if (isset($sqlmodoOperacion)) 
           {
-              $_SESSION['sqlmodoOperacion'] = $sqlmodoOperacion;
-              nm_limpa_str_grid_aforo_liquidacionCR($_SESSION["sqlmodoOperacion"]);
+              $_SESSION['sqlmodoOperacion'] = peaje_liquidacion_discrepancia_normalize_sql($sqlmodoOperacion);
           }
           if (!isset($CasetaID) && isset($casetaid)) 
           {
@@ -2167,8 +2137,7 @@ class grid_aforo_liquidacionCR_apl
           }
           if (isset($modoOperacion) && isset($NM_contr_var_session) && $NM_contr_var_session == "Yes") 
           {
-              $_SESSION['modoOperacion'] = $modoOperacion;
-              nm_limpa_str_grid_aforo_liquidacionCR($_SESSION["modoOperacion"]);
+              $_SESSION['modoOperacion'] = peaje_liquidacion_modo_operacion($modoOperacion);
           }
           if (!isset($IELUP) && isset($ielup)) 
           {
@@ -4694,7 +4663,7 @@ $_SESSION['sc_session'][$this->Ini->sc_page]['grid_aforo_liquidacionCR'][$path_d
    }
    if (isset($sqlmodoOperacion)) 
    {
-       $_SESSION['sqlmodoOperacion'] = $sqlmodoOperacion;
+       $_SESSION['sqlmodoOperacion'] = peaje_liquidacion_discrepancia_normalize_sql($sqlmodoOperacion);
    }
    if (isset($CasetaID)) 
    {
@@ -4730,7 +4699,7 @@ $_SESSION['sc_session'][$this->Ini->sc_page]['grid_aforo_liquidacionCR'][$path_d
    }
    if (isset($modoOperacion)) 
    {
-       $_SESSION['modoOperacion'] = $modoOperacion;
+       $_SESSION['modoOperacion'] = peaje_liquidacion_modo_operacion($modoOperacion);
    }
    if (isset($IELUP)) 
    {
@@ -4855,12 +4824,11 @@ $_SESSION['sc_session'][$this->Ini->sc_page]['grid_aforo_liquidacionCR'][$path_d
            }
            if (!isset($sqlmodoOperacion) && isset($sqlmodooperacion)) 
            {
-               $_SESSION["sqlmodoOperacion"] = $sqlmodooperacion;
+               $_SESSION["sqlmodoOperacion"] = peaje_liquidacion_discrepancia_normalize_sql($sqlmodooperacion);
            }
            if (isset($sqlmodoOperacion)) 
            {
-               $_SESSION['sqlmodoOperacion'] = $sqlmodoOperacion;
-               nm_limpa_str_grid_aforo_liquidacionCR($_SESSION["sqlmodoOperacion"]);
+               $_SESSION['sqlmodoOperacion'] = peaje_liquidacion_discrepancia_normalize_sql($sqlmodoOperacion);
            }
            if (!isset($CasetaID) && isset($casetaid)) 
            {
@@ -4936,12 +4904,11 @@ $_SESSION['sc_session'][$this->Ini->sc_page]['grid_aforo_liquidacionCR'][$path_d
            }
            if (!isset($modoOperacion) && isset($modooperacion)) 
            {
-               $_SESSION["modoOperacion"] = $modooperacion;
+               $_SESSION["modoOperacion"] = peaje_liquidacion_modo_operacion($modooperacion);
            }
            if (isset($modoOperacion)) 
            {
-               $_SESSION['modoOperacion'] = $modoOperacion;
-               nm_limpa_str_grid_aforo_liquidacionCR($_SESSION["modoOperacion"]);
+               $_SESSION['modoOperacion'] = peaje_liquidacion_modo_operacion($modoOperacion);
            }
            if (!isset($IELUP) && isset($ielup)) 
            {
@@ -5221,23 +5188,19 @@ $_SESSION['sc_session'][$this->Ini->sc_page]['grid_aforo_liquidacionCR'][$path_d
        }   
        if (isset($_POST["sqlmodoOperacion"])) 
        {
-           $_SESSION["sqlmodoOperacion"] = $_POST["sqlmodoOperacion"];
-           nm_limpa_str_grid_aforo_liquidacionCR($_SESSION["sqlmodoOperacion"]);
+           $_SESSION["sqlmodoOperacion"] = peaje_liquidacion_discrepancia_normalize_sql($_POST["sqlmodoOperacion"]);
        }
        if (!isset($_POST["sqlmodoOperacion"]) && isset($_POST["sqlmodooperacion"])) 
        {
-           $_SESSION["sqlmodoOperacion"] = $_POST["sqlmodooperacion"];
-           nm_limpa_str_grid_aforo_liquidacionCR($_SESSION["sqlmodoOperacion"]);
+           $_SESSION["sqlmodoOperacion"] = peaje_liquidacion_discrepancia_normalize_sql($_POST["sqlmodooperacion"]);
        }
        if (isset($_GET["sqlmodoOperacion"])) 
        {
-           $_SESSION["sqlmodoOperacion"] = $_GET["sqlmodoOperacion"];
-           nm_limpa_str_grid_aforo_liquidacionCR($_SESSION["sqlmodoOperacion"]);
+           $_SESSION["sqlmodoOperacion"] = peaje_liquidacion_discrepancia_normalize_sql($_GET["sqlmodoOperacion"]);
        }
        if (!isset($_GET["sqlmodoOperacion"]) && isset($_GET["sqlmodooperacion"])) 
        {
-           $_SESSION["sqlmodoOperacion"] = $_GET["sqlmodooperacion"];
-           nm_limpa_str_grid_aforo_liquidacionCR($_SESSION["sqlmodoOperacion"]);
+           $_SESSION["sqlmodoOperacion"] = peaje_liquidacion_discrepancia_normalize_sql($_GET["sqlmodooperacion"]);
        }
        if (!isset($_SESSION["sqlmodoOperacion"])) 
        {

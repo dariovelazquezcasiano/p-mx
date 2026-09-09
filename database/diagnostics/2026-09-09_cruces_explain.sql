@@ -14,6 +14,14 @@ SET @cat_caseta := COALESCE((SELECT fld_caseta FROM cat_tarifas WHERE fld_grupo 
 SET @cat_fecha := COALESCE((SELECT fld_fecha_ini FROM cat_tarifas WHERE fld_grupo = @cat_grupo AND fld_caseta = @cat_caseta LIMIT 1), @fecha_ini);
 SET @sec_identidad := COALESCE((SELECT identidad FROM sec_configura LIMIT 1), 'x');
 SET @sec_clasifica := COALESCE((SELECT clasifica FROM sec_configura WHERE identidad = @sec_identidad LIMIT 1), 'x');
+SET @dt_caseta := COALESCE((SELECT CasetaID FROM detalleturno LIMIT 1), 0);
+SET @dt_fecha_operacion := COALESCE((SELECT FechaOperacion FROM detalleturno WHERE CasetaID = @dt_caseta LIMIT 1), @fecha_ini);
+SET @dt_turno := COALESCE((SELECT TurnoID FROM detalleturno WHERE CasetaID = @dt_caseta AND FechaOperacion = @dt_fecha_operacion LIMIT 1), 0);
+SET @dt_carril := COALESCE((SELECT CarrilID FROM detalleturno WHERE CasetaID = @dt_caseta AND FechaOperacion = @dt_fecha_operacion AND TurnoID = @dt_turno LIMIT 1), 0);
+SET @dt_cuerpo := COALESCE((SELECT Cuerpo FROM detalleturno WHERE CasetaID = @dt_caseta AND FechaOperacion = @dt_fecha_operacion AND TurnoID = @dt_turno AND CarrilID = @dt_carril LIMIT 1), '');
+SET @dt_operacion := COALESCE((SELECT OperacionID FROM detalleturno WHERE CasetaID = @dt_caseta AND FechaOperacion = @dt_fecha_operacion AND TurnoID = @dt_turno AND CarrilID = @dt_carril AND Cuerpo = @dt_cuerpo LIMIT 1), '');
+SET @dt_fhi := COALESCE((SELECT CONCAT(FechaTurno,' ',HoraInicio) FROM detalleturno WHERE CasetaID = @dt_caseta AND FechaOperacion = @dt_fecha_operacion AND TurnoID = @dt_turno AND CarrilID = @dt_carril AND Cuerpo = @dt_cuerpo AND OperacionID = @dt_operacion LIMIT 1), '');
+SET @dt_fhf := COALESCE((SELECT CONCAT(FechaFin,' ',HoraFin) FROM detalleturno WHERE CasetaID = @dt_caseta AND FechaOperacion = @dt_fecha_operacion AND TurnoID = @dt_turno AND CarrilID = @dt_carril AND Cuerpo = @dt_cuerpo AND OperacionID = @dt_operacion LIMIT 1), '');
 
 SELECT @fecha_ini AS fecha_ini, @fecha_fin AS fecha_fin;
 
@@ -68,6 +76,18 @@ FROM detalleturno
 WHERE FechaOperacion >= @fecha_ini
   AND FechaOperacion < @fecha_fin
 ORDER BY CasetaID, CarrilID, TurnoID;
+
+EXPLAIN
+SELECT FechaInicioDictamen
+FROM detalleturno
+WHERE CasetaID = @dt_caseta
+  AND FechaOperacion = @dt_fecha_operacion
+  AND TurnoID = @dt_turno
+  AND CarrilID = @dt_carril
+  AND Cuerpo = @dt_cuerpo
+  AND OperacionID = @dt_operacion
+  AND CONCAT(FechaTurno,' ',HoraInicio) = @dt_fhi
+  AND CONCAT(FechaFin,' ',HoraFin) = @dt_fhf;
 
 EXPLAIN
 SELECT importe, ImporteEjeLigero, ImporteEjePesado

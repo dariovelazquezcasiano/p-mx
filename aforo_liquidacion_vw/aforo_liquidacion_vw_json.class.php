@@ -185,8 +185,7 @@ class aforo_liquidacion_vw_json
       }
       if (isset($modoOperacion)) 
       {
-          $_SESSION['modoOperacion'] = $modoOperacion;
-          nm_limpa_str_aforo_liquidacion_vw($_SESSION["modoOperacion"]);
+          $_SESSION['modoOperacion'] = peaje_liquidacion_modo_operacion($modoOperacion);
       }
       $dir_raiz          = strrpos($_SERVER['PHP_SELF'],"/") ;  
       $dir_raiz          = substr($_SERVER['PHP_SELF'], 0, $dir_raiz + 1) ;  

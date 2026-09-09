@@ -184,8 +184,7 @@ class aforo_liquidacion_vw_xls
       }
       if (isset($modoOperacion)) 
       {
-          $_SESSION['modoOperacion'] = $modoOperacion;
-          nm_limpa_str_aforo_liquidacion_vw($_SESSION["modoOperacion"]);
+          $_SESSION['modoOperacion'] = peaje_liquidacion_modo_operacion($modoOperacion);
       }
       $this->Use_phpspreadsheet = (phpversion() >=  "7.3.9" && is_dir($this->Ini->path_third . '/phpspreadsheet')) ? true : false;
       $this->Xls_tot_col = 0;

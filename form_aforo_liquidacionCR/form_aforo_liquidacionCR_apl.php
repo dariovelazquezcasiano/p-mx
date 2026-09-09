@@ -8329,15 +8329,18 @@ if (!isset($this->sc_temp_CasetaID)) {$this->sc_temp_CasetaID = (isset($_SESSION
 		$fechaHorafin = date('Y-m-d H:i:s');
 
 
-		$sqlUpdateFechaFinDictamen = "UPDATE detalleturno SET FechaFinDictamen = " . peaje_sql_qstr($this->Db, $fechaHorafin)
-					   . " WHERE CasetaID = " . peaje_sql_int($this->sc_temp_CasetaID, '0')
-					   . " AND FechaOperacion = " . peaje_sql_qstr($this->Db, $this->sc_temp_FechaOperacion)
-					   . " AND TurnoID = " . peaje_sql_int($this->sc_temp_TurnoID, '0')
-					   . " AND CarrilID = " . peaje_sql_int($this->sc_temp_CarrilID, '0')
-					   . " AND Cuerpo = " . peaje_sql_qstr($this->Db, $this->sc_temp_Cuerpo)
-					   . " AND OperacionID = " . peaje_sql_int($this->sc_temp_OperacionID, '0')
-					   . " AND CONCAT(FechaTurno,' ',HoraInicio) = " . peaje_sql_qstr($this->Db, $this->sc_temp_FHI)
-					   . " AND CONCAT(FechaFin,' ',HoraFin) = " . peaje_sql_qstr($this->Db, $this->sc_temp_FHF);
+		$sqlUpdateFechaFinDictamen = peaje_detalleturno_fin_dictamen_update_sql(
+            $this->Db,
+            $fechaHorafin,
+            $this->sc_temp_CasetaID,
+            $this->sc_temp_FechaOperacion,
+            $this->sc_temp_TurnoID,
+            $this->sc_temp_CarrilID,
+            $this->sc_temp_Cuerpo,
+            $this->sc_temp_OperacionID,
+            $this->sc_temp_FHI,
+            $this->sc_temp_FHF
+        );
 
 		 
       $nm_select = $sqlUpdateFechaFinDictamen; 
