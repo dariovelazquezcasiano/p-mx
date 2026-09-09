@@ -26,6 +26,64 @@ if (!function_exists('peaje_sql_int')) {
     }
 }
 
+if (!function_exists('peaje_sql_datetime_parts')) {
+    function peaje_sql_datetime_parts($value)
+    {
+        $value = trim((string) $value);
+
+        if (preg_match('/^([0-9]{4}-[0-9]{2}-[0-9]{2})[ T]([0-9]{2}:[0-9]{2}(?::[0-9]{2})?)/', $value, $matches)) {
+            $time = $matches[2];
+            if (strlen($time) === 5) {
+                $time .= ':00';
+            }
+
+            return array($matches[1], $time);
+        }
+
+        return false;
+    }
+}
+
+if (!function_exists('peaje_sql_datetime_condition')) {
+    function peaje_sql_datetime_condition($db, $dateColumn, $timeColumn, $operator, $dateTime)
+    {
+        $operator = trim((string) $operator);
+        $parts = peaje_sql_datetime_parts($dateTime);
+
+        if ($parts === false) {
+            return "CONCAT(" . $dateColumn . ",' '," . $timeColumn . ") " . $operator . " " . peaje_sql_qstr($db, $dateTime);
+        }
+
+        $dateSql = peaje_sql_qstr($db, $parts[0]);
+        $timeSql = peaje_sql_qstr($db, $parts[1]);
+
+        if ($operator === '=') {
+            return "(" . $dateColumn . " = " . $dateSql . " AND " . $timeColumn . " = " . $timeSql . ")";
+        }
+
+        if ($operator === '>=') {
+            return "(" . $dateColumn . " > " . $dateSql . " OR (" . $dateColumn . " = " . $dateSql . " AND " . $timeColumn . " >= " . $timeSql . "))";
+        }
+
+        if ($operator === '<=') {
+            return "(" . $dateColumn . " < " . $dateSql . " OR (" . $dateColumn . " = " . $dateSql . " AND " . $timeColumn . " <= " . $timeSql . "))";
+        }
+
+        return "CONCAT(" . $dateColumn . ",' '," . $timeColumn . ") " . $operator . " " . peaje_sql_qstr($db, $dateTime);
+    }
+}
+
+if (!function_exists('peaje_sql_datetime_between_condition')) {
+    function peaje_sql_datetime_between_condition($db, $dateColumn, $timeColumn, $startDateTime, $endDateTime)
+    {
+        return "("
+            . peaje_sql_datetime_condition($db, $dateColumn, $timeColumn, '>=', $startDateTime)
+            . " AND "
+            . peaje_sql_datetime_condition($db, $dateColumn, $timeColumn, '<=', $endDateTime)
+            . ")";
+    }
+}
+
 if (!function_exists('peaje_db_fetch_all')) {
     function peaje_db_fetch_all($db, $sql, &$error = null)
     {
@@ -222,8 +280,8 @@ if (!function_exists('peaje_detalleturno_dictamen_where_sql')) {
             . " AND CarrilID = " . peaje_sql_int($carrilId, '0')
             . " AND Cuerpo = " . peaje_sql_qstr($db, $cuerpo)
             . " AND OperacionID = " . peaje_sql_qstr($db, $operacionId)
-            . " AND CONCAT(FechaTurno,' ',HoraInicio) = " . peaje_sql_qstr($db, $fechaHoraInicio)
-            . " AND CONCAT(FechaFin,' ',HoraFin) = " . peaje_sql_qstr($db, $fechaHoraFin);
+            . " AND " . peaje_sql_datetime_condition($db, 'FechaTurno', 'HoraInicio', '=', $fechaHoraInicio)
+            . " AND " . peaje_sql_datetime_condition($db, 'FechaFin', 'HoraFin', '=', $fechaHoraFin);
     }
 }
 

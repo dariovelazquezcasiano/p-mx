@@ -2958,15 +2958,15 @@ class aforo_liquidacion_vw_apl
       { 
          unset($_SESSION['sc_session'][$this->Ini->sc_page]['aforo_liquidacion_vw']['use_pass_pdf']);
          $_SESSION['sc_session'][$this->Ini->sc_page]['aforo_liquidacion_vw']['prim_cons'] = true;  
-         $casetaIdSql = peaje_sql_int(isset($_SESSION['CasetaID']) ? $_SESSION['CasetaID'] : '', '0');
+         $casetaIdSql = peaje_sql_qstr($this->Db, isset($_SESSION['CasetaID']) ? $_SESSION['CasetaID'] : '');
          $turnoIdSql = peaje_sql_int(isset($_SESSION['TurnoID']) ? $_SESSION['TurnoID'] : '', '0');
          $carrilIdSql = peaje_sql_int(isset($_SESSION['CarrilID']) ? $_SESSION['CarrilID'] : '', '0');
          $operacionIdSql = peaje_sql_int(isset($_SESSION['OperacionID']) ? $_SESSION['OperacionID'] : '', '0');
          $fechaOperacionSql = peaje_sql_qstr($this->Db, isset($_SESSION['FechaOperacion']) ? $_SESSION['FechaOperacion'] : '');
          $cuerpoSql = peaje_sql_qstr($this->Db, isset($_SESSION['Cuerpo']) ? $_SESSION['Cuerpo'] : '');
-         $fhiSql = peaje_sql_qstr($this->Db, isset($_SESSION['FHI']) ? $_SESSION['FHI'] : '');
-         $fhfSql = peaje_sql_qstr($this->Db, isset($_SESSION['FHF']) ? $_SESSION['FHF'] : '');
-         $_SESSION['sc_session'][$this->Ini->sc_page]['aforo_liquidacion_vw']['where_orig'] = " where (CasetaID = " . $casetaIdSql . " and FechaOperacion = " . $fechaOperacionSql . " and TurnoID = " . $turnoIdSql . " and CarrilID = " . $carrilIdSql . " and Cuerpo = " . $cuerpoSql . " and OperacionID = " . $operacionIdSql . "  and CONCAT(FechaOperacion,' ',HoraEvento) >= " . $fhiSql . " and CONCAT(FechaTurno,' ',HoraEvento) <= " . $fhfSql . ")";
+         $fhiCondSql = peaje_sql_datetime_condition($this->Db, 'FechaOperacion', 'HoraEvento', '>=', isset($_SESSION['FHI']) ? $_SESSION['FHI'] : '');
+         $fhfCondSql = peaje_sql_datetime_condition($this->Db, 'FechaTurno', 'HoraEvento', '<=', isset($_SESSION['FHF']) ? $_SESSION['FHF'] : '');
+         $_SESSION['sc_session'][$this->Ini->sc_page]['aforo_liquidacion_vw']['where_orig'] = " where (CasetaID = " . $casetaIdSql . " and FechaOperacion = " . $fechaOperacionSql . " and TurnoID = " . $turnoIdSql . " and CarrilID = " . $carrilIdSql . " and Cuerpo = " . $cuerpoSql . " and OperacionID = " . $operacionIdSql . "  and " . $fhiCondSql . " and " . $fhfCondSql . ")";
          $_SESSION['sc_session'][$this->Ini->sc_page]['aforo_liquidacion_vw']['where_pesq']        = $_SESSION['sc_session'][$this->Ini->sc_page]['aforo_liquidacion_vw']['where_orig'];  
          $_SESSION['sc_session'][$this->Ini->sc_page]['aforo_liquidacion_vw']['where_pesq_ant']    = $_SESSION['sc_session'][$this->Ini->sc_page]['aforo_liquidacion_vw']['where_orig'];  
          $_SESSION['sc_session'][$this->Ini->sc_page]['aforo_liquidacion_vw']['cond_pesq']         = ""; 

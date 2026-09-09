@@ -2905,7 +2905,7 @@ if($this->sc_temp_sm_global_login=='') {
 	
 	
 
-	$condicionLdt = "CasetaID = '$this->sc_temp_CasetaID' and CONCAT(FechaOperacion,' ',HoraInicio) = '$this->sc_temp_FHI'  and TurnoID = '$this->sc_temp_TurnoID' and CarrilID = '$this->sc_temp_CarrilID' and Cuerpo = '$this->sc_temp_Cuerpo' and OperacionID = $this->sc_temp_OperacionID and FolioInicialEAP = '$this->sc_temp_Sec_iniL' and FolioFinalEAP = '$this->sc_temp_Sec_finL'";
+	$condicionLdt = "CasetaID = " . peaje_sql_int($this->sc_temp_CasetaID, '0') . " and " . peaje_sql_datetime_condition($this->Db, 'FechaOperacion', 'HoraInicio', '=', $this->sc_temp_FHI) . "  and TurnoID = " . peaje_sql_int($this->sc_temp_TurnoID, '0') . " and CarrilID = " . peaje_sql_int($this->sc_temp_CarrilID, '0') . " and Cuerpo = " . peaje_sql_qstr($this->Db, $this->sc_temp_Cuerpo) . " and OperacionID = " . peaje_sql_int($this->sc_temp_OperacionID, '0') . " and FolioInicialEAP = " . peaje_sql_qstr($this->Db, $this->sc_temp_Sec_iniL) . " and FolioFinalEAP = " . peaje_sql_qstr($this->Db, $this->sc_temp_Sec_finL);
 	$check_sql = "Select FolioCierre,FechaOperacion, HoraInicio, FechaFin, HoraFin  from detalleturno where $condicionLdt";
 	 
       $nm_select = $check_sql; 
@@ -2947,7 +2947,7 @@ if($this->sc_temp_sm_global_login=='') {
 		<?php
 		exit;
 	}	
-	$condicionLa="CasetaID = '$this->sc_temp_CasetaID' AND FechaOperacion = '$this->sc_temp_FechaOperacion' AND TurnoID = '$this->sc_temp_TurnoID' AND CarrilID = '$this->sc_temp_CarrilID' AND Cuerpo = '$this->sc_temp_Cuerpo' AND OperacionID = $this->sc_temp_OperacionID AND (Concat(FechaTurno,' ',HoraEvento) BETWEEN '$FechaInicio $HoraInicio' AND '$FechaFin $HoraFin') ";
+	$condicionLa = "CasetaID = " . peaje_sql_qstr($this->Db, $this->sc_temp_CasetaID) . " AND FechaOperacion = " . peaje_sql_qstr($this->Db, $this->sc_temp_FechaOperacion) . " AND TurnoID = " . peaje_sql_int($this->sc_temp_TurnoID, '0') . " AND CarrilID = " . peaje_sql_int($this->sc_temp_CarrilID, '0') . " AND Cuerpo = " . peaje_sql_qstr($this->Db, $this->sc_temp_Cuerpo) . " AND OperacionID = " . peaje_sql_int($this->sc_temp_OperacionID, '0') . " AND " . peaje_sql_datetime_between_condition($this->Db, 'FechaTurno', 'HoraEvento', $FechaInicio . " " . $HoraInicio, $FechaFin . " " . $HoraFin) . " ";
 
 	if($this->sc_temp_CasetaID == 15 && ($this->sc_temp_CarrilID == 5 || $this->sc_temp_CarrilID == 6)){
 		$this->fechaFinDictamen();
