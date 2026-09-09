@@ -2626,8 +2626,11 @@ if (isset($_SESSION['scriptcase']['device_mobile']) && $_SESSION['scriptcase']['
        }
        $dt  = $delim . date('Y-m-d H:i:s') . $delim1;
        $usr = isset($_SESSION['sm_global_login']) ? $_SESSION['sm_global_login'] : "";
+       $orig_sql = $this->Db->qstr($orig);
+       $ip_sql = $this->Db->qstr(isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : "");
+       $evento_sql = $this->Db->qstr($evento);
        if (strtolower($_SESSION['scriptcase']['glo_tpbanco']) == 'pdo_sqlsrv' || strtolower($_SESSION['scriptcase']['glo_tpbanco']) == 'pdo_dblib')
-       { 
+       {
            $dt  = $delim . date('Ymd H:i:s') . $delim1;
        } 
        if (in_array(strtolower($_SESSION['scriptcase']['glo_tpbanco']), $this->Ini->nm_bases_access))
@@ -2637,19 +2640,19 @@ if (isset($_SESSION['scriptcase']['device_mobile']) && $_SESSION['scriptcase']['
        if (in_array(strtolower($_SESSION['scriptcase']['glo_tpbanco']), $this->Ini->nm_bases_informix))
        { 
            $dt  = "EXTEND(" . $dt . ", YEAR TO FRACTION)";
-       } 
+       }
        if (in_array(strtolower($_SESSION['scriptcase']['glo_tpbanco']), $this->Ini->nm_bases_access))
-       { 
-           $comando = "INSERT INTO sc_log (inserted_date, username, application, creator, ip_user, `action`, description) VALUES ($dt, " . $this->Db->qstr($usr) . ", 'form_aforo_liquidacionCR_mob', '$orig', '" . $_SERVER['REMOTE_ADDR'] . "', '$evento', " . $this->Db->qstr($texto) . ")"; 
-       } 
+       {
+           $comando = "INSERT INTO sc_log (inserted_date, username, application, creator, ip_user, `action`, description) VALUES ($dt, " . $this->Db->qstr($usr) . ", 'form_aforo_liquidacionCR_mob', " . $orig_sql . ", " . $ip_sql . ", " . $evento_sql . ", " . $this->Db->qstr($texto) . ")";
+       }
        elseif (in_array(strtolower($_SESSION['scriptcase']['glo_tpbanco']), $this->Ini->nm_bases_sqlite))
-       { 
-           $comando = "INSERT INTO sc_log (id, inserted_date, username, application, creator, ip_user, action, description) VALUES (NULL, $dt, " . $this->Db->qstr($usr) . ", 'form_aforo_liquidacionCR_mob', '$orig', '" . $_SERVER['REMOTE_ADDR'] . "', '$evento', " . $this->Db->qstr($texto) . ")"; 
-       } 
+       {
+           $comando = "INSERT INTO sc_log (id, inserted_date, username, application, creator, ip_user, action, description) VALUES (NULL, $dt, " . $this->Db->qstr($usr) . ", 'form_aforo_liquidacionCR_mob', " . $orig_sql . ", " . $ip_sql . ", " . $evento_sql . ", " . $this->Db->qstr($texto) . ")";
+       }
        else
-       { 
-           $comando = "INSERT INTO sc_log (inserted_date, username, application, creator, ip_user, action, description) VALUES ($dt, " . $this->Db->qstr($usr) . ", 'form_aforo_liquidacionCR_mob', '$orig', '" . $_SERVER['REMOTE_ADDR'] . "', '$evento', " . $this->Db->qstr($texto) . ")"; 
-       } 
+       {
+           $comando = "INSERT INTO sc_log (inserted_date, username, application, creator, ip_user, action, description) VALUES ($dt, " . $this->Db->qstr($usr) . ", 'form_aforo_liquidacionCR_mob', " . $orig_sql . ", " . $ip_sql . ", " . $evento_sql . ", " . $this->Db->qstr($texto) . ")";
+       }
        $_SESSION['scriptcase']['sc_sql_ult_comando'] = $comando; 
        $rlog = $this->Db->Execute($comando); 
        if ($rlog === false)  

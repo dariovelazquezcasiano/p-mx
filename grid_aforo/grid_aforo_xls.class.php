@@ -392,30 +392,7 @@ class grid_aforo_xls
       $this->nm_field_dinamico = array();
       $this->nm_order_dinamico = array();
       $nmgp_select_count = "SELECT count(*) AS countTest from " . $this->Ini->nm_tabela; 
-      if (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_sybase))
-      { 
-          $nmgp_select = "SELECT CasetaID, str_replace (convert(char(10),FechaOperacion,102), '.', '-') + ' ' + convert(char(8),FechaOperacion,20), str_replace (convert(char(10),HoraEvento,102), '.', '-') + ' ' + convert(char(8),HoraEvento,20), TurnoID, CarrilID, Cuerpo, UsuarioID, Secuencial, Folio, VehiculoID_ECT, VehiculoID_CR, VehiculoID_EAP, PagoID_ANA, ExcentoID, Placas, NumeroTarjeta, VehiculoID_ANA, CantidadEje_ANA, Importe_ANA, TarifaEE_ANA, TipoTLP, OperadorTLP, Cancelado, PagoID, CategoriaTLP, str_replace (convert(char(10),FechaTurno,102), '.', '-') + ' ' + convert(char(8),FechaTurno,20), ClaseVehiculo_ANA, NombreImagen, Consecutivo from " . $this->Ini->nm_tabela; 
-      } 
-      elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_mysql))
-      { 
-          $nmgp_select = "SELECT CasetaID, FechaOperacion, HoraEvento, TurnoID, CarrilID, Cuerpo, UsuarioID, Secuencial, Folio, VehiculoID_ECT, VehiculoID_CR, VehiculoID_EAP, PagoID_ANA, ExcentoID, Placas, NumeroTarjeta, VehiculoID_ANA, CantidadEje_ANA, Importe_ANA, TarifaEE_ANA, TipoTLP, OperadorTLP, Cancelado, PagoID, CategoriaTLP, FechaTurno, ClaseVehiculo_ANA, NombreImagen, Consecutivo from " . $this->Ini->nm_tabela; 
-      } 
-      elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_mssql))
-      { 
-       $nmgp_select = "SELECT CasetaID, convert(char(23),FechaOperacion,121), convert(char(23),HoraEvento,121), TurnoID, CarrilID, Cuerpo, UsuarioID, Secuencial, Folio, VehiculoID_ECT, VehiculoID_CR, VehiculoID_EAP, PagoID_ANA, ExcentoID, Placas, NumeroTarjeta, VehiculoID_ANA, CantidadEje_ANA, Importe_ANA, TarifaEE_ANA, TipoTLP, OperadorTLP, Cancelado, PagoID, CategoriaTLP, convert(char(23),FechaTurno,121), ClaseVehiculo_ANA, NombreImagen, Consecutivo from " . $this->Ini->nm_tabela; 
-      } 
-      elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_oracle))
-      { 
-          $nmgp_select = "SELECT CasetaID, FechaOperacion, HoraEvento, TurnoID, CarrilID, Cuerpo, UsuarioID, Secuencial, Folio, VehiculoID_ECT, VehiculoID_CR, VehiculoID_EAP, PagoID_ANA, ExcentoID, Placas, NumeroTarjeta, VehiculoID_ANA, CantidadEje_ANA, Importe_ANA, TarifaEE_ANA, TipoTLP, OperadorTLP, Cancelado, PagoID, CategoriaTLP, FechaTurno, ClaseVehiculo_ANA, NombreImagen, Consecutivo from " . $this->Ini->nm_tabela; 
-      } 
-      elseif (in_array(strtolower($this->Ini->nm_tpbanco), $this->Ini->nm_bases_informix))
-      { 
-          $nmgp_select = "SELECT CasetaID, EXTEND(FechaOperacion, YEAR TO DAY), HoraEvento, TurnoID, CarrilID, Cuerpo, UsuarioID, Secuencial, Folio, VehiculoID_ECT, VehiculoID_CR, VehiculoID_EAP, PagoID_ANA, ExcentoID, Placas, NumeroTarjeta, VehiculoID_ANA, CantidadEje_ANA, Importe_ANA, TarifaEE_ANA, TipoTLP, OperadorTLP, Cancelado, PagoID, CategoriaTLP, EXTEND(FechaTurno, YEAR TO DAY), ClaseVehiculo_ANA, NombreImagen, Consecutivo from " . $this->Ini->nm_tabela; 
-      } 
-      else 
-      { 
-          $nmgp_select = "SELECT CasetaID, FechaOperacion, HoraEvento, TurnoID, CarrilID, Cuerpo, UsuarioID, Secuencial, Folio, VehiculoID_ECT, VehiculoID_CR, VehiculoID_EAP, PagoID_ANA, ExcentoID, Placas, NumeroTarjeta, VehiculoID_ANA, CantidadEje_ANA, Importe_ANA, TarifaEE_ANA, TipoTLP, OperadorTLP, Cancelado, PagoID, CategoriaTLP, FechaTurno, ClaseVehiculo_ANA, NombreImagen, Consecutivo from " . $this->Ini->nm_tabela; 
-      } 
+      $nmgp_select = peaje_aforo_export_select_sql($this->Ini->nm_tabela, $this->Ini->nm_tpbanco, $this->Ini->nm_bases_sybase, $this->Ini->nm_bases_mssql, $this->Ini->nm_bases_informix);
       $nmgp_select .= " " . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_aforo']['where_pesq'];
       $nmgp_select_count .= " " . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_aforo']['where_pesq'];
       $nmgp_order_by = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_aforo']['order_grid'];

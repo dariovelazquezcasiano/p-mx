@@ -4763,7 +4763,7 @@ if (!isset($_SESSION['ModoImagen'])) {$_SESSION['ModoImagen'] = "";}
 if (!isset($this->sc_temp_ModoImagen)) {$this->sc_temp_ModoImagen = (isset($_SESSION['ModoImagen'])) ? $_SESSION['ModoImagen'] : "";}
 if (!isset($_SESSION['VideoIP'])) {$_SESSION['VideoIP'] = "";}
 if (!isset($this->sc_temp_VideoIP)) {$this->sc_temp_VideoIP = (isset($_SESSION['VideoIP'])) ? $_SESSION['VideoIP'] : "";}
- $check_sql = "SELECT VideoiP, ModoImagen FROM casetas WHERE CasetaID = ".$casetaid ;
+ $check_sql = "SELECT VideoiP, ModoImagen FROM casetas WHERE CasetaID = " . peaje_sql_int($casetaid, '0');
  
       $nm_select = $check_sql; 
       $_SESSION['scriptcase']['sc_sql_ult_comando'] = $nm_select; 
