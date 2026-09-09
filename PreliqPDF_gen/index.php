@@ -1906,7 +1906,7 @@ $turnogen = "";
 	$fechaOperacion = date('Y-m-d',$fechaOperacion);
 
 
-if($this->sc_temp_turno == "" && $this->sc_temp_carril =" "){
+if($this->sc_temp_turno == "" && $this->sc_temp_carril == ""){
 	$condicional = " CasetaID = ".$this->sc_temp_caseta." and FechaOperacion = '".$fechaOperacion."' ";
 	$carril = "Todos";
 	$turnogen = "Todos";
@@ -2988,7 +2988,7 @@ $caseta = $this->sc_temp_caseta;
 $usuario = "";
 $encargado_t="";
 
-if($this->sc_temp_turno == "" && $this->sc_temp_carril =" "){
+if($this->sc_temp_turno == "" && $this->sc_temp_carril == ""){
 	$sql_where = " FechaOperacion = '$fecha_op' and CasetaID= $caseta";
 	$carril = "Todos";
 	$turno = "Todos";

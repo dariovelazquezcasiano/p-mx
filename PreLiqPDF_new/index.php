@@ -1898,7 +1898,6 @@ if (!isset($_SESSION['fecha_op'])) {$_SESSION['fecha_op'] = "";}
 if (!isset($this->sc_temp_fecha_op)) {$this->sc_temp_fecha_op = (isset($_SESSION['fecha_op'])) ? $_SESSION['fecha_op'] : "";}
   $aforo_a = $aforo_i = $this->armamatriz();
 
-print_r($aforo_a);exit;
 $ruta = $this->leeConfig('RUTA','PreTurnoPDF');
 $operacion = 0;
 $montoTAG = 0;
@@ -1909,7 +1908,7 @@ $turnogen = "";
 	$fechaOperacion = date('Y-m-d',$fechaOperacion);
 
 
-if($this->sc_temp_turno == "" && $this->sc_temp_carril =" "){
+if($this->sc_temp_turno == "" && $this->sc_temp_carril == ""){
 	$condicional = " CasetaID = ".$this->sc_temp_caseta." and FechaOperacion = '".$fechaOperacion."' ";
 	$carril = "Todos";
 	$turnogen = "Todos";
@@ -3065,7 +3064,7 @@ $fecha_op = $fechaOperacion;
 $caseta = $this->sc_temp_caseta;
 $usuario = "";
 $encargado_t="";
-if($this->sc_temp_turno == "" && $this->sc_temp_carril =" "){
+if($this->sc_temp_turno == "" && $this->sc_temp_carril == ""){
 	$sql_where = " FechaOperacion = '$fecha_op' and CasetaID= $caseta";
 	$carril = "Todos";
 	$turno = "Todos";

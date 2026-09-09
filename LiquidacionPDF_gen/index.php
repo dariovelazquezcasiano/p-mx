@@ -3217,7 +3217,7 @@ function Comparativo($CasetaID, $FechaOperacion, $TurnoID, $CarrilID){
 $_SESSION['scriptcase']['LiquidacionPDF_gen']['contr_erro'] = 'on';
   
 	
-	if($TurnoID == "" && $CarrilID =" "){
+	if($TurnoID == "" && $CarrilID == ""){
 	$condicional = " CasetaID = ".$CasetaID." and FechaOperacion = '".$FechaOperacion."'";
 	$carril = "Todos";
 	$turno ="Todos";
@@ -3230,6 +3230,7 @@ $_SESSION['scriptcase']['LiquidacionPDF_gen']['contr_erro'] = 'on';
 }else{
 	$condicional = " CasetaID = ".$CasetaID." and FechaOperacion = '".$FechaOperacion."' and TurnoID = ".$TurnoID. " and CarrilID = ".$CarrilID;
 	$carril = $CarrilID;
+	$turno = $TurnoID;
 	$titulo = "TURNO - CARRIL";
 	}	
 	

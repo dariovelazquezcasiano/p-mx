@@ -2150,10 +2150,10 @@ $_SESSION['scriptcase']['PreliquidacionPDF_gen']['contr_erro'] = 'off';
 }
 function PreliquidacionGeneral($CasetaID, $fechaOperacion, $TurnoID,$CarrilID){
 $_SESSION['scriptcase']['PreliquidacionPDF_gen']['contr_erro'] = 'on';
-if (!isset($_SESSION['carril'])) {$_SESSION['carril'] = "";}
-if (!isset($this->sc_temp_carril)) {$this->sc_temp_carril = (isset($_SESSION['carril'])) ? $_SESSION['carril'] : "";}
-if (!isset($_SESSION['turno'])) {$_SESSION['turno'] = "";}
-if (!isset($this->sc_temp_turno)) {$this->sc_temp_turno = (isset($_SESSION['turno'])) ? $_SESSION['turno'] : "";}
+$_SESSION['carril'] = $CarrilID;
+$this->sc_temp_carril = $CarrilID;
+$_SESSION['turno'] = $TurnoID;
+$this->sc_temp_turno = $TurnoID;
   
 	$operacion = 0;
 $montoTAG = 0;
@@ -2161,7 +2161,7 @@ $montoCRE = 0;
 $turnogen = "";
 
 
-if($this->sc_temp_turno == "" && $this->sc_temp_carril =" "){
+if($this->sc_temp_turno == "" && $this->sc_temp_carril == ""){
 	$condicional = " CasetaID = ".$CasetaID." and FechaOperacion = '".$fechaOperacion."' ";
 	$carril = "Todos";
 	$turnogen = "Todos";
@@ -3189,19 +3189,19 @@ $_SESSION['scriptcase']['PreliquidacionPDF_gen']['contr_erro'] = 'off';
 }
 function Comparativo($CasetaID, $fechaOperacion, $TurnoID, $CarrilID){
 $_SESSION['scriptcase']['PreliquidacionPDF_gen']['contr_erro'] = 'on';
-if (!isset($_SESSION['carril'])) {$_SESSION['carril'] = "";}
-if (!isset($this->sc_temp_carril)) {$this->sc_temp_carril = (isset($_SESSION['carril'])) ? $_SESSION['carril'] : "";}
-if (!isset($_SESSION['caseta'])) {$_SESSION['caseta'] = "";}
-if (!isset($this->sc_temp_caseta)) {$this->sc_temp_caseta = (isset($_SESSION['caseta'])) ? $_SESSION['caseta'] : "";}
-if (!isset($_SESSION['turno'])) {$_SESSION['turno'] = "";}
-if (!isset($this->sc_temp_turno)) {$this->sc_temp_turno = (isset($_SESSION['turno'])) ? $_SESSION['turno'] : "";}
+$_SESSION['carril'] = $CarrilID;
+$this->sc_temp_carril = $CarrilID;
+$_SESSION['caseta'] = $CasetaID;
+$this->sc_temp_caseta = $CasetaID;
+$_SESSION['turno'] = $TurnoID;
+$this->sc_temp_turno = $TurnoID;
   
 	$fecha_op = $fechaOperacion;
 
 $caseta = $this->sc_temp_caseta;
 $usuario = "";
 $encargado_t="";
-if($this->sc_temp_turno == "" && $this->sc_temp_carril =" "){
+if($this->sc_temp_turno == "" && $this->sc_temp_carril == ""){
 	$sql_where = " FechaOperacion = '$fecha_op' and CasetaID= $caseta";
 	$carril = "Todos";
 	$turno = "Todos";
