@@ -1868,18 +1868,12 @@ class portada_apl
       header("X-XSS-Protection: 1; mode=block");
       header("X-Frame-Options: SAMEORIGIN");
       $_SESSION['scriptcase']['portada']['contr_erro'] = 'on';
- $url="http://".$_SERVER["HTTP_HOST"]."/portada/tkz_portada.png";
 ?>
-<style>
-body{
-    /* background-image:url(<?php echo $url;?>) !important;
-    background-repeat:no-repeat; 
-    background-attachment: fixed; 
-    background-position:top !important;
-    background-size: cover;} */
-    background-color: #e7eaf1;
-
-</style>
+<link rel="stylesheet" type="text/css" href="../menu/peaje_menu.css?v=20260910-menu-font" />
+<?php
+include_once(dirname(__FILE__) . "/../menu/peaje_home.php");
+peaje_home_render();
+?>
 <?php
 $_SESSION['scriptcase']['portada']['contr_erro'] = 'off'; 
 //--- 
