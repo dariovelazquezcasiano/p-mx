@@ -1,4 +1,5 @@
 <?php
+require_once dirname(__DIR__) . '/_lib/lib/php/peaje_sql_guard.php';
 //
 class control_eventosdiarios_mob_apl
 {
@@ -1826,7 +1827,7 @@ if (isset($this->NM_ajax_flag) && $this->NM_ajax_flag)
     $original_hora_inicio = $this->hora_inicio;
 }
 if (!isset($this->sc_temp_ed_periodo)) {$this->sc_temp_ed_periodo = (isset($_SESSION['ed_periodo'])) ? $_SESSION['ed_periodo'] : "";}
- $this->sc_temp_ed_periodo = "(CONCAT(FechaOperacion,' ',HoraEvento) BETWEEN '".$this->fecha_inicio . " ".$this->hora_inicio ."' AND '".$this->fecha_fin ." ".$this->hora_fin ."')";
+ $this->sc_temp_ed_periodo = peaje_sql_datetime_between_condition($this->Db, 'FechaOperacion', 'HoraEvento', $this->fecha_inicio . " " . $this->hora_inicio, $this->fecha_fin . " " . $this->hora_fin);
 if (isset($this->sc_temp_ed_periodo)) { $_SESSION['ed_periodo'] = $this->sc_temp_ed_periodo;}
 if (isset($this->NM_ajax_flag) && $this->NM_ajax_flag)
 {

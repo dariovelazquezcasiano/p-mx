@@ -3142,26 +3142,30 @@ if (!isset($this->sc_temp_turno)) {$this->sc_temp_turno = (isset($_SESSION['turn
 $fecha_op = $fechaOperacion;
 
 $caseta = $this->sc_temp_caseta;
+$fechaOpSql = peaje_sql_qstr($this->Db, $fecha_op);
+$casetaSql = peaje_sql_int($caseta, '0');
+$turnoSql = peaje_sql_int($this->sc_temp_turno, '0');
+$carrilSql = peaje_sql_int($this->sc_temp_carril, '0');
 $usuario = "";
 $encargado_t="";
 if($this->sc_temp_turno == "" && $this->sc_temp_carril == ""){
-	$sql_where = " FechaOperacion = '$fecha_op' and CasetaID= $caseta";
+	$sql_where = " FechaOperacion = " . $fechaOpSql . " and CasetaID= " . $casetaSql;
 	$carril = "Todos";
 	$turno = "Todos";
 	$titulo = "DÍA";
 	}elseif($this->sc_temp_carril == ""){
-	$sql_where = " FechaOperacion = '$fecha_op' and CasetaID= $caseta  and TurnoID = ".$this->sc_temp_turno;
+	$sql_where = " FechaOperacion = " . $fechaOpSql . " and CasetaID= " . $casetaSql . "  and TurnoID = " . $turnoSql;
 	$carril = "Todos";
 	$turno = $this->sc_temp_turno;
 	$titulo = "TURNO";
 	}else{
-	$sql_where = " FechaOperacion = '$fecha_op' and CasetaID= $caseta  and TurnoID = ".$this->sc_temp_turno." AND  CarrilID = ".$this->sc_temp_carril;
+	$sql_where = " FechaOperacion = " . $fechaOpSql . " and CasetaID= " . $casetaSql . "  and TurnoID = " . $turnoSql . " AND  CarrilID = " . $carrilSql;
 	$carril = $this->sc_temp_carril;
 	$turno = $this->sc_temp_turno;
 	$titulo = "TURNO - CARRIL";
 	}
 
-$check_sql = "SELECT HoraInicio, FolioInicialCR FROM detalleturno WHERE CasetaID = $caseta and FechaOperacion = '$fecha_op' and PreLiquidado =1 ORDER BY HoraInicio ASC Limit 1";
+$check_sql = "SELECT HoraInicio, FolioInicialCR FROM detalleturno WHERE CasetaID = " . $casetaSql . " and FechaOperacion = " . $fechaOpSql . " and PreLiquidado =1 ORDER BY HoraInicio ASC Limit 1";
  
       $nm_select = $check_sql; 
       $_SESSION['scriptcase']['sc_sql_ult_comando'] = $nm_select; 
@@ -3199,7 +3203,7 @@ if (isset($rs[0][0]))
 	$hora_ini="";
 	$folio_inicial = "";
 }
-$check_sql = "SELECT HoraFin, FolioFinalCR  FROM detalleturno WHERE  CasetaID = $caseta and FechaOperacion = '$fecha_op' and PreLiquidado = 1 ORDER BY HoraFin DESC Limit 1";
+$check_sql = "SELECT HoraFin, FolioFinalCR  FROM detalleturno WHERE  CasetaID = " . $casetaSql . " and FechaOperacion = " . $fechaOpSql . " and PreLiquidado = 1 ORDER BY HoraFin DESC Limit 1";
  
       $nm_select = $check_sql; 
       $_SESSION['scriptcase']['sc_sql_ult_comando'] = $nm_select; 

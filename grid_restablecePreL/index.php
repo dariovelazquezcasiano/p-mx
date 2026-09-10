@@ -2793,7 +2793,7 @@ class grid_restablecePreL_apl
       { 
          unset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_restablecePreL']['use_pass_pdf']);
          $_SESSION['sc_session'][$this->Ini->sc_page]['grid_restablecePreL']['prim_cons'] = true;  
-         $_SESSION['sc_session'][$this->Ini->sc_page]['grid_restablecePreL']['where_orig'] = " where (PreLiquidado =1 and FolioCierre <>'')";
+         $_SESSION['sc_session'][$this->Ini->sc_page]['grid_restablecePreL']['where_orig'] = " where (PreLiquidado =1 and FolioCierre > '')";
          $_SESSION['sc_session'][$this->Ini->sc_page]['grid_restablecePreL']['where_pesq']        = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_restablecePreL']['where_orig'];  
          $_SESSION['sc_session'][$this->Ini->sc_page]['grid_restablecePreL']['where_pesq_ant']    = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_restablecePreL']['where_orig'];  
          $_SESSION['sc_session'][$this->Ini->sc_page]['grid_restablecePreL']['cond_pesq']         = ""; 

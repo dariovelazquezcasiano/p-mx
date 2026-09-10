@@ -271,13 +271,17 @@ $checks = @(
     @{ Name = "grid_aforo"; Url = $base + "/grid_aforo/?script_case_init=$scriptCaseInit"; MinBytes = 1000 },
     @{ Name = "grid_trafico"; Url = $base + "/grid_trafico/?script_case_init=$scriptCaseInit"; MinBytes = 1000 },
     @{ Name = "grid_aforo_liquidacionCR"; Url = $base + "/grid_aforo_liquidacionCR/?$queryString"; MinBytes = 1000 },
+    @{ Name = "grid_aforo_liquidacionCR_psm"; Url = $base + "/grid_aforo_liquidacionCR_psm/?$queryString"; MinBytes = 1000 },
     @{ Name = "aforo_liquidacion_vw"; Url = $base + "/aforo_liquidacion_vw/?$queryString"; MinBytes = 1000 },
     @{ Name = "form_aforo_liquidacionCR"; Url = $base + "/form_aforo_liquidacionCR/?$queryString"; MinBytes = 1000 },
     @{ Name = "form_aforo_liquidacionVW"; Url = $base + "/form_aforo_liquidacionVW/?$queryString"; MinBytes = 1000 },
+    @{ Name = "grid_alarma_operacion"; Url = $base + "/grid_alarma_operacion/?$queryString"; MinBytes = 1000 },
+    @{ Name = "control_eventosdiarios"; Url = $base + "/control_eventosdiarios/?script_case_init=$scriptCaseInit"; MinBytes = 1000 },
     @{ Name = "grid_preliquidacion_fs"; Url = $base + "/grid_preliquidacion_fs/?$queryString"; MinBytes = 1000 },
     @{ Name = "grid_preliquidacion_fs_ok"; Url = $base + "/grid_preliquidacion_fs_ok/?$queryString"; MinBytes = 1000 },
     @{ Name = "grid_liquidacion_fs"; Url = $base + "/grid_liquidacion_fs/?$queryString"; MinBytes = 1000 },
     @{ Name = "grid_liquidacion_fs_v2"; Url = $base + "/grid_liquidacion_fs_v2/?$queryString"; MinBytes = 1000 },
+    @{ Name = "grid_restablecePreL"; Url = $base + "/grid_restablecePreL/?script_case_init=$scriptCaseInit"; MinBytes = 1000 },
     @{ Name = "grid_reversaliquidacion"; Url = $base + "/grid_reversaliquidacion/?$queryString"; MinBytes = 1000 },
     @{ Name = "Liquidacion"; Url = $base + "/Liquidacion/?$queryString"; MinBytes = 1000 },
     @{ Name = "LiquidacionPDF_gen"; Url = $base + "/LiquidacionPDF_gen/?$pdfQueryString"; MinBytes = 1000; ExpectedContentType = "pdf" },
@@ -307,6 +311,8 @@ foreach ($check in $checks) {
 
 $exportChecks = @(
     @{ Name = "grid_aforo_liquidacionCR_export_csv"; Grid = "grid_aforo_liquidacionCR"; Ctrl = "grid_aforo_liquidacionCR_export_ctrl.php" },
+    @{ Name = "grid_aforo_liquidacionCR_psm_export_csv"; Grid = "grid_aforo_liquidacionCR_psm"; Ctrl = "grid_aforo_liquidacionCR_psm_export_ctrl.php" },
+    @{ Name = "grid_alarma_operacion_export_csv"; Grid = "grid_alarma_operacion"; Ctrl = "grid_alarma_operacion_export_ctrl.php" },
     @{ Name = "aforo_liquidacion_vw_export_csv"; Grid = "aforo_liquidacion_vw"; Ctrl = "aforo_liquidacion_vw_export_ctrl.php" }
 )
 

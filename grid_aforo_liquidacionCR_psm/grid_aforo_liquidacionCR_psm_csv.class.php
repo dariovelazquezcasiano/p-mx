@@ -1,4 +1,5 @@
 <?php
+require_once dirname(__DIR__) . '/_lib/lib/php/peaje_sql_guard.php';
 
 class grid_aforo_liquidacionCR_psm_csv
 {
@@ -334,15 +335,8 @@ if (!isset($this->sc_temp_CasetaID)) {$this->sc_temp_CasetaID = (isset($_SESSION
 
 
 
-$sqlInicioDictamen = "SELECT FechaInicioDictamen FROM `detalleturno` 
-					   WHERE CasetaID = $this->sc_temp_CasetaID 
-					   AND FechaOperacion = '$this->sc_temp_FechaOperacion' 
-					   AND TurnoID = $this->sc_temp_TurnoID 
-					   AND CarrilID = $this->sc_temp_CarrilID 
-					   AND Cuerpo = '$this->sc_temp_Cuerpo' 
-					   AND OperacionID = $this->sc_temp_OperacionID 
-					   AND CONCAT(FechaOperacion,' ',HoraInicio) = '$this->sc_temp_FHI' 
-					   AND CONCAT(FechaOperacion,' ',HoraFin) = '$this->sc_temp_FHF'";
+$detalleTurnoPeriodoSql = peaje_detalleturno_periodo_where($this->Db, $this->sc_temp_CasetaID, $this->sc_temp_FechaOperacion, $this->sc_temp_TurnoID, $this->sc_temp_CarrilID, $this->sc_temp_Cuerpo, $this->sc_temp_OperacionID, $this->sc_temp_FHI, $this->sc_temp_FHF);
+$sqlInicioDictamen = "SELECT FechaInicioDictamen FROM `detalleturno` WHERE " . $detalleTurnoPeriodoSql;
 
 
  
@@ -380,15 +374,7 @@ if(!empty($this->fd )){
 		
 		echo $fechaHora;
 		
-		$sqlUpdateFechaInicioDictamen = "UPDATE detalleturno SET FechaInicioDictamen = '$fechaHora'
-					   WHERE CasetaID = $this->sc_temp_CasetaID 
-					   AND FechaOperacion = '$this->sc_temp_FechaOperacion' 
-					   AND TurnoID = $this->sc_temp_TurnoID 
-					   AND CarrilID = $this->sc_temp_CarrilID 
-					   AND Cuerpo = '$this->sc_temp_Cuerpo' 
-					   AND OperacionID = $this->sc_temp_OperacionID 
-					   AND CONCAT(FechaOperacion,' ',HoraInicio) = '$this->sc_temp_FHI' 
-					   AND CONCAT(FechaOperacion,' ',HoraFin) = '$this->sc_temp_FHF'";
+		$sqlUpdateFechaInicioDictamen = "UPDATE detalleturno SET FechaInicioDictamen = '$fechaHora' WHERE " . $detalleTurnoPeriodoSql;
 		
 		 
       $nm_select = $sqlUpdateFechaInicioDictamen; 

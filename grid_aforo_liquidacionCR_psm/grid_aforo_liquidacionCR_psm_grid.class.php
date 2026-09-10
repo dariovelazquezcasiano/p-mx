@@ -1,4 +1,5 @@
 <?php
+require_once dirname(__DIR__) . '/_lib/lib/php/peaje_sql_guard.php';
 class grid_aforo_liquidacionCR_psm_grid
 {
    var $Ini;
@@ -508,15 +509,8 @@ if (!isset($this->sc_temp_CasetaID)) {$this->sc_temp_CasetaID = (isset($_SESSION
 
 
 
-$sqlInicioDictamen = "SELECT FechaInicioDictamen FROM `detalleturno` 
-					   WHERE CasetaID = $this->sc_temp_CasetaID 
-					   AND FechaOperacion = '$this->sc_temp_FechaOperacion' 
-					   AND TurnoID = $this->sc_temp_TurnoID 
-					   AND CarrilID = $this->sc_temp_CarrilID 
-					   AND Cuerpo = '$this->sc_temp_Cuerpo' 
-					   AND OperacionID = $this->sc_temp_OperacionID 
-					   AND CONCAT(FechaOperacion,' ',HoraInicio) = '$this->sc_temp_FHI' 
-					   AND CONCAT(FechaOperacion,' ',HoraFin) = '$this->sc_temp_FHF'";
+$detalleTurnoPeriodoSql = peaje_detalleturno_periodo_where($this->Db, $this->sc_temp_CasetaID, $this->sc_temp_FechaOperacion, $this->sc_temp_TurnoID, $this->sc_temp_CarrilID, $this->sc_temp_Cuerpo, $this->sc_temp_OperacionID, $this->sc_temp_FHI, $this->sc_temp_FHF);
+$sqlInicioDictamen = "SELECT FechaInicioDictamen FROM `detalleturno` WHERE " . $detalleTurnoPeriodoSql;
 
 
  
@@ -554,15 +548,7 @@ if(!empty($this->fd )){
 		
 		echo $fechaHora;
 		
-		$sqlUpdateFechaInicioDictamen = "UPDATE detalleturno SET FechaInicioDictamen = '$fechaHora'
-					   WHERE CasetaID = $this->sc_temp_CasetaID 
-					   AND FechaOperacion = '$this->sc_temp_FechaOperacion' 
-					   AND TurnoID = $this->sc_temp_TurnoID 
-					   AND CarrilID = $this->sc_temp_CarrilID 
-					   AND Cuerpo = '$this->sc_temp_Cuerpo' 
-					   AND OperacionID = $this->sc_temp_OperacionID 
-					   AND CONCAT(FechaOperacion,' ',HoraInicio) = '$this->sc_temp_FHI' 
-					   AND CONCAT(FechaOperacion,' ',HoraFin) = '$this->sc_temp_FHF'";
+		$sqlUpdateFechaInicioDictamen = "UPDATE detalleturno SET FechaInicioDictamen = '$fechaHora' WHERE " . $detalleTurnoPeriodoSql;
 		
 		 
       $nm_select = $sqlUpdateFechaInicioDictamen; 
@@ -821,7 +807,15 @@ $_SESSION['scriptcase']['grid_aforo_liquidacionCR_psm']['contr_erro'] = 'off';
    if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_aforo_liquidacionCR_psm']['where_orig']) || $_SESSION['sc_session'][$this->Ini->sc_page]['grid_aforo_liquidacionCR_psm']['prim_cons'] || !empty($nmgp_parms))  
    { 
        $_SESSION['sc_session'][$this->Ini->sc_page]['grid_aforo_liquidacionCR_psm']['prim_cons'] = false;  
-       $_SESSION['sc_session'][$this->Ini->sc_page]['grid_aforo_liquidacionCR_psm']['where_orig'] = " where (CasetaID = '" . $_SESSION['CasetaID'] . "' and FechaOperacion = '" . $_SESSION['FechaOperacion'] . "' and TurnoID = '" . $_SESSION['TurnoID'] . "' and CarrilID = '" . $_SESSION['CarrilID'] . "' and Cuerpo = '" . $_SESSION['Cuerpo'] . "' and OperacionID = " . $_SESSION['OperacionID'] . " and CONCAT(FechaOperacion,' ',HoraEvento) >= '" . $_SESSION['FHI'] . "' and CONCAT(FechaTurno,' ',HoraEvento) <= '" . $_SESSION['FHF'] . "')";  
+       $casetaIdSql = peaje_sql_qstr($this->Db, isset($_SESSION['CasetaID']) ? $_SESSION['CasetaID'] : '');
+       $turnoIdSql = peaje_sql_int(isset($_SESSION['TurnoID']) ? $_SESSION['TurnoID'] : '', '0');
+       $carrilIdSql = peaje_sql_int(isset($_SESSION['CarrilID']) ? $_SESSION['CarrilID'] : '', '0');
+       $operacionIdSql = peaje_sql_int(isset($_SESSION['OperacionID']) ? $_SESSION['OperacionID'] : '', '0');
+       $fechaOperacionSql = peaje_sql_qstr($this->Db, isset($_SESSION['FechaOperacion']) ? $_SESSION['FechaOperacion'] : '');
+       $cuerpoSql = peaje_sql_qstr($this->Db, isset($_SESSION['Cuerpo']) ? $_SESSION['Cuerpo'] : '');
+       $fhiCondSql = peaje_sql_datetime_condition($this->Db, 'FechaOperacion', 'HoraEvento', '>=', isset($_SESSION['FHI']) ? $_SESSION['FHI'] : '');
+       $fhfCondSql = peaje_sql_datetime_condition($this->Db, 'FechaTurno', 'HoraEvento', '<=', isset($_SESSION['FHF']) ? $_SESSION['FHF'] : '');
+       $_SESSION['sc_session'][$this->Ini->sc_page]['grid_aforo_liquidacionCR_psm']['where_orig'] = " where (CasetaID = " . $casetaIdSql . " and FechaOperacion = " . $fechaOperacionSql . " and TurnoID = " . $turnoIdSql . " and CarrilID = " . $carrilIdSql . " and Cuerpo = " . $cuerpoSql . " and OperacionID = " . $operacionIdSql . " and " . $fhiCondSql . " and " . $fhfCondSql . ")";
        $_SESSION['sc_session'][$this->Ini->sc_page]['grid_aforo_liquidacionCR_psm']['where_pesq']        = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_aforo_liquidacionCR_psm']['where_orig'];  
        $_SESSION['sc_session'][$this->Ini->sc_page]['grid_aforo_liquidacionCR_psm']['where_pesq_ant']    = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_aforo_liquidacionCR_psm']['where_orig'];  
        $_SESSION['sc_session'][$this->Ini->sc_page]['grid_aforo_liquidacionCR_psm']['cond_pesq']         = ""; 

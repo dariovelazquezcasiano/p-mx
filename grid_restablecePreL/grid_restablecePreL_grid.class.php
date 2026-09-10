@@ -607,7 +607,7 @@ class grid_restablecePreL_grid
    if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_restablecePreL']['where_orig']) || $_SESSION['sc_session'][$this->Ini->sc_page]['grid_restablecePreL']['prim_cons'] || !empty($nmgp_parms))  
    { 
        $_SESSION['sc_session'][$this->Ini->sc_page]['grid_restablecePreL']['prim_cons'] = false;  
-       $_SESSION['sc_session'][$this->Ini->sc_page]['grid_restablecePreL']['where_orig'] = " where (PreLiquidado =1 and FolioCierre <>'')";  
+       $_SESSION['sc_session'][$this->Ini->sc_page]['grid_restablecePreL']['where_orig'] = " where (PreLiquidado =1 and FolioCierre > '')";
        $_SESSION['sc_session'][$this->Ini->sc_page]['grid_restablecePreL']['where_pesq']        = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_restablecePreL']['where_orig'];  
        $_SESSION['sc_session'][$this->Ini->sc_page]['grid_restablecePreL']['where_pesq_ant']    = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_restablecePreL']['where_orig'];  
        $_SESSION['sc_session'][$this->Ini->sc_page]['grid_restablecePreL']['cond_pesq']         = ""; 

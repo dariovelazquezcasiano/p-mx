@@ -84,6 +84,20 @@ if (!function_exists('peaje_sql_datetime_between_condition')) {
     }
 }
 
+if (!function_exists('peaje_detalleturno_periodo_where')) {
+    function peaje_detalleturno_periodo_where($db, $casetaId, $fechaOperacion, $turnoId, $carrilId, $cuerpo, $operacionId, $fechaHoraInicio, $fechaHoraFin)
+    {
+        return "CasetaID = " . peaje_sql_int($casetaId, '0')
+            . " AND FechaOperacion = " . peaje_sql_qstr($db, $fechaOperacion)
+            . " AND TurnoID = " . peaje_sql_int($turnoId, '0')
+            . " AND CarrilID = " . peaje_sql_int($carrilId, '0')
+            . " AND Cuerpo = " . peaje_sql_qstr($db, $cuerpo)
+            . " AND OperacionID = " . peaje_sql_int($operacionId, '0')
+            . " AND " . peaje_sql_datetime_condition($db, 'FechaOperacion', 'HoraInicio', '=', $fechaHoraInicio)
+            . " AND " . peaje_sql_datetime_condition($db, 'FechaOperacion', 'HoraFin', '=', $fechaHoraFin);
+    }
+}
+
 if (!function_exists('peaje_db_fetch_all')) {
     function peaje_db_fetch_all($db, $sql, &$error = null)
     {

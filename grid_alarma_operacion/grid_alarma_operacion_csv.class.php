@@ -1,4 +1,5 @@
 <?php
+require_once dirname(__DIR__) . '/_lib/lib/php/peaje_sql_guard.php';
 
 class grid_alarma_operacion_csv
 {
@@ -308,7 +309,12 @@ if (!isset($_SESSION['TurnoID'])) {$_SESSION['TurnoID'] = "";}
 if (!isset($this->sc_temp_TurnoID)) {$this->sc_temp_TurnoID = (isset($_SESSION['TurnoID'])) ? $_SESSION['TurnoID'] : "";}
 if (!isset($_SESSION['CasetaID'])) {$_SESSION['CasetaID'] = "";}
 if (!isset($this->sc_temp_CasetaID)) {$this->sc_temp_CasetaID = (isset($_SESSION['CasetaID'])) ? $_SESSION['CasetaID'] : "";}
- $this->nm_where_dinamico = "WHERE CasetaID = ".$this->sc_temp_CasetaID." and TurnoID = ".$this->sc_temp_TurnoID." and CarrilID = ".$this->sc_temp_CarrilID." and Cuerpo = '".$this->sc_temp_Cuerpo."' and AlarmaID in (5,6,11,12,13,14,15,16,17) and Concat(Fecha,' ',Hora) BETWEEN '".$this->sc_temp_FHI."' and '".$this->sc_temp_FHF."'";
+$casetaIdSql = peaje_sql_int($this->sc_temp_CasetaID, '0');
+$turnoIdSql = peaje_sql_int($this->sc_temp_TurnoID, '0');
+$carrilIdSql = peaje_sql_int($this->sc_temp_CarrilID, '0');
+$cuerpoSql = peaje_sql_qstr($this->Db, $this->sc_temp_Cuerpo);
+$periodoSql = peaje_sql_datetime_between_condition($this->Db, 'Fecha', 'Hora', $this->sc_temp_FHI, $this->sc_temp_FHF);
+ $this->nm_where_dinamico = "WHERE CasetaID = " . $casetaIdSql . " and TurnoID = " . $turnoIdSql . " and CarrilID = " . $carrilIdSql . " and Cuerpo = " . $cuerpoSql . " and AlarmaID in (5,6,11,12,13,14,15,16,17) and " . $periodoSql;
 if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_alarma_operacion']['where_dinamico']) || $_SESSION['sc_session'][$this->Ini->sc_page]['grid_alarma_operacion']['where_dinamico'] != $this->nm_where_dinamico) {
     $_SESSION['sc_session'][$this->Ini->sc_page]['grid_alarma_operacion']['where_dinamico'] = $this->nm_where_dinamico;
     unset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_alarma_operacion']['inicio']);
