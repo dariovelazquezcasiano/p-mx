@@ -11,7 +11,7 @@ Inventario generado con `tools/peaje_legacy_inventory.ps1`, revisando carpetas c
 
 ## Candidatos altos
 
-Estas carpetas existen, estan registradas en `seg_apps`, no tienen grupos con acceso activo y no tienen referencias detectadas en codigo principal:
+Estas carpetas existian en raiz, estan registradas en `seg_apps`, no tienen grupos con acceso activo y no tienen referencias detectadas en codigo principal. Fueron aisladas en `legacy_disabled/2026-09-10/`:
 
 - `chart_aforo_1`
 - `grid_discrepancias_2`
@@ -33,4 +33,4 @@ Estas carpetas no tienen acceso activo, pero si aparecen referenciadas en codigo
 
 ## Siguiente accion recomendada
 
-Antes de borrar, aislar primero los candidatos altos en una carpeta legacy o crear un commit exclusivo de eliminacion. Despues correr smoke completo y validar menu/reportes.
+Despues de unos ciclos de validacion, estos candidatos altos pueden eliminarse del repositorio y limpiar sus registros de `seg_apps`/`seg_groups_apps` si no aparece uso real por liga directa.
