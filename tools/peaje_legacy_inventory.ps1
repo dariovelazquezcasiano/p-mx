@@ -38,11 +38,11 @@ function Invoke-PeajeMysqlValue {
 function Get-PeajeCodeReferenceCount {
     param([string]$Name)
 
+    $pattern = "(^|[^A-Za-z0-9_])" + [regex]::Escape($Name) + "([^A-Za-z0-9_]|$)"
     $rgArgs = @(
         "-n",
         "-c",
-        "-F",
-        $Name,
+        $pattern,
         "--glob",
         "index.php",
         "--glob",

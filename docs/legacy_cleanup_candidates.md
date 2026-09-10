@@ -16,6 +16,14 @@ Estas carpetas existian en raiz, estan registradas en `seg_apps`, no tienen grup
 - `chart_aforo_1`
 - `grid_discrepancias_2`
 - `ResumenPrePDF_nuevo`
+- `PreliquidacionPDF_gen`
+
+Tambien se aislaron en `legacy_disabled/2026-09-10/friendly_url/` las rutas amigables de:
+
+- `chart_aforo_1`
+- `grid_discrepancias_2`
+- `ResumenPrePDF_nuevo`
+- `PreliquidacionPDF_gen`
 
 ## Mantener por ahora
 
@@ -24,7 +32,10 @@ Estas carpetas no tienen referencias detectadas, pero si tienen acceso activo pa
 - `blank_1`
 - `blank_5`
 - `burbuja_2`
+- `PreliqPDF_gen`
 - `PreLiqPDF_new`
+
+Estos deben moverse solo con aprobacion explicita: no aparecen referenciados en codigo, pero podrian usarse por acceso directo o favoritos de usuarios.
 
 Estas carpetas no tienen acceso activo, pero si aparecen referenciadas en codigo principal:
 
