@@ -1,0 +1,302 @@
+body.sc-app-contr {
+  min-height: 100vh;
+  margin: 0 !important;
+  padding: 36px 20px !important;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1f2933;
+  background:
+    linear-gradient(110deg, rgba(31, 41, 51, 0.98) 0%, rgba(31, 41, 51, 0.98) 42%, rgba(245, 247, 248, 0.98) 42.1%, rgba(245, 247, 248, 0.98) 100%),
+    #f5f7f8;
+  font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+}
+
+body.sc-app-contr::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 72px, rgba(255, 255, 255, 0.07) 72px 74px),
+    linear-gradient(150deg, transparent 0 44%, rgba(245, 158, 11, 0.36) 44.1% 44.5%, rgba(15, 118, 110, 0.44) 44.6% 45.1%, transparent 45.2% 100%);
+}
+
+body.sc-app-contr * {
+  box-sizing: border-box;
+}
+
+body.sc-app-contr form[name="F1"] {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 430px;
+  min-width: 0;
+  margin: 0 auto;
+}
+
+body.sc-app-contr #main_table_form,
+body.sc-app-contr #main_table_form > tbody,
+body.sc-app-contr #main_table_form > tbody > tr,
+body.sc-app-contr #main_table_form > tbody > tr > td {
+  display: block;
+  width: 100% !important;
+  max-width: 100%;
+  min-width: 0;
+}
+
+body.sc-app-contr #main_table_form {
+  margin: 0 auto !important;
+  table-layout: fixed;
+}
+
+body.sc-app-contr #main_table_form > tbody > tr > td {
+  padding: 0 !important;
+}
+
+body.sc-app-contr .scFormBorder {
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  border: 1px solid #d7dde2 !important;
+  border-radius: 8px;
+  background: #ffffff !important;
+  box-shadow: 0 24px 55px rgba(15, 23, 42, 0.22);
+}
+
+body.sc-app-contr .scFormBorder > table,
+body.sc-app-contr .scFormBorder > table > tbody,
+body.sc-app-contr .scFormBorder > table > tbody > tr,
+body.sc-app-contr .scFormBorder > table > tbody > tr > td {
+  display: block;
+  width: 100%;
+}
+
+body.sc-app-contr .scFormHeader {
+  display: none;
+}
+
+.peaje-login-header {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 28px 28px 22px;
+  border-bottom: 1px solid #edf0f2;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafb 100%);
+}
+
+.peaje-login-mark {
+  position: relative;
+  display: grid;
+  flex: 0 0 48px;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #0f766e;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.peaje-login-mark::after {
+  content: "";
+  position: absolute;
+  right: -8px;
+  bottom: 9px;
+  width: 36px;
+  height: 4px;
+  transform: rotate(-28deg);
+  border-radius: 999px;
+  background: #f59e0b;
+}
+
+.peaje-login-copy h1 {
+  margin: 0;
+  color: #17202a;
+  font-size: 24px;
+  font-weight: 750;
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+
+.peaje-login-copy p {
+  margin: 6px 0 0;
+  color: #64707d;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+body.sc-app-contr #div_hidden_bloco_0 {
+  padding: 24px 28px 2px;
+}
+
+body.sc-app-contr #hidden_bloco_0,
+body.sc-app-contr #hidden_bloco_0 > tbody,
+body.sc-app-contr #hidden_bloco_0 > tbody > tr,
+body.sc-app-contr #hidden_bloco_0 > tbody > tr > td {
+  display: block;
+  width: 100% !important;
+}
+
+body.sc-app-contr .scFormTable,
+body.sc-app-contr .scFormDataOdd,
+body.sc-app-contr .scFormLabelOdd {
+  border: 0 !important;
+  background: transparent !important;
+}
+
+body.sc-app-contr td.css_login_label,
+body.sc-app-contr td.css_pswd_label {
+  width: 100% !important;
+  padding: 0 0 8px !important;
+}
+
+body.sc-app-contr td.css_login_line,
+body.sc-app-contr td.css_pswd_line {
+  width: 100% !important;
+  padding: 0 0 18px !important;
+}
+
+body.sc-app-contr .css_login_label,
+body.sc-app-contr .css_pswd_label,
+body.sc-app-contr .scFormLabelOddFormat {
+  color: #344050 !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+
+body.sc-app-contr #id_read_off_login,
+body.sc-app-contr #id_read_off_pswd {
+  display: block !important;
+  width: 100%;
+  white-space: normal !important;
+}
+
+body.sc-app-contr #id_sc_field_login,
+body.sc-app-contr #id_sc_field_pswd {
+  width: 100% !important;
+  height: 44px !important;
+  margin: 0;
+  padding: 0 12px !important;
+  border: 1px solid #c7d0d9 !important;
+  border-radius: 6px;
+  outline: 0;
+  background: #ffffff !important;
+  color: #111827 !important;
+  font-size: 15px !important;
+  line-height: 44px !important;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+body.sc-app-contr #id_sc_field_login:focus,
+body.sc-app-contr #id_sc_field_pswd:focus {
+  border-color: #0f766e !important;
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.16);
+}
+
+body.sc-app-contr #sc-id-required-row {
+  display: none;
+}
+
+body.sc-app-contr .scFormToolbar {
+  border: 0 !important;
+  background: transparent !important;
+}
+
+body.sc-app-contr .scFormToolbar table,
+body.sc-app-contr .scFormToolbar tbody,
+body.sc-app-contr .scFormToolbar tr,
+body.sc-app-contr .scFormToolbar td {
+  display: block;
+  width: 100% !important;
+  border: 0 !important;
+  background: transparent !important;
+  text-align: center !important;
+}
+
+body.sc-app-contr .scFormToolbarPadding {
+  display: none !important;
+  padding: 0 !important;
+}
+
+body.sc-app-contr .scFormToolbarPadding.peaje-login-action {
+  display: block !important;
+  padding: 0 28px 28px !important;
+}
+
+body.sc-app-contr #sub_form_b {
+  display: block !important;
+  width: 100% !important;
+  min-width: 0;
+  height: 44px !important;
+  padding: 0 16px !important;
+  border: 0 !important;
+  border-radius: 6px !important;
+  background: #0f766e !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  font-family: "Segoe UI", Tahoma, Arial, sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 750 !important;
+  line-height: 44px !important;
+  cursor: pointer;
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+
+body.sc-app-contr #sub_form_b:hover,
+body.sc-app-contr #sub_form_b:focus {
+  background: #0b625d !important;
+}
+
+body.sc-app-contr #sub_form_b:active {
+  transform: translateY(1px);
+}
+
+body.sc-app-contr #sub_form_b.disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+body.sc-app-contr .scFormErrorTable,
+body.sc-app-contr .scFormMessageTable {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+@media (max-width: 720px) {
+  body.sc-app-contr {
+    align-items: flex-start;
+    padding: 28px 16px !important;
+    background: #f5f7f8;
+  }
+
+  body.sc-app-contr form[name="F1"] {
+    margin-top: 4vh;
+  }
+
+  .peaje-login-header {
+    padding: 24px 22px 20px;
+  }
+
+  body.sc-app-contr #div_hidden_bloco_0 {
+    padding: 22px 22px 0;
+  }
+
+  body.sc-app-contr .scFormToolbarPadding {
+    padding: 0 !important;
+  }
+
+  body.sc-app-contr .scFormToolbarPadding.peaje-login-action {
+    padding: 0 22px 24px !important;
+  }
+}

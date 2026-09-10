@@ -23,16 +23,7 @@ header("X-Frame-Options: SAMEORIGIN");
  <META http-equiv="Cache-Control" content="post-check=0, pre-check=0" />
  <META http-equiv="Pragma" content="no-cache" />
  <link rel="shortcut icon" href="../_lib/img/scriptcase__NM__ico__NM__favicon.png">
-<?php
-
-if (isset($_SESSION['scriptcase']['device_mobile']) && $_SESSION['scriptcase']['device_mobile'] && $_SESSION['scriptcase']['display_mobile'])
-{
-?>
- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-<?php
-}
-
-?>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
  <link rel="stylesheet" href="<?php echo $this->Ini->path_prod ?>/third/jquery_plugin/thickbox/thickbox.css" type="text/css" media="screen" />
  <SCRIPT type="text/javascript">
   var sc_pathToTB = '<?php echo $this->Ini->path_prod ?>/third/jquery_plugin/thickbox/';
@@ -538,6 +529,13 @@ sc_userSweetAlertDisplayed = false;
  <tr>
   <td>
   <div class="scFormBorder" style="<?php echo (isset($remove_border) ? $remove_border : ''); ?>">
+   <div class="peaje-login-header">
+    <div class="peaje-login-mark" aria-hidden="true">P</div>
+    <div class="peaje-login-copy">
+     <h1>Peaje MX</h1>
+     <p>Administracion de cruces</p>
+    </div>
+   </div>
    <table width='100%' cellspacing=0 cellpadding=0>
 <?php
 $this->displayAppHeader();
@@ -710,7 +708,7 @@ $this->displayBottomToolbar();
     $NM_btn = false;
 ?>
      </td> 
-     <td nowrap align="center" valign="middle" width="33%" class="scFormToolbarPadding">
+     <td nowrap align="center" valign="middle" width="33%" class="scFormToolbarPadding peaje-login-action">
      <?php
         $sCondStyle = ($this->nmgp_botoes['ok'] == "on") ? '' : 'display: none;';
 ?>

@@ -23,16 +23,7 @@ header("X-Frame-Options: SAMEORIGIN");
  <META http-equiv="Cache-Control" content="post-check=0, pre-check=0" />
  <META http-equiv="Pragma" content="no-cache" />
  <link rel="shortcut icon" href="../_lib/img/scriptcase__NM__ico__NM__favicon.ico">
-<?php
-
-if (isset($_SESSION['scriptcase']['device_mobile']) && $_SESSION['scriptcase']['device_mobile'] && $_SESSION['scriptcase']['display_mobile'])
-{
-?>
- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-<?php
-}
-
-?>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
  <link rel="stylesheet" href="<?php echo $this->Ini->path_prod ?>/third/jquery_plugin/thickbox/thickbox.css" type="text/css" media="screen" />
  <SCRIPT type="text/javascript">
   var sc_pathToTB = '<?php echo $this->Ini->path_prod ?>/third/jquery_plugin/thickbox/';
@@ -542,6 +533,13 @@ sc_userSweetAlertDisplayed = false;
  <tr>
   <td>
   <div class="scFormBorder" style="<?php echo (isset($remove_border) ? $remove_border : ''); ?>">
+   <div class="peaje-login-header">
+    <div class="peaje-login-mark" aria-hidden="true">P</div>
+    <div class="peaje-login-copy">
+     <h1>Peaje MX</h1>
+     <p>Administracion de cruces</p>
+    </div>
+   </div>
    <table width='100%' cellspacing=0 cellpadding=0>
 <?php
 $this->displayAppHeader();
@@ -600,7 +598,7 @@ $this->displayAppHeader();
 <input type="hidden" name="login" value="<?php echo $this->form_encode_input($login) . "\">"; ?>
 <?php } else { $sc_hidden_no++; ?>
 
-    <TD class="scFormDataOdd css_login_line" id="hidden_field_data_login" style="<?php echo $sStyleHidden_login; ?>"> <span class="scFormLabelOddFormat css_login_label" style=""><span id="id_label_login"><?php echo $this->nm_new_label['login']; ?></span><?php if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['seg_Login_mob']['php_cmp_required']['login']) || $_SESSION['sc_session'][$this->Ini->sc_page]['seg_Login_mob']['php_cmp_required']['login'] == "on") { ?> <span class="scFormRequiredOdd">*</span> <?php }?></span><br>
+    <TD class="scFormDataOdd css_login_line" id="hidden_field_data_login" style="<?php echo $sStyleHidden_login; ?>"> <span class="scFormLabelOddFormat css_login_label" style=""><span id="id_label_login"><?php echo "Usuario"; ?></span><?php if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['seg_Login_mob']['php_cmp_required']['login']) || $_SESSION['sc_session'][$this->Ini->sc_page]['seg_Login_mob']['php_cmp_required']['login'] == "on") { ?> <span class="scFormRequiredOdd">*</span> <?php }?></span><br>
 <?php if ($bTestReadOnly && $this->nmgp_opcao != "novo" && isset($this->nmgp_cmp_readonly["login"]) &&  $this->nmgp_cmp_readonly["login"] == "on") { 
 
  ?>
@@ -663,7 +661,7 @@ $this->displayAppHeader();
 <input type="hidden" name="pswd" value="<?php echo $this->form_encode_input($pswd) . "\">"; ?>
 <?php } else { $sc_hidden_no++; ?>
 
-    <TD class="scFormDataOdd css_pswd_line" id="hidden_field_data_pswd" style="<?php echo $sStyleHidden_pswd; ?>"> <span class="scFormLabelOddFormat css_pswd_label" style=""><span id="id_label_pswd"><?php echo $this->nm_new_label['pswd']; ?></span><?php if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['seg_Login_mob']['php_cmp_required']['pswd']) || $_SESSION['sc_session'][$this->Ini->sc_page]['seg_Login_mob']['php_cmp_required']['pswd'] == "on") { ?> <span class="scFormRequiredOdd">*</span> <?php }?></span><br>
+    <TD class="scFormDataOdd css_pswd_line" id="hidden_field_data_pswd" style="<?php echo $sStyleHidden_pswd; ?>"> <span class="scFormLabelOddFormat css_pswd_label" style=""><span id="id_label_pswd"><?php echo "Contraseña"; ?></span><?php if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['seg_Login_mob']['php_cmp_required']['pswd']) || $_SESSION['sc_session'][$this->Ini->sc_page]['seg_Login_mob']['php_cmp_required']['pswd'] == "on") { ?> <span class="scFormRequiredOdd">*</span> <?php }?></span><br>
 <?php if ($bTestReadOnly && $this->nmgp_opcao != "novo" && isset($this->nmgp_cmp_readonly["pswd"]) &&  $this->nmgp_cmp_readonly["pswd"] == "on") { ?>
 <input type="hidden" name="pswd" value="">
 <?php } else { ?>
@@ -708,13 +706,13 @@ $this->displayBottomToolbar();
      </td> 
      <td nowrap align="center" valign="middle" width="33%" class="scFormToolbarPadding"> 
      </td> 
-     <td nowrap align="right" valign="middle" width="33%" class="scFormToolbarPadding"> 
+     <td nowrap align="right" valign="middle" width="33%" class="scFormToolbarPadding peaje-login-action">
 <?php
         $sCondStyle = ($this->nmgp_botoes['ok'] == "on") ? '' : 'display: none;';
 ?>
 <?php
         $buttonMacroDisabled = 'sc-unique-btn-2';
-        $buttonMacroLabel = " Login ";
+        $buttonMacroLabel = " Iniciar Sesion ";
 
         if (isset($_SESSION['sc_session'][$this->Ini->sc_page]['seg_Login_mob']['btn_disabled']['ok']) && 'on' == $_SESSION['sc_session'][$this->Ini->sc_page]['seg_Login_mob']['btn_disabled']['ok']) {
             $buttonMacroDisabled .= ' disabled';
