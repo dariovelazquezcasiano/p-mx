@@ -267,6 +267,10 @@ function seg_Login_scriptcase_error_display($err_msg, $err_no)
  }
  document.getElementById("id_error_message_fixed").innerHTML += scAjaxFixedErrorSql("<?php echo str_replace(array('"', "\r", "\n"), array('\"', '', ''), $err_msg); ?>");
  scCenterFixedElement("id_error_display_fixed");
+ if (typeof scPeajeLoginShowError === "function")
+ {
+  scPeajeLoginShowError(document.getElementById("id_error_message_fixed").innerHTML);
+ }
 </script>
 <?php
     }
@@ -276,6 +280,10 @@ function seg_Login_scriptcase_error_display($err_msg, $err_no)
 <script type="text/javascript">
 document.getElementById("id_error_message_fixed").innerHTML += "<br /><?php echo $err_msg; ?>";
 scCenterFixedElement("id_error_display_fixed");
+if (typeof scPeajeLoginShowError === "function")
+{
+ scPeajeLoginShowError(document.getElementById("id_error_message_fixed").innerHTML);
+}
 </script>
 <?php
     }

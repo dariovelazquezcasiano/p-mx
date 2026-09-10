@@ -267,10 +267,237 @@ body.sc-app-contr #sub_form_b.disabled {
   cursor: default;
 }
 
-body.sc-app-contr .scFormErrorTable,
 body.sc-app-contr .scFormMessageTable {
   border-radius: 8px;
   overflow: hidden;
+}
+
+body.sc-app-contr .scFormErrorTable {
+  border-radius: 8px;
+  overflow: visible;
+}
+
+body.sc-app-contr #id_error_display_table_frame {
+  display: none !important;
+}
+
+body.sc-app-contr #id_error_display_fixed {
+  display: none !important;
+}
+
+body.sc-app-contr .peaje-login-alert {
+  width: 100%;
+  margin: 0 auto 16px;
+  border: 1px solid #f0c56f;
+  border-left: 4px solid #f59e0b;
+  border-radius: 8px;
+  background: #fffaf0;
+  box-shadow: 0 18px 44px rgba(15, 23, 42, 0.2);
+  overflow: hidden;
+}
+
+body.sc-app-contr .peaje-login-alert[hidden] {
+  display: none !important;
+}
+
+body.sc-app-contr .peaje-login-alert-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 10px 12px 10px 14px;
+  border-bottom: 1px solid rgba(245, 158, 11, 0.24);
+}
+
+body.sc-app-contr .peaje-login-alert-icon {
+  display: inline-grid;
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  border-radius: 6px;
+  background: #f59e0b;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+body.sc-app-contr .peaje-login-alert-head strong {
+  flex: 1 1 auto;
+  color: #653f07;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+body.sc-app-contr .peaje-login-alert-close {
+  display: inline-grid;
+  flex: 0 0 28px;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  place-items: center;
+  border: 0;
+  border-radius: 6px;
+  background: rgba(101, 63, 7, 0.08);
+  color: #653f07;
+  font-family: Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1;
+  cursor: pointer;
+}
+
+body.sc-app-contr .peaje-login-alert-close:hover,
+body.sc-app-contr .peaje-login-alert-close:focus {
+  background: rgba(101, 63, 7, 0.14);
+}
+
+body.sc-app-contr .peaje-login-alert-message {
+  padding: 12px 16px 14px;
+  color: #2f3640;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+body.sc-app-contr .peaje-login-alert-message span {
+  display: block;
+}
+
+body.sc-app-contr #id_error_display_table_frame {
+  position: static !important;
+  z-index: 1000 !important;
+  width: 100% !important;
+  max-width: 100%;
+  height: auto !important;
+  margin: 0 auto 16px !important;
+  overflow: visible !important;
+  transform: none !important;
+}
+
+body.sc-app-contr #id_error_display_table_frame .scFormErrorTable {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  border: 1px solid #f0c56f !important;
+  border-left: 4px solid #f59e0b !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  border-radius: 8px;
+  background: #fffaf0 !important;
+  box-shadow: 0 18px 44px rgba(15, 23, 42, 0.2);
+  overflow: visible !important;
+}
+
+body.sc-app-contr #id_error_display_table_frame .scFormErrorTable > tbody,
+body.sc-app-contr #id_error_display_table_frame .scFormErrorTable > tbody > tr,
+body.sc-app-contr #id_error_display_table_frame .scFormErrorTable > tbody > tr > td {
+  display: block;
+  width: 100% !important;
+}
+
+body.sc-app-contr #id_error_display_table_frame .scFormErrorTitle {
+  height: auto !important;
+  padding: 12px 14px 10px !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(245, 158, 11, 0.24) !important;
+  background: transparent !important;
+}
+
+body.sc-app-contr #id_error_display_table_frame .scFormErrorTitle table,
+body.sc-app-contr #id_error_display_table_frame .scFormErrorTitle tbody,
+body.sc-app-contr #id_error_display_table_frame .scFormErrorTitle tr {
+  width: 100% !important;
+}
+
+body.sc-app-contr #id_error_display_table_frame .scFormErrorTitleFont {
+  color: #653f07 !important;
+  font-family: "Segoe UI", Tahoma, Arial, sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  line-height: 28px !important;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+body.sc-app-contr #id_error_display_table_frame .scFormErrorTitleFont img {
+  display: none !important;
+}
+
+body.sc-app-contr #id_error_display_table_frame .scFormErrorTitleFont::before {
+  content: "!";
+  display: inline-grid;
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+  place-items: center;
+  border-radius: 6px;
+  background: #f59e0b;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 900;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+body.sc-app-contr #id_error_display_table_frame .scFormErrorMessage {
+  display: block !important;
+  height: auto !important;
+  min-height: 44px !important;
+  padding: 12px 16px 14px !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: #2f3640 !important;
+  font-family: "Segoe UI", Tahoma, Arial, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  line-height: 1.45 !important;
+}
+
+body.sc-app-contr #id_error_display_table_text {
+  display: block;
+}
+
+body.sc-app-contr #id_error_display_table_frame .scButton_default {
+  display: inline-grid !important;
+  width: 28px !important;
+  height: 28px !important;
+  min-width: 28px !important;
+  padding: 0 !important;
+  place-items: center;
+  border: 0 !important;
+  border-radius: 6px !important;
+  background: rgba(101, 63, 7, 0.08) !important;
+  color: #653f07 !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+  text-shadow: none !important;
+  line-height: 28px !important;
+}
+
+body.sc-app-contr #id_error_display_table_frame .scButton_default:hover,
+body.sc-app-contr #id_error_display_table_frame .scButton_default:focus {
+  background: rgba(101, 63, 7, 0.14) !important;
+}
+
+body.sc-app-contr #id_error_display_table_frame .scButton_default .btn-label {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  font-size: 0;
+}
+
+body.sc-app-contr #id_error_display_table_frame .scButton_default::before {
+  content: "\00d7";
+  font-family: Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1;
 }
 
 @media (max-width: 720px) {
@@ -298,5 +525,10 @@ body.sc-app-contr .scFormMessageTable {
 
   body.sc-app-contr .scFormToolbarPadding.peaje-login-action {
     padding: 0 22px 24px !important;
+  }
+
+  body.sc-app-contr #id_error_display_table_frame {
+    width: 100% !important;
+    max-width: 100%;
   }
 }

@@ -3004,11 +3004,133 @@ if (isset($_SESSION['scriptcase']['device_mobile']) && $_SESSION['scriptcase']['
     scAjaxSetMaster();
     scAjaxSetFocus();
   } // do_ajax_seg_Login_mob_validate_pswd_cb
+function scPeajeLoginErrorLines(sErrorMsg) {
+	var oTemp = document.createElement("div"),
+	    aRows,
+	    aLines = [],
+	    sText,
+	    i,
+	    aCells,
+	    j;
+
+	oTemp.innerHTML = String(sErrorMsg || "").replace(/<br\s*\/?>/gi, "\n");
+	aRows = oTemp.getElementsByTagName("tr");
+
+	if (aRows.length) {
+		for (i = 0; i < aRows.length; i++) {
+			aCells = aRows[i].getElementsByTagName("td");
+			sText = "";
+			for (j = 0; j < aCells.length; j++) {
+				if ("" != $.trim(aCells[j].textContent || aCells[j].innerText || "")) {
+					sText += ("" == sText ? "" : " ") + $.trim(aCells[j].textContent || aCells[j].innerText || "");
+				}
+			}
+			if ("" != sText) {
+				aLines.push(sText);
+			}
+		}
+	}
+
+	if (!aLines.length) {
+		sText = $.trim(oTemp.textContent || oTemp.innerText || "");
+		aLines = sText.split(/\n+/);
+	}
+
+	aLines = $.map(aLines, function(sLine) {
+		return $.trim(sLine);
+	});
+
+	return $.grep(aLines, function(sLine) {
+		return "" != sLine;
+	});
+}
+
+function scPeajeLoginHideError() {
+	var oAlert = document.getElementById("peaje-login-validation"),
+	    oLegacy = document.getElementById("id_error_display_table_frame"),
+	    oLegacyText = document.getElementById("id_error_display_table_text");
+
+	window.scPeajeLoginPendingError = "";
+	if (oLegacy) {
+		oLegacy.style.display = "none";
+	}
+	if (oLegacyText) {
+		oLegacyText.innerHTML = "";
+	}
+	if (oAlert) {
+		oAlert.setAttribute("hidden", "hidden");
+	}
+	$("body").removeClass("peaje-login-has-alert");
+}
+
+function scPeajeLoginShowError(sErrorMsg) {
+	var oForm = document.forms.F1,
+	    oMain = document.getElementById("main_table_form"),
+	    oAlert = document.getElementById("peaje-login-validation"),
+	    oMsg,
+	    aLines,
+	    i,
+	    oLine;
+
+	if (!oForm || !oMain) {
+		window.scPeajeLoginPendingError = sErrorMsg;
+		$(function() {
+			if (window.scPeajeLoginPendingError) {
+				var sPendingError = window.scPeajeLoginPendingError;
+				window.scPeajeLoginPendingError = "";
+				scPeajeLoginShowError(sPendingError);
+			}
+		});
+		return true;
+	}
+
+	if (!oAlert) {
+		oAlert = document.createElement("div");
+		oAlert.id = "peaje-login-validation";
+		oAlert.className = "peaje-login-alert";
+		oAlert.setAttribute("role", "alert");
+		oAlert.setAttribute("hidden", "hidden");
+		oAlert.innerHTML = '<div class="peaje-login-alert-head"><span class="peaje-login-alert-icon" aria-hidden="true">!</span><strong>Validacion</strong><button type="button" class="peaje-login-alert-close" title="Cerrar" aria-label="Cerrar">&times;</button></div><div class="peaje-login-alert-message"></div>';
+		oForm.insertBefore(oAlert, oMain);
+		$(oAlert).find(".peaje-login-alert-close").on("click", function() {
+			scAjaxHideErrorDisplay("table", false);
+			return false;
+		});
+	}
+
+	scPeajeLoginHideError();
+	aLines = scPeajeLoginErrorLines(scAjaxErrorSql(sErrorMsg));
+	oMsg = $(oAlert).find(".peaje-login-alert-message").get(0);
+	oMsg.innerHTML = "";
+
+	if (!aLines.length) {
+		aLines = ["Revise los campos requeridos."];
+	}
+
+	for (i = 0; i < aLines.length; i++) {
+		oLine = document.createElement("span");
+		oLine.appendChild(document.createTextNode(aLines[i]));
+		oMsg.appendChild(oLine);
+	}
+
+	oAlert.removeAttribute("hidden");
+	$("body").addClass("peaje-login-has-alert");
+	window.scPeajeLoginPendingError = "";
+	return true;
+}
+
 function scAjaxShowErrorDisplay(sErrorId, sErrorMsg) {
+	if ("table" == sErrorId && scPeajeLoginShowError(sErrorMsg)) {
+		return;
+	}
 	scAjaxShowErrorDisplay_default(sErrorId, sErrorMsg);
 }
 
 function scAjaxHideErrorDisplay(sErrorId, sErrorMsg) {
+	if ("table" == sErrorId) {
+		scPeajeLoginHideError();
+		return;
+	}
 	scAjaxHideErrorDisplay_default(sErrorId, sErrorMsg);
 }
 
