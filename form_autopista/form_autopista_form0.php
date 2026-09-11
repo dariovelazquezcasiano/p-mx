@@ -398,6 +398,7 @@ if (!$this->NM_ajax_flag && isset($this->NM_non_ajax_info['ajaxJavascript']) && 
  }
 
 </script>
+ <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_link ?>_lib/css/peaje_module_ui.css?v=20260911-ui" />
 </HEAD>
 <?php
 $str_iframe_body = 'margin-top: 1px; margin-bottom: 1px;';

@@ -411,6 +411,7 @@ if (!$this->NM_ajax_flag && isset($this->NM_non_ajax_info['ajaxJavascript']) && 
  }
 
 </script>
+ <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_link ?>_lib/css/peaje_module_ui.css?v=20260911-ui" />
 </HEAD>
 <?php
 $str_iframe_body = ('F' == $_SESSION['sc_session'][$this->Ini->sc_page]['form_inventario_caseta']['run_iframe'] || 'R' == $_SESSION['sc_session'][$this->Ini->sc_page]['form_inventario_caseta']['run_iframe']) ? 'margin: 2px;' : '';

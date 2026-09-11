@@ -1,0 +1,454 @@
+html,
+body.scGridPage,
+body.scFilterPage {
+  min-height: 100%;
+}
+
+body.scGridPage,
+body.scFilterPage {
+  background: #edf3f2 !important;
+  color: #22313f !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 14px !important;
+}
+
+body.scGridPage.sc-app-grid,
+body.scFilterPage {
+  box-sizing: border-box;
+  margin: 0 !important;
+  padding: 18px !important;
+}
+
+body.scGridPage a,
+body.scFilterPage a {
+  color: #0f766e;
+}
+
+.scGridBorder,
+.scFilterBorder,
+.scFilterTable,
+.scGridRefinedSearchMoldura,
+.scGridRefinedSearchMolduraResult,
+.scGridSummarySearchMoldura {
+  background: #ffffff !important;
+  border: 1px solid #d7e2df !important;
+  border-radius: 8px !important;
+  box-shadow: 0 18px 42px rgba(20, 45, 50, 0.12) !important;
+  overflow: hidden;
+}
+
+.scGridBorder {
+  margin: 0 auto !important;
+  max-width: calc(100vw - 36px);
+}
+
+.scGridTabela,
+.scFilterTable {
+  border-color: #d7e2df !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+}
+
+#sc_grid_body {
+  background: #ffffff !important;
+  overflow-x: auto;
+  padding: 12px !important;
+}
+
+#sc_grid_body .scGridTabela[id^="sc-ui-grid-body"] {
+  min-width: 1180px;
+}
+
+.scGridHeader,
+.scFilterHeader {
+  background: #14252f !important;
+  border-color: #14252f !important;
+}
+
+.scGridHeaderFont,
+.scFilterHeaderFont {
+  color: #ffffff !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 17px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0 !important;
+}
+
+.scGridToolbar,
+.scFilterToolbar,
+.scGridRefinedSearchToolbar {
+  background: #f8fbfa !important;
+  border-color: #d7e2df !important;
+  color: #334155 !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 13px !important;
+}
+
+.scGridToolbarPadding,
+.scFilterToolbarPadding {
+  padding: 12px 16px !important;
+}
+
+.scGridToolbarNav,
+.scGridToolbarNavOpen {
+  border-radius: 6px !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 13px !important;
+  margin: 0 2px;
+}
+
+.scGridToolbarNav {
+  background: #ffffff !important;
+  border: 1px solid #d7e2df !important;
+  color: #0f766e !important;
+}
+
+.scGridToolbarNav:hover {
+  background: #e8f6f3 !important;
+  color: #0b5f59 !important;
+}
+
+.scGridToolbarNavOpen {
+  background: #0f766e !important;
+  border: 1px solid #0f766e !important;
+  color: #ffffff !important;
+}
+
+.scGridLabel,
+.scGridLabelVert,
+.scGridLabelFont,
+.scGridSummaryLabel {
+  background: #16343a !important;
+  border-color: #27565a !important;
+  color: #ffffff !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0 !important;
+  padding: 11px 12px !important;
+  text-transform: uppercase;
+}
+
+.scGridLabelFont a,
+.scGridLabelLink,
+.scGridSummaryLabel a {
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+
+.scGridLabelFont:hover,
+.scGridLabelVert:hover,
+.scGridSummaryLabel:hover {
+  background: #0f766e !important;
+  border-color: #0f766e !important;
+}
+
+.scGridFieldOdd,
+.scGridFieldEven {
+  transition: background-color 0.14s ease;
+}
+
+.scGridFieldOdd {
+  background: #ffffff !important;
+}
+
+.scGridFieldEven {
+  background: #f7faf9 !important;
+}
+
+.scGridFieldOddFont,
+.scGridFieldEvenFont,
+.scGridFieldOddVert,
+.scGridFieldEvenVert,
+.scGridSummaryLineOdd,
+.scGridSummaryLineEven {
+  border-color: #e0e9e6 !important;
+  color: #26333f !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 13px !important;
+  line-height: 1.35 !important;
+  padding: 9px 11px !important;
+}
+
+tr:hover > .scGridFieldOddFont,
+tr:hover > .scGridFieldEvenFont,
+tr:hover > .scGridFieldOdd,
+tr:hover > .scGridFieldEven,
+.scGridFieldOver {
+  background: #e7f6f3 !important;
+}
+
+.scGridFieldClick {
+  background: #d8eee9 !important;
+}
+
+.css_turnoid_grid_line,
+.css_carrilid_grid_line,
+.css_usuarioid_grid_line,
+.css_secuencial_grid_line,
+.css_folio_grid_line,
+.css_cantidadeje_ana_grid_line,
+.css_importe_ana_grid_line,
+.css_tarifaee_ana_grid_line,
+.css_cantidadejes_grid_line {
+  font-variant-numeric: tabular-nums;
+}
+
+.css_importe_ana_grid_line,
+.css_tarifaee_ana_grid_line {
+  color: #0b5f59 !important;
+  font-weight: 650;
+}
+
+.css_cancelado_grid_line {
+  color: #8a3c00 !important;
+  font-weight: 650;
+}
+
+.scButton_default,
+.scButton_default_selected,
+.scButton_small,
+.scButton_small_selected,
+.scButton_group,
+.scButton_group_selected,
+.scBtnGrpText,
+.scBtnGrpClick {
+  background: #ffffff !important;
+  border: 1px solid #cbd8d5 !important;
+  border-radius: 6px !important;
+  box-shadow: 0 1px 2px rgba(15, 35, 45, 0.08) !important;
+  color: #22313f !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 650 !important;
+  letter-spacing: 0 !important;
+  text-decoration: none !important;
+}
+
+.scButton_default:hover,
+.scButton_default_selected:hover,
+.scButton_small:hover,
+.scButton_small_selected:hover,
+.scButton_group:hover,
+.scButton_group_selected:hover,
+.scBtnGrpText:hover,
+.scBtnGrpClick:hover {
+  background: #0f766e !important;
+  border-color: #0f766e !important;
+  color: #ffffff !important;
+}
+
+.scButton_default:active,
+.scButton_small:active,
+.scButton_group:active {
+  background: #0b5f59 !important;
+  border-color: #0b5f59 !important;
+  color: #ffffff !important;
+}
+
+.scButton_default_disabled,
+.scButton_small_disabled,
+.scButton_group_disabled {
+  background: #eef2f1 !important;
+  border-color: #d7e2df !important;
+  color: #8c9a97 !important;
+}
+
+.scButton_default img,
+.scButton_small img,
+.scButton_group img {
+  vertical-align: -2px;
+}
+
+.css_toolbar_obj,
+.scFilterToolbar_obj,
+#sel_recup_filters_bot,
+#sel_filters_del_bot,
+#rec_f0_bot,
+input.scFilterObjectOdd,
+input.scFilterObjectEven,
+select.scFilterObjectOdd,
+select.scFilterObjectEven,
+textarea.scFilterObjectOdd,
+textarea.scFilterObjectEven,
+.select2-container--default .select2-selection,
+.SumoSelect > .CaptionCont {
+  background: #ffffff !important;
+  border: 1px solid #cbd8d5 !important;
+  border-radius: 6px !important;
+  color: #22313f !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 13px !important;
+}
+
+.css_toolbar_obj:focus,
+.scFilterToolbar_obj:focus,
+#rec_f0_bot:focus,
+input.scFilterObjectOdd:focus,
+input.scFilterObjectEven:focus,
+select.scFilterObjectOdd:focus,
+select.scFilterObjectEven:focus,
+textarea.scFilterObjectOdd:focus,
+textarea.scFilterObjectEven:focus,
+.select2-container--default .select2-selection:focus,
+.SumoSelect:focus > .CaptionCont {
+  border-color: #0f766e !important;
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.16) !important;
+  outline: 0 !important;
+}
+
+.scFilterTable {
+  margin: 0 auto !important;
+  max-width: 1120px;
+  width: calc(100% - 32px) !important;
+}
+
+.scFilterBlock,
+.scFilterBlockBack {
+  background: #f3f7f6 !important;
+  border-color: #d7e2df !important;
+  color: #22313f !important;
+}
+
+.scFilterLabelOdd,
+.scFilterLabelEven {
+  background: #f8fbfa !important;
+  color: #354251 !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  padding: 10px 14px !important;
+}
+
+.scFilterFieldOdd,
+.scFilterFieldEven,
+.scFilterFieldFontOdd,
+.scFilterFieldFontEven,
+.scFilterDataFontOdd {
+  background: #ffffff !important;
+  color: #22313f !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 13px !important;
+}
+
+.scFilterFieldOdd,
+.scFilterFieldEven {
+  padding: 8px 12px !important;
+}
+
+.scGridRefinedSearchPadding {
+  background: #ffffff !important;
+  border-color: #d7e2df !important;
+  padding: 16px !important;
+}
+
+.scGridRefinedSearchLabel,
+.scGridSummarySearchLabel {
+  color: #51615e !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0 !important;
+  text-transform: uppercase;
+}
+
+.scGridRefinedSearchCampo,
+.scGridSummarySearchCampo {
+  border-color: #e0e9e6 !important;
+}
+
+.active > .scGridSummarySearchLabel {
+  color: #0f766e !important;
+}
+
+.active > .scGridSummarySearchObjeto > .SumoSelect > .CaptionCont,
+.active > .scGridSummarySearchObjeto > .css_toolbar_obj {
+  border-color: #0f766e !important;
+}
+
+.scGridBlock,
+.scGridBlockBg,
+.scGridBlockLineBg,
+.scGridBlockSpaceBg,
+.scGridTotal,
+.scGridSubtotal,
+.scGridSummaryTotal,
+.scGridSummarySubtotal,
+.scGridSummaryGroupbyVisible {
+  background: #f3f7f6 !important;
+  border-color: #d7e2df !important;
+  color: #22313f !important;
+}
+
+.scGridTotalFont,
+.scGridSubtotalFont {
+  color: #22313f !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+}
+
+.scAppDivMoldura,
+#TB_window {
+  background: #ffffff !important;
+  border: 1px solid #d7e2df !important;
+  border-radius: 8px !important;
+  box-shadow: 0 24px 60px rgba(20, 45, 50, 0.22) !important;
+  overflow: hidden;
+}
+
+.scAppDivHeader,
+.scAppDivHeaderText {
+  background: #16343a !important;
+  color: #ffffff !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+  letter-spacing: 0 !important;
+}
+
+.scAppDivContent {
+  background: #ffffff !important;
+  color: #22313f !important;
+}
+
+.scAppDivToolbar {
+  background: #f8fbfa !important;
+  border-color: #d7e2df !important;
+}
+
+.TB_overlayBG {
+  background: rgba(20, 37, 47, 0.58) !important;
+}
+
+#id_div_process .scFilterTable,
+#id_fatal_error,
+.scAjaxDiv {
+  border-radius: 8px !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+}
+
+@media (max-width: 760px) {
+  body.scGridPage.sc-app-grid,
+  body.scFilterPage {
+    padding: 10px !important;
+  }
+
+  .scGridBorder,
+  .scFilterTable {
+    max-width: calc(100vw - 20px);
+    width: calc(100vw - 20px) !important;
+  }
+
+  #sc_grid_toobar_top_table td,
+  #sc_grid_toobar_bot_table td,
+  #sc_filter_toolbar_bot td {
+    display: block;
+    padding: 8px 10px !important;
+    text-align: left !important;
+    white-space: normal !important;
+    width: auto !important;
+  }
+
+  .scButton_default,
+  .scButton_small,
+  .scButton_group {
+    margin: 3px 2px !important;
+  }
+}

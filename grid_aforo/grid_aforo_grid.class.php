@@ -1944,6 +1944,7 @@ $nm_saida->saida("}\r\n");
   }
            $nm_saida->saida("  </style>\r\n");
        }
+       $nm_saida->saida("   <link rel=\"stylesheet\" type=\"text/css\" href=\"" . $this->Ini->path_link . "grid_aforo/peaje_grid_aforo.css?v=20260911-ui\" />\r\n");
        $nm_saida->saida("  </HEAD>\r\n");
    } 
    if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_aforo']['embutida'] && $this->Ini->nm_ger_css_emb)

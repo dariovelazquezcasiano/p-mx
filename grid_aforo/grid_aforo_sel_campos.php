@@ -151,6 +151,9 @@ function Sel_cmp_process()
             <?php
           }
       }
+      ?>
+      <link rel="stylesheet" type="text/css" href="peaje_grid_aforo.css?v=20260911-ui" />
+      <?php
    }
 
    function Sel_cmp_init_fields()

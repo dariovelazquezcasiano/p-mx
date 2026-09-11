@@ -128,7 +128,7 @@ if (isset($_SESSION['scriptcase']['device_mobile']) && $_SESSION['scriptcase']['
  }
 ?>
  <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_link ?>form_aforo_liquidacionVW/form_aforo_liquidacionVW_mob_<?php echo strtolower($_SESSION['scriptcase']['reg_conf']['css_dir']) ?>.css" />
-
+ <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_link ?>_lib/css/peaje_module_ui.css?v=20260911-ui" />
 <script>
 var scFocusFirstErrorField = false;
 var scFocusFirstErrorName  = "<?php if (isset($this->scFormFocusErrorName)) {echo $this->scFormFocusErrorName;} ?>";

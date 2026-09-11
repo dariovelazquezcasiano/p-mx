@@ -1313,6 +1313,7 @@ scIframeSCInit["<?php echo $sIframe; ?>"] = "<?php echo $iSCInit; ?>";
         }
 ?>
 </script>
+ <link rel="stylesheet" type="text/css" href="../_lib/css/peaje_module_ui.css?v=20260911-ui" />
 </head>
 <body class="scContainerPage">
 
@@ -1399,6 +1400,7 @@ scIframeSCInit["<?php echo $sIframe; ?>"] = "<?php echo $iSCInit; ?>";
         }
 ?>
 </script>
+ <link rel="stylesheet" type="text/css" href="../_lib/css/peaje_module_ui.css?v=20260911-ui" />
 </head>
 <body class="scContainerPage">
 
@@ -1628,7 +1630,8 @@ function refreshWidget(wId, wSrc, wRef)
         <?php
         }
         ?>
-    </HEAD>
+ <link rel="stylesheet" type="text/css" href="../_lib/css/peaje_module_ui.css?v=20260911-ui" />
+</head>
     <body class="scGridPage">
         <form name="Fsenha" method="post" action="./">
             <div style="text-align:center;">
@@ -1741,6 +1744,7 @@ scIframeSCInit["<?php echo $sIframe; ?>"] = "<?php echo $iSCInit; ?>";
         }
 ?>
 </script>
+ <link rel="stylesheet" type="text/css" href="../_lib/css/peaje_module_ui.css?v=20260911-ui" />
 </head>
 <body class="scContainerPage">
 

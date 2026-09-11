@@ -151,6 +151,9 @@ function Sel_cmp_process()
             <?php
           }
       }
+      ?>
+      <link rel="stylesheet" type="text/css" href="../_lib/css/peaje_module_ui.css?v=20260911-ui" />
+      <?php
    }
 
    function Sel_cmp_init_fields()

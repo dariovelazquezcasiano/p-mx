@@ -1,0 +1,279 @@
+@import url("../../grid_aforo/peaje_grid_aforo.css?v=20260911-ui");
+
+body.scFormPage,
+body.scContainerPage {
+  background: #edf3f2 !important;
+  color: #22313f !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 14px !important;
+}
+
+body.scFormPage.sc-app-form,
+body.scFormPage,
+body.scContainerPage {
+  box-sizing: border-box;
+  margin: 0 !important;
+  padding: 18px !important;
+}
+
+.scFormBorder,
+.scFormTable,
+.scFormTabela {
+  background: #ffffff !important;
+  border: 1px solid #d7e2df !important;
+  border-radius: 8px !important;
+  box-shadow: 0 18px 42px rgba(20, 45, 50, 0.12) !important;
+  overflow: hidden;
+}
+
+.scFormTable {
+  max-width: calc(100vw - 36px);
+}
+
+.scFormHeader,
+.scFormHeaderFont,
+.scContainerHeader,
+.scContainerHeaderFont {
+  background: #14252f !important;
+  border-color: #14252f !important;
+  color: #ffffff !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 0 !important;
+}
+
+.scFormHeaderFont,
+.scContainerHeaderFont {
+  font-size: 16px !important;
+}
+
+.scFormToolbar,
+.scFormFooter,
+.scAppDivToolbar {
+  background: #f8fbfa !important;
+  border-color: #d7e2df !important;
+}
+
+.scFormToolbarPadding,
+.scFormLabelOdd,
+.scFormLabelEven,
+.scFormDataOdd,
+.scFormDataEven,
+.scFormDataOddMult,
+.scFormDataEvenMult {
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+}
+
+.scFormLabelOdd,
+.scFormLabelEven,
+.scFormLabelOddMult,
+.scFormLabelEvenMult {
+  background: #f8fbfa !important;
+  border-color: #e0e9e6 !important;
+  color: #354251 !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  padding: 10px 14px !important;
+}
+
+.scFormDataOdd,
+.scFormDataEven,
+.scFormDataOddMult,
+.scFormDataEvenMult {
+  background: #ffffff !important;
+  border-color: #e0e9e6 !important;
+  color: #22313f !important;
+  font-size: 13px !important;
+  padding: 9px 12px !important;
+}
+
+.scFormObjectOdd,
+.scFormObjectEven,
+.scFormObjectOddMult,
+.scFormObjectEvenMult,
+.scFormObjectOddPwdBox,
+.scFormObjectEvenPwdBox,
+.scFormObjectFocusOdd,
+.scFormObjectFocusEven,
+.scFormObjectFocusOddMult,
+.scFormObjectFocusEvenMult,
+.scFormToolbarInput,
+.select2-container--default .select2-selection {
+  background: #ffffff !important;
+  border: 1px solid #cbd8d5 !important;
+  border-radius: 6px !important;
+  color: #22313f !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 13px !important;
+}
+
+.scFormObjectOdd:focus,
+.scFormObjectEven:focus,
+.scFormObjectOddMult:focus,
+.scFormObjectEvenMult:focus,
+.scFormObjectFocusOdd,
+.scFormObjectFocusEven,
+.scFormObjectFocusOddMult,
+.scFormObjectFocusEvenMult,
+.scFormToolbarInput:focus {
+  border-color: #0f766e !important;
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.16) !important;
+  outline: 0 !important;
+}
+
+.scFormInputError,
+.scFormInputErrorMult,
+.scFormInputErrorPwdBox {
+  background: #fff7ed !important;
+  border-color: #f59e0b !important;
+  color: #7c2d12 !important;
+}
+
+.scFormRequiredOdd,
+.scFormRequiredEven,
+.scFormFieldErrorMessage {
+  color: #b45309 !important;
+}
+
+.scFormErrorTable,
+.scFormMessageTable {
+  background: #fffaf0 !important;
+  border: 1px solid #f2b544 !important;
+  border-left: 6px solid #f59e0b !important;
+  border-radius: 8px !important;
+  box-shadow: 0 14px 34px rgba(20, 45, 50, 0.14) !important;
+  color: #22313f !important;
+  overflow: hidden;
+}
+
+.scFormErrorTitle,
+.scFormErrorTitleFont,
+.scFormMessageTitle,
+.scFormMessageTitleFont {
+  background: transparent !important;
+  color: #7c4a03 !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 0 !important;
+}
+
+.scFormErrorMessage,
+.scFormErrorMessageFont,
+.scFormMessageMessage,
+.scFormMessageMessageFont {
+  color: #334155 !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 13px !important;
+}
+
+.scContainerPage {
+  min-height: 100vh;
+}
+
+.grid-stack {
+  background: transparent !important;
+  margin: 0 auto !important;
+  max-width: 1500px;
+}
+
+.grid-stack-item-content.scContainerWidget,
+.scContainerWidget {
+  background: #ffffff !important;
+  border: 1px solid #d7e2df !important;
+  border-radius: 8px !important;
+  box-shadow: 0 18px 42px rgba(20, 45, 50, 0.12) !important;
+  overflow: hidden !important;
+}
+
+.widget-head {
+  background: #14252f !important;
+  border-color: #14252f !important;
+  color: #ffffff !important;
+}
+
+.scContainerTitle {
+  color: #ffffff !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0 !important;
+}
+
+.widget-content,
+.widget-content-title-none {
+  background: #ffffff !important;
+  border: 0 !important;
+}
+
+.sc-iframe-widget {
+  background: #ffffff !important;
+}
+
+body.peaje-video-page {
+  background: #14252f !important;
+  color: #ffffff !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+  margin: 0 !important;
+  min-height: 100vh;
+  padding: 10px !important;
+}
+
+.peaje-video-page fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.peaje-video-page .hidden {
+  display: none !important;
+}
+
+.peaje-video-page #divPlugin {
+  background: #08161d;
+  border: 1px solid #27565a;
+  border-radius: 8px;
+  min-height: 260px;
+  overflow: hidden;
+}
+
+.peaje-video-page .table,
+.peaje-video-page .searchdiv {
+  margin: 8px auto;
+  max-width: 100%;
+  width: 100%;
+}
+
+.peaje-video-page .btn2 {
+  background: #0f766e;
+  border: 1px solid #0f766e;
+  border-radius: 6px;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  min-height: 32px;
+  min-width: 38px;
+  padding: 6px 10px;
+}
+
+.peaje-video-page .btn2:hover {
+  background: #f59e0b;
+  border-color: #f59e0b;
+  color: #14252f;
+}
+
+@media (max-width: 760px) {
+  body.scFormPage.sc-app-form,
+  body.scFormPage,
+  body.scContainerPage {
+    padding: 10px !important;
+  }
+
+  .scFormBorder,
+  .scFormTable,
+  .scFormTabela {
+    max-width: calc(100vw - 20px);
+    width: calc(100vw - 20px) !important;
+  }
+}
