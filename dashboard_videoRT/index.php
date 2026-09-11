@@ -1233,7 +1233,7 @@ class dashboard_videoRT_control {
 <html<?php echo $_SESSION['scriptcase']['reg_conf']['html_dir'] ?> xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
  <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['scriptcase']['charset_html']; ?>" />
- <title>KZ</title>
+ <title>P-MX</title>
  <META http-equiv="Expires" content="Fri, Jan 01 1900 00:00:00 GMT" />
  <META http-equiv="Last-Modified" content="<?php echo gmdate('D, d M Y H:i:s') ?> GMT" />
  <META http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
@@ -1319,7 +1319,7 @@ scIframeSCInit["<?php echo $sIframe; ?>"] = "<?php echo $iSCInit; ?>";
 <html<?php echo $_SESSION['scriptcase']['reg_conf']['html_dir'] ?> xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
  <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['scriptcase']['charset_html']; ?>" />
- <title>KZ</title>
+ <title>P-MX</title>
  <META http-equiv="Expires" content="Fri, Jan 01 1900 00:00:00 GMT" />
  <META http-equiv="Last-Modified" content="<?php echo gmdate('D, d M Y H:i:s') ?> GMT" />
  <META http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
@@ -1393,7 +1393,7 @@ scIframeSCInit["<?php echo $sIframe; ?>"] = "<?php echo $iSCInit; ?>";
       <TABLE style="padding: 0px; border-spacing: 0px; border-width: 0px;" width="100%">
        <TR align="center" valign="middle">
         <TD align="left" rowspan="2" class="scContainerHeaderFont">
-          <img src="<?php echo $this->Ini->path_imag_cab; ?>/grp__NM__img__NM__tkz_2.png" style="border: 0px" />
+          <img src="<?php echo $this->Ini->path_imag_cab; ?>/peaje_mx_mark.svg" alt="P-MX" style="border: 0px; width: 56px; height: 56px" />
         </TD>
         <TD class="scContainerHeaderFont">
           Video en vivo
@@ -1680,7 +1680,7 @@ function refreshWidget(wId, wSrc, wRef)
 <html<?php echo $_SESSION['scriptcase']['reg_conf']['html_dir'] ?> xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
  <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['scriptcase']['charset_html']; ?>" />
- <title>KZ</title>
+ <title>P-MX</title>
  <META http-equiv="Expires" content="Fri, Jan 01 1900 00:00:00 GMT" />
  <META http-equiv="Last-Modified" content="<?php echo gmdate('D, d M Y H:i:s') ?> GMT" />
  <META http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />

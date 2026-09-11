@@ -3,7 +3,7 @@
 <html>
     <head>
         <META http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['scriptcase']['charset_html'] ?>" />
-        <title>menuKZ</title>
+        <title>P-MX</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet"  href="<?php echo $_SESSION["scriptcase"]["menuKZ"]["glo_nm_path_prod"]; ?>/third/jquery.mobile/jquery.mobile-1.2.0.min.css" />
         <link rel="stylesheet"  href="<?php echo $this->url_css; ?>rhino_tkz/rhino_tkz_menuMobile.css" />

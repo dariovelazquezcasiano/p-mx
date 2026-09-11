@@ -1915,7 +1915,7 @@ if ($tablet_browser > 0) {
 	<style>
 		html{
 		background-color:white;
-		background-image: url("/portada/tkz_portada.png");
+		background-image: url("../_lib/img/peaje_mx_menu_bg.png");
 		background-repeat: no-repeat;
 		background-size: cover;
 	}
@@ -1928,7 +1928,7 @@ else if ($mobile_browser > 0) {
 	<style>
 		html{
 		background-color:white;
-		background-image: url("/portada/tkz_portada_m.png");
+		background-image: url("../_lib/img/peaje_mx_menu_bg.png");
 		background-repeat: no-repeat;
 		background-size: cover;
 	}
@@ -1941,7 +1941,7 @@ else {
 	<style>
 		html{
 		background-color:white;
-		background-image: url("/portada/tkz_portada_m.png");
+		background-image: url("../_lib/img/peaje_mx_menu_bg.png");
 		background-repeat: no-repeat;
 		background-size: cover;
 	}

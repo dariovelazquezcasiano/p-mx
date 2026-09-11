@@ -3,14 +3,6 @@ if (!function_exists('peaje_home_render'))
 {
     function peaje_home_render()
     {
-        $pmx_user = '';
-        if (isset($_SESSION['fld_usuarios']) && '' !== trim((string) $_SESSION['fld_usuarios']))
-        {
-            $pmx_user = trim((string) $_SESSION['fld_usuarios']);
-        }
-
-        $pmx_user = htmlspecialchars($pmx_user, ENT_QUOTES, 'UTF-8');
-        $pmx_date = date('d/m/Y H:i');
 ?>
 <main class="pmx-home-shell">
   <section class="pmx-home-rail" aria-label="P-MX">
@@ -28,17 +20,13 @@ if (!function_exists('peaje_home_render'))
       <p class="pmx-home-subtitle">Back Office</p>
     </div>
 
-    <div class="pmx-home-status" aria-label="Contexto">
-      <?php if ('' !== $pmx_user) { ?>
-      <span><?php echo $pmx_user; ?></span>
-      <?php } ?>
-      <span><?php echo $pmx_date; ?></span>
-    </div>
-
     <div class="pmx-home-modules" aria-label="Modulos">
       <span>Cruces</span>
-      <span>Trafico</span>
+      <span>Tarifas</span>
+      <span>Cortes</span>
+      <span>Preliquidacion</span>
       <span>Liquidacion</span>
+      <span>Informes</span>
     </div>
   </section>
 </main>

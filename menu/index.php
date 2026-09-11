@@ -5140,7 +5140,7 @@ function menuKZ_escreveMenu($arr_menu, $path_imag_cab = '', $strAlign = '')
     }
 ?>
         <td class='sc-layer-0' style='width:14%;text-align:left;display:none;'>
-                        <span class='sc-layer-0-0' style='font-size: 16px;background-color: ;font-family: ;color: #000000;'>   <img src="<?php echo $path_imag_cab ?>/grp__NM__img__NM__kz_system.png" border="0"/></span><br/>
+                        <span class='sc-layer-0-0' style='font-size: 16px;background-color: ;font-family: ;color: #000000;'>   <img src="<?php echo $path_imag_cab ?>/peaje_mx_mark.svg" border="0" alt="P-MX"/></span><br/>
 
         </td><td <?php echo $strAlign; ?>>
   <div class='mainmenu menu--horizontal'>
