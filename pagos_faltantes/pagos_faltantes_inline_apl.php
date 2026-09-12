@@ -1495,6 +1495,7 @@ class pagos_faltantes_inline_apl
   <link rel="stylesheet" type="text/css" href="../_lib/buttons/<?php echo $this->Ini->Str_btn_form . '/' . $this->Ini->Str_btn_form ?>.css" /> 
   <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_prod; ?>/third/font-awesome/css/all.min.css" /> 
   <link rel="shortcut icon" href="../_lib/img/scriptcase__NM__ico__NM__favicon.ico">
+<link rel="stylesheet" type="text/css" href="../_lib/css/peaje_module_ui.css?v=20260912-preliq-ui" />
 </HEAD>
 <BODY class="scExportPage">
 <table style="border-collapse: collapse; border-width: 0; height: 100%; width: 100%"><tr><td style="padding: 0; text-align: center; vertical-align: top">
@@ -8450,6 +8451,7 @@ function nmgp_redireciona($tipo=0)
     <META http-equiv="Cache-Control" content="post-check=0, pre-check=0"/>
     <META http-equiv="Pragma" content="no-cache"/>
     <link rel="shortcut icon" href="../_lib/img/scriptcase__NM__ico__NM__favicon.ico">
+   <link rel="stylesheet" type="text/css" href="../_lib/css/peaje_module_ui.css?v=20260912-preliq-ui" />
    </HEAD>
    <BODY>
    <FORM name="form_ok" method="POST" action="<?php echo $this->form_encode_input($nmgp_saida_form); ?>" target="_self">

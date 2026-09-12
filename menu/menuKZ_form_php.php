@@ -803,7 +803,7 @@ $_SESSION['scriptcase']['menuKZ']['contr_erro'] = 'off';
 
       <HTML>
       <HEAD>
-       <TITLE>menuKZ</TITLE>
+       <TITLE>P-MX</TITLE>
      <META http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['scriptcase']['charset_html'] ?>" />
        <META http-equiv="Expires" content="Fri, Jan 01 1900 00:00:00 GMT"/>
        <META http-equiv="Last-Modified" content="<?php echo gmdate("D, d M Y H:i:s"); ?> GMT"/>

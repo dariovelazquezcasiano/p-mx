@@ -4477,7 +4477,7 @@ if ($menuKZ_menuData['iframe'])
  <link rel="stylesheet" type="text/css" href="../_lib/buttons/<?php echo $Str_btn_css ?>" /> 
 <link rel="stylesheet" href="<?php echo $_SESSION['scriptcase']['menuKZ']['glo_nm_path_prod']; ?>/third/font-awesome/css/all.min.css" type="text/css" media="screen" />
 <link rel="stylesheet" type="text/css" href="../_lib/css/_menuTheme/usr_Fair_Menu2014_<?php echo ($this->menu_orientacao!='vertical')?'hor':'vert'; ?>_<?php echo $_SESSION['scriptcase']['reg_conf']['css_dir']; ?>.css<?php if (@is_file($this->path_css . '_menuTheme/' . "usr_Fair_Menu2014" . '_' . (($this->menu_orientacao!='vertical')?'hor':'vert') . '.css')) { echo '?scp=' . md5($this->path_css . '_menuTheme/' . "usr_Fair_Menu2014" . '_' . (($this->menu_orientacao=='horizontal')?'hor':'vert') . '.css'); } ?>" />
-<link rel="stylesheet" type="text/css" href="peaje_menu.css?v=20260910-menu-font" />
+<link rel="stylesheet" type="text/css" href="peaje_menu.css?v=20260912-submenu-active" />
 <style>
    .scTabText {
    }

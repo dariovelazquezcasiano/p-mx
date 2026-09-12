@@ -1,9 +1,545 @@
-@import url("../../grid_aforo/peaje_grid_aforo.css?v=20260911-ui");
+html,
+body.scGridPage,
+body.scFilterPage {
+  min-height: 100%;
+}
+
+:root {
+  --pmx-ink: #1b2b36;
+  --pmx-muted: #5f6e78;
+  --pmx-line: #d8e3e0;
+  --pmx-panel: #ffffff;
+  --pmx-panel-soft: #f6faf9;
+  --pmx-bg: #e8efed;
+  --pmx-bg-warm: #f2efe7;
+  --pmx-teal: #0f766e;
+  --pmx-teal-dark: #123f43;
+  --pmx-teal-soft: #e3f3ef;
+  --pmx-gold: #f0a51a;
+  --pmx-danger: #b42318;
+  --pmx-success: #047857;
+}
+
+body.scGridPage,
+body.scFilterPage {
+  background: linear-gradient(135deg, var(--pmx-bg) 0%, #edf4f2 54%, var(--pmx-bg-warm) 100%) !important;
+  color: var(--pmx-ink) !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 14px !important;
+}
+
+body.scGridPage.sc-app-grid,
+body.scFilterPage {
+  box-sizing: border-box;
+  margin: 0 !important;
+  padding: 18px !important;
+}
+
+body.scGridPage a,
+body.scFilterPage a {
+  color: var(--pmx-teal);
+}
+
+.scGridBorder,
+.scFilterBorder,
+.scFilterTable,
+.scGridRefinedSearchMoldura,
+.scGridRefinedSearchMolduraResult,
+.scGridSummarySearchMoldura {
+  background: #ffffff !important;
+  border: 1px solid var(--pmx-line) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 18px 42px rgba(20, 45, 50, 0.11) !important;
+  overflow: hidden;
+}
+
+.scGridBorder {
+  margin: 0 auto !important;
+  max-width: calc(100vw - 36px);
+}
+
+.scGridTabela,
+.scFilterTable {
+  border-color: #d7e2df !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+}
+
+#sc_grid_body {
+  background: #ffffff !important;
+  overflow-x: auto;
+  padding: 12px !important;
+}
+
+#sc_grid_body .scGridTabela[id^="sc-ui-grid-body"] {
+  min-width: 1180px;
+}
+
+#sc_grid_body .scGridTabela {
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.scGridHeader,
+.scFilterHeader {
+  background: var(--pmx-teal-dark) !important;
+  border-color: var(--pmx-teal-dark) !important;
+  border-bottom: 3px solid var(--pmx-gold) !important;
+}
+
+.scGridHeaderFont,
+.scFilterHeaderFont {
+  color: #ffffff !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 17px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0 !important;
+}
+
+.scGridToolbar,
+.scFilterToolbar,
+.scGridRefinedSearchToolbar {
+  background: var(--pmx-panel-soft) !important;
+  border-color: var(--pmx-line) !important;
+  color: #334155 !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 13px !important;
+}
+
+.scGridToolbarPadding,
+.scFilterToolbarPadding {
+  padding: 10px 14px !important;
+}
+
+.scGridToolbarNav,
+.scGridToolbarNavOpen {
+  border-radius: 6px !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 13px !important;
+  margin: 0 2px;
+}
+
+.scGridToolbarNav {
+  background: #ffffff !important;
+  border: 1px solid var(--pmx-line) !important;
+  color: var(--pmx-teal) !important;
+}
+
+.scGridToolbarNav:hover {
+  background: var(--pmx-teal-soft) !important;
+  color: #0b5f59 !important;
+}
+
+.scGridToolbarNavOpen {
+  background: var(--pmx-teal) !important;
+  border: 1px solid var(--pmx-teal) !important;
+  color: #ffffff !important;
+}
+
+.scGridLabel,
+.scGridLabelVert,
+.scGridLabelFont,
+.scGridSummaryLabel {
+  background: var(--pmx-teal-dark) !important;
+  border-color: #27565a !important;
+  color: #ffffff !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0 !important;
+  padding: 11px 12px !important;
+  text-transform: uppercase;
+}
+
+.scGridLabelFont a,
+.scGridLabelLink,
+.scGridSummaryLabel a {
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+
+.scGridLabelFont:hover,
+.scGridLabelVert:hover,
+.scGridSummaryLabel:hover {
+  background: var(--pmx-teal) !important;
+  border-color: var(--pmx-teal) !important;
+}
+
+.scGridFieldOdd,
+.scGridFieldEven {
+  transition: background-color 0.14s ease;
+}
+
+.scGridFieldOdd {
+  background: #ffffff !important;
+}
+
+.scGridFieldEven {
+  background: #f7faf9 !important;
+}
+
+.scGridFieldOddFont,
+.scGridFieldEvenFont,
+.scGridFieldOddVert,
+.scGridFieldEvenVert,
+.scGridSummaryLineOdd,
+.scGridSummaryLineEven {
+  border-color: #e0e9e6 !important;
+  color: #26333f !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 13px !important;
+  line-height: 1.35 !important;
+  padding: 9px 11px !important;
+}
+
+tr:hover > .scGridFieldOddFont,
+tr:hover > .scGridFieldEvenFont,
+tr:hover > .scGridFieldOdd,
+tr:hover > .scGridFieldEven,
+.scGridFieldOver {
+  background: var(--pmx-teal-soft) !important;
+}
+
+.scGridFieldClick {
+  background: #d4ebe6 !important;
+}
+
+.css_turnoid_grid_line,
+.css_carrilid_grid_line,
+.css_usuarioid_grid_line,
+.css_secuencial_grid_line,
+.css_folio_grid_line,
+.css_consecutivo_grid_line,
+.css_cantidadeje_ana_grid_line,
+.css_importe_ana_grid_line,
+.css_tarifaee_ana_grid_line,
+.css_cantidadejes_grid_line,
+.css_montocr_grid_line,
+.css_importemxn_grid_line,
+.css_faltante_grid_line,
+.css_sobrante_grid_line,
+.css_entregado_grid_line,
+.css_depositopre_grid_line,
+.css_faltanteana_grid_line,
+.css_sobranteana_grid_line {
+  font-variant-numeric: tabular-nums;
+}
+
+.css_importe_ana_grid_line,
+.css_tarifaee_ana_grid_line,
+.css_montocr_grid_line,
+.css_importemxn_grid_line,
+.css_entregado_grid_line,
+.css_depositopre_grid_line {
+  color: #0b5f59 !important;
+  font-weight: 650;
+}
+
+.css_montocr_grid_line,
+.css_importemxn_grid_line,
+.css_faltante_grid_line,
+.css_sobrante_grid_line,
+.css_entregado_grid_line,
+.css_depositopre_grid_line,
+.css_faltanteana_grid_line,
+.css_sobranteana_grid_line {
+  text-align: right !important;
+}
+
+.css_faltante_grid_line,
+.css_faltanteana_grid_line {
+  color: var(--pmx-danger) !important;
+  font-weight: 700;
+}
+
+.css_sobrante_grid_line,
+.css_sobranteana_grid_line {
+  color: var(--pmx-success) !important;
+  font-weight: 700;
+}
+
+.css_L1C2_label {
+  background: var(--pmx-teal) !important;
+  border-color: var(--pmx-teal) !important;
+  color: #ffffff !important;
+}
+
+a.css_operacion_grid_line,
+a.css_sincajero_grid_line {
+  background: var(--pmx-teal-soft) !important;
+  border: 1px solid #b8dcd7 !important;
+  border-radius: 6px !important;
+  color: #0b5f59 !important;
+  display: inline-block;
+  font-weight: 700 !important;
+  padding: 4px 8px !important;
+  text-decoration: none !important;
+}
+
+a.css_operacion_grid_line:hover,
+a.css_sincajero_grid_line:hover {
+  background: var(--pmx-gold) !important;
+  border-color: var(--pmx-gold) !important;
+  color: #14252f !important;
+}
+
+.css_cancelado_grid_line {
+  color: #8a3c00 !important;
+  font-weight: 650;
+}
+
+.scButton_default,
+.scButton_default_selected,
+.scButton_small,
+.scButton_small_selected,
+.scButton_group,
+.scButton_group_selected,
+.scBtnGrpText,
+.scBtnGrpClick {
+  background: #ffffff !important;
+  border: 1px solid #cbd8d5 !important;
+  border-radius: 6px !important;
+  box-shadow: 0 1px 2px rgba(15, 35, 45, 0.08) !important;
+  color: #22313f !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 650 !important;
+  letter-spacing: 0 !important;
+  text-decoration: none !important;
+}
+
+.scButton_default:hover,
+.scButton_default_selected:hover,
+.scButton_small:hover,
+.scButton_small_selected:hover,
+.scButton_group:hover,
+.scButton_group_selected:hover,
+.scBtnGrpText:hover,
+.scBtnGrpClick:hover {
+  background: #0f766e !important;
+  border-color: #0f766e !important;
+  color: #ffffff !important;
+}
+
+.scButton_default:active,
+.scButton_small:active,
+.scButton_group:active {
+  background: #0b5f59 !important;
+  border-color: #0b5f59 !important;
+  color: #ffffff !important;
+}
+
+.scButton_default_disabled,
+.scButton_small_disabled,
+.scButton_group_disabled {
+  background: #eef2f1 !important;
+  border-color: #d7e2df !important;
+  color: #8c9a97 !important;
+}
+
+.scButton_default img,
+.scButton_small img,
+.scButton_group img {
+  vertical-align: -2px;
+}
+
+.css_toolbar_obj,
+.scFilterToolbar_obj,
+#sel_recup_filters_bot,
+#sel_filters_del_bot,
+#rec_f0_bot,
+input.scFilterObjectOdd,
+input.scFilterObjectEven,
+select.scFilterObjectOdd,
+select.scFilterObjectEven,
+textarea.scFilterObjectOdd,
+textarea.scFilterObjectEven,
+.select2-container--default .select2-selection,
+.SumoSelect > .CaptionCont {
+  background: #ffffff !important;
+  border: 1px solid #cbd8d5 !important;
+  border-radius: 6px !important;
+  color: #22313f !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 13px !important;
+}
+
+.css_toolbar_obj:focus,
+.scFilterToolbar_obj:focus,
+#rec_f0_bot:focus,
+input.scFilterObjectOdd:focus,
+input.scFilterObjectEven:focus,
+select.scFilterObjectOdd:focus,
+select.scFilterObjectEven:focus,
+textarea.scFilterObjectOdd:focus,
+textarea.scFilterObjectEven:focus,
+.select2-container--default .select2-selection:focus,
+.SumoSelect:focus > .CaptionCont {
+  border-color: #0f766e !important;
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.16) !important;
+  outline: 0 !important;
+}
+
+.scFilterTable {
+  margin: 0 auto !important;
+  max-width: 1120px;
+  width: calc(100% - 32px) !important;
+}
+
+.scFilterBlock,
+.scFilterBlockBack {
+  background: #f3f7f6 !important;
+  border-color: #d7e2df !important;
+  color: #22313f !important;
+}
+
+.scFilterLabelOdd,
+.scFilterLabelEven {
+  background: #f8fbfa !important;
+  color: #354251 !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  padding: 10px 14px !important;
+}
+
+.scFilterFieldOdd,
+.scFilterFieldEven,
+.scFilterFieldFontOdd,
+.scFilterFieldFontEven,
+.scFilterDataFontOdd {
+  background: #ffffff !important;
+  color: #22313f !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 13px !important;
+}
+
+.scFilterFieldOdd,
+.scFilterFieldEven {
+  padding: 8px 12px !important;
+}
+
+.scGridRefinedSearchPadding {
+  background: #ffffff !important;
+  border-color: #d7e2df !important;
+  padding: 16px !important;
+}
+
+.scGridRefinedSearchLabel,
+.scGridSummarySearchLabel {
+  color: #51615e !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0 !important;
+  text-transform: uppercase;
+}
+
+.scGridRefinedSearchCampo,
+.scGridSummarySearchCampo {
+  border-color: #e0e9e6 !important;
+}
+
+.active > .scGridSummarySearchLabel {
+  color: #0f766e !important;
+}
+
+.active > .scGridSummarySearchObjeto > .SumoSelect > .CaptionCont,
+.active > .scGridSummarySearchObjeto > .css_toolbar_obj {
+  border-color: #0f766e !important;
+}
+
+.scGridBlock,
+.scGridBlockBg,
+.scGridBlockLineBg,
+.scGridBlockSpaceBg,
+.scGridTotal,
+.scGridSubtotal,
+.scGridSummaryTotal,
+.scGridSummarySubtotal,
+.scGridSummaryGroupbyVisible {
+  background: #f3f7f6 !important;
+  border-color: #d7e2df !important;
+  color: #22313f !important;
+}
+
+.scGridTotalFont,
+.scGridSubtotalFont {
+  color: #22313f !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+}
+
+.scAppDivMoldura,
+#TB_window {
+  background: #ffffff !important;
+  border: 1px solid #d7e2df !important;
+  border-radius: 8px !important;
+  box-shadow: 0 24px 60px rgba(20, 45, 50, 0.22) !important;
+  overflow: hidden;
+}
+
+.scAppDivHeader,
+.scAppDivHeaderText {
+  background: #16343a !important;
+  color: #ffffff !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+  letter-spacing: 0 !important;
+}
+
+.scAppDivContent {
+  background: #ffffff !important;
+  color: #22313f !important;
+}
+
+.scAppDivToolbar {
+  background: #f8fbfa !important;
+  border-color: #d7e2df !important;
+}
+
+.TB_overlayBG {
+  background: rgba(20, 37, 47, 0.58) !important;
+}
+
+#id_div_process .scFilterTable,
+#id_fatal_error,
+.scAjaxDiv {
+  border-radius: 8px !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+}
+
+@media (max-width: 760px) {
+  body.scGridPage.sc-app-grid,
+  body.scFilterPage {
+    padding: 10px !important;
+  }
+
+  .scGridBorder,
+  .scFilterTable {
+    max-width: calc(100vw - 20px);
+    width: calc(100vw - 20px) !important;
+  }
+
+  #sc_grid_toobar_top_table td,
+  #sc_grid_toobar_bot_table td,
+  #sc_filter_toolbar_bot td {
+    display: block;
+    padding: 8px 10px !important;
+    text-align: left !important;
+    white-space: normal !important;
+    width: auto !important;
+  }
+
+  .scButton_default,
+  .scButton_small,
+  .scButton_group {
+    margin: 3px 2px !important;
+  }
+}
 
 body.scFormPage,
 body.scContainerPage {
-  background: #edf3f2 !important;
-  color: #22313f !important;
+  background: linear-gradient(135deg, var(--pmx-bg) 0%, #edf4f2 54%, var(--pmx-bg-warm) 100%) !important;
+  color: var(--pmx-ink) !important;
   font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
   font-size: 14px !important;
 }
@@ -20,9 +556,9 @@ body.scContainerPage {
 .scFormTable,
 .scFormTabela {
   background: #ffffff !important;
-  border: 1px solid #d7e2df !important;
+  border: 1px solid var(--pmx-line) !important;
   border-radius: 8px !important;
-  box-shadow: 0 18px 42px rgba(20, 45, 50, 0.12) !important;
+  box-shadow: 0 18px 42px rgba(20, 45, 50, 0.11) !important;
   overflow: hidden;
 }
 
@@ -34,8 +570,9 @@ body.scContainerPage {
 .scFormHeaderFont,
 .scContainerHeader,
 .scContainerHeaderFont {
-  background: #14252f !important;
-  border-color: #14252f !important;
+  background: var(--pmx-teal-dark) !important;
+  border-color: var(--pmx-teal-dark) !important;
+  border-bottom: 3px solid var(--pmx-gold) !important;
   color: #ffffff !important;
   font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
   font-weight: 700 !important;
@@ -50,8 +587,8 @@ body.scContainerPage {
 .scFormToolbar,
 .scFormFooter,
 .scAppDivToolbar {
-  background: #f8fbfa !important;
-  border-color: #d7e2df !important;
+  background: var(--pmx-panel-soft) !important;
+  border-color: var(--pmx-line) !important;
 }
 
 .scFormToolbarPadding,
@@ -68,7 +605,7 @@ body.scContainerPage {
 .scFormLabelEven,
 .scFormLabelOddMult,
 .scFormLabelEvenMult {
-  background: #f8fbfa !important;
+  background: var(--pmx-panel-soft) !important;
   border-color: #e0e9e6 !important;
   color: #354251 !important;
   font-size: 13px !important;
@@ -102,9 +639,10 @@ body.scContainerPage {
   background: #ffffff !important;
   border: 1px solid #cbd8d5 !important;
   border-radius: 6px !important;
-  color: #22313f !important;
+  color: var(--pmx-ink) !important;
   font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
   font-size: 13px !important;
+  min-height: 32px;
 }
 
 .scFormObjectOdd:focus,
@@ -116,9 +654,79 @@ body.scContainerPage {
 .scFormObjectFocusOddMult,
 .scFormObjectFocusEvenMult,
 .scFormToolbarInput:focus {
-  border-color: #0f766e !important;
+  border-color: var(--pmx-teal) !important;
   box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.16) !important;
   outline: 0 !important;
+}
+
+.scFormDataFontOdd,
+.scFormDataFontEven,
+.scFormPageText,
+.scFormBlock,
+.scFormBlockFont {
+  color: var(--pmx-ink) !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+}
+
+.scFormBlock,
+.scFormBlockFont {
+  background: #edf5f2 !important;
+  border-color: var(--pmx-line) !important;
+  font-weight: 700 !important;
+}
+
+[class^="sc-ui-readonly-"],
+[class*=" sc-ui-readonly-"] {
+  background: #f3f8f6 !important;
+  border: 1px solid #dce8e4 !important;
+  border-radius: 6px !important;
+  color: var(--pmx-ink) !important;
+  display: inline-block;
+  min-height: 30px;
+  min-width: 54px;
+  padding: 6px 9px !important;
+}
+
+.css_montocr_line,
+.css_importemxn_line,
+.css_faltante_line,
+.css_sobrante_line,
+.css_entregado_line,
+.css_depositopre_line,
+.css_faltanteana_line,
+.css_sobranteana_line,
+.css_cantidadmxn_line,
+.css_cantidadusd_line,
+.css_importemxn_line,
+.css_importeusd_line {
+  font-variant-numeric: tabular-nums;
+}
+
+.css_montocr_line input,
+.css_importemxn_line input,
+.css_faltante_line input,
+.css_sobrante_line input,
+.css_entregado_line input,
+.css_depositopre_line input,
+.css_faltanteana_line input,
+.css_sobranteana_line input,
+.css_cantidadmxn_line input,
+.css_cantidadusd_line input,
+.css_importemxn_line input,
+.css_importeusd_line input {
+  text-align: right !important;
+}
+
+.css_faltante_line,
+.css_faltanteana_line {
+  color: var(--pmx-danger) !important;
+  font-weight: 700;
+}
+
+.css_sobrante_line,
+.css_sobranteana_line {
+  color: var(--pmx-success) !important;
+  font-weight: 700;
 }
 
 .scFormInputError,
