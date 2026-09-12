@@ -1332,27 +1332,27 @@ if ($_SESSION['scriptcase']['charset'] != "UTF-8" && NM_is_utf8($nm_var_lab[0]))
 {
     $nm_var_lab[0] = sc_convert_encoding($nm_var_lab[0], $_SESSION['scriptcase']['charset'], "UTF-8");
 }
- $nm_var_lab[1] = "Preliquida";
+ $nm_var_lab[1] = "Preliquidación";
 if ($_SESSION['scriptcase']['charset'] != "UTF-8" && NM_is_utf8($nm_var_lab[1]))
 {
     $nm_var_lab[1] = sc_convert_encoding($nm_var_lab[1], $_SESSION['scriptcase']['charset'], "UTF-8");
 }
- $nm_var_lab[2] = "Pre * Carril";
+ $nm_var_lab[2] = "Por carril";
 if ($_SESSION['scriptcase']['charset'] != "UTF-8" && NM_is_utf8($nm_var_lab[2]))
 {
     $nm_var_lab[2] = sc_convert_encoding($nm_var_lab[2], $_SESSION['scriptcase']['charset'], "UTF-8");
 }
- $nm_var_lab[3] = "Pre * Turno-Carril";
+ $nm_var_lab[3] = "Por carril y turno";
 if ($_SESSION['scriptcase']['charset'] != "UTF-8" && NM_is_utf8($nm_var_lab[3]))
 {
     $nm_var_lab[3] = sc_convert_encoding($nm_var_lab[3], $_SESSION['scriptcase']['charset'], "UTF-8");
 }
- $nm_var_lab[4] = "Pre * Turno";
+ $nm_var_lab[4] = "Por turno";
 if ($_SESSION['scriptcase']['charset'] != "UTF-8" && NM_is_utf8($nm_var_lab[4]))
 {
     $nm_var_lab[4] = sc_convert_encoding($nm_var_lab[4], $_SESSION['scriptcase']['charset'], "UTF-8");
 }
- $nm_var_lab[5] = "Pre * Día";
+ $nm_var_lab[5] = "Por día";
 if ($_SESSION['scriptcase']['charset'] != "UTF-8" && NM_is_utf8($nm_var_lab[5]))
 {
     $nm_var_lab[5] = sc_convert_encoding($nm_var_lab[5], $_SESSION['scriptcase']['charset'], "UTF-8");
@@ -1362,57 +1362,57 @@ if ($_SESSION['scriptcase']['charset'] != "UTF-8" && NM_is_utf8($nm_var_lab[6]))
 {
     $nm_var_lab[6] = sc_convert_encoding($nm_var_lab[6], $_SESSION['scriptcase']['charset'], "UTF-8");
 }
- $nm_var_lab[7] = "Pagos * Faltante";
+ $nm_var_lab[7] = "Pagos faltantes";
 if ($_SESSION['scriptcase']['charset'] != "UTF-8" && NM_is_utf8($nm_var_lab[7]))
 {
     $nm_var_lab[7] = sc_convert_encoding($nm_var_lab[7], $_SESSION['scriptcase']['charset'], "UTF-8");
 }
- $nm_var_lab[8] = "Reporte * Pres";
+ $nm_var_lab[8] = "Reporte de preliquidación";
 if ($_SESSION['scriptcase']['charset'] != "UTF-8" && NM_is_utf8($nm_var_lab[8]))
 {
     $nm_var_lab[8] = sc_convert_encoding($nm_var_lab[8], $_SESSION['scriptcase']['charset'], "UTF-8");
 }
- $nm_var_lab[9] = "Reporte * Día Detallado";
+ $nm_var_lab[9] = "Día detallado";
 if ($_SESSION['scriptcase']['charset'] != "UTF-8" && NM_is_utf8($nm_var_lab[9]))
 {
     $nm_var_lab[9] = sc_convert_encoding($nm_var_lab[9], $_SESSION['scriptcase']['charset'], "UTF-8");
 }
- $nm_var_lab[10] = "<-- * Pre";
+ $nm_var_lab[10] = "Reversar preliquidación";
 if ($_SESSION['scriptcase']['charset'] != "UTF-8" && NM_is_utf8($nm_var_lab[10]))
 {
     $nm_var_lab[10] = sc_convert_encoding($nm_var_lab[10], $_SESSION['scriptcase']['charset'], "UTF-8");
 }
- $nm_var_lab[11] = "Verificar";
+ $nm_var_lab[11] = "Liquidación";
 if ($_SESSION['scriptcase']['charset'] != "UTF-8" && NM_is_utf8($nm_var_lab[11]))
 {
     $nm_var_lab[11] = sc_convert_encoding($nm_var_lab[11], $_SESSION['scriptcase']['charset'], "UTF-8");
 }
- $nm_var_lab[12] = "Verif * Corte";
+ $nm_var_lab[12] = "Por corte";
 if ($_SESSION['scriptcase']['charset'] != "UTF-8" && NM_is_utf8($nm_var_lab[12]))
 {
     $nm_var_lab[12] = sc_convert_encoding($nm_var_lab[12], $_SESSION['scriptcase']['charset'], "UTF-8");
 }
- $nm_var_lab[13] = "Verif * Turno";
+ $nm_var_lab[13] = "Por turno";
 if ($_SESSION['scriptcase']['charset'] != "UTF-8" && NM_is_utf8($nm_var_lab[13]))
 {
     $nm_var_lab[13] = sc_convert_encoding($nm_var_lab[13], $_SESSION['scriptcase']['charset'], "UTF-8");
 }
- $nm_var_lab[14] = "Verif * Día";
+ $nm_var_lab[14] = "Por día";
 if ($_SESSION['scriptcase']['charset'] != "UTF-8" && NM_is_utf8($nm_var_lab[14]))
 {
     $nm_var_lab[14] = sc_convert_encoding($nm_var_lab[14], $_SESSION['scriptcase']['charset'], "UTF-8");
 }
- $nm_var_lab[15] = "Reporte * Verifs";
+ $nm_var_lab[15] = "Reporte de liquidación";
 if ($_SESSION['scriptcase']['charset'] != "UTF-8" && NM_is_utf8($nm_var_lab[15]))
 {
     $nm_var_lab[15] = sc_convert_encoding($nm_var_lab[15], $_SESSION['scriptcase']['charset'], "UTF-8");
 }
- $nm_var_lab[16] = "<-- Verif";
+ $nm_var_lab[16] = "Reversar liquidación";
 if ($_SESSION['scriptcase']['charset'] != "UTF-8" && NM_is_utf8($nm_var_lab[16]))
 {
     $nm_var_lab[16] = sc_convert_encoding($nm_var_lab[16], $_SESSION['scriptcase']['charset'], "UTF-8");
 }
- $nm_var_lab[17] = "Consulta";
+ $nm_var_lab[17] = "Informes";
 if ($_SESSION['scriptcase']['charset'] != "UTF-8" && NM_is_utf8($nm_var_lab[17]))
 {
     $nm_var_lab[17] = sc_convert_encoding($nm_var_lab[17], $_SESSION['scriptcase']['charset'], "UTF-8");
@@ -1477,7 +1477,7 @@ if ($_SESSION['scriptcase']['charset'] != "UTF-8" && NM_is_utf8($nm_var_lab[29])
 {
     $nm_var_lab[29] = sc_convert_encoding($nm_var_lab[29], $_SESSION['scriptcase']['charset'], "UTF-8");
 }
- $nm_var_lab[30] = "Reversas Pre y Lid";
+ $nm_var_lab[30] = "Reversas pre/liquidación";
 if ($_SESSION['scriptcase']['charset'] != "UTF-8" && NM_is_utf8($nm_var_lab[30]))
 {
     $nm_var_lab[30] = sc_convert_encoding($nm_var_lab[30], $_SESSION['scriptcase']['charset'], "UTF-8");
@@ -1507,7 +1507,7 @@ if ($_SESSION['scriptcase']['charset'] != "UTF-8" && NM_is_utf8($nm_var_lab[35])
 {
     $nm_var_lab[35] = sc_convert_encoding($nm_var_lab[35], $_SESSION['scriptcase']['charset'], "UTF-8");
 }
- $nm_var_lab[36] = "Categorias de pago";
+ $nm_var_lab[36] = "Categorías de pago";
 if ($_SESSION['scriptcase']['charset'] != "UTF-8" && NM_is_utf8($nm_var_lab[36]))
 {
     $nm_var_lab[36] = sc_convert_encoding($nm_var_lab[36], $_SESSION['scriptcase']['charset'], "UTF-8");
@@ -1527,12 +1527,12 @@ if ($_SESSION['scriptcase']['charset'] != "UTF-8" && NM_is_utf8($nm_var_lab[39])
 {
     $nm_var_lab[39] = sc_convert_encoding($nm_var_lab[39], $_SESSION['scriptcase']['charset'], "UTF-8");
 }
- $nm_var_lab[40] = "Genera Archivo Día";
+ $nm_var_lab[40] = "Generar archivo diario";
 if ($_SESSION['scriptcase']['charset'] != "UTF-8" && NM_is_utf8($nm_var_lab[40]))
 {
     $nm_var_lab[40] = sc_convert_encoding($nm_var_lab[40], $_SESSION['scriptcase']['charset'], "UTF-8");
 }
- $nm_var_lab[41] = "ImportaAuxiliares";
+ $nm_var_lab[41] = "Importar auxiliares";
 if ($_SESSION['scriptcase']['charset'] != "UTF-8" && NM_is_utf8($nm_var_lab[41]))
 {
     $nm_var_lab[41] = sc_convert_encoding($nm_var_lab[41], $_SESSION['scriptcase']['charset'], "UTF-8");
@@ -1542,7 +1542,7 @@ if ($_SESSION['scriptcase']['charset'] != "UTF-8" && NM_is_utf8($nm_var_lab[42])
 {
     $nm_var_lab[42] = sc_convert_encoding($nm_var_lab[42], $_SESSION['scriptcase']['charset'], "UTF-8");
 }
- $nm_var_lab[43] = "Inserta Emergentes";
+ $nm_var_lab[43] = "Emergentes";
 if ($_SESSION['scriptcase']['charset'] != "UTF-8" && NM_is_utf8($nm_var_lab[43]))
 {
     $nm_var_lab[43] = sc_convert_encoding($nm_var_lab[43], $_SESSION['scriptcase']['charset'], "UTF-8");
@@ -1557,12 +1557,12 @@ if ($_SESSION['scriptcase']['charset'] != "UTF-8" && NM_is_utf8($nm_var_lab[45])
 {
     $nm_var_lab[45] = sc_convert_encoding($nm_var_lab[45], $_SESSION['scriptcase']['charset'], "UTF-8");
 }
- $nm_var_lab[46] = "Inserta eventos carril";
+ $nm_var_lab[46] = "Eventos de carril";
 if ($_SESSION['scriptcase']['charset'] != "UTF-8" && NM_is_utf8($nm_var_lab[46]))
 {
     $nm_var_lab[46] = sc_convert_encoding($nm_var_lab[46], $_SESSION['scriptcase']['charset'], "UTF-8");
 }
- $nm_var_lab[47] = "Cam";
+ $nm_var_lab[47] = "Cámaras";
 if ($_SESSION['scriptcase']['charset'] != "UTF-8" && NM_is_utf8($nm_var_lab[47]))
 {
     $nm_var_lab[47] = sc_convert_encoding($nm_var_lab[47], $_SESSION['scriptcase']['charset'], "UTF-8");

@@ -15,17 +15,17 @@ if (!function_exists('peaje_home_render'))
     </div>
 
     <div class="pmx-home-copy">
-      <p class="pmx-kicker">Administracion de cruces</p>
+      <p class="pmx-kicker">Administración de cruces</p>
       <h1>Control operativo</h1>
       <p class="pmx-home-subtitle">Back Office</p>
     </div>
 
-    <div class="pmx-home-modules" aria-label="Modulos">
+    <div class="pmx-home-modules" aria-label="Módulos">
       <span>Cruces</span>
       <span>Tarifas</span>
       <span>Cortes</span>
-      <span>Preliquidacion</span>
-      <span>Liquidacion</span>
+      <span>Preliquidación</span>
+      <span>Liquidación</span>
       <span>Informes</span>
     </div>
   </section>

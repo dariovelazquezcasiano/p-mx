@@ -1990,7 +1990,7 @@ class grid_detalleturnoPTC_apl
           if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturnoPTC']['embutida'] && $this->Ini->sc_page == $this->sc_init_menu && !isset($_SESSION['scriptcase']['menu_apls'][$_SESSION['scriptcase']['menu_atual']][$this->sc_init_menu]['grid_detalleturnoPTC']))
           {
                $_SESSION['scriptcase']['menu_apls'][$_SESSION['scriptcase']['menu_atual']][$this->sc_init_menu]['grid_detalleturnoPTC']['link'] = $this->Ini->sc_protocolo . $this->Ini->server . $this->Ini->path_link . "" . SC_dir_app_name('grid_detalleturnoPTC') . "/";
-               $_SESSION['scriptcase']['menu_apls'][$_SESSION['scriptcase']['menu_atual']][$this->sc_init_menu]['grid_detalleturnoPTC']['label'] = "" . $this->Ini->Nm_lang['lang_othr_grid_title'] . " Turno - Carril";
+               $_SESSION['scriptcase']['menu_apls'][$_SESSION['scriptcase']['menu_atual']][$this->sc_init_menu]['grid_detalleturnoPTC']['label'] = "Preliquidacion Por Carril y Turno";
                $this->Change_Menu = true;
           }
           elseif ($this->Ini->sc_page == $this->sc_init_menu)
@@ -4231,7 +4231,7 @@ if (window.parent && typeof window.parent.updateGeneratedPdfFile === "function")
             "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
 <HTML<?php echo $_SESSION['scriptcase']['reg_conf']['html_dir'] ?>>
 <HEAD>
- <TITLE><?php echo $this->Ini->Nm_lang['lang_othr_grid_title'] ?> Turno - Carril :: Doc</TITLE>
+ <TITLE>Preliquidacion Por Carril y Turno :: Doc</TITLE>
  <META http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['scriptcase']['charset_html'] ?>" />
  <META http-equiv="Expires" content="Fri, Jan 01 1900 00:00:00 GMT"/>
  <META http-equiv="Last-Modified" content="<?php echo gmdate("D, d M Y H:i:s"); ?> GMT"/>

@@ -1418,7 +1418,7 @@ $_SESSION['scriptcase']['grid_detalleturnoPTC']['contr_erro'] = 'off';
             "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
 <HTML>
 <HEAD>
- <TITLE> Turno - Carril</TITLE>
+ <TITLE>Preliquidacion Por Carril y Turno</TITLE>
  <META http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['scriptcase']['charset_html'] ?>" />
 <?php
 if ($_SESSION['scriptcase']['proc_mobile'])
@@ -1461,7 +1461,7 @@ if ($_SESSION['scriptcase']['proc_mobile'])
             "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
 <HTML<?php echo $_SESSION['scriptcase']['reg_conf']['html_dir'] ?>>
 <HEAD>
- <TITLE> Turno - Carril</TITLE>
+ <TITLE>Preliquidacion Por Carril y Turno</TITLE>
  <META http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['scriptcase']['charset_html'] ?>" />
 <?php
 if ($_SESSION['scriptcase']['proc_mobile'])
@@ -1972,7 +1972,7 @@ function nm_open_popup(parms)
     .scMenuTHeaderFont img, .scGridHeaderFont img , .scFormHeaderFont img , .scTabHeaderFont img , .scContainerHeaderFont img , .scFilterHeaderFont img { height:23px;}
 </style>
 <div class="scFilterHeader" style="height: 54px; padding: 17px 15px; box-sizing: border-box;margin: -1px 0px 0px 0px;width: 100%;">
-    <div class="scFilterHeaderFont" style="float: left; text-transform: uppercase;"><?php echo $this->Ini->Nm_lang['lang_othr_grid_title'] ?> Turno - Carril</div>
+    <div class="scFilterHeaderFont" style="float: left; text-transform: uppercase;">Preliquidacion Por Carril y Turno</div>
     <div class="scFilterHeaderFont" style="float: right;"></div>
 </div>  </TD>
  </TR>

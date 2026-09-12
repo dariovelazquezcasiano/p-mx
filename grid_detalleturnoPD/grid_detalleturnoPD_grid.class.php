@@ -933,7 +933,7 @@ $_SESSION['scriptcase']['grid_detalleturnoPD']['contr_erro'] = 'off';
             "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
 <HTML<?php echo $_SESSION['scriptcase']['reg_conf']['html_dir'] ?>>
 <HEAD>
- <TITLE><?php echo $this->Ini->Nm_lang['lang_othr_grid_title'] ?> Día :: PDF</TITLE>
+ <TITLE>Preliquidacion Por dia :: PDF</TITLE>
  <META http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <?php
            if ($_SESSION['scriptcase']['proc_mobile'])
@@ -1031,7 +1031,7 @@ $_SESSION['scriptcase']['grid_detalleturnoPD']['contr_erro'] = 'off';
        $nm_saida->saida("            \"http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd\">\r\n");
        $nm_saida->saida("  <HTML" . $_SESSION['scriptcase']['reg_conf']['html_dir'] . ">\r\n");
        $nm_saida->saida("  <HEAD>\r\n");
-       $nm_saida->saida("   <TITLE>" . $this->Ini->Nm_lang['lang_othr_grid_title'] . " Día</TITLE>\r\n");
+       $nm_saida->saida("   <TITLE>Preliquidacion Por dia</TITLE>\r\n");
        $nm_saida->saida("   <META http-equiv=\"Content-Type\" content=\"text/html; charset=" . $_SESSION['scriptcase']['charset_html'] . "\" />\r\n");
        if ($_SESSION['scriptcase']['proc_mobile'])
        {
@@ -2119,7 +2119,7 @@ $nm_saida->saida("}\r\n");
    $nm_saida->saida("      <TABLE style=\"padding: 0px; border-spacing: 0px; border-width: 0px;\" width=\"100%\">\r\n");
    $nm_saida->saida("       <TR align=\"center\" valign=\"middle\">\r\n");
    $nm_saida->saida("        <TD align=\"left\" rowspan=\"2\" class=\"" . $this->css_scGridHeaderFont . "\">\r\n");
-   $nm_saida->saida("          " . $this->Ini->Nm_lang['lang_othr_grid_title'] . " Día\r\n");
+   $nm_saida->saida("          Preliquidacion Por dia\r\n");
    $nm_saida->saida("        </TD>\r\n");
    $nm_saida->saida("        <TD class=\"" . $this->css_scGridHeaderFont . "\">\r\n");
    $nm_saida->saida("          " . "" . "\r\n");

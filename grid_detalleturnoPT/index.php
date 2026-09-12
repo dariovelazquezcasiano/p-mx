@@ -223,7 +223,7 @@ class grid_detalleturnoPT_ini
       $_SESSION['scriptcase']['trial_version'] = 'N';
       $_SESSION['sc_session'][$this->sc_page]['grid_detalleturnoPT']['decimal_db'] = "."; 
       $this->nm_cod_apl      = "grid_detalleturnoPT"; 
-      $this->nm_nome_apl     = "Tabla de detalle Turno"; 
+      $this->nm_nome_apl     = "Preliquidacion Por turno";
       $this->nm_seguranca    = ""; 
       $this->nm_grupo        = "BackOffice_Acapulco"; 
       $this->nm_grupo_versao = "1"; 
@@ -1990,7 +1990,7 @@ class grid_detalleturnoPT_apl
           if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturnoPT']['embutida'] && $this->Ini->sc_page == $this->sc_init_menu && !isset($_SESSION['scriptcase']['menu_apls'][$_SESSION['scriptcase']['menu_atual']][$this->sc_init_menu]['grid_detalleturnoPT']))
           {
                $_SESSION['scriptcase']['menu_apls'][$_SESSION['scriptcase']['menu_atual']][$this->sc_init_menu]['grid_detalleturnoPT']['link'] = $this->Ini->sc_protocolo . $this->Ini->server . $this->Ini->path_link . "" . SC_dir_app_name('grid_detalleturnoPT') . "/";
-               $_SESSION['scriptcase']['menu_apls'][$_SESSION['scriptcase']['menu_atual']][$this->sc_init_menu]['grid_detalleturnoPT']['label'] = "" . $this->Ini->Nm_lang['lang_othr_grid_title'] . " Turno";
+               $_SESSION['scriptcase']['menu_apls'][$_SESSION['scriptcase']['menu_atual']][$this->sc_init_menu]['grid_detalleturnoPT']['label'] = "Preliquidacion Por turno";
                $this->Change_Menu = true;
           }
           elseif ($this->Ini->sc_page == $this->sc_init_menu)
@@ -4230,7 +4230,7 @@ if (window.parent && typeof window.parent.updateGeneratedPdfFile === "function")
             "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
 <HTML<?php echo $_SESSION['scriptcase']['reg_conf']['html_dir'] ?>>
 <HEAD>
- <TITLE><?php echo $this->Ini->Nm_lang['lang_othr_grid_title'] ?> Turno :: Doc</TITLE>
+ <TITLE>Preliquidacion Por turno :: Doc</TITLE>
  <META http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['scriptcase']['charset_html'] ?>" />
  <META http-equiv="Expires" content="Fri, Jan 01 1900 00:00:00 GMT"/>
  <META http-equiv="Last-Modified" content="<?php echo gmdate("D, d M Y H:i:s"); ?> GMT"/>

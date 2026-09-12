@@ -375,7 +375,7 @@ class grid_detalleturnoPTC_res_json
             "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
 <HTML<?php echo $_SESSION['scriptcase']['reg_conf']['html_dir'] ?>>
 <HEAD>
- <TITLE><?php echo $this->Ini->Nm_lang['lang_othr_grid_title'] ?> Turno - Carril :: JSON</TITLE>
+ <TITLE>Preliquidacion Por Carril y Turno :: JSON</TITLE>
  <META http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['scriptcase']['charset_html'] ?>" />
 <?php
 if ($_SESSION['scriptcase']['proc_mobile'])

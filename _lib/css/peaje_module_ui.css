@@ -206,22 +206,50 @@ tr:hover > .scGridFieldEven,
 
 .css_turnoid_grid_line,
 .css_carrilid_grid_line,
+.css_casetaid_grid_line,
 .css_usuarioid_grid_line,
 .css_secuencial_grid_line,
 .css_folio_grid_line,
 .css_consecutivo_grid_line,
+.css_carril_grid_line,
+.css_orden_grid_line,
+.css_categoriaid_grid_line,
+.css_excentoid_grid_line,
+.css_tipopagoid_grid_line,
+.css_pagoid_grid_line,
+.css_pagoid_ana_grid_line,
+.css_vehiculoid_grid_line,
+.css_vehiculoid_ana_grid_line,
+.css_vehiculoid_cr_grid_line,
+.css_vehiculoid_ect_grid_line,
+.css_vehiculoid_eap_grid_line,
 .css_cantidadeje_ana_grid_line,
+.css_cantidadeje_cr_grid_line,
 .css_importe_ana_grid_line,
 .css_tarifaee_ana_grid_line,
 .css_cantidadejes_grid_line,
 .css_montocr_grid_line,
 .css_importemxn_grid_line,
+.css_importeusd_grid_line,
+.css_montoana_grid_line,
+.css_difanacr_grid_line,
 .css_faltante_grid_line,
 .css_sobrante_grid_line,
 .css_entregado_grid_line,
 .css_depositopre_grid_line,
+.css_depositototal_grid_line,
 .css_faltanteana_grid_line,
-.css_sobranteana_grid_line {
+.css_sobranteana_grid_line,
+.css_total_grid_line,
+.css_totaleq_grid_line,
+.css_diferencia_grid_line,
+.css_importe_grid_line,
+.css_impana_grid_line,
+.css_importe_cr_grid_line,
+.css_importeejeligero_grid_line,
+.css_importeejepesado_grid_line,
+.css_tarifaee_cr_grid_line,
+.css_fld_tarifa_grid_line {
   font-variant-numeric: tabular-nums;
 }
 
@@ -229,25 +257,53 @@ tr:hover > .scGridFieldEven,
 .css_tarifaee_ana_grid_line,
 .css_montocr_grid_line,
 .css_importemxn_grid_line,
+.css_importeusd_grid_line,
+.css_montoana_grid_line,
 .css_entregado_grid_line,
-.css_depositopre_grid_line {
+.css_depositopre_grid_line,
+.css_depositototal_grid_line,
+.css_total_grid_line,
+.css_totaleq_grid_line,
+.css_importe_grid_line,
+.css_impana_grid_line,
+.css_importe_cr_grid_line,
+.css_importeejeligero_grid_line,
+.css_importeejepesado_grid_line,
+.css_tarifaee_cr_grid_line,
+.css_fld_tarifa_grid_line {
   color: #0b5f59 !important;
   font-weight: 650;
 }
 
 .css_montocr_grid_line,
 .css_importemxn_grid_line,
+.css_importeusd_grid_line,
+.css_montoana_grid_line,
+.css_difanacr_grid_line,
 .css_faltante_grid_line,
 .css_sobrante_grid_line,
 .css_entregado_grid_line,
 .css_depositopre_grid_line,
+.css_depositototal_grid_line,
 .css_faltanteana_grid_line,
-.css_sobranteana_grid_line {
+.css_sobranteana_grid_line,
+.css_total_grid_line,
+.css_totaleq_grid_line,
+.css_diferencia_grid_line,
+.css_importe_grid_line,
+.css_impana_grid_line,
+.css_importe_cr_grid_line,
+.css_importeejeligero_grid_line,
+.css_importeejepesado_grid_line,
+.css_tarifaee_cr_grid_line,
+.css_fld_tarifa_grid_line {
   text-align: right !important;
 }
 
 .css_faltante_grid_line,
-.css_faltanteana_grid_line {
+.css_faltanteana_grid_line,
+.css_diferencia_grid_line,
+.css_difanacr_grid_line {
   color: var(--pmx-danger) !important;
   font-weight: 700;
 }
@@ -264,8 +320,17 @@ tr:hover > .scGridFieldEven,
   color: #ffffff !important;
 }
 
+.css_L1C3_label {
+  background: #f0a51a !important;
+  border-color: #f0a51a !important;
+  color: #14252f !important;
+}
+
 a.css_operacion_grid_line,
-a.css_sincajero_grid_line {
+a.css_sincajero_grid_line,
+a.css_liga_grid_line,
+a.css_tarifas_grid_line,
+a.css_liquidacion_ok_grid_line {
   background: var(--pmx-teal-soft) !important;
   border: 1px solid #b8dcd7 !important;
   border-radius: 6px !important;
@@ -277,15 +342,87 @@ a.css_sincajero_grid_line {
 }
 
 a.css_operacion_grid_line:hover,
-a.css_sincajero_grid_line:hover {
+a.css_sincajero_grid_line:hover,
+a.css_liga_grid_line:hover,
+a.css_tarifas_grid_line:hover,
+a.css_liquidacion_ok_grid_line:hover {
   background: var(--pmx-gold) !important;
   border-color: var(--pmx-gold) !important;
   color: #14252f !important;
 }
 
+.css_liquidacion_grid_line,
+.css_liquida_grid_line,
+.css_liquidacion_ok_grid_line,
+.css_activo_grid_line,
+.css_esactivo_grid_line,
+.css_efectivo_grid_line,
+.css_categoriapago_grid_line,
+.css_estatusana_grid_line,
+.css_categoriatlp_grid_line,
+.css_tipotlp_grid_line,
+.css_operadortlp_grid_line,
+.css_clasevehiculo_ana_grid_line,
+.css_clasevehiculo_cr_grid_line,
+.css_cuerpo_grid_line {
+  font-weight: 700 !important;
+}
+
+.css_liquidacion_grid_line,
+.css_liquida_grid_line,
+.css_liquidacion_ok_grid_line,
+.css_activo_grid_line,
+.css_esactivo_grid_line,
+.css_estatusana_grid_line {
+  color: var(--pmx-success) !important;
+}
+
+.css_fechaoperacion_grid_line,
+.css_fechaturno_grid_line,
+.css_fechainicio_grid_line,
+.css_fechafin_grid_line,
+.css_horainicio_grid_line,
+.css_horaevento_grid_line,
+.css_horafin_grid_line {
+  color: #475569 !important;
+  white-space: nowrap !important;
+}
+
+.css_placas_grid_line,
+.css_numerotarjeta_grid_line,
+.css_folio_grid_line,
+.css_foliocierre_grid_line {
+  color: #334155 !important;
+  font-weight: 650;
+}
+
 .css_cancelado_grid_line {
   color: #8a3c00 !important;
   font-weight: 650;
+}
+
+.css_categoriatlp_grid_line,
+.css_tipotlp_grid_line,
+.css_clasevehiculo_ana_grid_line,
+.css_clasevehiculo_cr_grid_line,
+.css_pagoid_grid_line,
+.css_pagoid_ana_grid_line,
+.css_excentoid_grid_line {
+  color: #0b5f59 !important;
+}
+
+.css_operadortlp_grid_line,
+.css_cuerpo_grid_line,
+.css_casetaid_grid_line,
+.css_carrilid_grid_line {
+  color: #334155 !important;
+}
+
+.css_imagen_grid_line img {
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(20, 45, 50, 0.16);
+  max-height: 58px;
+  object-fit: cover;
 }
 
 .scButton_default,

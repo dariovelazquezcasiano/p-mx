@@ -152,7 +152,7 @@ function Sel_cmp_process()
           }
       }
       ?>
-      <link rel="stylesheet" type="text/css" href="peaje_grid_aforo.css?v=20260911-ui" />
+      <link rel="stylesheet" type="text/css" href="../_lib/css/peaje_module_ui.css?v=20260912-reports-ui" />
       <?php
    }
 

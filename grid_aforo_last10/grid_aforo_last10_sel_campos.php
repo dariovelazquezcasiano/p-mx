@@ -695,6 +695,7 @@ if ($_SESSION['scriptcase']['proc_mobile'])
  <META http-equiv="Cache-Control" content="post-check=0, pre-check=0"/>
  <META http-equiv="Pragma" content="no-cache"/>
  <link rel="shortcut icon" href="../_lib/img/scriptcase__NM__ico__NM__favicon.ico">
+ <link rel="stylesheet" type="text/css" href="../_lib/css/peaje_module_ui.css?v=20260912-reports-ui" />
 </HEAD>
 <BODY class="scGridPage" style="margin: 0px; overflow-x: hidden">
 <script language="javascript" type="text/javascript" src="../_lib/lib/js/jquery-3.6.0.min.js"></script>

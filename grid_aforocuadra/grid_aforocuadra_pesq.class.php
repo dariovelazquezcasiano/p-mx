@@ -1620,6 +1620,7 @@ if ($_SESSION['scriptcase']['proc_mobile'])
   } 
   ?> 
  <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_link ?>grid_aforocuadra/grid_aforocuadra_fil_<?php echo strtolower($_SESSION['scriptcase']['reg_conf']['css_dir']) ?>.css" />
+ <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_link ?>_lib/css/peaje_module_ui.css?v=20260912-reports-ui" />
 </HEAD>
 <?php
 $vertical_center = '';

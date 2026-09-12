@@ -1461,7 +1461,7 @@ else
             "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
 <HTML<?php echo $_SESSION['scriptcase']['reg_conf']['html_dir'] ?>>
 <HEAD>
- <TITLE><?php echo $this->Ini->Nm_lang['lang_othr_grid_title'] ?> Turno</TITLE>
+ <TITLE>Preliquidacion Por turno</TITLE>
  <META http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['scriptcase']['charset_html'] ?>" />
 <?php
 if ($_SESSION['scriptcase']['proc_mobile'])
@@ -1996,7 +1996,7 @@ function NM_apaga_erro()
     .scMenuTHeaderFont img, .scGridHeaderFont img , .scFormHeaderFont img , .scTabHeaderFont img , .scContainerHeaderFont img , .scFilterHeaderFont img { height:23px;}
 </style>
 <div class="scFormHeader" style="height: 54px; padding: 17px 15px; box-sizing: border-box;margin: -1px 0px 0px 0px;width: 100%;">
-    <div class="scFormHeaderFont" style="float: left; text-transform: uppercase;">Turnos</div>
+    <div class="scFormHeaderFont" style="float: left; text-transform: uppercase;">Preliquidacion Por turno</div>
     <div class="scFormHeaderFont" style="float: right;"></div>
 </div> 
 </TD>
