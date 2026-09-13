@@ -1,3 +1,5 @@
+@import url("../peaje_module_ui.css?v=20260913-modulos");
+
 .select2-container--default .select2-selection { background-color: #C9C9FF; background-image: none; opacity: 1; filter: alpha(opacity=100); border-color: #2E1D68 !important; border-style: solid !important; border-width: 1px !important; color: #000000; font-family: Arial, sans-serif; font-size: 13px; text-decoration: none; -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px }
 .scFilterPage { background-color: #E9E7F6; background-image: none; opacity: 1; filter: alpha(opacity=100); color: #3C4858; font-family: Arial, sans-serif; font-size: 13px; margin: 20px; text-decoration: none }
 .scFilterBorder { background-color: #fff; background-image: none; opacity: 1; filter: alpha(opacity=100); border-color: #E0E6ED; border-style: solid; border-width: 1px; border-collapse: collapse; padding: 0 }

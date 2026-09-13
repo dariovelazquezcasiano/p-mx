@@ -1,3 +1,5 @@
+@import url("../peaje_module_ui.css?v=20260913-modulos");
+
 .scGridPage { background-color: #E9E7F6; background-image: none; opacity: 1; filter: alpha(opacity=100); color: #3C4858; font-family: Arial, sans-serif; margin: 20px; font-size: 13px }
 .scGridBorder { background-color: #FFFFFF; background-image: none; opacity: 1; filter: alpha(opacity=100); border-color: #E0E6ED; border-style: solid; border-width: 1px; border-collapse: collapse; padding: 0 }
 .scGridPageLink { color: #3C4858; text-decoration: underline }

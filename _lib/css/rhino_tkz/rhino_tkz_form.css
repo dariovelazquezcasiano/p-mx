@@ -1,3 +1,5 @@
+@import url("../peaje_module_ui.css?v=20260913-modulos");
+
 .scFormPage { background-color: #E9E7F6; background-image: none; opacity: 1; filter: alpha(opacity=100); color: #3C4858; font-family: Arial, sans-serif; font-size: 13px; margin: 20px; text-decoration: none }
 .scFormBorder { background-color: #FFFFFF; background-image: none; opacity: 1; filter: alpha(opacity=100); padding: 0; margin: css_form_moldura_margin; border-collapse: collapse; border-color: #E0E6ED; border-style: solid; border-width: 1px }
 .scFormPageText { color: #3C4858; font-family: Arial, sans-serif; font-size: 13px; text-decoration: none }
