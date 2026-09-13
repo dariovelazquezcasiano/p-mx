@@ -31,7 +31,7 @@
    <link rel="shortcut icon" href="../_lib/img/scriptcase__NM__ico__NM__favicon.ico">
    <link rel="stylesheet" type="text/css" href="../_lib/css/<?php echo $str_schema_all ?>_menuH.css" /> 
    <link rel="stylesheet" type="text/css" href="../_lib/css/<?php echo $str_schema_all ?>_menuH<?php echo $_SESSION['scriptcase']['reg_conf']['css_dir'] ?>.css" /> 
-   <link rel="stylesheet" type="text/css" href="peaje_menu.css?v=20260912-submenu-active" />
+   <link rel="stylesheet" type="text/css" href="peaje_menu.css?v=20260913-palette" />
 </HEAD>
 <body class="peaje-menu-home" scroll="no">
 <?php

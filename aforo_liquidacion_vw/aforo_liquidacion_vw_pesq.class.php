@@ -1459,7 +1459,7 @@ if ($_SESSION['scriptcase']['proc_mobile'])
  ?>
  <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_link ?>aforo_liquidacion_vw/aforo_liquidacion_vw_fil_<?php echo strtolower($_SESSION['scriptcase']['reg_conf']['css_dir']) ?>.css" />
  <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_link ?>aforo_liquidacion_vw/aforo_liquidacion_vw_switch.css" />
- <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_link ?>_lib/css/peaje_module_ui.css?v=20260911-ui" />
+ <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_link ?>_lib/css/peaje_module_ui.css?v=20260913-palette" />
 </HEAD>
 <?php
 $vertical_center = '';

@@ -1678,7 +1678,7 @@ class form_tipopago_apl
   <link rel="stylesheet" type="text/css" href="../_lib/buttons/<?php echo $this->Ini->Str_btn_form . '/' . $this->Ini->Str_btn_form ?>.css" /> 
   <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_prod; ?>/third/font-awesome/css/all.min.css" /> 
   <link rel="shortcut icon" href="../_lib/img/scriptcase__NM__ico__NM__favicon.ico">
-<link rel="stylesheet" type="text/css" href="../_lib/css/peaje_module_ui.css?v=20260912-ops-ui" />
+<link rel="stylesheet" type="text/css" href="../_lib/css/peaje_module_ui.css?v=20260913-palette" />
 </HEAD>
 <BODY class="scExportPage">
 <table style="border-collapse: collapse; border-width: 0; height: 100%; width: 100%"><tr><td style="padding: 0; text-align: center; vertical-align: top">
@@ -1795,7 +1795,7 @@ include_once("form_tipopago_sajax_js.php");
   <?php 
   } 
   ?> 
- <link rel="stylesheet" type="text/css" href="../_lib/css/peaje_module_ui.css?v=20260912-ops-ui" />
+ <link rel="stylesheet" type="text/css" href="../_lib/css/peaje_module_ui.css?v=20260913-palette" />
  </head>
   <body class="scFormPage">
       <table class="scFormTabela" align="center"><tr><td>
@@ -5307,7 +5307,7 @@ function nmgp_redireciona($tipo=0)
     <META http-equiv="Cache-Control" content="post-check=0, pre-check=0"/>
     <META http-equiv="Pragma" content="no-cache"/>
     <link rel="shortcut icon" href="../_lib/img/scriptcase__NM__ico__NM__favicon.ico">
-   <link rel="stylesheet" type="text/css" href="../_lib/css/peaje_module_ui.css?v=20260912-ops-ui" />
+   <link rel="stylesheet" type="text/css" href="../_lib/css/peaje_module_ui.css?v=20260913-palette" />
    </HEAD>
    <BODY>
    <FORM name="form_ok" method="POST" action="<?php echo $this->form_encode_input($nmgp_saida_form); ?>" target="_self">
@@ -5527,7 +5527,7 @@ setTimeout(function() { document.Fredir.submit(); }, 250);
     <META http-equiv="Pragma" content="no-cache"/>
     <link rel="shortcut icon" href="../_lib/img/scriptcase__NM__ico__NM__favicon.ico">
     <SCRIPT type="text/javascript" src="../_lib/lib/js/jquery-3.6.0.min.js"></SCRIPT>
-   <link rel="stylesheet" type="text/css" href="../_lib/css/peaje_module_ui.css?v=20260912-ops-ui" />
+   <link rel="stylesheet" type="text/css" href="../_lib/css/peaje_module_ui.css?v=20260913-palette" />
    </HEAD>
    <BODY>
 <?php

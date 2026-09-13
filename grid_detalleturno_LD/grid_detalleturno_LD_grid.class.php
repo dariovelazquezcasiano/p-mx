@@ -1710,7 +1710,7 @@ $nm_saida->saida("}\r\n");
   }
            $nm_saida->saida("  </style>\r\n");
        }
-       $nm_saida->saida("   <link rel=\"stylesheet\" type=\"text/css\" href=\"" . $this->Ini->path_link . "_lib/css/peaje_module_ui.css?v=20260911-ui\" />\r\n");
+       $nm_saida->saida("   <link rel=\"stylesheet\" type=\"text/css\" href=\"" . $this->Ini->path_link . "_lib/css/peaje_module_ui.css?v=20260913-palette\" />\r\n");
        $nm_saida->saida("  </HEAD>\r\n");
    } 
    if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturno_LD']['embutida'] && $this->Ini->nm_ger_css_emb)

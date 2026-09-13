@@ -1313,7 +1313,7 @@ scIframeSCInit["<?php echo $sIframe; ?>"] = "<?php echo $iSCInit; ?>";
         }
 ?>
 </script>
- <link rel="stylesheet" type="text/css" href="../_lib/css/peaje_module_ui.css?v=20260911-ui" />
+ <link rel="stylesheet" type="text/css" href="../_lib/css/peaje_module_ui.css?v=20260913-palette" />
 </head>
 <body class="scContainerPage">
 
@@ -1400,7 +1400,7 @@ scIframeSCInit["<?php echo $sIframe; ?>"] = "<?php echo $iSCInit; ?>";
         }
 ?>
 </script>
- <link rel="stylesheet" type="text/css" href="../_lib/css/peaje_module_ui.css?v=20260911-ui" />
+ <link rel="stylesheet" type="text/css" href="../_lib/css/peaje_module_ui.css?v=20260913-palette" />
 </head>
 <body class="scContainerPage">
 
@@ -1630,7 +1630,7 @@ function refreshWidget(wId, wSrc, wRef)
         <?php
         }
         ?>
- <link rel="stylesheet" type="text/css" href="../_lib/css/peaje_module_ui.css?v=20260911-ui" />
+ <link rel="stylesheet" type="text/css" href="../_lib/css/peaje_module_ui.css?v=20260913-palette" />
 </head>
     <body class="scGridPage">
         <form name="Fsenha" method="post" action="./">
@@ -1744,7 +1744,7 @@ scIframeSCInit["<?php echo $sIframe; ?>"] = "<?php echo $iSCInit; ?>";
         }
 ?>
 </script>
- <link rel="stylesheet" type="text/css" href="../_lib/css/peaje_module_ui.css?v=20260911-ui" />
+ <link rel="stylesheet" type="text/css" href="../_lib/css/peaje_module_ui.css?v=20260913-palette" />
 </head>
 <body class="scContainerPage">
 

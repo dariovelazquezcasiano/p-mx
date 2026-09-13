@@ -1869,7 +1869,7 @@ class portada_apl
       header("X-Frame-Options: SAMEORIGIN");
       $_SESSION['scriptcase']['portada']['contr_erro'] = 'on';
 ?>
-<link rel="stylesheet" type="text/css" href="../menu/peaje_menu.css?v=20260910-menu-font" />
+<link rel="stylesheet" type="text/css" href="../menu/peaje_menu.css?v=20260913-palette" />
 <?php
 include_once(dirname(__FILE__) . "/../menu/peaje_home.php");
 peaje_home_render();

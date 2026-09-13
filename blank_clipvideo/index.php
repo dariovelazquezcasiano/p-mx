@@ -2014,7 +2014,7 @@ $host = $_SERVER['HTTP_HOST'];
 <script src='<?php  echo sc_url_library('prj', 'clipvideo', 'codebase/encryption/crypto-3.1.2.min.js'); ?>'></script>
 <script src='<?php  echo sc_url_library('prj', 'clipvideo', 'video/videoremote.js'); ?>'></script>
 <link rel="stylesheet" href="<?php echo $this->path_prod ?>/third/font-awesome/css/all.min.css" type="text/css" />
-<link rel="stylesheet" type="text/css" href="../_lib/css/peaje_module_ui.css?v=20260911-ui" />
+<link rel="stylesheet" type="text/css" href="../_lib/css/peaje_module_ui.css?v=20260913-palette" />
 </head>
 <style> 
     .btn2{font-size: 16px;padding: 1px;margin: 1px;height: auto;min-width: 25%;}

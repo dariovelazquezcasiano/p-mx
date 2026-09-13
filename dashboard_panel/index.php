@@ -1207,7 +1207,7 @@ class dashboard_panel_control {
  <link rel="stylesheet" type="text/css" href="../_lib/css/<?php echo $this->Ini->str_schema_all ?>_container.css" />
  <link rel="stylesheet" type="text/css" href="../_lib/css/<?php echo $this->Ini->str_schema_all ?>_container<?php echo $_SESSION['scriptcase']['reg_conf']['css_dir'] ?>.css" />
  <link rel="stylesheet" type="text/css" href="dashboard_panel_container_index.css" />
- <link rel="stylesheet" type="text/css" href="../_lib/css/peaje_module_ui.css?v=20260911-ui" />
+ <link rel="stylesheet" type="text/css" href="../_lib/css/peaje_module_ui.css?v=20260913-palette" />
 <?php
         global $str_widget_max, $str_widget_rest, $index_class_pos, $index_class_neg, $index_class_neu;
         include_once "../_lib/css/" . $this->Ini->str_schema_all . "_container.php";
@@ -1294,7 +1294,7 @@ scIframeSCInit["<?php echo $sIframe; ?>"] = "<?php echo $iSCInit; ?>";
  <link rel="stylesheet" type="text/css" href="../_lib/css/<?php echo $this->Ini->str_schema_all ?>_container.css" />
  <link rel="stylesheet" type="text/css" href="../_lib/css/<?php echo $this->Ini->str_schema_all ?>_container<?php echo $_SESSION['scriptcase']['reg_conf']['css_dir'] ?>.css" />
  <link rel="stylesheet" type="text/css" href="dashboard_panel_container_index.css" />
- <link rel="stylesheet" type="text/css" href="../_lib/css/peaje_module_ui.css?v=20260911-ui" />
+ <link rel="stylesheet" type="text/css" href="../_lib/css/peaje_module_ui.css?v=20260913-palette" />
 <?php
         global $str_widget_max, $str_widget_rest, $index_class_pos, $index_class_neg, $index_class_neu;
         include_once "../_lib/css/" . $this->Ini->str_schema_all . "_container.php";
@@ -1544,7 +1544,7 @@ function refreshWidget(wId, wSrc, wRef)
         <link rel="shortcut icon" href="../_lib/img/scriptcase__NM__ico__NM__favicon.ico" />
         <link rel="stylesheet" type="text/css" href="../_lib/css/<?php echo $this->Ini->str_schema_all ?>_form.css" />
         <link rel="stylesheet" type="text/css" href="../_lib/buttons/<?php echo $this->Ini->Str_btn_form; ?>/<?php echo $this->Ini->Str_btn_form; ?>.css" />
-        <link rel="stylesheet" type="text/css" href="../_lib/css/peaje_module_ui.css?v=20260911-ui" />
+        <link rel="stylesheet" type="text/css" href="../_lib/css/peaje_module_ui.css?v=20260913-palette" />
         <?php
         if(isset($_SESSION['scriptcase']['str_google_fonts']) && !empty($_SESSION['scriptcase']['str_google_fonts']))
         {
@@ -1628,7 +1628,7 @@ function refreshWidget(wId, wSrc, wRef)
  <link rel="stylesheet" type="text/css" href="../_lib/css/<?php echo $this->Ini->str_schema_all ?>_container.css" />
  <link rel="stylesheet" type="text/css" href="../_lib/css/<?php echo $this->Ini->str_schema_all ?>_container<?php echo $_SESSION['scriptcase']['reg_conf']['css_dir'] ?>.css" />
  <link rel="stylesheet" type="text/css" href="dashboard_panel_container_index.css" />
- <link rel="stylesheet" type="text/css" href="../_lib/css/peaje_module_ui.css?v=20260911-ui" />
+ <link rel="stylesheet" type="text/css" href="../_lib/css/peaje_module_ui.css?v=20260913-palette" />
 <?php
         global $str_widget_max, $str_widget_rest, $index_class_pos, $index_class_neg, $index_class_neu;
         include_once "../_lib/css/" . $this->Ini->str_schema_all . "_container.php";

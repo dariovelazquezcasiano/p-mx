@@ -1663,7 +1663,7 @@ if ($_SESSION['scriptcase']['proc_mobile'])
  <META http-equiv="Cache-Control" content="post-check=0, pre-check=0"/>
  <META http-equiv="Pragma" content="no-cache"/>
  <link rel="shortcut icon" href="../_lib/img/scriptcase__NM__ico__NM__favicon.ico">
- <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_link ?>_lib/css/peaje_module_ui.css?v=20260911-ui" />
+ <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_link ?>_lib/css/peaje_module_ui.css?v=20260913-palette" />
 </HEAD>
 <BODY id="grid_search" class="scGridPage">
 <FORM style="display:none;" name="form_ok" method="POST" action="<?php echo $NM_retorno; ?>" target="_self">
@@ -1731,7 +1731,7 @@ if ($_SESSION['scriptcase']['proc_mobile'])
   } 
   ?> 
  <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_link ?>grid_discrepancias/grid_discrepancias_fil_<?php echo strtolower($_SESSION['scriptcase']['reg_conf']['css_dir']) ?>.css" />
- <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_link ?>_lib/css/peaje_module_ui.css?v=20260911-ui" />
+ <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_link ?>_lib/css/peaje_module_ui.css?v=20260913-palette" />
 </HEAD>
 <?php
 $vertical_center = '';

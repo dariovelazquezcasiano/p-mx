@@ -1,3 +1,16 @@
+:root {
+  --pmx-ink: #17252f;
+  --pmx-muted: #667780;
+  --pmx-bg: #eef3f1;
+  --pmx-panel: #ffffff;
+  --pmx-line: #d8e3e0;
+  --pmx-primary: #0f766e;
+  --pmx-primary-dark: #143d42;
+  --pmx-primary-soft: #e3f3ef;
+  --pmx-accent: #d99a22;
+  --pmx-accent-soft: #fff4dc;
+}
+
 body.sc-app-contr {
   min-height: 100vh;
   margin: 0 !important;
@@ -6,10 +19,10 @@ body.sc-app-contr {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #1f2933;
+  color: var(--pmx-ink);
   background:
-    linear-gradient(110deg, rgba(31, 41, 51, 0.98) 0%, rgba(31, 41, 51, 0.98) 42%, rgba(245, 247, 248, 0.98) 42.1%, rgba(245, 247, 248, 0.98) 100%),
-    #f5f7f8;
+    linear-gradient(110deg, rgba(23, 37, 47, 0.98) 0%, rgba(23, 37, 47, 0.98) 42%, rgba(247, 250, 249, 0.98) 42.1%, rgba(247, 250, 249, 0.98) 100%),
+    var(--pmx-bg);
   font-family: "Segoe UI", Tahoma, Arial, sans-serif;
 }
 
@@ -20,7 +33,7 @@ body.sc-app-contr::before {
   pointer-events: none;
   background:
     repeating-linear-gradient(90deg, transparent 0 72px, rgba(255, 255, 255, 0.07) 72px 74px),
-    linear-gradient(150deg, transparent 0 44%, rgba(245, 158, 11, 0.36) 44.1% 44.5%, rgba(15, 118, 110, 0.44) 44.6% 45.1%, transparent 45.2% 100%);
+    linear-gradient(150deg, transparent 0 44%, rgba(217, 154, 34, 0.36) 44.1% 44.5%, rgba(15, 118, 110, 0.44) 44.6% 45.1%, transparent 45.2% 100%);
 }
 
 body.sc-app-contr * {
@@ -59,7 +72,7 @@ body.sc-app-contr .scFormBorder {
   overflow: hidden;
   width: 100%;
   max-width: 100%;
-  border: 1px solid #d7dde2 !important;
+  border: 1px solid #d8e3e0 !important;
   border-radius: 8px;
   background: #ffffff !important;
   box-shadow: 0 24px 55px rgba(15, 23, 42, 0.22);
@@ -82,8 +95,8 @@ body.sc-app-contr .scFormHeader {
   gap: 16px;
   align-items: center;
   padding: 28px 28px 22px;
-  border-bottom: 1px solid #edf0f2;
-  background: linear-gradient(180deg, #ffffff 0%, #f8fafb 100%);
+  border-bottom: 1px solid var(--pmx-line);
+  background: linear-gradient(180deg, #ffffff 0%, #f7faf9 100%);
 }
 
 .peaje-login-mark {
@@ -111,12 +124,12 @@ body.sc-app-contr .scFormHeader {
   height: 4px;
   transform: rotate(-28deg);
   border-radius: 999px;
-  background: #f59e0b;
+  background: #d99a22;
 }
 
 .peaje-login-copy h1 {
   margin: 0;
-  color: #17202a;
+  color: #17252f;
   font-size: 24px;
   font-weight: 750;
   line-height: 1.08;
@@ -125,7 +138,7 @@ body.sc-app-contr .scFormHeader {
 
 .peaje-login-copy p {
   margin: 6px 0 0;
-  color: #64707d;
+  color: #667780;
   font-size: 13px;
   font-weight: 600;
   line-height: 1.35;
@@ -167,7 +180,7 @@ body.sc-app-contr td.css_pswd_line {
 body.sc-app-contr .css_login_label,
 body.sc-app-contr .css_pswd_label,
 body.sc-app-contr .scFormLabelOddFormat {
-  color: #344050 !important;
+  color: #40525c !important;
   font-size: 13px !important;
   font-weight: 700 !important;
   line-height: 1.25;
@@ -187,11 +200,11 @@ body.sc-app-contr #id_sc_field_pswd {
   height: 44px !important;
   margin: 0;
   padding: 0 12px !important;
-  border: 1px solid #c7d0d9 !important;
+  border: 1px solid #cbd8d5 !important;
   border-radius: 6px;
   outline: 0;
   background: #ffffff !important;
-  color: #111827 !important;
+  color: #17252f !important;
   font-size: 15px !important;
   line-height: 44px !important;
   transition: border-color 160ms ease, box-shadow 160ms ease;
@@ -255,7 +268,7 @@ body.sc-app-contr #sub_form_b {
 
 body.sc-app-contr #sub_form_b:hover,
 body.sc-app-contr #sub_form_b:focus {
-  background: #0b625d !important;
+  background: #0b6f67 !important;
 }
 
 body.sc-app-contr #sub_form_b:active {
@@ -288,10 +301,10 @@ body.sc-app-contr #id_error_display_fixed {
 body.sc-app-contr .peaje-login-alert {
   width: 100%;
   margin: 0 auto 16px;
-  border: 1px solid #f0c56f;
-  border-left: 4px solid #f59e0b;
+  border: 1px solid #e6c275;
+  border-left: 4px solid #d99a22;
   border-radius: 8px;
-  background: #fffaf0;
+  background: #fff4dc;
   box-shadow: 0 18px 44px rgba(15, 23, 42, 0.2);
   overflow: hidden;
 }
@@ -306,7 +319,7 @@ body.sc-app-contr .peaje-login-alert-head {
   gap: 10px;
   min-height: 48px;
   padding: 10px 12px 10px 14px;
-  border-bottom: 1px solid rgba(245, 158, 11, 0.24);
+  border-bottom: 1px solid rgba(217, 154, 34, 0.24);
 }
 
 body.sc-app-contr .peaje-login-alert-icon {
@@ -316,7 +329,7 @@ body.sc-app-contr .peaje-login-alert-icon {
   height: 24px;
   place-items: center;
   border-radius: 6px;
-  background: #f59e0b;
+  background: #d99a22;
   color: #ffffff;
   font-size: 15px;
   font-weight: 900;
@@ -325,7 +338,7 @@ body.sc-app-contr .peaje-login-alert-icon {
 
 body.sc-app-contr .peaje-login-alert-head strong {
   flex: 1 1 auto;
-  color: #653f07;
+  color: #6a470c;
   font-size: 13px;
   font-weight: 800;
   line-height: 1.25;
@@ -342,8 +355,8 @@ body.sc-app-contr .peaje-login-alert-close {
   place-items: center;
   border: 0;
   border-radius: 6px;
-  background: rgba(101, 63, 7, 0.08);
-  color: #653f07;
+  background: rgba(106, 71, 12, 0.08);
+  color: #6a470c;
   font-family: Arial, sans-serif;
   font-size: 22px;
   font-weight: 400;
@@ -353,12 +366,12 @@ body.sc-app-contr .peaje-login-alert-close {
 
 body.sc-app-contr .peaje-login-alert-close:hover,
 body.sc-app-contr .peaje-login-alert-close:focus {
-  background: rgba(101, 63, 7, 0.14);
+  background: rgba(106, 71, 12, 0.14);
 }
 
 body.sc-app-contr .peaje-login-alert-message {
   padding: 12px 16px 14px;
-  color: #2f3640;
+  color: var(--pmx-ink);
   font-size: 14px;
   font-weight: 600;
   line-height: 1.45;
@@ -384,12 +397,12 @@ body.sc-app-contr #id_error_display_table_frame .scFormErrorTable {
   width: 100% !important;
   height: auto !important;
   min-height: 0 !important;
-  border: 1px solid #f0c56f !important;
-  border-left: 4px solid #f59e0b !important;
+  border: 1px solid #e6c275 !important;
+  border-left: 4px solid #d99a22 !important;
   border-collapse: separate !important;
   border-spacing: 0 !important;
   border-radius: 8px;
-  background: #fffaf0 !important;
+  background: #fff4dc !important;
   box-shadow: 0 18px 44px rgba(15, 23, 42, 0.2);
   overflow: visible !important;
 }
@@ -405,7 +418,7 @@ body.sc-app-contr #id_error_display_table_frame .scFormErrorTitle {
   height: auto !important;
   padding: 12px 14px 10px !important;
   border: 0 !important;
-  border-bottom: 1px solid rgba(245, 158, 11, 0.24) !important;
+  border-bottom: 1px solid rgba(217, 154, 34, 0.24) !important;
   background: transparent !important;
 }
 
@@ -416,7 +429,7 @@ body.sc-app-contr #id_error_display_table_frame .scFormErrorTitle tr {
 }
 
 body.sc-app-contr #id_error_display_table_frame .scFormErrorTitleFont {
-  color: #653f07 !important;
+  color: #6a470c !important;
   font-family: "Segoe UI", Tahoma, Arial, sans-serif !important;
   font-size: 13px !important;
   font-weight: 800 !important;
@@ -437,7 +450,7 @@ body.sc-app-contr #id_error_display_table_frame .scFormErrorTitleFont::before {
   margin-right: 8px;
   place-items: center;
   border-radius: 6px;
-  background: #f59e0b;
+  background: #d99a22;
   color: #ffffff;
   font-size: 15px;
   font-weight: 900;
@@ -452,7 +465,7 @@ body.sc-app-contr #id_error_display_table_frame .scFormErrorMessage {
   padding: 12px 16px 14px !important;
   border: 0 !important;
   background: transparent !important;
-  color: #2f3640 !important;
+  color: var(--pmx-ink) !important;
   font-family: "Segoe UI", Tahoma, Arial, sans-serif !important;
   font-size: 14px !important;
   font-weight: 600 !important;
@@ -472,8 +485,8 @@ body.sc-app-contr #id_error_display_table_frame .scButton_default {
   place-items: center;
   border: 0 !important;
   border-radius: 6px !important;
-  background: rgba(101, 63, 7, 0.08) !important;
-  color: #653f07 !important;
+  background: rgba(106, 71, 12, 0.08) !important;
+  color: #6a470c !important;
   box-shadow: none !important;
   text-decoration: none !important;
   text-shadow: none !important;
@@ -482,7 +495,7 @@ body.sc-app-contr #id_error_display_table_frame .scButton_default {
 
 body.sc-app-contr #id_error_display_table_frame .scButton_default:hover,
 body.sc-app-contr #id_error_display_table_frame .scButton_default:focus {
-  background: rgba(101, 63, 7, 0.14) !important;
+  background: rgba(106, 71, 12, 0.14) !important;
 }
 
 body.sc-app-contr #id_error_display_table_frame .scButton_default .btn-label {
@@ -504,7 +517,7 @@ body.sc-app-contr #id_error_display_table_frame .scButton_default::before {
   body.sc-app-contr {
     align-items: flex-start;
     padding: 28px 16px !important;
-    background: #f5f7f8;
+    background: #eef3f1;
   }
 
   body.sc-app-contr form[name="F1"] {

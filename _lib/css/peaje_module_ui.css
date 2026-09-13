@@ -5,24 +5,29 @@ body.scFilterPage {
 }
 
 :root {
-  --pmx-ink: #1b2b36;
-  --pmx-muted: #5f6e78;
+  --pmx-ink: #17252f;
+  --pmx-muted: #667780;
   --pmx-line: #d8e3e0;
   --pmx-panel: #ffffff;
-  --pmx-panel-soft: #f6faf9;
-  --pmx-bg: #e8efed;
-  --pmx-bg-warm: #f2efe7;
-  --pmx-teal: #0f766e;
-  --pmx-teal-dark: #123f43;
-  --pmx-teal-soft: #e3f3ef;
-  --pmx-gold: #f0a51a;
+  --pmx-panel-soft: #f7faf9;
+  --pmx-bg: #eef3f1;
+  --pmx-bg-warm: #f6f2e8;
+  --pmx-primary: #0f766e;
+  --pmx-primary-dark: #143d42;
+  --pmx-primary-soft: #e3f3ef;
+  --pmx-accent: #d99a22;
+  --pmx-accent-soft: #fff4dc;
+  --pmx-teal: var(--pmx-primary);
+  --pmx-teal-dark: var(--pmx-primary-dark);
+  --pmx-teal-soft: var(--pmx-primary-soft);
+  --pmx-gold: var(--pmx-accent);
   --pmx-danger: #b42318;
   --pmx-success: #047857;
 }
 
 body.scGridPage,
 body.scFilterPage {
-  background: linear-gradient(135deg, var(--pmx-bg) 0%, #edf4f2 54%, var(--pmx-bg-warm) 100%) !important;
+  background: linear-gradient(135deg, var(--pmx-bg) 0%, #f4f7f6 54%, var(--pmx-bg-warm) 100%) !important;
   color: var(--pmx-ink) !important;
   font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
   font-size: 14px !important;
@@ -101,7 +106,7 @@ body.scFilterPage a {
 .scGridRefinedSearchToolbar {
   background: var(--pmx-panel-soft) !important;
   border-color: var(--pmx-line) !important;
-  color: #334155 !important;
+  color: #40525c !important;
   font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
   font-size: 13px !important;
 }
@@ -127,7 +132,7 @@ body.scFilterPage a {
 
 .scGridToolbarNav:hover {
   background: var(--pmx-teal-soft) !important;
-  color: #0b5f59 !important;
+  color: #0b6f67 !important;
 }
 
 .scGridToolbarNavOpen {
@@ -141,7 +146,7 @@ body.scFilterPage a {
 .scGridLabelFont,
 .scGridSummaryLabel {
   background: var(--pmx-teal-dark) !important;
-  border-color: #27565a !important;
+  border-color: #2e6365 !important;
   color: #ffffff !important;
   font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
   font-size: 12px !important;
@@ -185,7 +190,7 @@ body.scFilterPage a {
 .scGridSummaryLineOdd,
 .scGridSummaryLineEven {
   border-color: #e0e9e6 !important;
-  color: #26333f !important;
+  color: #253744 !important;
   font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
   font-size: 13px !important;
   line-height: 1.35 !important;
@@ -201,7 +206,7 @@ tr:hover > .scGridFieldEven,
 }
 
 .scGridFieldClick {
-  background: #d4ebe6 !important;
+  background: #d8eee9 !important;
 }
 
 .css_turnoid_grid_line,
@@ -271,7 +276,7 @@ tr:hover > .scGridFieldEven,
 .css_importeejepesado_grid_line,
 .css_tarifaee_cr_grid_line,
 .css_fld_tarifa_grid_line {
-  color: #0b5f59 !important;
+  color: #0b6f67 !important;
   font-weight: 650;
 }
 
@@ -321,9 +326,9 @@ tr:hover > .scGridFieldEven,
 }
 
 .css_L1C3_label {
-  background: #f0a51a !important;
-  border-color: #f0a51a !important;
-  color: #14252f !important;
+  background: #d99a22 !important;
+  border-color: #d99a22 !important;
+  color: #143d42 !important;
 }
 
 a.css_operacion_grid_line,
@@ -332,9 +337,9 @@ a.css_liga_grid_line,
 a.css_tarifas_grid_line,
 a.css_liquidacion_ok_grid_line {
   background: var(--pmx-teal-soft) !important;
-  border: 1px solid #b8dcd7 !important;
+  border: 1px solid #b7d9d3 !important;
   border-radius: 6px !important;
-  color: #0b5f59 !important;
+  color: #0b6f67 !important;
   display: inline-block;
   font-weight: 700 !important;
   padding: 4px 8px !important;
@@ -348,7 +353,7 @@ a.css_tarifas_grid_line:hover,
 a.css_liquidacion_ok_grid_line:hover {
   background: var(--pmx-gold) !important;
   border-color: var(--pmx-gold) !important;
-  color: #14252f !important;
+  color: #143d42 !important;
 }
 
 .css_liquidacion_grid_line,
@@ -384,7 +389,7 @@ a.css_liquidacion_ok_grid_line:hover {
 .css_horainicio_grid_line,
 .css_horaevento_grid_line,
 .css_horafin_grid_line {
-  color: #475569 !important;
+  color: #5b6b75 !important;
   white-space: nowrap !important;
 }
 
@@ -392,12 +397,12 @@ a.css_liquidacion_ok_grid_line:hover {
 .css_numerotarjeta_grid_line,
 .css_folio_grid_line,
 .css_foliocierre_grid_line {
-  color: #334155 !important;
+  color: #40525c !important;
   font-weight: 650;
 }
 
 .css_cancelado_grid_line {
-  color: #8a3c00 !important;
+  color: #7a4715 !important;
   font-weight: 650;
 }
 
@@ -408,14 +413,14 @@ a.css_liquidacion_ok_grid_line:hover {
 .css_pagoid_grid_line,
 .css_pagoid_ana_grid_line,
 .css_excentoid_grid_line {
-  color: #0b5f59 !important;
+  color: #0b6f67 !important;
 }
 
 .css_operadortlp_grid_line,
 .css_cuerpo_grid_line,
 .css_casetaid_grid_line,
 .css_carrilid_grid_line {
-  color: #334155 !important;
+  color: #40525c !important;
 }
 
 .css_imagen_grid_line img {
@@ -437,7 +442,7 @@ a.css_liquidacion_ok_grid_line:hover {
   border: 1px solid #cbd8d5 !important;
   border-radius: 6px !important;
   box-shadow: 0 1px 2px rgba(15, 35, 45, 0.08) !important;
-  color: #22313f !important;
+  color: #17252f !important;
   font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
   font-size: 13px !important;
   font-weight: 650 !important;
@@ -461,8 +466,8 @@ a.css_liquidacion_ok_grid_line:hover {
 .scButton_default:active,
 .scButton_small:active,
 .scButton_group:active {
-  background: #0b5f59 !important;
-  border-color: #0b5f59 !important;
+  background: #0b6f67 !important;
+  border-color: #0b6f67 !important;
   color: #ffffff !important;
 }
 
@@ -471,7 +476,7 @@ a.css_liquidacion_ok_grid_line:hover {
 .scButton_group_disabled {
   background: #eef2f1 !important;
   border-color: #d7e2df !important;
-  color: #8c9a97 !important;
+  color: #879792 !important;
 }
 
 .scButton_default img,
@@ -496,7 +501,7 @@ textarea.scFilterObjectEven,
   background: #ffffff !important;
   border: 1px solid #cbd8d5 !important;
   border-radius: 6px !important;
-  color: #22313f !important;
+  color: #17252f !important;
   font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
   font-size: 13px !important;
 }
@@ -525,15 +530,15 @@ textarea.scFilterObjectEven:focus,
 
 .scFilterBlock,
 .scFilterBlockBack {
-  background: #f3f7f6 !important;
+  background: #f7faf9 !important;
   border-color: #d7e2df !important;
-  color: #22313f !important;
+  color: #17252f !important;
 }
 
 .scFilterLabelOdd,
 .scFilterLabelEven {
-  background: #f8fbfa !important;
-  color: #354251 !important;
+  background: #f7faf9 !important;
+  color: #40525c !important;
   font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
   font-size: 13px !important;
   font-weight: 700 !important;
@@ -546,7 +551,7 @@ textarea.scFilterObjectEven:focus,
 .scFilterFieldFontEven,
 .scFilterDataFontOdd {
   background: #ffffff !important;
-  color: #22313f !important;
+  color: #17252f !important;
   font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
   font-size: 13px !important;
 }
@@ -564,7 +569,7 @@ textarea.scFilterObjectEven:focus,
 
 .scGridRefinedSearchLabel,
 .scGridSummarySearchLabel {
-  color: #51615e !important;
+  color: #667780 !important;
   font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
   font-size: 12px !important;
   font-weight: 700 !important;
@@ -595,14 +600,14 @@ textarea.scFilterObjectEven:focus,
 .scGridSummaryTotal,
 .scGridSummarySubtotal,
 .scGridSummaryGroupbyVisible {
-  background: #f3f7f6 !important;
+  background: #f7faf9 !important;
   border-color: #d7e2df !important;
-  color: #22313f !important;
+  color: #17252f !important;
 }
 
 .scGridTotalFont,
 .scGridSubtotalFont {
-  color: #22313f !important;
+  color: #17252f !important;
   font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
 }
 
@@ -617,7 +622,7 @@ textarea.scFilterObjectEven:focus,
 
 .scAppDivHeader,
 .scAppDivHeaderText {
-  background: #16343a !important;
+  background: #143d42 !important;
   color: #ffffff !important;
   font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
   letter-spacing: 0 !important;
@@ -625,11 +630,11 @@ textarea.scFilterObjectEven:focus,
 
 .scAppDivContent {
   background: #ffffff !important;
-  color: #22313f !important;
+  color: #17252f !important;
 }
 
 .scAppDivToolbar {
-  background: #f8fbfa !important;
+  background: #f7faf9 !important;
   border-color: #d7e2df !important;
 }
 
@@ -675,7 +680,7 @@ textarea.scFilterObjectEven:focus,
 
 body.scFormPage,
 body.scContainerPage {
-  background: linear-gradient(135deg, var(--pmx-bg) 0%, #edf4f2 54%, var(--pmx-bg-warm) 100%) !important;
+  background: linear-gradient(135deg, var(--pmx-bg) 0%, #f4f7f6 54%, var(--pmx-bg-warm) 100%) !important;
   color: var(--pmx-ink) !important;
   font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
   font-size: 14px !important;
@@ -744,7 +749,7 @@ body.scContainerPage {
 .scFormLabelEvenMult {
   background: var(--pmx-panel-soft) !important;
   border-color: #e0e9e6 !important;
-  color: #354251 !important;
+  color: #40525c !important;
   font-size: 13px !important;
   font-weight: 700 !important;
   padding: 10px 14px !important;
@@ -756,7 +761,7 @@ body.scContainerPage {
 .scFormDataEvenMult {
   background: #ffffff !important;
   border-color: #e0e9e6 !important;
-  color: #22313f !important;
+  color: #17252f !important;
   font-size: 13px !important;
   padding: 9px 12px !important;
 }
@@ -807,14 +812,14 @@ body.scContainerPage {
 
 .scFormBlock,
 .scFormBlockFont {
-  background: #edf5f2 !important;
+  background: #eaf4f1 !important;
   border-color: var(--pmx-line) !important;
   font-weight: 700 !important;
 }
 
 [class^="sc-ui-readonly-"],
 [class*=" sc-ui-readonly-"] {
-  background: #f3f8f6 !important;
+  background: #f7faf9 !important;
   border: 1px solid #dce8e4 !important;
   border-radius: 6px !important;
   color: var(--pmx-ink) !important;
@@ -869,25 +874,25 @@ body.scContainerPage {
 .scFormInputError,
 .scFormInputErrorMult,
 .scFormInputErrorPwdBox {
-  background: #fff7ed !important;
-  border-color: #f59e0b !important;
-  color: #7c2d12 !important;
+  background: #fff4dc !important;
+  border-color: #d99a22 !important;
+  color: #704115 !important;
 }
 
 .scFormRequiredOdd,
 .scFormRequiredEven,
 .scFormFieldErrorMessage {
-  color: #b45309 !important;
+  color: #9f650f !important;
 }
 
 .scFormErrorTable,
 .scFormMessageTable {
-  background: #fffaf0 !important;
-  border: 1px solid #f2b544 !important;
-  border-left: 6px solid #f59e0b !important;
+  background: #fff4dc !important;
+  border: 1px solid #e6c275 !important;
+  border-left: 6px solid #d99a22 !important;
   border-radius: 8px !important;
   box-shadow: 0 14px 34px rgba(20, 45, 50, 0.14) !important;
-  color: #22313f !important;
+  color: #17252f !important;
   overflow: hidden;
 }
 
@@ -896,7 +901,7 @@ body.scContainerPage {
 .scFormMessageTitle,
 .scFormMessageTitleFont {
   background: transparent !important;
-  color: #7c4a03 !important;
+  color: #6a470c !important;
   font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
   font-weight: 700 !important;
   letter-spacing: 0 !important;
@@ -906,7 +911,7 @@ body.scContainerPage {
 .scFormErrorMessageFont,
 .scFormMessageMessage,
 .scFormMessageMessageFont {
-  color: #334155 !important;
+  color: #40525c !important;
   font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
   font-size: 13px !important;
 }
@@ -931,8 +936,8 @@ body.scContainerPage {
 }
 
 .widget-head {
-  background: #14252f !important;
-  border-color: #14252f !important;
+  background: #143d42 !important;
+  border-color: #143d42 !important;
   color: #ffffff !important;
 }
 
@@ -955,7 +960,7 @@ body.scContainerPage {
 }
 
 body.peaje-video-page {
-  background: #14252f !important;
+  background: #143d42 !important;
   color: #ffffff !important;
   font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
   margin: 0 !important;
@@ -974,8 +979,8 @@ body.peaje-video-page {
 }
 
 .peaje-video-page #divPlugin {
-  background: #08161d;
-  border: 1px solid #27565a;
+  background: #0c1f2b;
+  border: 1px solid #2e6365;
   border-radius: 8px;
   min-height: 260px;
   overflow: hidden;
@@ -1003,9 +1008,9 @@ body.peaje-video-page {
 }
 
 .peaje-video-page .btn2:hover {
-  background: #f59e0b;
-  border-color: #f59e0b;
-  color: #14252f;
+  background: #d99a22;
+  border-color: #d99a22;
+  color: #143d42;
 }
 
 @media (max-width: 760px) {
