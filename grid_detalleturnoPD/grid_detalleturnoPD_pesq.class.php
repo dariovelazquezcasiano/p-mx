@@ -1502,12 +1502,12 @@ if ($_SESSION['scriptcase']['proc_mobile'])
   } 
   ?> 
  <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_link ?>grid_detalleturnoPD/grid_detalleturnoPD_fil_<?php echo strtolower($_SESSION['scriptcase']['reg_conf']['css_dir']) ?>.css" />
- <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_link ?>_lib/css/peaje_module_ui.css?v=20260913-palette" />
+ <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_link ?>_lib/css/peaje_module_ui.css?v=20260914-preliq-compact" />
 </HEAD>
 <?php
 $vertical_center = '';
 ?>
-<BODY id="grid_search" class="scFilterPage" style="<?php echo $vertical_center ?>">
+<BODY id="grid_search" class="scFilterPage pmx-preliq-search pmx-preliq-dia-search" style="<?php echo $vertical_center ?>">
 <?php echo $this->Ini->Ajax_result_set ?>
 <SCRIPT type="text/javascript" src="<?php echo $this->Ini->path_js . "/browserSniffer.js" ?>"></SCRIPT>
    <script type="text/javascript">
@@ -3128,6 +3128,10 @@ foreach ($Arr_format as $Part_date)
               if ($fechaoperacion_dia == "" && $fechaoperacion_mes == "" && $fechaoperacion_ano == "")
               {
                   if (!empty($this->Campos_Mens_erro)) {$this->Campos_Mens_erro .= "<br>";}$this->Campos_Mens_erro .= "Fecha Operacion : " . $this->Ini->Nm_lang['lang_errm_ajax_rqrd'];
+              }
+              elseif ($fechaoperacion_mes == "" || $fechaoperacion_ano == "")
+              {
+                  if (!empty($this->Campos_Mens_erro)) {$this->Campos_Mens_erro .= "<br>";}$this->Campos_Mens_erro .= "Fecha Operacion : complete mes y anio";
               }
           }
       }

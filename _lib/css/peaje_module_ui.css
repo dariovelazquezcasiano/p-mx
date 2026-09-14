@@ -1361,3 +1361,535 @@ input[readonly].css_toolbar_obj {
     font-size: 15px !important;
   }
 }
+
+body.pmx-preliq-search {
+  background:
+    linear-gradient(135deg, rgba(238, 243, 241, 0.98) 0%, rgba(247, 250, 249, 0.96) 56%, rgba(246, 242, 232, 0.94) 100%) !important;
+  min-height: 100vh;
+  padding: 24px !important;
+}
+
+body.pmx-preliq-search > table {
+  margin: 0 auto !important;
+  max-width: 1040px;
+}
+
+body.pmx-preliq-search .scFilterBorder {
+  border: 1px solid #d8e3e0 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 22px 54px rgba(20, 45, 50, 0.13) !important;
+  margin: 10px auto 0 !important;
+  max-width: 980px;
+  overflow: hidden;
+}
+
+body.pmx-preliq-search .scFilterHeader,
+body.pmx-preliq-search .scFormHeader {
+  background: #143d42 !important;
+  border: 0 !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 20px 24px !important;
+}
+
+body.pmx-preliq-search .scFilterHeaderFont,
+body.pmx-preliq-search .scFormHeaderFont {
+  border: 0 !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+  color: #ffffff !important;
+  float: none !important;
+  font-size: 19px !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  text-decoration: none !important;
+  text-transform: none !important;
+}
+
+body.pmx-preliq-search #hidden_bloco_0 {
+  background: #ffffff !important;
+  border: 0 !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  height: auto !important;
+  padding: 0 !important;
+}
+
+body.pmx-preliq-search #hidden_bloco_0 > tbody > tr {
+  align-items: end;
+  background: #ffffff !important;
+  display: grid !important;
+  gap: 12px 14px;
+  grid-template-columns: minmax(120px, 150px) minmax(240px, 1fr) minmax(150px, 180px) minmax(280px, 1.15fr);
+  padding: 24px !important;
+}
+
+body.pmx-preliq-search #hidden_bloco_0 input[type="hidden"] {
+  display: none !important;
+}
+
+body.pmx-preliq-search #SC_casetaid_label,
+body.pmx-preliq-search #SC_fechaoperacion_label {
+  align-self: center;
+  background: transparent !important;
+  border: 0 !important;
+  color: #40525c !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  padding: 0 !important;
+  text-transform: uppercase;
+}
+
+body.pmx-preliq-search #SC_casetaid_label::before,
+body.pmx-preliq-search #SC_fechaoperacion_label::before {
+  background: #d99a22;
+  border-radius: 999px;
+  content: "";
+  display: inline-block;
+  height: 7px;
+  margin-right: 8px;
+  vertical-align: 1px;
+  width: 7px;
+}
+
+body.pmx-preliq-search .scFilterFieldOdd,
+body.pmx-preliq-search .scFilterFieldEven,
+body.pmx-preliq-search .scFilterFieldFontOdd {
+  background: transparent !important;
+  border: 0 !important;
+  padding: 0 !important;
+}
+
+body.pmx-preliq-search .scFilterFieldOdd > table,
+body.pmx-preliq-search .scFilterFieldOdd > table tbody,
+body.pmx-preliq-search .scFilterFieldOdd > table tr,
+body.pmx-preliq-search .scFilterFieldOdd > table td {
+  width: 100% !important;
+}
+
+body.pmx-preliq-search #SC_casetaid,
+body.pmx-preliq-search #SC_fechaoperacion_dia,
+body.pmx-preliq-search #SC_fechaoperacion_mes,
+body.pmx-preliq-search #SC_fechaoperacion_ano {
+  background: #f7faf9 !important;
+  border: 1px solid #c9d8d4 !important;
+  border-radius: 8px !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.76) !important;
+  color: #17252f !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 14px !important;
+  min-height: 42px !important;
+  outline: 0 !important;
+}
+
+body.pmx-preliq-search #SC_casetaid {
+  min-width: 0 !important;
+  padding: 0 12px !important;
+  width: 100% !important;
+}
+
+body.pmx-preliq-search #SC_fechaoperacion_dia,
+body.pmx-preliq-search #SC_fechaoperacion_mes {
+  margin-right: 6px;
+  text-align: center !important;
+  width: 48px !important;
+}
+
+body.pmx-preliq-search #SC_fechaoperacion_ano {
+  text-align: center !important;
+  width: 72px !important;
+}
+
+body.pmx-preliq-search #SC_casetaid:focus,
+body.pmx-preliq-search #SC_fechaoperacion_dia:focus,
+body.pmx-preliq-search #SC_fechaoperacion_mes:focus,
+body.pmx-preliq-search #SC_fechaoperacion_ano:focus {
+  background: #ffffff !important;
+  border-color: #0f766e !important;
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.16) !important;
+}
+
+body.pmx-preliq-search #id_css_fechaoperacion {
+  color: #667780 !important;
+  display: inline-block;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+body.pmx-preliq-search #sc_filter_toolbar_bot {
+  background: #f7faf9 !important;
+  border-top: 1px solid #d8e3e0 !important;
+  padding: 16px 24px !important;
+}
+
+body.pmx-preliq-search #sc_filter_toolbar_bot .scFilterToolbar {
+  background: transparent !important;
+  border: 0 !important;
+}
+
+body.pmx-preliq-search #sc_filter_toolbar_bot .scFilterToolbarPadding {
+  padding: 0 !important;
+}
+
+body.pmx-preliq-search #sc_filter_toolbar_bot .scButton_default,
+body.pmx-preliq-search #sc_filter_toolbar_bot .scButton_small {
+  min-height: 38px !important;
+  padding: 0 16px !important;
+}
+
+body.pmx-preliq-search #sc_filter_toolbar_bot #sc_b_pesq_bot {
+  background: #0f766e !important;
+  border-color: #0f766e !important;
+  color: #ffffff !important;
+}
+
+body.pmx-preliq-search #sc_filter_toolbar_bot #sc_b_pesq_bot:hover {
+  background: #143d42 !important;
+  border-color: #143d42 !important;
+}
+
+@media (max-width: 900px) {
+  body.pmx-preliq-search #hidden_bloco_0 > tbody > tr {
+    grid-template-columns: 1fr;
+    padding: 18px !important;
+  }
+
+  body.pmx-preliq-search #SC_casetaid_label,
+  body.pmx-preliq-search #SC_fechaoperacion_label {
+    margin-top: 4px;
+  }
+}
+
+@media (max-width: 560px) {
+  body.pmx-preliq-search {
+    padding: 12px !important;
+  }
+
+  body.pmx-preliq-search .scFilterHeader,
+  body.pmx-preliq-search .scFormHeader {
+    padding: 18px !important;
+  }
+
+  body.pmx-preliq-search .scFilterHeaderFont,
+  body.pmx-preliq-search .scFormHeaderFont {
+    font-size: 17px !important;
+  }
+
+  body.pmx-preliq-search #id_css_fechaoperacion {
+    display: block;
+    margin: 8px 0 0;
+  }
+}
+
+body.pmx-preliq-search .scFilterLabelOdd,
+body.pmx-preliq-search .scFilterLabelEven {
+  background: transparent !important;
+  border: 0 !important;
+  color: #40525c !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+  padding: 0 !important;
+  text-transform: uppercase;
+  white-space: normal !important;
+}
+
+body.pmx-preliq-search .scFilterLabelOdd::before,
+body.pmx-preliq-search .scFilterLabelEven::before {
+  background: #d99a22;
+  border-radius: 999px;
+  content: "";
+  display: inline-block;
+  height: 7px;
+  margin-right: 8px;
+  vertical-align: 1px;
+  width: 7px;
+}
+
+body.pmx-preliq-card-search #hidden_bloco_0 > tbody > tr {
+  align-items: stretch;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  padding: 20px 24px !important;
+}
+
+body.pmx-preliq-card-search #hidden_bloco_0 > tbody > tr > td.scFilterLabelOdd,
+body.pmx-preliq-card-search #hidden_bloco_0 > tbody > tr > td.scFilterLabelEven {
+  background: #f7faf9 !important;
+  border: 1px solid #d8e3e0 !important;
+  border-radius: 8px !important;
+  box-sizing: border-box;
+  min-height: 84px;
+  padding: 14px !important;
+}
+
+body.pmx-preliq-detail-search #hidden_bloco_0 > tbody > tr {
+  border-bottom: 1px solid #edf3f1;
+  gap: 10px 14px;
+  grid-template-columns: minmax(150px, 190px) minmax(180px, 230px) minmax(260px, 1fr);
+  padding: 16px 24px !important;
+}
+
+body.pmx-preliq-detail-search #hidden_bloco_0 > tbody > tr:last-child {
+  border-bottom: 0;
+}
+
+body.pmx-preliq-detail-search #hidden_bloco_0 > tbody > tr > td[colspan="2"] {
+  grid-column: 2 / 4;
+}
+
+body.pmx-preliq-search .scFilterFieldFontEven,
+body.pmx-preliq-search .scFilterFieldFontOdd,
+body.pmx-preliq-search .scFilterFieldEven,
+body.pmx-preliq-search .scFilterFieldOdd {
+  background: transparent !important;
+  border: 0 !important;
+  color: #17252f !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+  padding: 0 !important;
+}
+
+body.pmx-preliq-search .scFilterFieldEven > table,
+body.pmx-preliq-search .scFilterFieldEven > table tbody,
+body.pmx-preliq-search .scFilterFieldEven > table tr,
+body.pmx-preliq-search .scFilterFieldEven > table td,
+body.pmx-preliq-search .scFilterFieldOdd > table,
+body.pmx-preliq-search .scFilterFieldOdd > table tbody,
+body.pmx-preliq-search .scFilterFieldOdd > table tr,
+body.pmx-preliq-search .scFilterFieldOdd > table td,
+body.pmx-preliq-search td.scFilterLabelOdd > span,
+body.pmx-preliq-search td.scFilterLabelEven > span {
+  width: 100% !important;
+}
+
+body.pmx-preliq-search select.scFilterObjectOdd,
+body.pmx-preliq-search select.scFilterObjectEven {
+  background: #f7faf9 !important;
+  border: 1px solid #c9d8d4 !important;
+  border-radius: 8px !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.76) !important;
+  box-sizing: border-box;
+  color: #17252f !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 14px !important;
+  min-height: 42px !important;
+  outline: 0 !important;
+  padding: 0 12px !important;
+  text-transform: none !important;
+  width: 100% !important;
+}
+
+body.pmx-preliq-card-search span[id^="id_hide_"] {
+  display: block;
+  margin-top: 10px;
+}
+
+body.pmx-preliq-search #SC_turnoid,
+body.pmx-preliq-search #SC_carrilid,
+body.pmx-preliq-search #SC_cuerpo,
+body.pmx-preliq-search #SC_usuarioid,
+body.pmx-preliq-search #SC_admonbusqueda,
+body.pmx-preliq-search #SC_encargadopreliquida,
+body.pmx-preliq-search #SC_fechaoperacion_cond {
+  min-width: 0 !important;
+  width: 100% !important;
+}
+
+body.pmx-preliq-search #SC_fechaoperacion_input_2_dia,
+body.pmx-preliq-search #SC_fechaoperacion_input_2_mes {
+  margin-right: 6px;
+  text-align: center !important;
+  width: 48px !important;
+}
+
+body.pmx-preliq-search #SC_fechaoperacion_input_2_ano {
+  text-align: center !important;
+  width: 72px !important;
+}
+
+body.pmx-preliq-search select.scFilterObjectOdd:focus,
+body.pmx-preliq-search select.scFilterObjectEven:focus,
+body.pmx-preliq-search #SC_fechaoperacion_input_2_dia:focus,
+body.pmx-preliq-search #SC_fechaoperacion_input_2_mes:focus,
+body.pmx-preliq-search #SC_fechaoperacion_input_2_ano:focus {
+  background: #ffffff !important;
+  border-color: #0f766e !important;
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.16) !important;
+}
+
+body.pmx-preliq-search #Nm_bi_dados_fechaoperacion,
+body.pmx-preliq-search #opc_bi_TP_fechaoperacion {
+  max-width: 100%;
+}
+
+body.pmx-preliq-search .ui-datepicker-trigger {
+  background: #fff4dc !important;
+  border: 1px solid #edcf91 !important;
+  border-radius: 8px !important;
+  box-sizing: border-box;
+  height: 34px !important;
+  margin-left: 8px !important;
+  padding: 7px !important;
+  vertical-align: middle !important;
+  width: 34px !important;
+}
+
+body.pmx-preliq-search #sc_filter_toolbar_top,
+body.pmx-preliq-search #sc_filter_toolbar_bot {
+  background: #f7faf9 !important;
+  border-color: #d8e3e0 !important;
+}
+
+body.pmx-preliq-form {
+  background: linear-gradient(135deg, #eef3f1 0%, #f7faf9 54%, #f6f2e8 100%) !important;
+  color: #17252f !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+}
+
+body.pmx-preliq-form .scFormBorder {
+  border-radius: 8px !important;
+  box-shadow: 0 18px 42px rgba(20, 45, 50, 0.11) !important;
+  margin: 14px auto !important;
+  max-width: calc(100vw - 36px);
+  overflow: hidden;
+}
+
+body.pmx-preliq-form .scFormDataOdd,
+body.pmx-preliq-form .scFormDataEven {
+  background: #ffffff !important;
+}
+
+body.pmx-preliq-form .scFormLabelOdd,
+body.pmx-preliq-form .scFormLabelEven,
+body.pmx-preliq-form .scFormLabelOddMult,
+body.pmx-preliq-form .scFormLabelEvenMult {
+  background: #f7faf9 !important;
+  color: #40525c !important;
+  font-weight: 800 !important;
+}
+
+body.pmx-preliq-daily-form .scFormHeader,
+body.pmx-preliq-daily-form .scFormHeaderFont,
+body.pmx-preliq-daily-form .scContainerHeader,
+body.pmx-preliq-daily-form .scContainerHeaderFont,
+body.pmx-preliq-daily-form .scFormHeader *,
+body.pmx-preliq-daily-form .scContainerHeader * {
+  background-image: none !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+}
+
+@media (max-width: 900px) {
+  body.pmx-preliq-detail-search #hidden_bloco_0 > tbody > tr,
+  body.pmx-preliq-card-search #hidden_bloco_0 > tbody > tr {
+    grid-template-columns: 1fr;
+  }
+
+  body.pmx-preliq-detail-search #hidden_bloco_0 > tbody > tr > td[colspan="2"] {
+    grid-column: auto;
+  }
+}
+
+body.pmx-preliq-card-search .scFormHeader,
+body.pmx-preliq-card-search .scFormHeaderFont,
+body.pmx-preliq-card-search .scFilterHeader,
+body.pmx-preliq-card-search .scFilterHeaderFont {
+  background-image: none !important;
+  border: 0 !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+  text-decoration: none !important;
+}
+
+body.pmx-preliq-card-search .scFilterTableTd.scGridPage {
+  border-bottom: 0 !important;
+}
+
+body.pmx-preliq-carril-search.pmx-preliq-card-search .scFilterBorder {
+  max-width: 1120px;
+}
+
+body.pmx-preliq-carril-search.pmx-preliq-card-search #hidden_bloco_0 > tbody > tr {
+  align-items: stretch;
+  gap: 10px;
+  grid-template-columns: minmax(190px, 0.95fr) minmax(285px, 1.2fr) minmax(190px, 0.95fr) !important;
+  padding: 14px 18px !important;
+}
+
+body.pmx-preliq-carril-search.pmx-preliq-card-search #hidden_bloco_0 > tbody > tr > td.scFilterLabelOdd,
+body.pmx-preliq-carril-search.pmx-preliq-card-search #hidden_bloco_0 > tbody > tr > td.scFilterLabelEven {
+  min-height: 74px;
+  padding: 11px 12px !important;
+}
+
+body.pmx-preliq-carril-search.pmx-preliq-card-search span[id^="id_hide_"] {
+  margin-top: 8px;
+}
+
+body.pmx-preliq-carril-search.pmx-preliq-card-search .pmx-filter-empty-cell {
+  display: none !important;
+}
+
+body.pmx-preliq-carril-search.pmx-preliq-card-search #id_hide_fechaoperacion span[id^="id_date_part_fechaoperacion_"] {
+  display: inline-flex !important;
+  margin: 0 8px 7px 0 !important;
+  vertical-align: middle !important;
+}
+
+body.pmx-preliq-carril-search.pmx-preliq-card-search select.scFilterObjectOdd,
+body.pmx-preliq-carril-search.pmx-preliq-card-search select.scFilterObjectEven,
+body.pmx-preliq-carril-search.pmx-preliq-card-search #SC_fechaoperacion_dia,
+body.pmx-preliq-carril-search.pmx-preliq-card-search #SC_fechaoperacion_mes,
+body.pmx-preliq-carril-search.pmx-preliq-card-search #SC_fechaoperacion_ano {
+  min-height: 36px !important;
+}
+
+body.pmx-preliq-carril-search.pmx-preliq-card-search #id_css_fechaoperacion {
+  display: block;
+  margin: 6px 0 0;
+}
+
+body.pmx-preliq-restore-search.pmx-preliq-card-search #hidden_bloco_0 > tbody > tr {
+  align-items: center;
+  gap: 10px 14px;
+  grid-template-columns: minmax(100px, 140px) minmax(210px, 1fr) minmax(120px, 160px) minmax(230px, 1fr) !important;
+  padding: 16px 20px !important;
+}
+
+body.pmx-preliq-restore-search.pmx-preliq-card-search #hidden_bloco_0 > tbody > tr > td.scFilterLabelOdd,
+body.pmx-preliq-restore-search.pmx-preliq-card-search #hidden_bloco_0 > tbody > tr > td.scFilterLabelEven {
+  background: transparent !important;
+  border: 0 !important;
+  min-height: 0;
+  padding: 0 !important;
+}
+
+@media (max-width: 640px) {
+  body.pmx-preliq-restore-search.pmx-preliq-card-search #hidden_bloco_0 > tbody > tr {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 430px) {
+  body.pmx-preliq-carril-search.pmx-preliq-card-search #hidden_bloco_0 > tbody > tr {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 820px) {
+  body.pmx-preliq-carril-search.pmx-preliq-card-search #hidden_bloco_0 > tbody > tr {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 520px) {
+  body.pmx-preliq-carril-search.pmx-preliq-card-search #hidden_bloco_0 > tbody > tr {
+    grid-template-columns: 1fr !important;
+  }
+}

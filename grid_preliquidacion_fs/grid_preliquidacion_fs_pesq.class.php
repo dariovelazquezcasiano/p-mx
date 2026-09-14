@@ -1734,9 +1734,9 @@ if ($_SESSION['scriptcase']['proc_mobile'])
  <META http-equiv="Cache-Control" content="post-check=0, pre-check=0"/>
  <META http-equiv="Pragma" content="no-cache"/>
  <link rel="shortcut icon" href="../_lib/img/scriptcase__NM__ico__NM__favicon.ico">
- <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_link ?>_lib/css/peaje_module_ui.css?v=20260913-palette" />
+ <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_link ?>_lib/css/peaje_module_ui.css?v=20260914-preliq-compact" />
 </HEAD>
-<BODY id="grid_search" class="scGridPage">
+<BODY id="grid_search" class="scGridPage pmx-preliq-search pmx-preliq-detail-search">
 <FORM style="display:none;" name="form_ok" method="POST" action="<?php echo $NM_retorno; ?>" target="_self">
 <INPUT type="hidden" name="script_case_init" value="<?php echo NM_encode_input($this->Ini->sc_page); ?>"> 
 <INPUT type="hidden" name="nmgp_opcao" value="pesq"> 
@@ -1802,12 +1802,12 @@ if ($_SESSION['scriptcase']['proc_mobile'])
   } 
   ?> 
  <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_link ?>grid_preliquidacion_fs/grid_preliquidacion_fs_fil_<?php echo strtolower($_SESSION['scriptcase']['reg_conf']['css_dir']) ?>.css" />
- <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_link ?>_lib/css/peaje_module_ui.css?v=20260913-palette" />
+ <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_link ?>_lib/css/peaje_module_ui.css?v=20260914-preliq-compact" />
 </HEAD>
 <?php
 $vertical_center = '';
 ?>
-<BODY id="grid_search" class="scFilterPage" style="<?php echo $vertical_center ?>">
+<BODY id="grid_search" class="scFilterPage pmx-preliq-search pmx-preliq-detail-search" style="<?php echo $vertical_center ?>">
 <?php echo $this->Ini->Ajax_result_set ?>
 <SCRIPT type="text/javascript" src="<?php echo $this->Ini->path_js . "/browserSniffer.js" ?>"></SCRIPT>
    <script type="text/javascript">
@@ -4225,6 +4225,21 @@ function formata_bi_fechaoperacion(opc, opc_bi, dt_fmt)
               if ($fechaoperacion_dia == "" && $fechaoperacion_mes == "" && $fechaoperacion_ano == "")
               {
                   if (!empty($this->Campos_Mens_erro)) {$this->Campos_Mens_erro .= "<br>";}$this->Campos_Mens_erro .= "Fecha Operacion : " . $this->Ini->Nm_lang['lang_errm_ajax_rqrd'];
+              }
+              elseif ($fechaoperacion_dia == "" || $fechaoperacion_mes == "" || $fechaoperacion_ano == "")
+              {
+                  if (!empty($this->Campos_Mens_erro)) {$this->Campos_Mens_erro .= "<br>";}$this->Campos_Mens_erro .= "Fecha Operacion : complete dia, mes y anio";
+              }
+              if ($fechaoperacion_cond == "bw")
+              {
+                  if ($fechaoperacion_input_2_dia == "" && $fechaoperacion_input_2_mes == "" && $fechaoperacion_input_2_ano == "")
+                  {
+                      if (!empty($this->Campos_Mens_erro)) {$this->Campos_Mens_erro .= "<br>";}$this->Campos_Mens_erro .= "Fecha Operacion Hasta : " . $this->Ini->Nm_lang['lang_errm_ajax_rqrd'];
+                  }
+                  elseif ($fechaoperacion_input_2_dia == "" || $fechaoperacion_input_2_mes == "" || $fechaoperacion_input_2_ano == "")
+                  {
+                      if (!empty($this->Campos_Mens_erro)) {$this->Campos_Mens_erro .= "<br>";}$this->Campos_Mens_erro .= "Fecha Operacion Hasta : complete dia, mes y anio";
+                  }
               }
           }
       }

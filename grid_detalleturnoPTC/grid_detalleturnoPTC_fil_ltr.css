@@ -1,0 +1,214 @@
+body.pmx-preliq-carril-search {
+  background:
+    linear-gradient(135deg, rgba(238, 243, 241, 0.98) 0%, rgba(247, 250, 249, 0.96) 56%, rgba(246, 242, 232, 0.94) 100%) !important;
+  min-height: 100vh;
+  padding: 24px !important;
+}
+
+body.pmx-preliq-carril-search > table {
+  margin: 0 auto !important;
+  max-width: 1040px;
+}
+
+body.pmx-preliq-carril-search .scFilterBorder {
+  border: 1px solid #d8e3e0 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 22px 54px rgba(20, 45, 50, 0.13) !important;
+  margin: 10px auto 0 !important;
+  max-width: 980px;
+  overflow: hidden;
+}
+
+body.pmx-preliq-carril-search .scFilterHeader {
+  background: #143d42 !important;
+  border: 0 !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 20px 24px !important;
+}
+
+body.pmx-preliq-carril-search .scFilterHeaderFont {
+  color: #ffffff !important;
+  float: none !important;
+  font-size: 19px !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  text-transform: none !important;
+}
+
+body.pmx-preliq-carril-search #hidden_bloco_0 {
+  background: #ffffff !important;
+  border: 0 !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  height: auto !important;
+  padding: 0 !important;
+}
+
+body.pmx-preliq-carril-search #hidden_bloco_0 > tbody > tr {
+  align-items: end;
+  background: #ffffff !important;
+  display: grid !important;
+  gap: 12px 14px;
+  grid-template-columns: minmax(120px, 150px) minmax(240px, 1fr) minmax(150px, 180px) minmax(280px, 1.15fr);
+  padding: 24px !important;
+}
+
+body.pmx-preliq-carril-search #hidden_bloco_0 input[type="hidden"] {
+  display: none !important;
+}
+
+body.pmx-preliq-carril-search #SC_casetaid_label,
+body.pmx-preliq-carril-search #SC_fechaoperacion_label {
+  align-self: center;
+  background: transparent !important;
+  border: 0 !important;
+  color: #40525c !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  padding: 0 !important;
+  text-transform: uppercase;
+}
+
+body.pmx-preliq-carril-search #SC_casetaid_label::before,
+body.pmx-preliq-carril-search #SC_fechaoperacion_label::before {
+  background: #d99a22;
+  border-radius: 999px;
+  content: "";
+  display: inline-block;
+  height: 7px;
+  margin-right: 8px;
+  vertical-align: 1px;
+  width: 7px;
+}
+
+body.pmx-preliq-carril-search .scFilterFieldOdd,
+body.pmx-preliq-carril-search .scFilterFieldEven,
+body.pmx-preliq-carril-search .scFilterFieldFontOdd {
+  background: transparent !important;
+  border: 0 !important;
+  padding: 0 !important;
+}
+
+body.pmx-preliq-carril-search .scFilterFieldOdd > table,
+body.pmx-preliq-carril-search .scFilterFieldOdd > table tbody,
+body.pmx-preliq-carril-search .scFilterFieldOdd > table tr,
+body.pmx-preliq-carril-search .scFilterFieldOdd > table td {
+  width: 100% !important;
+}
+
+body.pmx-preliq-carril-search #SC_casetaid,
+body.pmx-preliq-carril-search #SC_fechaoperacion_dia,
+body.pmx-preliq-carril-search #SC_fechaoperacion_mes,
+body.pmx-preliq-carril-search #SC_fechaoperacion_ano {
+  background: #f7faf9 !important;
+  border: 1px solid #c9d8d4 !important;
+  border-radius: 8px !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.76) !important;
+  color: #17252f !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 14px !important;
+  min-height: 42px !important;
+  outline: 0 !important;
+}
+
+body.pmx-preliq-carril-search #SC_casetaid {
+  min-width: 0 !important;
+  padding: 0 12px !important;
+  width: 100% !important;
+}
+
+body.pmx-preliq-carril-search #SC_fechaoperacion_dia,
+body.pmx-preliq-carril-search #SC_fechaoperacion_mes {
+  margin-right: 6px;
+  text-align: center !important;
+  width: 48px !important;
+}
+
+body.pmx-preliq-carril-search #SC_fechaoperacion_ano {
+  text-align: center !important;
+  width: 72px !important;
+}
+
+body.pmx-preliq-carril-search #SC_casetaid:focus,
+body.pmx-preliq-carril-search #SC_fechaoperacion_dia:focus,
+body.pmx-preliq-carril-search #SC_fechaoperacion_mes:focus,
+body.pmx-preliq-carril-search #SC_fechaoperacion_ano:focus {
+  background: #ffffff !important;
+  border-color: #0f766e !important;
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.16) !important;
+}
+
+body.pmx-preliq-carril-search #id_css_fechaoperacion {
+  color: #667780 !important;
+  display: inline-block;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+body.pmx-preliq-carril-search #sc_filter_toolbar_bot {
+  background: #f7faf9 !important;
+  border-top: 1px solid #d8e3e0 !important;
+  padding: 16px 24px !important;
+}
+
+body.pmx-preliq-carril-search #sc_filter_toolbar_bot .scFilterToolbar {
+  background: transparent !important;
+  border: 0 !important;
+}
+
+body.pmx-preliq-carril-search #sc_filter_toolbar_bot .scFilterToolbarPadding {
+  padding: 0 !important;
+}
+
+body.pmx-preliq-carril-search #sc_filter_toolbar_bot .scButton_default,
+body.pmx-preliq-carril-search #sc_filter_toolbar_bot .scButton_small {
+  min-height: 38px !important;
+  padding: 0 16px !important;
+}
+
+body.pmx-preliq-carril-search #sc_filter_toolbar_bot #sc_b_pesq_bot {
+  background: #0f766e !important;
+  border-color: #0f766e !important;
+  color: #ffffff !important;
+}
+
+body.pmx-preliq-carril-search #sc_filter_toolbar_bot #sc_b_pesq_bot:hover {
+  background: #143d42 !important;
+  border-color: #143d42 !important;
+}
+
+@media (max-width: 900px) {
+  body.pmx-preliq-carril-search #hidden_bloco_0 > tbody > tr {
+    grid-template-columns: 1fr;
+    padding: 18px !important;
+  }
+
+  body.pmx-preliq-carril-search #SC_casetaid_label,
+  body.pmx-preliq-carril-search #SC_fechaoperacion_label {
+    margin-top: 4px;
+  }
+}
+
+@media (max-width: 560px) {
+  body.pmx-preliq-carril-search {
+    padding: 12px !important;
+  }
+
+  body.pmx-preliq-carril-search .scFilterHeader {
+    padding: 18px !important;
+  }
+
+  body.pmx-preliq-carril-search .scFilterHeaderFont {
+    font-size: 17px !important;
+  }
+
+  body.pmx-preliq-carril-search #id_css_fechaoperacion {
+    display: block;
+    margin: 8px 0 0;
+  }
+}

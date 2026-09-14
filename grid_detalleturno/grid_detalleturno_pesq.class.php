@@ -1563,7 +1563,7 @@ $_SESSION['scriptcase']['grid_detalleturno']['contr_erro'] = 'off';
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
             "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
 <HTML>
-<BODY id="grid_search" class="scGridPage">
+<BODY id="grid_search" class="scGridPage pmx-preliq-search pmx-preliq-card-search pmx-preliq-carril-search">
 <SCRIPT type="text/javascript">
 <?php
     if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturno']['prim_vez'] == "N") 
@@ -1646,12 +1646,12 @@ if ($_SESSION['scriptcase']['proc_mobile'])
   } 
   ?> 
  <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_link ?>grid_detalleturno/grid_detalleturno_fil_<?php echo strtolower($_SESSION['scriptcase']['reg_conf']['css_dir']) ?>.css" />
- <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_link ?>_lib/css/peaje_module_ui.css?v=20260913-palette" />
+ <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_link ?>_lib/css/peaje_module_ui.css?v=20260914-preliq-carril-3col" />
 </HEAD>
 <?php
 $vertical_center = '';
 ?>
-<BODY id="grid_search" class="scFilterPage" style="<?php echo $vertical_center ?>">
+<BODY id="grid_search" class="scFilterPage pmx-preliq-search pmx-preliq-card-search pmx-preliq-carril-search" style="<?php echo $vertical_center ?>">
 <?php echo $this->Ini->Ajax_result_set ?>
 <SCRIPT type="text/javascript" src="<?php echo $this->Ini->path_js . "/browserSniffer.js" ?>"></SCRIPT>
    <script type="text/javascript">
@@ -2736,7 +2736,7 @@ foreach ($Arr_format as $Part_date)
 
 
 
-    <TD class="scFilterLabelEven" colspan="1" >&nbsp;</TD>
+    <TD class="scFilterLabelEven pmx-filter-empty-cell" colspan="1" style="display: none;">&nbsp;</TD>
    </tr>
    </TABLE>
   </TD>
@@ -3619,6 +3619,10 @@ foreach ($Arr_format as $Part_date)
               if ($fechaoperacion_dia == "" && $fechaoperacion_mes == "" && $fechaoperacion_ano == "")
               {
                   if (!empty($this->Campos_Mens_erro)) {$this->Campos_Mens_erro .= "<br>";}$this->Campos_Mens_erro .= "Fecha Operacion : " . $this->Ini->Nm_lang['lang_errm_ajax_rqrd'];
+              }
+              elseif ($fechaoperacion_dia == "" || $fechaoperacion_mes == "" || $fechaoperacion_ano == "")
+              {
+                  if (!empty($this->Campos_Mens_erro)) {$this->Campos_Mens_erro .= "<br>";}$this->Campos_Mens_erro .= "Fecha Operacion : complete dia, mes y anio";
               }
           }
       }

@@ -1416,7 +1416,7 @@ $_SESSION['scriptcase']['grid_restablecePreL']['contr_erro'] = 'off';
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
             "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
 <HTML>
-<BODY id="grid_search" class="scGridPage">
+<BODY id="grid_search" class="scGridPage pmx-preliq-search pmx-preliq-card-search pmx-preliq-restore-search">
 <SCRIPT type="text/javascript">
 <?php
     if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_restablecePreL']['prim_vez'] == "N") 
@@ -1499,12 +1499,12 @@ if ($_SESSION['scriptcase']['proc_mobile'])
   } 
   ?> 
  <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_link ?>grid_restablecePreL/grid_restablecePreL_fil_<?php echo strtolower($_SESSION['scriptcase']['reg_conf']['css_dir']) ?>.css" />
- <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_link ?>_lib/css/peaje_module_ui.css?v=20260913-palette" />
+ <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_link ?>_lib/css/peaje_module_ui.css?v=20260914-preliq-compact" />
 </HEAD>
 <?php
 $vertical_center = '';
 ?>
-<BODY id="grid_search" class="scFilterPage" style="<?php echo $vertical_center ?>">
+<BODY id="grid_search" class="scFilterPage pmx-preliq-search pmx-preliq-card-search pmx-preliq-restore-search" style="<?php echo $vertical_center ?>">
 <?php echo $this->Ini->Ajax_result_set ?>
 <SCRIPT type="text/javascript" src="<?php echo $this->Ini->path_js . "/browserSniffer.js" ?>"></SCRIPT>
    <script type="text/javascript">
@@ -1993,7 +1993,7 @@ function NM_apaga_erro()
     .scMenuTHeaderFont img, .scGridHeaderFont img , .scFormHeaderFont img , .scTabHeaderFont img , .scContainerHeaderFont img , .scFilterHeaderFont img { height:23px;}
 </style>
 <div class="scFilterHeader" style="height: 54px; padding: 17px 15px; box-sizing: border-box;margin: -1px 0px 0px 0px;width: 100%;">
-    <div class="scFilterHeaderFont" style="float: left; text-transform: uppercase;"><?php echo "BUSCA PRE LIQUIDACIÓN A RESTABLECER" ?></div>
+    <div class="scFilterHeaderFont" style="float: left; text-transform: uppercase;"><?php echo "Buscar Preliquidacion a Reversar" ?></div>
     <div class="scFilterHeaderFont" style="float: right;"></div>
 </div>  </TD>
  </TR>
@@ -3149,6 +3149,10 @@ foreach ($Arr_format as $Part_date)
               if ($fechaoperacion_dia == "" && $fechaoperacion_mes == "" && $fechaoperacion_ano == "")
               {
                   if (!empty($this->Campos_Mens_erro)) {$this->Campos_Mens_erro .= "<br>";}$this->Campos_Mens_erro .= "Fecha Operacion : " . $this->Ini->Nm_lang['lang_errm_ajax_rqrd'];
+              }
+              elseif ($fechaoperacion_dia == "" || $fechaoperacion_mes == "" || $fechaoperacion_ano == "")
+              {
+                  if (!empty($this->Campos_Mens_erro)) {$this->Campos_Mens_erro .= "<br>";}$this->Campos_Mens_erro .= "Fecha Operacion : complete dia, mes y anio";
               }
           }
       }

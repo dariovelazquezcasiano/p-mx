@@ -386,7 +386,7 @@ if (!$this->NM_ajax_flag && isset($this->NM_non_ajax_info['ajaxJavascript']) && 
  }
 
 </script>
- <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_link ?>_lib/css/peaje_module_ui.css?v=20260913-palette" />
+ <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_link ?>_lib/css/peaje_module_ui.css?v=20260914-preliq-daily-header" />
 </HEAD>
 <?php
 $str_iframe_body = ('F' == $_SESSION['sc_session'][$this->Ini->sc_page]['menu_controldiario']['run_iframe'] || 'R' == $_SESSION['sc_session'][$this->Ini->sc_page]['menu_controldiario']['run_iframe']) ? 'margin: 2px;' : '';
@@ -422,7 +422,7 @@ else
     }
     $vertical_center = '';
 ?>
-<body class="scFormPage sc-app-contr" style="<?php echo $remove_margin . $str_iframe_body . $vertical_center; ?>">
+<body class="scFormPage sc-app-contr pmx-preliq-form pmx-preliq-daily-form" style="<?php echo $remove_margin . $str_iframe_body . $vertical_center; ?>">
 <?php
 
 if (!isset($this->NM_ajax_info['param']['buffer_output']) || !$this->NM_ajax_info['param']['buffer_output'])
