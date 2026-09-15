@@ -1862,7 +1862,7 @@ $nm_saida->saida("}\r\n");
        { 
        $nm_saida->saida("" . $this->SC_Buf_onInit . "\r\n");
        } 
-       $nm_saida->saida("   <link rel=\"stylesheet\" type=\"text/css\" href=\"" . $this->Ini->path_link . "_lib/css/peaje_module_ui.css?v=20260914-preliq-carril-3col\" />\r\n");
+       $nm_saida->saida("   <link rel=\"stylesheet\" type=\"text/css\" href=\"" . $this->Ini->path_link . "_lib/css/peaje_module_ui.css?v=20260915-preliq-grid-icons2\" />\r\n");
        $nm_saida->saida("  </HEAD>\r\n");
    } 
    if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturno']['embutida'] && $this->Ini->nm_ger_css_emb)
