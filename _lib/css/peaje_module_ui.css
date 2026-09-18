@@ -1962,11 +1962,12 @@ body.scGridPage.sc-app-grid .css_preliquidado_grid_line span[id^="id_sc_field_pr
   align-items: center;
   background: var(--pmx-status-bg);
   border: 1px solid var(--pmx-status-border);
-  border-radius: 999px;
+  border-radius: 7px;
   display: inline-flex;
   height: 30px;
   justify-content: center;
   min-width: 30px;
+  transform: rotate(45deg);
   vertical-align: middle;
 }
 
@@ -1976,11 +1977,12 @@ body.scGridPage.sc-app-grid .css_preliquidado_grid_line span[id^="id_sc_field_pr
 
 body.scGridPage.sc-app-grid .css_preliquidado_grid_line span[id^="id_sc_field_preliquidado_"]::before {
   background: var(--pmx-status-color);
-  border-radius: 999px;
+  border-radius: 3px;
   box-shadow: 0 0 0 5px color-mix(in srgb, var(--pmx-status-color) 14%, transparent);
   content: "";
-  height: 11px;
-  width: 11px;
+  height: 10px;
+  transform: rotate(45deg);
+  width: 10px;
 }
 
 body.scGridPage.sc-app-grid a.scButton_image#bedit,
@@ -2077,4 +2079,174 @@ body.scGridPage.sc-app-grid .scGridLabelLink:has(img[src*="sort"])::after {
   opacity: 0.68;
   transform: rotate(45deg) translateY(-1px);
   width: 6px;
+}
+
+/* Result grid for Preliquidacion por Carril. */
+body.pmx-preliq-carril-grid {
+  padding: 14px !important;
+}
+
+body.pmx-preliq-carril-grid .scGridBorder {
+  border-color: #cfddda !important;
+  box-shadow: 0 14px 34px rgba(20, 45, 50, 0.1) !important;
+}
+
+body.pmx-preliq-carril-grid .scGridHeader {
+  border-bottom-width: 3px !important;
+}
+
+body.pmx-preliq-carril-grid .scGridHeader > tbody > tr > td {
+  padding: 0 !important;
+}
+
+body.pmx-preliq-carril-grid .scGridHeader .scGridHeaderFont {
+  padding: 8px 18px !important;
+}
+
+body.pmx-preliq-carril-grid .scGridHeader .scGridHeaderFont[rowspan="2"] {
+  font-size: 20px !important;
+  font-weight: 750 !important;
+  line-height: 1.2 !important;
+  text-align: left !important;
+}
+
+body.pmx-preliq-carril-grid .scGridHeader .scGridHeaderFont:not([rowspan="2"]) {
+  color: #d9ebe7 !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+  padding-bottom: 4px !important;
+  padding-top: 9px !important;
+  text-align: right !important;
+}
+
+body.pmx-preliq-carril-grid .scGridHeader tr:nth-child(2) > .scGridHeaderFont {
+  padding-bottom: 9px !important;
+  padding-top: 3px !important;
+}
+
+body.pmx-preliq-carril-grid #sc_grid_toobar_top_table {
+  display: none !important;
+}
+
+body.pmx-preliq-carril-grid #sc_grid_body {
+  box-sizing: border-box;
+  display: block;
+  max-width: calc(100vw - 56px);
+  overflow-x: auto;
+  padding: 10px !important;
+  width: calc(100vw - 56px);
+}
+
+body.pmx-preliq-carril-grid #sc_grid_body .scGridTabela[id^="sc-ui-grid-body"] {
+  min-width: 1220px;
+}
+
+body.pmx-preliq-carril-grid .scGridLabelFont {
+  font-size: 11px !important;
+  line-height: 1.25 !important;
+  padding: 12px 9px !important;
+  vertical-align: middle !important;
+}
+
+body.pmx-preliq-carril-grid .scGridFieldOddFont,
+body.pmx-preliq-carril-grid .scGridFieldEvenFont {
+  font-size: 12px !important;
+  line-height: 1.35 !important;
+  padding: 11px 9px !important;
+  vertical-align: middle !important;
+}
+
+body.pmx-preliq-carril-grid .css_turnoid_label,
+body.pmx-preliq-carril-grid .css_turnoid_grid_line,
+body.pmx-preliq-carril-grid .css_carrilid_label,
+body.pmx-preliq-carril-grid .css_carrilid_grid_line {
+  min-width: 66px;
+  text-align: center !important;
+}
+
+body.pmx-preliq-carril-grid .css_estatuscarril_label,
+body.pmx-preliq-carril-grid .css_estatuscarril_grid_line {
+  min-width: 108px;
+  text-align: center !important;
+}
+
+body.pmx-preliq-carril-grid .css_usuarioid_label,
+body.pmx-preliq-carril-grid .css_usuarioid_grid_line {
+  min-width: 132px;
+}
+
+body.pmx-preliq-carril-grid .css_horainicio_label,
+body.pmx-preliq-carril-grid .css_horainicio_grid_line,
+body.pmx-preliq-carril-grid .css_horafin_label,
+body.pmx-preliq-carril-grid .css_horafin_grid_line {
+  min-width: 88px;
+  text-align: center !important;
+}
+
+body.pmx-preliq-carril-grid .css_fechafin_label,
+body.pmx-preliq-carril-grid .css_fechafin_grid_line {
+  min-width: 96px;
+  text-align: center !important;
+}
+
+body.pmx-preliq-carril-grid .css_administradorid_label,
+body.pmx-preliq-carril-grid .css_administradorid_grid_line {
+  min-width: 188px;
+}
+
+body.pmx-preliq-carril-grid .css_encargadoturnoid_pre_label,
+body.pmx-preliq-carril-grid .css_encargadoturnoid_pre_grid_line {
+  min-width: 142px;
+}
+
+body.pmx-preliq-carril-grid .css_preliquidado_label,
+body.pmx-preliq-carril-grid .css_preliquidacion_label,
+body.pmx-preliq-carril-grid .css_bitacora_label {
+  min-width: 92px;
+  text-align: center !important;
+}
+
+body.pmx-preliq-carril-grid #sc_grid_toobar_bot_table {
+  background: #f7faf9 !important;
+  border-top: 1px solid #d8e3e0 !important;
+}
+
+body.pmx-preliq-carril-grid #sc_grid_toobar_bot_table .scGridToolbarPadding {
+  padding: 9px 12px !important;
+}
+
+body.pmx-preliq-carril-grid #sc_grid_toobar_bot_table .summary_indicator {
+  background: #ffffff;
+  border: 1px solid #cbd8d5 !important;
+  border-radius: 6px;
+  color: #40525c !important;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 9px;
+}
+
+body.pmx-preliq-carril-grid .scGridFooter {
+  background: #eef7f5 !important;
+  border-top: 1px solid #cfe1dd !important;
+  min-height: 38px;
+}
+
+body.pmx-preliq-carril-grid .scGridFooter td {
+  padding: 9px 14px !important;
+}
+
+body.pmx-preliq-carril-grid .scGridFooterFont {
+  color: #40525c !important;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+}
+
+body.pmx-preliq-carril-grid #rod_col1::before {
+  color: var(--pmx-primary);
+  content: "Filtros aplicados: ";
+  font-weight: 800;
 }

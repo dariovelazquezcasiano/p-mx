@@ -1862,7 +1862,7 @@ $nm_saida->saida("}\r\n");
        { 
        $nm_saida->saida("" . $this->SC_Buf_onInit . "\r\n");
        } 
-       $nm_saida->saida("   <link rel=\"stylesheet\" type=\"text/css\" href=\"" . $this->Ini->path_link . "_lib/css/peaje_module_ui.css?v=20260915-preliq-grid-icons2\" />\r\n");
+       $nm_saida->saida("   <link rel=\"stylesheet\" type=\"text/css\" href=\"" . $this->Ini->path_link . "_lib/css/peaje_module_ui.css?v=20260918-preliq-carril-grid2\" />\r\n");
        $nm_saida->saida("  </HEAD>\r\n");
    } 
    if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturno']['embutida'] && $this->Ini->nm_ger_css_emb)
@@ -1885,7 +1885,7 @@ $nm_saida->saida("}\r\n");
            {
                $nm_saida->saida(" <link rel=\"stylesheet\" type=\"text/css\" href=\"../_lib/buttons/" . $this->Ini->Str_btn_css . "\" /> \r\n");
            }
-           $nm_saida->saida("  <body id=\"grid_horizontal\" class=\"" . $this->css_scGridPage . " sc-app-grid\" " . $str_iframe_body . " style=\"-webkit-print-color-adjust: exact;" . $css_body . "\" onload=\"javascript:setTimeout(function(){clear_reload = nm_gp_submit_ajax ('igual', 'reload');},60000);\">\r\n");
+           $nm_saida->saida("  <body id=\"grid_horizontal\" class=\"" . $this->css_scGridPage . " sc-app-grid pmx-preliq-carril-grid\" " . $str_iframe_body . " style=\"-webkit-print-color-adjust: exact;" . $css_body . "\" onload=\"javascript:setTimeout(function(){clear_reload = nm_gp_submit_ajax ('igual', 'reload');},60000);\">\r\n");
            $nm_saida->saida("   <TABLE id=\"sc_table_print\" cellspacing=0 cellpadding=0 align=\"center\" valign=\"top\" " . $this->Tab_width . ">\r\n");
            $nm_saida->saida("     <TR>\r\n");
            $nm_saida->saida("       <TD>\r\n");
@@ -1919,7 +1919,7 @@ $nm_saida->saida("}\r\n");
           $remove_margin = isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturno']['dashboard_info']['remove_margin']) && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturno']['dashboard_info']['remove_margin'] ? 'margin: 0; ' : '';
           $remove_border = isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturno']['dashboard_info']['remove_border']) && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturno']['dashboard_info']['remove_border'] ? 'border-width: 0; ' : '';
           $vertical_center = '';
-           $nm_saida->saida("  <body id=\"grid_horizontal\" class=\"" . $this->css_scGridPage . " sc-app-grid\" " . $str_iframe_body . " style=\"" . $remove_margin . $vertical_center . $css_body . "\" onload=\"javascript:setTimeout(function(){clear_reload = nm_gp_submit_ajax ('igual', 'reload');},60000);\">\r\n");
+           $nm_saida->saida("  <body id=\"grid_horizontal\" class=\"" . $this->css_scGridPage . " sc-app-grid pmx-preliq-carril-grid\" " . $str_iframe_body . " style=\"" . $remove_margin . $vertical_center . $css_body . "\" onload=\"javascript:setTimeout(function(){clear_reload = nm_gp_submit_ajax ('igual', 'reload');},60000);\">\r\n");
        }
        $nm_saida->saida("  " . $this->Ini->Ajax_result_set . "\r\n");
        if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturno']['embutida'] && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturno']['opcao'] != "pdf" && !$this->Print_All)
@@ -2259,7 +2259,7 @@ $nm_saida->saida("}\r\n");
    $nm_saida->saida("      <TABLE style=\"padding: 0px; border-spacing: 0px; border-width: 0px;\" width=\"100%\">\r\n");
    $nm_saida->saida("       <TR align=\"center\" valign=\"middle\">\r\n");
    $nm_saida->saida("        <TD align=\"left\" rowspan=\"2\" class=\"" . $this->css_scGridHeaderFont . "\">\r\n");
-   $nm_saida->saida("          " . $this->Ini->Nm_lang['lang_othr_grid_title'] . " Turno\r\n");
+   $nm_saida->saida("          " . "Preliquidación por Carril" . "\r\n");
    $nm_saida->saida("        </TD>\r\n");
    $nm_saida->saida("        <TD class=\"" . $this->css_scGridHeaderFont . "\">\r\n");
    $nm_saida->saida("          " . "Administrador: $var_cab_locais1 " . $_SESSION['admong'] . "" . "\r\n");
