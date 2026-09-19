@@ -1892,9 +1892,10 @@ $user_agent = $_SERVER['HTTP_USER_AGENT'];
 $navegador = $this->getBrowser($user_agent);
 $identificador = $this->sc_temp_identificador;
 $FechaOperacion = $this->sc_temp_Fecha;
+$modoPdf = (isset($_SESSION['modo_pdf']) && $_SESSION['modo_pdf'] === 'primera') ? 'primera' : 'completo';
 $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 $pdf->SetCreator(PDF_CREATOR);
-$pdf->SetAuthor('KZ');
+$pdf->SetAuthor('P-MX');
 $pdf->SetTitle('LIQUIDACIÓN DE CAJERO-RECEPTOR');
 $pdf->SetSubject('Tránsito Vehicular');
 $pdf->SetKeywords('Aforo, PDF, Liquidacion');
@@ -1915,7 +1916,7 @@ $style = <<<EOD
 	}
 	table.roundedCorners td,
 	table.roundedCorners th {
-		border: 0.5px solid gray;
+		border: 0.5px solid black;
 		font-size:7px;
 		cellpadding: 15;
 		padding: 10px;
@@ -1940,7 +1941,7 @@ $styleComparativo = <<<EOD
 	}
 	table.roundedCorners td,
 		table.roundedCorners th {
-		border: 0.5px solid gray;
+		border: 0.5px solid black;
 		font-size:5.5px;
 		cellpadding: 15;
 		padding: 10px;
@@ -1956,15 +1957,16 @@ $nombre_archivo = $tblpre[1];
 $tbl = $tblpre[0];
 $pdf->writeHTML($style . $tbl, true, false, false, false, '');
 
-if($navegador == "Firefox"){
-	$pdf->AddPage('L', array('format' => 'LETTER', 'Rotate' => -90));
+if ($modoPdf === 'completo') {
+	if($navegador == "Firefox"){
+		$pdf->AddPage('L', array('format' => 'LETTER', 'Rotate' => -90));
 	}else{
-	$pdf->AddPage('L','LETTER'); 
+		$pdf->AddPage('L','LETTER');
 	}
 
-
-$tbl = $this->Comparativo($identificador,$FechaOperacion);
-$pdf->writeHTML($styleComparativo . $tbl, true, false, false, false, '');
+	$tbl = $this->Comparativo($identificador,$FechaOperacion);
+	$pdf->writeHTML($styleComparativo . $tbl, true, false, false, false, '');
+}
 
 
 
@@ -2394,7 +2396,7 @@ $MontoMarcado =0;
 		$CantidadRecla = 0;
 	}
 
-$style = 'style= "background-color:#dfdfdf; font-weight: bold";';
+$style = 'style= "background-color:#FFFFFF; font-weight: bold";';
 $check_aforo = "SELECT 'CR',PagoID,SUM(Importe_CR + TarifaEE_CR), sum(CantidadVeh) FROM aforo_preliq WHERE FechaOperacion = '$FechaOperacion' and  FolioCierre = '$identificador'  $PagoEfectivo ";	   
 	 
       $nm_select = $check_aforo; 
@@ -2567,7 +2569,7 @@ GROUP BY PagoID";
 		$cantidadCR = 0;
 	}
 $codigo .= '
-		<tr style= "background-color:#dfdfdf; font-weight: bold"; >
+		<tr style= "background-color:#FFFFFF; font-weight: bold"; >
 		<td width="40%">Totales </td>
 		<td width="10%" align="right">'.number_format(($montoCajero),2).'</td>
 		<td width="10%" align="right">'.$FoliosEfectivo.'</td>
@@ -2577,7 +2579,7 @@ $codigo .= '
 		<td width="10%" align="right">'.($FoliosEfectivo-$cantidadCR).'</td>
 		</tr>
 		';
-$style = 'style= "background-color:#dfdfdf; font-weight: bold";';
+$style = 'style= "background-color:#FFFFFF; font-weight: bold";';
 $check_aforo = "SELECT 'CR',PagoID,SUM(Importe_CR + TarifaEE_CR), sum(CantidadVeh) FROM aforo_preliq WHERE FechaOperacion = '$FechaOperacion' and  FolioCierre = '$identificador'  and PagoID = 'DE'";	   
 	 
       $nm_select = $check_aforo; 
@@ -2644,7 +2646,7 @@ $check_aforo = "SELECT 'CR',PagoID,SUM(Importe_CR + TarifaEE_CR), sum(CantidadVe
 		<td width="10%" align="right"></td>
 		</tr>
 		<tr>
-		<td width="100%" style="background-color:#FFFF00">Ingreso por Eludidos</td>
+		<td width="100%">Ingreso por Eludidos</td>
 		</tr>
 		<tr>
 		<td width="40%">Ingreso por Eludidos</td>
@@ -2819,7 +2821,7 @@ if($MarcadoEfectivo > ($fld_importe_cr + $fld_cimporte_mxn)){
 $tbl = '
 	<table class = "roundedCorners" cellpadding="5" cellspacing="2">
 	<tr>
-		<th style="background-color:#FFFFFF";color:#0000FF; colspan="5" align="center"><b>PRELIQUIDACIÓN DE CAJERO-RECEPTOR<br>Tránsito Vehicular</b>
+		<th style="background-color:#FFFFFF; color:#000000" colspan="5" align="center"><b>PRELIQUIDACIÓN DE CAJERO-RECEPTOR<br>Tránsito Vehicular</b>
 		</th>
 	</tr>
 </table>
@@ -2858,7 +2860,7 @@ $tbl = '
 </table>
 <table class = "roundedCorners" cellpadding="2" cellspacing="0">
 	<tr>
-		<th style="background-color:#FFFF00";color:#0000FF; colspan="7"; align="center"><b>ENTREGADO CAJERO-RECEPTOR</b>
+		<th style="color:#000000" colspan="7" align="center"><b>ENTREGADO CAJERO-RECEPTOR</b>
 		</th>
 	</tr>
 	<tr align="center" valign="middle">
@@ -2909,16 +2911,16 @@ $tbl = '
 </table>
 <table class = "estilo1" cellpadding="1" cellspacing="0">
 	<tr>
-		<th style="background-color: #ffff00; border-right: 0.5px solid Black; border-left: 0.5px solid Black" colspan="4" align="center" width="60%"><strong>DIFERENCIA CAJERO-RECEPTOR (MARCADO Y ENTREGADO)</strong></th>
-		<th style="background-color: #ffff00; border-right: 0.5px solid Black" colspan="2color:#0000FF;" align="center" width="40%"><strong>SOBRANTE POR DEPOSITO ENTREGADO</strong>	</th>
+		<th style="border-right: 0.5px solid Black; border-left: 0.5px solid Black" colspan="4" align="center" width="60%"><strong>DIFERENCIA CAJERO-RECEPTOR (MARCADO Y ENTREGADO)</strong></th>
+		<th style="border-right: 0.5px solid Black" colspan="2" align="center" width="40%"><strong>SOBRANTE POR DEPOSITO ENTREGADO</strong>	</th>
 	</tr>
-	<tr style="text-align: center; background-color: #ffff00;">
+	<tr style="text-align: center;">
 		<td style = "border-left: 0.5px solid Black; border-bottom: 0.5px solid Black" colspan="2"; >M.N. $ ENTREGADO DLLS $</td>
 		<td style = "border-right: 0.5px solid Black; border-bottom: 0.5px solid Black" colspan="2";>M.N. $ POR ENTREGAR DLLS $</td>
 		<td style = "border-bottom: 0.5px solid Black"><strong>M.N.</strong></td>
 		<td style = "border-right: 0.5px solid Black; border-bottom: 0.5px solid Black"><strong>DLLS</strong></td>
 	</tr>
-	<tr style="text-align: center; background-color: #ffff00">
+	<tr style="text-align: center;">
 		<td style ="border: 0.5px solid black" width="15%"><strong> '.number_format(abs($diferenciaCR_Efe),2).' </strong></td>
 		<td style ="border: 0.5px solid black" width="15%"><strong> 0.0 </strong></td>
 		<td style ="border: 0.5px solid black" width="15%"><strong> '.number_format(abs($diferenciaCR_Efe2),2).' </strong></td>
@@ -2991,13 +2993,13 @@ $tbl = '
 		<td></td>
 		<td style= "border-right: 0.5px solid Black">'. ($this->diferencia($fld_rollo[0][1],$fld_rollo[0][0]) + ($fld_rollo[1][1] - $fld_rollo[1][0]) + $this->diferencia($fld_rollo[2][1],$fld_rollo[2][0]) - ($fld_ccant_mxn + $fld_ccant_usd)) .'</td>
 		<td style= "border-right: 0.5px solid Black">CONTABILIZADO</td>
-		<td style="background-color:#FFFF00; border-right: 0.5px solid Black"><b>'.($FoliosOriginal - ($fld_ccant_mxn + $fld_ccant_usd)).'</b></td>
-		<td style="background-color:#FFFF00; border-right: 1px solid Black"><b>'.$this->diferencia($sec_fin,$sec_ini).'</b></td>
+		<td style="border-right: 0.5px solid Black"><b>'.($FoliosOriginal - ($fld_ccant_mxn + $fld_ccant_usd)).'</b></td>
+		<td style="border-right: 1px solid Black"><b>'.$this->diferencia($sec_fin,$sec_ini).'</b></td>
 	</tr>
 </table>
 <table class = "estilo1" cellpadding="10" cellspacing="0">
 	
-	<tr style="background-color:#dfdfdf"; align="center"; valign="middle">
+	<tr style="background-color:#FFFFFF" align="center" valign="middle">
 		<th width="50%" align="right"><b>CANTIDAD A DEPOSITAR M.N. $</b></th>
 		<th width="20%" align="left"><b> '.number_format($depositar,2).' </b></th>
 		<th width="10%" align="right"><b>DLLS $</b></th>
@@ -3263,7 +3265,7 @@ if (false == $rs ){
 					$codigo_html .= $fila_a[1];
 				}
 			}
-			$codigo_html .= '<tr><th style = "font-size:9px; color:#ff0000" colspan="20" >' .$rs->fields[0]. '</th></tr>';
+			$codigo_html .= '<tr><th style = "font-size:9px; color:#000000" colspan="20" >' .$rs->fields[0]. '</th></tr>';
 			$tipospago = "(";
 		}
 		$tipospago .= " PagoID = '".$rs->fields[1]. "' OR";
@@ -3285,17 +3287,17 @@ if (false == $rs ){
 }
 
 	
-$codigo_html .= '<tr><th style = "font-size:9px; color:#ff0000" colspan="20" > Total Marcado por Cajero-Receptor incluyendo vehículos sin pago </th></tr>';
+$codigo_html .= '<tr><th style = "font-size:9px; color:#000000" colspan="20" > Total Marcado por Cajero-Receptor incluyendo vehículos sin pago </th></tr>';
 $fila_a = $this->saca_aforo($wherePago,"",$where_folio);
 $codigo_html .=  $fila_a[0];
 $codigo_html .=  $fila_a[1];
 
-$codigo_html .= '<tr><th style = "font-size:9px; color:#ff0000" colspan="20" >Total Detectado por '.$modooperacion.' incluyendo vehículos sin pago </th></tr>';
+$codigo_html .= '<tr><th style = "font-size:9px; color:#000000" colspan="20" >Total Detectado por '.$modooperacion.' incluyendo vehículos sin pago </th></tr>';
 $fila_aECT = $this->aforoECT("","",$where_folio, $casetaid);
 $codigo_html .=  $fila_aECT[0];
 $codigo_html .=  $fila_aECT[1];
 
-$codigo_html .= '<tr><th style = "font-size:9px; color:#ff0000" colspan="20" >Diferencia entre el Total Marcado por el C-R y el '.$modooperacion.' </th></tr>';
+$codigo_html .= '<tr><th style = "font-size:9px; color:#000000" colspan="20" >Diferencia entre el Total Marcado por el C-R y el '.$modooperacion.' </th></tr>';
  $fila_a = $this->DiferenciaTotales($sql_where,$where_folio,$casetaid);
  $codigo_html .=  $fila_a[0];
  $codigo_html .=  $fila_a[1];
@@ -3373,7 +3375,7 @@ $tarifas = $this->crea_tr($vtarifa,"TARIFA REF.NOR");
 $tbl = <<<EOD
 <table class = "roundedCorners" cellpadding="2" cellspacing="0">
 	<tr>
-		<th style="background-color:#FFFFFF";color:#0000FF; colspan="5" align="center"><b>REPORTE  PRELIMINAR DE AFORO E INGRESO POR CAJERO-RECEPTOR<br>Tránsito Vehicular</b>
+		<th style="background-color:#FFFFFF; color:#000000" colspan="5" align="center"><b>REPORTE  PRELIMINAR DE AFORO E INGRESO POR CAJERO-RECEPTOR<br>Tránsito Vehicular</b>
 		</th>
 	</tr>
 </table>
@@ -4210,6 +4212,18 @@ $_SESSION['scriptcase']['ResumenPrePDF']['contr_erro'] = 'off';
    {
        $_SESSION["Fecha"] = "";
    }
+   if (isset($_POST["modo_pdf"]))
+   {
+       $_SESSION["modo_pdf"] = ($_POST["modo_pdf"] === "primera") ? "primera" : "completo";
+   }
+   if (isset($_GET["modo_pdf"]))
+   {
+       $_SESSION["modo_pdf"] = ($_GET["modo_pdf"] === "primera") ? "primera" : "completo";
+   }
+   if (!isset($_SESSION["modo_pdf"]))
+   {
+       $_SESSION["modo_pdf"] = "completo";
+   }
    if (!empty($glo_perfil))  
    { 
       $_SESSION['scriptcase']['glo_perfil'] = $glo_perfil;
@@ -4405,6 +4419,10 @@ $_SESSION['scriptcase']['ResumenPrePDF']['contr_erro'] = 'off';
        {
            $_SESSION['Fecha'] = $Fecha;
            nm_limpa_str_ResumenPrePDF($_SESSION["Fecha"]);
+       }
+       if (isset($modo_pdf))
+       {
+           $_SESSION['modo_pdf'] = ($modo_pdf === "primera") ? "primera" : "completo";
        }
    } 
    $GLOBALS["NM_ERRO_IBASE"] = 0;  
