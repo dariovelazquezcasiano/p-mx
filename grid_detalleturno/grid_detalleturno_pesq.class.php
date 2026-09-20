@@ -1646,7 +1646,7 @@ if ($_SESSION['scriptcase']['proc_mobile'])
   } 
   ?> 
  <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_link ?>grid_detalleturno/grid_detalleturno_fil_<?php echo strtolower($_SESSION['scriptcase']['reg_conf']['css_dir']) ?>.css" />
- <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_link ?>_lib/css/peaje_module_ui.css?v=20260919-preliq-pdf-modes2" />
+ <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_link ?>_lib/css/peaje_module_ui.css?v=20260920-preliq-grid-fit1" />
 </HEAD>
 <?php
 $vertical_center = '';

@@ -1903,26 +1903,78 @@ $pdf->AddPage('P','LETTER');
 
 $style = <<<EOD
 <style>
+	body {
+		color: #000000;
+		font-family: dejavusans, sans-serif;
+	}
 	table.estilo1 {
 		border: 1px solid black;
-		font-size:6px
-		align="right" 
+		border-collapse: collapse;
+		font-size: 6.5px;
+		line-height: 1.25;
 	}
 	table.roundedCorners {
-		border: 1px solid Black;
-		border-radius: 13px;
+		border: 1px solid black;
 		border-spacing: 0;
 		border-collapse: collapse;
 	}
 	table.roundedCorners td,
 	table.roundedCorners th {
 		border: 0.5px solid black;
-		font-size:7px;
-		cellpadding: 15;
-		padding: 10px;
+		font-size: 7px;
+		line-height: 1.25;
+		padding: 4px 5px;
 	}
-	table.roundedCorners tr:last-child > td {
-		border-bottom: solid;
+	table.report-title {
+		border: 1.5px solid black;
+		font-size: 11px;
+		line-height: 1.3;
+	}
+	table.report-title th {
+		padding: 8px 6px;
+	}
+	table.report-meta {
+		border: 1px solid black;
+		font-size: 6.8px;
+	}
+	table.report-meta td {
+		border-bottom: 0.35px solid black;
+		padding: 4px 5px;
+	}
+	table.report-grid th,
+	table.report-summary th,
+	table.report-folios th {
+		font-weight: bold;
+		line-height: 1.15;
+		padding: 5px 4px;
+	}
+	table.report-grid td,
+	table.report-summary td,
+	table.report-folios td {
+		padding: 4px;
+	}
+	.section-title {
+		background-color: #000000;
+		color: #ffffff;
+		font-size: 7.5px;
+		font-weight: bold;
+		padding: 6px;
+	}
+	table.report-summary {
+		border: 1.2px solid black;
+	}
+	table.report-deposit {
+		border: 1.5px solid black;
+		font-size: 8px;
+		line-height: 1.2;
+	}
+	table.report-deposit th {
+		padding: 7px 5px;
+	}
+	table.report-notes {
+		border: 0.5px solid black;
+		font-size: 6px;
+		line-height: 1.25;
 	}
 </style>
 EOD;
@@ -2819,13 +2871,13 @@ if($MarcadoEfectivo > ($fld_importe_cr + $fld_cimporte_mxn)){
 }
 
 $tbl = '
-	<table class = "roundedCorners" cellpadding="5" cellspacing="2">
+	<table class="report-title" cellpadding="5" cellspacing="0">
 	<tr>
 		<th style="background-color:#FFFFFF; color:#000000" colspan="5" align="center"><b>PRELIQUIDACIÓN DE CAJERO-RECEPTOR<br>Tránsito Vehicular</b>
 		</th>
 	</tr>
 </table>
-<table class = "estilo1"  cellpadding="2" cellspacing="2">
+<table class="report-meta" cellpadding="2" cellspacing="0">
 	<tr>
 		<td>Fecha:</td>
 		<td style= "border-bottom: 0.5px solid Black">' . $fecha_op .'</td>
@@ -2858,9 +2910,9 @@ $tbl = '
 		<td style= "border-bottom: 0.5px solid Black">'.$fld_horag.'</td>
 	</tr>
 </table>
-<table class = "roundedCorners" cellpadding="2" cellspacing="0">
+<table class="roundedCorners report-grid" cellpadding="2" cellspacing="0">
 	<tr>
-		<th style="color:#000000" colspan="7" align="center"><b>ENTREGADO CAJERO-RECEPTOR</b>
+		<th class="section-title" colspan="7" align="center"><b>ENTREGADO CAJERO-RECEPTOR</b>
 		</th>
 	</tr>
 	<tr align="center" valign="middle">
@@ -2909,7 +2961,7 @@ $tbl = '
 		<td width="100%"> </td>
 	</tr>
 </table>
-<table class = "estilo1" cellpadding="1" cellspacing="0">
+<table class="estilo1 report-summary" cellpadding="1" cellspacing="0">
 	<tr>
 		<th style="border-right: 0.5px solid Black; border-left: 0.5px solid Black" colspan="4" align="center" width="60%"><strong>DIFERENCIA CAJERO-RECEPTOR (MARCADO Y ENTREGADO)</strong></th>
 		<th style="border-right: 0.5px solid Black" colspan="2" align="center" width="40%"><strong>SOBRANTE POR DEPOSITO ENTREGADO</strong>	</th>
@@ -2929,7 +2981,7 @@ $tbl = '
 		<td style ="border: 0.5px solid black" width="20%"><strong>  </strong></td>
 	</tr>
 </table>
-<table class = "estilo1" cellpadding="1" cellspacing="0">
+<table class="estilo1 report-folios" cellpadding="1" cellspacing="0">
 	<tr align="center">
 		<td width="15%"></td>
 		<td width="10%" >(1)</td>
@@ -2997,7 +3049,7 @@ $tbl = '
 		<td style="border-right: 1px solid Black"><b>'.$this->diferencia($sec_fin,$sec_ini).'</b></td>
 	</tr>
 </table>
-<table class = "estilo1" cellpadding="10" cellspacing="0">
+<table class="estilo1 report-deposit" cellpadding="6" cellspacing="0">
 	
 	<tr style="background-color:#FFFFFF" align="center" valign="middle">
 		<th width="50%" align="right"><b>CANTIDAD A DEPOSITAR M.N. $</b></th>
@@ -3007,7 +3059,7 @@ $tbl = '
 		
 	</tr>
 </table>
-<table class = "estilo1" cellpadding="1" cellspacing="0">
+<table class="report-notes" cellpadding="1" cellspacing="0">
 	<tr>
 	<td width="100%">LOS FIRMANTES ASUMEN LA RESPONSABILIDAD DE LOS VALORES QUE SE REGISTRAN EN ESTE REPORTE, SIENDO RESPONSABLES DE LOS FALTANTES QUE SE GENEREN EN LA CONCILIACIÓN DE LO COBRADO Y LO QUE REGISTRE EL EQUIPO, COMPROMETIÉNDOSE A PAGAR LOS FALTANTES EN ESE MOMENTO, DE ACUERDO AL DESLINDE DE RESPONSABILIDAD DE LOS PROCESOS. </td>
 	</tr>

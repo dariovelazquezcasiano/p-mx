@@ -2154,26 +2154,28 @@ body.pmx-preliq-carril-grid #sc_grid_body {
   display: block;
   max-width: calc(100vw - 56px);
   overflow-x: auto;
-  padding: 10px !important;
+  padding: 6px !important;
   width: calc(100vw - 56px);
 }
 
 body.pmx-preliq-carril-grid #sc_grid_body .scGridTabela[id^="sc-ui-grid-body"] {
-  min-width: 1220px;
+  min-width: 0;
+  width: 100% !important;
 }
 
 body.pmx-preliq-carril-grid .scGridLabelFont {
   font-size: 11px !important;
   line-height: 1.25 !important;
-  padding: 12px 9px !important;
+  padding: 10px 6px !important;
   vertical-align: middle !important;
+  white-space: normal !important;
 }
 
 body.pmx-preliq-carril-grid .scGridFieldOddFont,
 body.pmx-preliq-carril-grid .scGridFieldEvenFont {
   font-size: 12px !important;
   line-height: 1.35 !important;
-  padding: 11px 9px !important;
+  padding: 10px 6px !important;
   vertical-align: middle !important;
 }
 
@@ -2181,54 +2183,54 @@ body.pmx-preliq-carril-grid .css_turnoid_label,
 body.pmx-preliq-carril-grid .css_turnoid_grid_line,
 body.pmx-preliq-carril-grid .css_carrilid_label,
 body.pmx-preliq-carril-grid .css_carrilid_grid_line {
-  min-width: 66px;
+  min-width: 44px;
   text-align: center !important;
 }
 
 body.pmx-preliq-carril-grid .css_estatuscarril_label,
 body.pmx-preliq-carril-grid .css_estatuscarril_grid_line {
-  min-width: 108px;
+  min-width: 70px;
   text-align: center !important;
 }
 
 body.pmx-preliq-carril-grid .css_usuarioid_label,
 body.pmx-preliq-carril-grid .css_usuarioid_grid_line {
-  min-width: 132px;
+  min-width: 100px;
 }
 
 body.pmx-preliq-carril-grid .css_horainicio_label,
 body.pmx-preliq-carril-grid .css_horainicio_grid_line,
 body.pmx-preliq-carril-grid .css_horafin_label,
 body.pmx-preliq-carril-grid .css_horafin_grid_line {
-  min-width: 88px;
+  min-width: 68px;
   text-align: center !important;
 }
 
 body.pmx-preliq-carril-grid .css_fechafin_label,
 body.pmx-preliq-carril-grid .css_fechafin_grid_line {
-  min-width: 96px;
+  min-width: 76px;
   text-align: center !important;
 }
 
 body.pmx-preliq-carril-grid .css_administradorid_label,
 body.pmx-preliq-carril-grid .css_administradorid_grid_line {
-  min-width: 188px;
+  min-width: 142px;
 }
 
 body.pmx-preliq-carril-grid .css_encargadoturnoid_pre_label,
 body.pmx-preliq-carril-grid .css_encargadoturnoid_pre_grid_line {
-  min-width: 142px;
+  min-width: 112px;
 }
 
 body.pmx-preliq-carril-grid .css_preliquidado_label,
 body.pmx-preliq-carril-grid .css_bitacora_label {
-  min-width: 92px;
+  min-width: 68px;
   text-align: center !important;
 }
 
 body.pmx-preliq-carril-grid .css_preliquidacion_label,
 body.pmx-preliq-carril-grid td.css_preliquidacion_grid_line {
-  min-width: 156px;
+  min-width: 132px;
   text-align: center !important;
 }
 
