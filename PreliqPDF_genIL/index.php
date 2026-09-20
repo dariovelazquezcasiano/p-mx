@@ -2283,7 +2283,7 @@ $check_aforo = "SELECT SUM(Discrepancia), SUM(MontoDisc) FROM discrepancias WHER
 	}
 
 
-$style = 'style= "background-color:#dfdfdf; font-weight: bold";';
+$style = 'style="font-weight: bold"';
 $check_aforo = "SELECT 'CR',PagoID,SUM(Importe_CR + TarifaEE_CR), sum(cantidadveh) FROM aforo_preliq WHERE $condicional  $PagoEfectivo ";	   
 	 
       $nm_select = $check_aforo; 
@@ -2325,7 +2325,7 @@ $check_aforo = "SELECT 'CR',PagoID,SUM(Importe_CR + TarifaEE_CR), sum(cantidadve
 
 
 
-$style = 'style= "background-color:#dfdfdf; font-weight: bold";';
+$style = 'style="font-weight: bold"';
 
 	$montoCajero = $operacion + $fld_importeGE;
 	$MarcadoEfectivo = $MontoMarcado;
@@ -2369,7 +2369,7 @@ else
    while(!$this->rs->EOF)
 	  {
   	if($this->rs->fields[0]=="NOR"){
-	 	$style = 'style= "background-color:#dfdfdf; font-weight: bold";';
+		$style = 'style="font-weight: bold"';
 	}else{
 		$style = ''; 
 	}
@@ -2464,7 +2464,7 @@ else
 		$cantidadCR = 0;
 	}
 $codigo .= '
-		<tr style= "background-color:#dfdfdf; font-weight: bold"; >
+		<tr style="font-weight: bold">
 		<td width="40%">Totales </td>
 		<td width="10%" align="right">'.number_format(($montoCajero),2).'</td>
 		<td width="10%" align="right">'.$FoliosEfectivo.'</td>
@@ -2628,11 +2628,11 @@ if($faltanteCajero >= $entregadoCajero){
 
 $depositar = $operacion + $entregadoCajero;
 
-
+$modoPdf = (isset($_SESSION['modo_pdf']) && $_SESSION['modo_pdf'] === 'primera') ? 'primera' : 'completo';
 $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
 $pdf->SetCreator(PDF_CREATOR);
-$pdf->SetAuthor('TKZ');
+$pdf->SetAuthor('P-MX');
 $pdf->SetTitle('LIQUIDACIÓN DE CAJERO-RECEPTOR');
 $pdf->SetSubject('Tránsito Vehicular');
 $pdf->SetKeywords('Aforo, PDF, Liquidacion');
@@ -2640,13 +2640,13 @@ $pdf->AddPage('P','LETTER');
 
 
 $tbl = '
-	<table class = "roundedCorners" cellpadding="5" cellspacing="2">
+	<table class="report-title" cellpadding="5" cellspacing="0">
 	<tr>
-		<th style="background-color:#FFFFFF";color:#0000FF; colspan="5" align="center"><b><br>'.$titulo.'</b>
+		<th colspan="5" align="center"><b><br>'.$titulo.'</b>
 		</th>
 	</tr>
 </table>
-<table class = "estilo1"  cellpadding="2" cellspacing="2">
+<table class="report-meta" cellpadding="2" cellspacing="0">
 	<tr>
 		<td>Fecha:</td>
 		<td style= "border-bottom: 0.5px solid Black">' . $fecha_op .'</td>
@@ -2682,9 +2682,9 @@ $tbl = '
 
 </table>
 
-<table class = "roundedCorners" cellpadding="2" cellspacing="0">
+<table class="roundedCorners report-grid" cellpadding="2" cellspacing="0">
 	<tr>
-		<th style="background-color:#FFFF00";color:#0000FF; colspan="7"; align="center"><b>ENTREGADO CAJERO-RECEPTOR</b>
+		<th class="section-title" colspan="7" align="center"><b>ENTREGADO CAJERO-RECEPTOR</b>
 		</th>
 	</tr>
 	<tr align="center" valign="middle">
@@ -2740,7 +2740,7 @@ $tbl = '
 		<td width="10%" align="right">0</td>
 		<td width="10%" align="right">0</td>
 	</tr>
-		<tr style="background-color:#dfdfdf";>
+		<tr>
 		<td width="40%"><b>Subtotal Marcado como pagado</b></td>
 		<td width="10%" align="right"><b>'.$fld_cimporte_usd.'</b></td>
 		<td width="10%" align="right"><b>'.$fld_ccant_usd.'</b></td>
@@ -2772,19 +2772,19 @@ $tbl = '
 		<td width="100%"> </td>
 	</tr>
 </table>
-<table class = "estilo1" cellpadding="1" cellspacing="0">
+<table class="estilo1 report-summary" cellpadding="1" cellspacing="0">
 
 <tr>
-	<th style="background-color: #ffff00; border-right: 0.5px solid Black; border-left: 0.5px solid Black" colspan="4" align="center" width="60%"><strong>DIFERENCIA CAJERO-RECEPTOR (MARCADO Y ENTREGADO)</strong></th>
-	<th style="background-color: #ffff00; border-right: 0.5px solid Black" colspan="2color:#0000FF;" align="center" width="40%"><strong>SOBRANTE POR DEPOSITO ENTREGADO</strong>	</th>
+	<th style="border-right: 0.5px solid Black; border-left: 0.5px solid Black" colspan="4" align="center" width="60%"><strong>DIFERENCIA CAJERO-RECEPTOR (MARCADO Y ENTREGADO)</strong></th>
+	<th style="border-right: 0.5px solid Black" colspan="2" align="center" width="40%"><strong>SOBRANTE POR DEPOSITO ENTREGADO</strong>	</th>
 </tr>
-<tr style="text-align: center; background-color: #ffff00;">
+<tr style="text-align: center;">
 	<td style = "border-left: 0.5px solid Black; border-bottom: 0.5px solid Black" colspan="2"; >M.N. $ ENTREGADO DLLS $</td>
 	<td style = "border-right: 0.5px solid Black; border-bottom: 0.5px solid Black" colspan="2";>M.N. $ POR ENTREGAR DLLS $</td>
  	<td style = "border-bottom: 0.5px solid Black"><strong>M.N.</strong></td>
   	<td style = "border-right: 0.5px solid Black; border-bottom: 0.5px solid Black"><strong>DLLS</strong></td>
 </tr>
-<tr style="text-align: center; background-color: #ffff00">
+<tr style="text-align: center;">
   <td style ="border: 0.5px solid black" width="15%"><strong>'.number_format($Entregado,2).'</strong></td>
   <td style ="border: 0.5px solid black" width="15%"><strong> 0.0 </strong></td>
   <td style ="border: 0.5px solid black" width="15%"><strong>'.number_format(abs($PorEntregar),2).'</strong></td>
@@ -2793,15 +2793,15 @@ $tbl = '
   <td style ="border: 0.5px solid black" width="20%"><strong>  </strong></td>
 </tr>
 </table>
-<table class = "estilo1" cellpadding="1" cellspacing="0">
+<table class="estilo1 report-folios" cellpadding="1" cellspacing="0">
 	<tr>
 		<th style="border-right: 0.5px solid Black; border-left: 0.5px solid Black" colspan="4" align="center" width="60%"><strong>FOLIOS NETOS</strong></th>
-		<th style="border-right: 0.5px solid Black" colspan="2color:#0000FF;" align="center" width="40%"><strong>EVENTOS NETOS</strong>	</th>
+		<th style="border-right: 0.5px solid Black" colspan="2" align="center" width="40%"><strong>EVENTOS NETOS</strong>	</th>
 	</tr>
 
 </table>
 
-<table class = "estilo1" cellpadding="1" cellspacing="0">
+<table class="estilo1 report-folios" cellpadding="1" cellspacing="0">
 	<tr align="center">
 		<td width="15%"></td>
 		<td width="10%" ></td>
@@ -2853,18 +2853,18 @@ $tbl = '
 	
 </table>
 
-<table class = "estilo1" cellpadding="1" cellspacing="0">
+<table class="estilo1 report-folios" cellpadding="1" cellspacing="0">
 	<tr>
-		<th style="border-bottom: 1px solid Black; background-color:#FFFF00";color:#0000FF; colspan="7"; align="center"><b>Tránsito FFNN</b>
+		<th class="section-title" colspan="7" align="center"><b>Tránsito FFNN</b>
 		</th>
 	</tr>
 	<tr>
-		<th style="background-color: #ffff00; border-right: 0.5px solid Black; border-left: 0.5px solid Black" colspan="4" align="center" width="60%"><strong>Concepto</strong></th>
-		<th style="background-color: #ffff00; border-right: 0.5px solid Black" colspan="2color:#0000FF;" align="center" width="10%"><strong>Número</strong>	
+		<th style="border-right: 0.5px solid Black; border-left: 0.5px solid Black" colspan="4" align="center" width="60%"><strong>Concepto</strong></th>
+		<th style="border-right: 0.5px solid Black" colspan="2" align="center" width="10%"><strong>Número</strong>
 		</th>
-		<th style="background-color: #ffff00; border-right: 0.5px solid Black" colspan="2color:#0000FF;" align="center" width="10%"><strong>Tarifa</strong>	
+		<th style="border-right: 0.5px solid Black" colspan="2" align="center" width="10%"><strong>Tarifa</strong>
 		</th>
-		<th style="background-color: #ffff00; border-right: 0.5px solid Black" colspan="2color:#0000FF;" align="center" width="20%"><strong>Ingreso por recibir</strong>
+		<th style="border-right: 0.5px solid Black" colspan="2" align="center" width="20%"><strong>Ingreso por recibir</strong>
 		</th>
 	</tr>
 	<tr align="center">
@@ -2891,9 +2891,9 @@ $tbl = '
 
 
 
-<table class = "estilo1" cellpadding="10" cellspacing="0">
+<table class="estilo1 report-deposit" cellpadding="6" cellspacing="0">
 	
-	<tr style="background-color:#dfdfdf"; align="center"; valign="middle">
+	<tr align="center" valign="middle">
 		<th width="50%" align="right"><b>CANTIDAD A DEPOSITAR M.N. $</b></th>
 		<th width="20%" align="right"><b>'.number_format($depositar,2).'</b></th>
 		<th width="10%" align="right"><b>DLLS $</b></th>
@@ -2902,7 +2902,7 @@ $tbl = '
 	</tr>
 </table>
 
-<table class = "estilo1" cellpadding="1" cellspacing="0">
+<table class="report-notes" cellpadding="1" cellspacing="0">
 	<tr>
 	<td width="100%">LOS FIRMANTES ASUMEN LA RESPONSABILIDAD DE LOS VALORES QUE SE REGISTRAN EN ESTE REPORTE, SIENDO RESPONSABLES DE LOS FALTANTES QUE SE GENEREN EN LA CONCILIACIÓN DE LO COBRADO Y LO QUE REGISTRE EL EQUIPO, COMPROMETIÉNDOSE A PAGAR LOS FALTANTES EN ESE MOMENTO, DE ACUERDO AL DESLINDE DE RESPONSABILIDAD DE LOS PROCESOS. </td>
 	</tr>
@@ -2950,28 +2950,21 @@ $tbl = '
 
 $style = <<<EOD
 <style>
-table.estilo1 {
-    border: 1px solid black;
-	font-size:6px
-	align="right" 
-}
-
-table.roundedCorners {
-border: 1px solid Black;
-border-radius: 13px;
-border-spacing: 0;
-border-collapse: collapse;
-}
-table.roundedCorners td,
-table.roundedCorners th {
-border: 0.5px solid gray;
-font-size:7px;
-cellpadding: 15;
-padding: 10px;
-}
-table.roundedCorners tr:last-child > td {
-border-bottom: solid;
-}
+	body { color: #000000; font-family: dejavusans, sans-serif; }
+	table.estilo1 { border: 1px solid black; border-collapse: collapse; font-size: 6.5px; line-height: 1.25; }
+	table.roundedCorners { border: 1px solid black; border-spacing: 0; border-collapse: collapse; }
+	table.roundedCorners td, table.roundedCorners th { border: 0.5px solid black; font-size: 7px; line-height: 1.25; padding: 4px 5px; }
+	table.report-title { border: 1.5px solid black; font-size: 11px; line-height: 1.3; }
+	table.report-title th { padding: 8px 6px; }
+	table.report-meta { border: 1px solid black; font-size: 6.8px; }
+	table.report-meta td { border-bottom: 0.35px solid black; padding: 4px 5px; }
+	table.report-grid th, table.report-summary th, table.report-folios th { font-weight: bold; line-height: 1.15; padding: 5px 4px; }
+	table.report-grid td, table.report-summary td, table.report-folios td { padding: 4px; }
+	.section-title { background-color: #000000; color: #ffffff; font-size: 7.5px; font-weight: bold; padding: 6px; }
+	table.report-summary { border: 1.2px solid black; }
+	table.report-deposit { border: 1.5px solid black; font-size: 8px; line-height: 1.2; }
+	table.report-deposit th { padding: 7px 5px; }
+	table.report-notes { border: 0.5px solid black; font-size: 6px; line-height: 1.25; }
 </style>
 EOD;
 
@@ -3007,13 +3000,15 @@ $pdf->writeHTML($style . $tbl, true, false, false, false, '');
 
 
 
-if($navegador == "Chrome"){
-	$pdf->AddPage('L','LETTER'); 
-}else{
-	$pdf->AddPage('L', array('format' => 'LETTER', 'Rotate' => -90));
+if ($modoPdf === 'completo') {
+	if($navegador == "Chrome"){
+		$pdf->AddPage('L','LETTER');
+	}else{
+		$pdf->AddPage('L', array('format' => 'LETTER', 'Rotate' => -90));
+	}
+	$tbl = $this->Comparativo($fechaOperacion);
+	$pdf->writeHTML($styleComparativo . $tbl, true, false, false, false, '');
 }
-$tbl = $this->Comparativo($fechaOperacion);
-$pdf->writeHTML($styleComparativo . $tbl, true, false, false, false, '');
 
 
 
@@ -4396,6 +4391,18 @@ $_SESSION['scriptcase']['PreliqPDF_genIL']['contr_erro'] = 'off';
    {
        $_SESSION["fecha_op"] = "";
    }
+   if (isset($_POST["modo_pdf"]))
+   {
+       $_SESSION["modo_pdf"] = ($_POST["modo_pdf"] === "primera") ? "primera" : "completo";
+   }
+   if (isset($_GET["modo_pdf"]))
+   {
+       $_SESSION["modo_pdf"] = ($_GET["modo_pdf"] === "primera") ? "primera" : "completo";
+   }
+   if (!isset($_SESSION["modo_pdf"]))
+   {
+       $_SESSION["modo_pdf"] = "completo";
+   }
    if (!empty($glo_perfil))  
    { 
       $_SESSION['scriptcase']['glo_perfil'] = $glo_perfil;
@@ -4597,6 +4604,10 @@ $_SESSION['scriptcase']['PreliqPDF_genIL']['contr_erro'] = 'off';
        {
            $_SESSION['fecha_op'] = $fecha_op;
            nm_limpa_str_PreliqPDF_genIL($_SESSION["fecha_op"]);
+       }
+       if (isset($modo_pdf))
+       {
+           $_SESSION['modo_pdf'] = ($modo_pdf === "primera") ? "primera" : "completo";
        }
    } 
    $GLOBALS["NM_ERRO_IBASE"] = 0;  

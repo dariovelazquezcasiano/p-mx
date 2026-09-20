@@ -152,7 +152,7 @@ function Sel_cmp_process()
           }
       }
       ?>
-      <link rel="stylesheet" type="text/css" href="../_lib/css/peaje_module_ui.css?v=20260914-preliq-compact" />
+      <link rel="stylesheet" type="text/css" href="../_lib/css/peaje_module_ui.css?v=20260920-preliq-ptc2" />
       <?php
    }
 

@@ -1502,12 +1502,12 @@ if ($_SESSION['scriptcase']['proc_mobile'])
   } 
   ?> 
  <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_link ?>grid_detalleturnoPTC/grid_detalleturnoPTC_fil_<?php echo strtolower($_SESSION['scriptcase']['reg_conf']['css_dir']) ?>.css" />
- <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_link ?>_lib/css/peaje_module_ui.css?v=20260914-preliq-compact" />
+ <link rel="stylesheet" type="text/css" href="<?php echo $this->Ini->path_link ?>_lib/css/peaje_module_ui.css?v=20260920-preliq-ptc2" />
 </HEAD>
 <?php
 $vertical_center = '';
 ?>
-<BODY id="grid_search" class="scFilterPage pmx-preliq-search pmx-preliq-carril-search" style="<?php echo $vertical_center ?>">
+<BODY id="grid_search" class="scFilterPage pmx-preliq-search pmx-preliq-carril-search pmx-preliq-carril-turno-search pmx-preliq-card-search" style="<?php echo $vertical_center ?>">
 <?php echo $this->Ini->Ajax_result_set ?>
 <SCRIPT type="text/javascript" src="<?php echo $this->Ini->path_js . "/browserSniffer.js" ?>"></SCRIPT>
    <script type="text/javascript">
