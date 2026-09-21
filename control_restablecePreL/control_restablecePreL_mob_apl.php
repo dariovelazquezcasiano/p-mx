@@ -1,4 +1,5 @@
 <?php
+require_once dirname(__DIR__) . '/_lib/lib/php/peaje_password.php';
 //
 class control_restablecePreL_mob_apl
 {
@@ -2729,8 +2730,12 @@ if (!isset($this->sc_temp_sm_global_login)) {$this->sc_temp_sm_global_login = (i
 
 	if ($this->ds_user  == true) {
        	$obj = new encriptador(); 
-      	if ("'".$obj->desencripta($this->ds_user[0][0])."'" == $this->Db->qstr($this->clave ) || 
-         	"'".$this->ds_user[0][0]."'" == $this->Db->qstr(md5($this->clave )))  {
+		$peaje_stored_pswd = (string) $this->ds_user[0][0];
+		$peaje_pswd_ok = peaje_password_verify($this->clave, $peaje_stored_pswd);
+		if (!$peaje_pswd_ok && !peaje_password_is_legacy_md5($peaje_stored_pswd) && empty(password_get_info($peaje_stored_pswd)['algo'])) {
+			$peaje_pswd_ok = hash_equals((string) $obj->desencripta($peaje_stored_pswd), (string) $this->clave);
+		}
+		if ($peaje_pswd_ok) {
 			
         return true;
 		}else{

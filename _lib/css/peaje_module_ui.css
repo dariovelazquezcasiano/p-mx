@@ -2380,3 +2380,42 @@ body.pmx-detalle-operacion-grid .scGridFieldEvenFont {
   padding: 10px 8px !important;
   white-space: normal !important;
 }
+
+/* Reverse preliquidation action: compact, current and easy to identify. */
+body.pmx-reverse-grid .css_preliquidar_label,
+body.pmx-reverse-grid .css_preliquidar_grid_line {
+  text-align: center !important;
+}
+
+body.pmx-reverse-grid a.pmx-restore-action {
+  align-items: center;
+  background: #e7f4f1 !important;
+  border: 1px solid #14857b;
+  border-radius: 6px;
+  box-sizing: border-box;
+  color: #0b6f67 !important;
+  display: inline-flex;
+  height: 34px;
+  justify-content: center;
+  text-decoration: none !important;
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease;
+  width: 34px;
+}
+
+body.pmx-reverse-grid a.pmx-restore-action:hover,
+body.pmx-reverse-grid a.pmx-restore-action:focus-visible {
+  background: #14857b !important;
+  border-color: #0b6f67;
+  color: #fff !important;
+  outline: 2px solid #a7d8d2;
+  outline-offset: 2px;
+  transform: translateY(-1px);
+}
+
+body.pmx-reverse-grid .pmx-restore-icon {
+  display: block;
+  font-family: "Segoe UI Symbol", "Segoe UI", Arial, sans-serif;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1;
+}

@@ -2045,7 +2045,7 @@ function NM_apaga_erro()
       {
       }
       if (!empty($_SESSION['sc_session'][$this->Ini->sc_page]['grid_restablecePreL']['campos_busca']) && $bprocessa != "recarga" && $bprocessa != "save_form" && $bprocessa != "filter_save" && $bprocessa != "filter_delete")
-      { 
+      {
           if ($_SESSION['scriptcase']['charset'] != "UTF-8")
           {
               $_SESSION['sc_session'][$this->Ini->sc_page]['grid_restablecePreL']['campos_busca'] = NM_conv_charset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_restablecePreL']['campos_busca'], $_SESSION['scriptcase']['charset'], "UTF-8");
@@ -2056,8 +2056,15 @@ function NM_apaga_erro()
           $fechaoperacion_mes = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_restablecePreL']['campos_busca']['fechaoperacion_mes']; 
           $fechaoperacion_ano = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_restablecePreL']['campos_busca']['fechaoperacion_ano']; 
           $fechaoperacion_cond = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_restablecePreL']['campos_busca']['fechaoperacion_cond']; 
-          $this->NM_operador = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_restablecePreL']['campos_busca']['NM_operador']; 
-      } 
+          $this->NM_operador = $_SESSION['sc_session'][$this->Ini->sc_page]['grid_restablecePreL']['campos_busca']['NM_operador'];
+      }
+      if (empty($fechaoperacion_dia) && empty($fechaoperacion_mes) && empty($fechaoperacion_ano))
+      {
+          $fecha_actual = new DateTime('now', new DateTimeZone('America/Mexico_City'));
+          $fechaoperacion_dia = $fecha_actual->format('d');
+          $fechaoperacion_mes = $fecha_actual->format('m');
+          $fechaoperacion_ano = $fecha_actual->format('Y');
+      }
       $display_aberto  = "style=display:";
       $display_fechado = "style=display:none";
       $opc_hide_input = array("nu","nn","ep","ne");
