@@ -88,6 +88,7 @@
     $createCharts = (isset($_GET['create_charts'])) ? strip_tags($_GET['create_charts']) : 'S';
     $app_name     = (isset($_GET['app_name']))      ? strip_tags($_GET['app_name']) : 'N';
 
+    $cor          = "pb";
     $password     = (isset($_GET['password']))       ? $_GET['password'] : "s";
     $res_cons     = (isset($_GET['nm_res_cons']))    ? $_GET['nm_res_cons']    : "n";
     $tem_gb_pdf   = (isset($_GET['nm_tem_gb']))      ? $_GET['nm_tem_gb']      : "s";
@@ -322,26 +323,9 @@ $colspan = ($_SESSION['scriptcase']['proc_mobile']) ? 1 : 2;
         }
         ?>
 
-        <?php
-          $Opt_display = (!in_array("cor_imp", $SC_conf_opt)) ? ' style="display: none"' : '';
-        ?>
-         <tr<?php echo $Opt_display ?>>
-           <td class="scGridFieldOddFont">
-             <?php echo $tradutor[$language]['tp_imp']; ?>
-<?php
-    if ($_SESSION['scriptcase']['proc_mobile']) {
-        echo "           <br>";
-    }
-    else {
-        echo "           </td><td class=\"scGridFieldOddFont\">";
-    }
-?>
-             <select  name="cor_imp"  size=1>
-               <option value="cor"      <?php if ($cor == "cor")  { echo " selected" ;} ?>><?php echo $tradutor[$language]['color']; ?></option>
-               <option value="pb"       <?php if ($cor == "pb")  { echo " selected" ;} ?>><?php echo $tradutor[$language]['econm']; ?></option>
-             </select>
-          </td>
-         </tr>
+        <select name="cor_imp" style="display: none" aria-hidden="true">
+          <option value="pb" selected>Blanco y Negro</option>
+        </select>
         <?php
         if ($conf_socor == "N")
         {

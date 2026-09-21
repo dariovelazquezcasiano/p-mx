@@ -1749,6 +1749,20 @@ $nm_saida->saida("}\r\n");
            $nm_saida->saida("   <link rel=\"stylesheet\" href=\"../_lib/css/" . $_SESSION['scriptcase']['erro']['str_schema'] . "\" type=\"text/css\" media=\"screen\" />\r\n");
            $nm_saida->saida("   <link rel=\"stylesheet\" href=\"../_lib/css/" . $_SESSION['scriptcase']['erro']['str_schema_dir'] . "\" type=\"text/css\" media=\"screen\" />\r\n");
        }
+       if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleoperacion']['proc_pdf'] || $_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleoperacion']['proc_pdf_vert'])
+       {
+           $nm_saida->saida("  <style type=\"text/css\">\r\n");
+           $nm_saida->saida("    body { background: #fff !important; color: #000 !important; font-family: DejaVu Sans, Arial, sans-serif !important; }\r\n");
+           $nm_saida->saida("    .scGridBorder { border: 1px solid #000 !important; border-collapse: collapse !important; box-shadow: none !important; width: 100% !important; }\r\n");
+           $nm_saida->saida("    .scGridHeader { background: #fff !important; border: 1px solid #000 !important; }\r\n");
+           $nm_saida->saida("    .scGridHeaderFont { background: #fff !important; color: #000 !important; font-size: 15px !important; font-weight: bold !important; padding: 12px 10px !important; text-align: left !important; }\r\n");
+           $nm_saida->saida("    .scGridTabela { border-collapse: collapse !important; table-layout: fixed !important; width: 100% !important; }\r\n");
+           $nm_saida->saida("    .scGridLabelFont { background: #fff !important; border: 0.5px solid #000 !important; color: #000 !important; font-size: 8px !important; font-weight: bold !important; line-height: 1.25 !important; padding: 7px 5px !important; text-align: center !important; white-space: normal !important; }\r\n");
+           $nm_saida->saida("    .scGridFieldOdd, .scGridFieldEven, .scGridFieldOddFont, .scGridFieldEvenFont { background: #fff !important; border: 0.5px solid #000 !important; color: #000 !important; font-size: 8px !important; line-height: 1.3 !important; padding: 7px 5px !important; white-space: normal !important; }\r\n");
+           $nm_saida->saida("    .scGridFooter, .scGridFooterFont { background: #fff !important; border-top: 1px solid #000 !important; color: #000 !important; font-size: 7px !important; }\r\n");
+           $nm_saida->saida("    a { color: #000 !important; text-decoration: none !important; }\r\n");
+           $nm_saida->saida("  </style>\r\n");
+       }
        $str_iframe_body = ($this->aba_iframe) ? 'marginwidth="0px" marginheight="0px" topmargin="0px" leftmargin="0px"' : '';
        $nm_saida->saida("  <style type=\"text/css\">\r\n");
        $nm_saida->saida("  </style>\r\n");
@@ -1779,6 +1793,18 @@ $nm_saida->saida("}\r\n");
        { 
        $nm_saida->saida("" . $this->SC_Buf_onInit . "\r\n");
        } 
+       $nm_saida->saida("   <link rel=\"stylesheet\" type=\"text/css\" href=\"" . $this->Ini->path_link . "_lib/css/peaje_module_ui.css?v=20260921-detalle-operacion2\" />\r\n");
+       if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleoperacion']['proc_pdf'] || $_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleoperacion']['proc_pdf_vert'])
+       {
+           $nm_saida->saida("  <style type=\"text/css\">\r\n");
+           $nm_saida->saida("    .scGridHeader { background: #fff !important; border: 1px solid #000 !important; }\r\n");
+           $nm_saida->saida("    .scGridHeaderFont { background: transparent !important; border: 0 !important; color: #000 !important; line-height: 20px !important; padding: 0 !important; }\r\n");
+           $nm_saida->saida("    .scGridTabela { border-collapse: collapse !important; border-spacing: 0 !important; }\r\n");
+           $nm_saida->saida("    td.scGridLabelFont { background: #fff !important; border: 1px solid #000 !important; color: #000 !important; }\r\n");
+           $nm_saida->saida("    td.scGridFieldOddFont, td.scGridFieldEvenFont { background: #fff !important; border: 1px solid #000 !important; color: #000 !important; }\r\n");
+           $nm_saida->saida("    .scGridTotal, .scGridTotalFont, .scGridSubtotal, .scGridSubtotalFont { background: #fff !important; border-color: #000 !important; color: #000 !important; }\r\n");
+           $nm_saida->saida("  </style>\r\n");
+       }
        $nm_saida->saida("  </HEAD>\r\n");
    } 
    if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleoperacion']['embutida'] && $this->Ini->nm_ger_css_emb)
@@ -1801,7 +1827,7 @@ $nm_saida->saida("}\r\n");
            {
                $nm_saida->saida(" <link rel=\"stylesheet\" type=\"text/css\" href=\"../_lib/buttons/" . $this->Ini->Str_btn_css . "\" /> \r\n");
            }
-           $nm_saida->saida("  <body id=\"grid_horizontal\" class=\"" . $this->css_scGridPage . " sc-app-grid\" " . $str_iframe_body . " style=\"-webkit-print-color-adjust: exact;" . $css_body . "\">\r\n");
+           $nm_saida->saida("  <body id=\"grid_horizontal\" class=\"" . $this->css_scGridPage . " sc-app-grid pmx-detalle-operacion-grid\" " . $str_iframe_body . " style=\"-webkit-print-color-adjust: exact;" . $css_body . "\">\r\n");
            $nm_saida->saida("   <TABLE id=\"sc_table_print\" cellspacing=0 cellpadding=0 align=\"center\" valign=\"top\" " . $this->Tab_width . ">\r\n");
            $nm_saida->saida("     <TR>\r\n");
            $nm_saida->saida("       <TD>\r\n");
@@ -1835,7 +1861,7 @@ $nm_saida->saida("}\r\n");
           $remove_margin = isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleoperacion']['dashboard_info']['remove_margin']) && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleoperacion']['dashboard_info']['remove_margin'] ? 'margin: 0; ' : '';
           $remove_border = isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleoperacion']['dashboard_info']['remove_border']) && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleoperacion']['dashboard_info']['remove_border'] ? 'border-width: 0; ' : '';
           $vertical_center = '';
-           $nm_saida->saida("  <body id=\"grid_horizontal\" class=\"" . $this->css_scGridPage . " sc-app-grid\" " . $str_iframe_body . " style=\"" . $remove_margin . $vertical_center . $css_body . "\">\r\n");
+           $nm_saida->saida("  <body id=\"grid_horizontal\" class=\"" . $this->css_scGridPage . " sc-app-grid pmx-detalle-operacion-grid\" " . $str_iframe_body . " style=\"" . $remove_margin . $vertical_center . $css_body . "\">\r\n");
        }
        $nm_saida->saida("  " . $this->Ini->Ajax_result_set . "\r\n");
        if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleoperacion']['embutida'] && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleoperacion']['opcao'] != "pdf" && !$this->Print_All)
@@ -3853,7 +3879,7 @@ if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleoperacion']['proc_
       $Tem_pdf_res = "n";
               $this->nm_btn_exist['pdf'][] = "pdf_top";
           $nm_saida->saida("            <div id=\"div_pdf_top\" class=\"scBtnGrpText scBtnGrpClick\">\r\n");
-              $Cod_Btn = nmButtonOutput($this->arr_buttons, "bpdf", "", "", "pdf_top", "", "", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "", "thickbox", "" . $this->Ini->path_link . "grid_detalleoperacion/grid_detalleoperacion_config_pdf.php?nm_opc=pdf&nm_target=0&nm_cor=cor&papel=8&lpapel=279&apapel=216&orientacao=1&bookmarks=1&largura=1200&conf_larg=S&conf_fonte=10&grafico=XX&sc_ver_93=s&nm_tem_gb=" . $Tem_gb_pdf . "&nm_res_cons=" . $Tem_pdf_res . "&nm_ini_pdf_res=grid&nm_all_modules=grid&nm_label_group=N&nm_all_cab=S&nm_all_label=S&nm_orient_grid=2&password=n&summary_export_columns=S&pdf_zip=N&origem=cons&language=es&conf_socor=N&script_case_init=" . $this->Ini->sc_page . "&app_name=grid_detalleoperacion&KeepThis=true&TB_iframe=true&modal=true", "group_1", "only_text", "text_right", "", "", "", "", "", "", "");
+              $Cod_Btn = nmButtonOutput($this->arr_buttons, "bpdf", "", "", "pdf_top", "", "", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "", "thickbox", "" . $this->Ini->path_link . "grid_detalleoperacion/grid_detalleoperacion_config_pdf.php?nm_opc=pdf&nm_target=0&nm_cor=pb&papel=8&lpapel=279&apapel=216&orientacao=1&bookmarks=1&largura=1200&conf_larg=S&conf_fonte=9&grafico=XX&sc_ver_93=s&nm_tem_gb=" . $Tem_gb_pdf . "&nm_res_cons=" . $Tem_pdf_res . "&nm_ini_pdf_res=grid&nm_all_modules=grid&nm_label_group=N&nm_all_cab=S&nm_all_label=S&nm_orient_grid=2&password=n&summary_export_columns=S&pdf_zip=N&origem=cons&language=es&conf_socor=N&script_case_init=" . $this->Ini->sc_page . "&app_name=grid_detalleoperacion&KeepThis=true&TB_iframe=true&modal=true", "group_1", "only_text", "text_right", "", "", "", "", "", "", "");
               $nm_saida->saida("           $Cod_Btn \r\n");
           $nm_saida->saida("            </div>\r\n");
               $NM_Gbtn = true;

@@ -120,6 +120,10 @@ class grid_preliquidacion_fs_grid
            $this->NM_cmp_hidden[$NM_cada_field] = $NM_cada_opc;
        }
    }
+   if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_preliquidacion_fs']['proc_pdf'] || $_SESSION['sc_session'][$this->Ini->sc_page]['grid_preliquidacion_fs']['proc_pdf_vert'])
+   {
+       $this->NM_cmp_hidden['sincajero'] = 'off';
+   }
    if (!isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_preliquidacion_fs']['grid_pesq'])) {
        $_SESSION['sc_session'][$this->Ini->sc_page]['grid_preliquidacion_fs']['grid_pesq'] = array();
    }
@@ -2067,6 +2071,20 @@ $nm_saida->saida("}\r\n");
            $nm_saida->saida("   <link rel=\"stylesheet\" href=\"../_lib/css/" . $_SESSION['scriptcase']['erro']['str_schema'] . "\" type=\"text/css\" media=\"screen\" />\r\n");
            $nm_saida->saida("   <link rel=\"stylesheet\" href=\"../_lib/css/" . $_SESSION['scriptcase']['erro']['str_schema_dir'] . "\" type=\"text/css\" media=\"screen\" />\r\n");
        }
+       if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_preliquidacion_fs']['proc_pdf'] || $_SESSION['sc_session'][$this->Ini->sc_page]['grid_preliquidacion_fs']['proc_pdf_vert'])
+       {
+           $nm_saida->saida("  <style type=\"text/css\">\r\n");
+           $nm_saida->saida("    body { background: #fff !important; color: #000 !important; font-family: DejaVu Sans, Arial, sans-serif !important; }\r\n");
+           $nm_saida->saida("    .scGridBorder { border: 1px solid #000 !important; border-collapse: collapse !important; box-shadow: none !important; width: 100% !important; }\r\n");
+           $nm_saida->saida("    .scGridHeader { background: #fff !important; border: 1px solid #000 !important; }\r\n");
+           $nm_saida->saida("    .scGridHeaderFont { background: #fff !important; color: #000 !important; font-size: 14px !important; font-weight: bold !important; padding: 10px 8px !important; text-align: left !important; }\r\n");
+           $nm_saida->saida("    .scGridTabela { border-collapse: collapse !important; table-layout: fixed !important; width: 100% !important; }\r\n");
+           $nm_saida->saida("    .scGridLabelFont { background: #fff !important; border: 0.5px solid #000 !important; color: #000 !important; font-size: 7px !important; font-weight: bold !important; line-height: 1.2 !important; padding: 5px 3px !important; text-align: center !important; white-space: normal !important; }\r\n");
+           $nm_saida->saida("    .scGridFieldOdd, .scGridFieldEven, .scGridFieldOddFont, .scGridFieldEvenFont { background: #fff !important; border: 0.5px solid #000 !important; color: #000 !important; font-size: 7px !important; line-height: 1.25 !important; padding: 5px 3px !important; white-space: normal !important; }\r\n");
+           $nm_saida->saida("    .scGridFooter, .scGridFooterFont { background: #fff !important; border-top: 1px solid #000 !important; color: #000 !important; font-size: 7px !important; }\r\n");
+           $nm_saida->saida("    a { color: #000 !important; text-decoration: none !important; }\r\n");
+           $nm_saida->saida("  </style>\r\n");
+       }
        $str_iframe_body = ($this->aba_iframe) ? 'marginwidth="0px" marginheight="0px" topmargin="0px" leftmargin="0px"' : '';
        $nm_saida->saida("  <style type=\"text/css\">\r\n");
        if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_preliquidacion_fs']['opcao'] != "pdf" && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_preliquidacion_fs']['embutida_pdf'] != "pdf")
@@ -2106,6 +2124,18 @@ $nm_saida->saida("}\r\n");
        $nm_saida->saida("" . $this->SC_Buf_onInit . "\r\n");
        } 
        $nm_saida->saida("   <link rel=\"stylesheet\" type=\"text/css\" href=\"" . $this->Ini->path_link . "_lib/css/peaje_module_ui.css?v=20260914-preliq-compact\" />\r\n");
+       if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_preliquidacion_fs']['proc_pdf'] || $_SESSION['sc_session'][$this->Ini->sc_page]['grid_preliquidacion_fs']['proc_pdf_vert'])
+       {
+           $nm_saida->saida("  <style type=\"text/css\">\r\n");
+           $nm_saida->saida("    .scGridHeader { background: #fff !important; border: 1px solid #000 !important; }\r\n");
+           $nm_saida->saida("    .scGridHeaderFont { background: transparent !important; border: 0 !important; color: #000 !important; line-height: 20px !important; padding: 0 !important; }\r\n");
+           $nm_saida->saida("    .scGridTabela { border-collapse: collapse !important; border-spacing: 0 !important; }\r\n");
+           $nm_saida->saida("    td.scGridLabelFont { background: #fff !important; border: 1px solid #000 !important; color: #000 !important; }\r\n");
+           $nm_saida->saida("    td.scGridFieldOddFont, td.scGridFieldEvenFont { background: #fff !important; border: 1px solid #000 !important; color: #000 !important; }\r\n");
+           $nm_saida->saida("    .scGridTotal, .scGridTotalFont, .scGridSubtotal, .scGridSubtotalFont { background: #fff !important; border-color: #000 !important; color: #000 !important; }\r\n");
+           $nm_saida->saida("    td.scGridTotalFont { border: 1px solid #000 !important; font-weight: bold !important; padding: 7px 5px !important; }\r\n");
+           $nm_saida->saida("  </style>\r\n");
+       }
        $nm_saida->saida("  </HEAD>\r\n");
    } 
    if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_preliquidacion_fs']['embutida'] && $this->Ini->nm_ger_css_emb)
@@ -4134,7 +4164,7 @@ $_SESSION['scriptcase']['grid_preliquidacion_fs']['contr_erro'] = 'off';
        } else {
            $Md5_Lig = "nmgp_lig_edit_lapis*scinS*scoutcasetaido*scin" . str_replace("'", "@aspass@", $this->casetaid) . "*scoutfechaoperaciono*scin" . str_replace("'", "@aspass@", $this->fechaoperacion) . "*scoutturnoido*scin" . str_replace("'", "@aspass@", $this->turnoid) . "*scoutcarrilido*scin" . str_replace("'", "@aspass@", $this->carrilid) . "*scouthorainicioo*scin" . str_replace("'", "@aspass@", $this->horainicio) . "*scoutNMSC_modal*scinok*scout";
        }
-   $nm_saida->saida("<a id=\"id_sc_field_operacion_" . $this->SC_seq_page . "\" href=\"javascript:nm_gp_submit5('" . $this->Ini->link_grid_detalleoperacion_cons . "', '$this->nm_location', '$Md5_Lig', '" . (isset($linkTarget) ? $linkTarget : 'modal') . "', 'inicio', '440', '630', '', 'grid_detalleoperacion', '" . $this->SC_ancora . "')\" onMouseover=\"nm_mostra_hint(this, event, '')\" onMouseOut=\"nm_apaga_hint()\" class=\"" . $this->Ini->cor_link_dados . $this->css_sep . $this->css_operacion_grid_line . "\" style=\"" . $this->Css_Cmp['css_operacion_grid_line'] . "\">" . $conteudo . "</a>\r\n");
+   $nm_saida->saida("<a id=\"id_sc_field_operacion_" . $this->SC_seq_page . "\" href=\"javascript:nm_gp_submit5('" . $this->Ini->link_grid_detalleoperacion_cons . "', '$this->nm_location', '$Md5_Lig', '" . (isset($linkTarget) ? $linkTarget : 'modal') . "', 'inicio', '620', '1100', '', 'grid_detalleoperacion', '" . $this->SC_ancora . "')\" onMouseover=\"nm_mostra_hint(this, event, '')\" onMouseOut=\"nm_apaga_hint()\" class=\"" . $this->Ini->cor_link_dados . $this->css_sep . $this->css_operacion_grid_line . "\" style=\"" . $this->Css_Cmp['css_operacion_grid_line'] . "\">" . $conteudo . "</a>\r\n");
 } else {
    $nm_saida->saida(" <span id=\"id_sc_field_operacion_" . $this->SC_seq_page . "\">$conteudo </span>\r\n");
        } 
@@ -4877,7 +4907,7 @@ $_SESSION['scriptcase']['grid_preliquidacion_fs']['contr_erro'] = 'off';
       $Tem_pdf_res = "n";
               $this->nm_btn_exist['pdf'][] = "pdf_top";
           $nm_saida->saida("            <div id=\"div_pdf_top\" class=\"scBtnGrpText scBtnGrpClick\">\r\n");
-              $Cod_Btn = nmButtonOutput($this->arr_buttons, "bpdf", "", "", "pdf_top", "", "", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "", "thickbox", "" . $this->Ini->path_link . "grid_preliquidacion_fs/grid_preliquidacion_fs_config_pdf.php?nm_opc=pdf&nm_target=0&nm_cor=cor&papel=8&lpapel=279&apapel=216&orientacao=1&bookmarks=1&largura=1200&conf_larg=S&conf_fonte=10&grafico=XX&sc_ver_93=s&nm_tem_gb=" . $Tem_gb_pdf . "&nm_res_cons=" . $Tem_pdf_res . "&nm_ini_pdf_res=grid&nm_all_modules=grid&nm_label_group=N&nm_all_cab=S&nm_all_label=S&nm_orient_grid=2&password=n&summary_export_columns=S&pdf_zip=N&origem=cons&language=es&conf_socor=N&script_case_init=" . $this->Ini->sc_page . "&app_name=grid_preliquidacion_fs&KeepThis=true&TB_iframe=true&modal=true", "group_1", "only_text", "text_right", "", "", "", "", "", "", "");
+              $Cod_Btn = nmButtonOutput($this->arr_buttons, "bpdf", "", "", "pdf_top", "", "", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "", "thickbox", "" . $this->Ini->path_link . "grid_preliquidacion_fs/grid_preliquidacion_fs_config_pdf.php?nm_opc=pdf&nm_target=0&nm_cor=pb&papel=8&lpapel=279&apapel=216&orientacao=1&bookmarks=1&largura=1200&conf_larg=S&conf_fonte=8&grafico=XX&sc_ver_93=s&nm_tem_gb=" . $Tem_gb_pdf . "&nm_res_cons=" . $Tem_pdf_res . "&nm_ini_pdf_res=grid&nm_all_modules=grid&nm_label_group=N&nm_all_cab=S&nm_all_label=S&nm_orient_grid=2&password=n&summary_export_columns=S&pdf_zip=N&origem=cons&language=es&conf_socor=N&script_case_init=" . $this->Ini->sc_page . "&app_name=grid_preliquidacion_fs&KeepThis=true&TB_iframe=true&modal=true", "group_1", "only_text", "text_right", "", "", "", "", "", "", "");
               $nm_saida->saida("           $Cod_Btn \r\n");
           $nm_saida->saida("            </div>\r\n");
               $NM_Gbtn = true;
@@ -5278,7 +5308,7 @@ $_SESSION['scriptcase']['grid_preliquidacion_fs']['contr_erro'] = 'off';
       $Tem_pdf_res = "n";
               $this->nm_btn_exist['pdf'][] = "pdf_top";
           $nm_saida->saida("            <div id=\"div_pdf_top\" class=\"scBtnGrpText scBtnGrpClick\">\r\n");
-              $Cod_Btn = nmButtonOutput($this->arr_buttons, "bpdf", "", "", "pdf_top", "", "", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "", "thickbox", "" . $this->Ini->path_link . "grid_preliquidacion_fs/grid_preliquidacion_fs_config_pdf.php?nm_opc=pdf&nm_target=0&nm_cor=cor&papel=8&lpapel=279&apapel=216&orientacao=1&bookmarks=1&largura=1200&conf_larg=S&conf_fonte=10&grafico=XX&sc_ver_93=s&nm_tem_gb=" . $Tem_gb_pdf . "&nm_res_cons=" . $Tem_pdf_res . "&nm_ini_pdf_res=grid&nm_all_modules=grid&nm_label_group=N&nm_all_cab=S&nm_all_label=S&nm_orient_grid=2&password=n&summary_export_columns=S&pdf_zip=N&origem=cons&language=es&conf_socor=N&script_case_init=" . $this->Ini->sc_page . "&app_name=grid_preliquidacion_fs&KeepThis=true&TB_iframe=true&modal=true", "group_1", "only_text", "text_right", "", "", "", "", "", "", "");
+              $Cod_Btn = nmButtonOutput($this->arr_buttons, "bpdf", "", "", "pdf_top", "", "", "", "absmiddle", "", "0px", $this->Ini->path_botoes, "", "", "thickbox", "" . $this->Ini->path_link . "grid_preliquidacion_fs/grid_preliquidacion_fs_config_pdf.php?nm_opc=pdf&nm_target=0&nm_cor=pb&papel=8&lpapel=279&apapel=216&orientacao=1&bookmarks=1&largura=1200&conf_larg=S&conf_fonte=8&grafico=XX&sc_ver_93=s&nm_tem_gb=" . $Tem_gb_pdf . "&nm_res_cons=" . $Tem_pdf_res . "&nm_ini_pdf_res=grid&nm_all_modules=grid&nm_label_group=N&nm_all_cab=S&nm_all_label=S&nm_orient_grid=2&password=n&summary_export_columns=S&pdf_zip=N&origem=cons&language=es&conf_socor=N&script_case_init=" . $this->Ini->sc_page . "&app_name=grid_preliquidacion_fs&KeepThis=true&TB_iframe=true&modal=true", "group_1", "only_text", "text_right", "", "", "", "", "", "", "");
               $nm_saida->saida("           $Cod_Btn \r\n");
           $nm_saida->saida("            </div>\r\n");
               $NM_Gbtn = true;
@@ -8278,6 +8308,8 @@ $_SESSION['scriptcase']['grid_preliquidacion_fs']['contr_erro'] = 'off';
    $nm_saida->saida("      if (target == 'modal' || target == 'modal_rpdf') \r\n");
    $nm_saida->saida("      {\r\n");
    $nm_saida->saida("          NM_ancor_ult_lig = ancor;\r\n");
+   $nm_saida->saida("          modal_w = Math.min(parseInt(modal_w, 10) || 1100, Math.max(320, window.innerWidth - 40));\r\n");
+   $nm_saida->saida("          modal_h = Math.min(parseInt(modal_h, 10) || 620, Math.max(300, window.innerHeight - 40));\r\n");
    $nm_saida->saida("          par_modal = '?&nmgp_outra_jan=true&nmgp_url_saida=modal&SC_lig_apl_orig=grid_preliquidacion_fs';\r\n");
    $nm_saida->saida("          if (opc != null && opc != '') \r\n");
    $nm_saida->saida("          {\r\n");
@@ -8362,10 +8394,10 @@ $_SESSION['scriptcase']['grid_preliquidacion_fs']['contr_erro'] = 'off';
    $nm_saida->saida("   { \r\n");
    if ($_SESSION['scriptcase']['proc_mobile']) {
        $nm_saida->saida("   if (alt == '' || alt == 0) {\r\n");
-       $nm_saida->saida("       alt = '440';\r\n");
+       $nm_saida->saida("       alt = '620';\r\n");
        $nm_saida->saida("   }\r\n");
        $nm_saida->saida("   if (larg == '' || larg == 0) {\r\n");
-       $nm_saida->saida("       larg = '630';\r\n");
+       $nm_saida->saida("       larg = '1100';\r\n");
        $nm_saida->saida("   }\r\n");
        $nm_saida->saida("   nm_gp_submit5(apl_lig, apl_saida, parms, 'modal', opc, alt, larg, m_confirm, apl_name, ancor); \r\n");
        $nm_saida->saida("   return;\r\n");

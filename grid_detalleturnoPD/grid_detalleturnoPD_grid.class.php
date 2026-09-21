@@ -1742,7 +1742,7 @@ $nm_saida->saida("}\r\n");
   }
            $nm_saida->saida("  </style>\r\n");
        }
-       $nm_saida->saida("   <link rel=\"stylesheet\" type=\"text/css\" href=\"" . $this->Ini->path_link . "_lib/css/peaje_module_ui.css?v=20260914-preliq-compact\" />\r\n");
+       $nm_saida->saida("   <link rel=\"stylesheet\" type=\"text/css\" href=\"" . $this->Ini->path_link . "_lib/css/peaje_module_ui.css?v=20260921-preliq-dia1\" />\r\n");
        $nm_saida->saida("  </HEAD>\r\n");
    } 
    if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturnoPD']['embutida'] && $this->Ini->nm_ger_css_emb)
@@ -1765,7 +1765,7 @@ $nm_saida->saida("}\r\n");
            {
                $nm_saida->saida(" <link rel=\"stylesheet\" type=\"text/css\" href=\"../_lib/buttons/" . $this->Ini->Str_btn_css . "\" /> \r\n");
            }
-           $nm_saida->saida("  <body id=\"grid_horizontal\" class=\"" . $this->css_scGridPage . " sc-app-grid\" " . $str_iframe_body . " style=\"-webkit-print-color-adjust: exact;" . $css_body . "\" onload=\"javascript:setTimeout(function(){clear_reload = nm_gp_submit_ajax ('igual', 'reload');},60000);\">\r\n");
+           $nm_saida->saida("  <body id=\"grid_horizontal\" class=\"" . $this->css_scGridPage . " sc-app-grid pmx-preliq-carril-grid pmx-preliq-dia-grid\" " . $str_iframe_body . " style=\"-webkit-print-color-adjust: exact;" . $css_body . "\" onload=\"javascript:setTimeout(function(){clear_reload = nm_gp_submit_ajax ('igual', 'reload');},60000);\">\r\n");
            $nm_saida->saida("   <TABLE id=\"sc_table_print\" cellspacing=0 cellpadding=0 align=\"center\" valign=\"top\" " . $this->Tab_width . ">\r\n");
            $nm_saida->saida("     <TR>\r\n");
            $nm_saida->saida("       <TD>\r\n");
@@ -1799,7 +1799,7 @@ $nm_saida->saida("}\r\n");
           $remove_margin = isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturnoPD']['dashboard_info']['remove_margin']) && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturnoPD']['dashboard_info']['remove_margin'] ? 'margin: 0; ' : '';
           $remove_border = isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturnoPD']['dashboard_info']['remove_border']) && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturnoPD']['dashboard_info']['remove_border'] ? 'border-width: 0; ' : '';
           $vertical_center = '';
-           $nm_saida->saida("  <body id=\"grid_horizontal\" class=\"" . $this->css_scGridPage . " sc-app-grid\" " . $str_iframe_body . " style=\"" . $remove_margin . $vertical_center . $css_body . "\" onload=\"javascript:setTimeout(function(){clear_reload = nm_gp_submit_ajax ('igual', 'reload');},60000);\">\r\n");
+           $nm_saida->saida("  <body id=\"grid_horizontal\" class=\"" . $this->css_scGridPage . " sc-app-grid pmx-preliq-carril-grid pmx-preliq-dia-grid\" " . $str_iframe_body . " style=\"" . $remove_margin . $vertical_center . $css_body . "\" onload=\"javascript:setTimeout(function(){clear_reload = nm_gp_submit_ajax ('igual', 'reload');},60000);\">\r\n");
        }
        $nm_saida->saida("  " . $this->Ini->Ajax_result_set . "\r\n");
        if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturnoPD']['embutida'] && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturnoPD']['opcao'] != "pdf" && !$this->Print_All)
@@ -3649,24 +3649,27 @@ $_SESSION['scriptcase']['grid_detalleturnoPD']['contr_erro'] = 'off';
  if (!$this->Ini->Proc_print && !$this->Ini->SC_Link_View && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturnoPD']['opcao'] != "pdf" && $_SESSION['scriptcase']['contr_link_emb'] != "pdf" && $conteudo != "&nbsp;"){ $_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturnoPD']['Ind_lig_mult']++;
        $linkTarget = isset($this->Ini->sc_lig_target['C_@scinf_preliquidacion_@scinf_PreliqPDF_genIL']) ? $this->Ini->sc_lig_target['C_@scinf_preliquidacion_@scinf_PreliqPDF_genIL'] : (isset($this->Ini->sc_lig_target['C_@scinf_preliquidacion']) ? $this->Ini->sc_lig_target['C_@scinf_preliquidacion'] : null);
        if (isset($this->Ini->sc_lig_md5["PreliqPDF_genIL"]) && $this->Ini->sc_lig_md5["PreliqPDF_genIL"] == "S") {
-           $Parms_Lig = "nmgp_lig_edit_lapis?#?S?@?caseta?#?" . str_replace("'", "@aspass@", $this->casetaid) . "?@?turno?#??@?fecha_op?#?" . str_replace("'", "@aspass@", $this->fechaoperacion) . "?@?carril?#??@?";
+           $Parms_Lig_Primera = "nmgp_lig_edit_lapis?#?S?@?caseta?#?" . str_replace("'", "@aspass@", $this->casetaid) . "?@?turno?#??@?fecha_op?#?" . str_replace("'", "@aspass@", $this->fechaoperacion) . "?@?carril?#??@?modo_pdf?#?primera?@?";
+           $Parms_Lig_Completo = "nmgp_lig_edit_lapis?#?S?@?caseta?#?" . str_replace("'", "@aspass@", $this->casetaid) . "?@?turno?#??@?fecha_op?#?" . str_replace("'", "@aspass@", $this->fechaoperacion) . "?@?carril?#??@?modo_pdf?#?completo?@?";
            if ($_SESSION['scriptcase']['proc_mobile']) {
-               $Parms_Lig = str_replace("NM_run_iframe?#?1?@?", "", $Parms_Lig);
+               $Parms_Lig_Primera = str_replace("NM_run_iframe?#?1?@?", "", $Parms_Lig_Primera);
+               $Parms_Lig_Completo = str_replace("NM_run_iframe?#?1?@?", "", $Parms_Lig_Completo);
            }
            if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturnoPD']['dashboard_info']['under_dashboard'] && isset($linkTarget))
            {
-               if ('' != $Parms_Lig)
-               {
-                   $Parms_Lig .= '*scout';
-               }
-               $Parms_Lig .= 'under_dashboard*scin1*scoutdashboard_app*scin' . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturnoPD']['dashboard_info']['dashboard_app'] . '*scoutown_widget*scin' . $linkTarget . '*scoutparent_widget*scin' . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturnoPD']['dashboard_info']['own_widget'] . '*scoutcompact_mode*scin' . ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturnoPD']['dashboard_info']['compact_mode'] ? '1' : '0') . '*scoutremove_margin*scin' . ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturnoPD']['dashboard_info']['remove_margin'] ? '1' : '0') . '*scoutremove_border*scin' . ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturnoPD']['dashboard_info']['remove_border'] ? '1' : '0');
+               $Parms_Dashboard = 'under_dashboard*scin1*scoutdashboard_app*scin' . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturnoPD']['dashboard_info']['dashboard_app'] . '*scoutown_widget*scin' . $linkTarget . '*scoutparent_widget*scin' . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturnoPD']['dashboard_info']['own_widget'] . '*scoutcompact_mode*scin' . ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturnoPD']['dashboard_info']['compact_mode'] ? '1' : '0') . '*scoutremove_margin*scin' . ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturnoPD']['dashboard_info']['remove_margin'] ? '1' : '0') . '*scoutremove_border*scin' . ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturnoPD']['dashboard_info']['remove_border'] ? '1' : '0');
+               $Parms_Lig_Primera .= '*scout' . $Parms_Dashboard;
+               $Parms_Lig_Completo .= '*scout' . $Parms_Dashboard;
            }
-           $Md5_Lig    = "@SC_par@" . NM_encode_input($this->Ini->sc_page) . "@SC_par@grid_detalleturnoPD@SC_par@" . md5($Parms_Lig);
-           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturnoPD']['Lig_Md5'][md5($Parms_Lig)] = $Parms_Lig;
+           $Md5_Lig_Primera = "@SC_par@" . NM_encode_input($this->Ini->sc_page) . "@SC_par@grid_detalleturnoPD@SC_par@" . md5($Parms_Lig_Primera);
+           $Md5_Lig_Completo = "@SC_par@" . NM_encode_input($this->Ini->sc_page) . "@SC_par@grid_detalleturnoPD@SC_par@" . md5($Parms_Lig_Completo);
+           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturnoPD']['Lig_Md5'][md5($Parms_Lig_Primera)] = $Parms_Lig_Primera;
+           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturnoPD']['Lig_Md5'][md5($Parms_Lig_Completo)] = $Parms_Lig_Completo;
        } else {
-           $Md5_Lig = "nmgp_lig_edit_lapis?#?S?@?caseta?#?" . str_replace("'", "@aspass@", $this->casetaid) . "?@?turno?#??@?fecha_op?#?" . str_replace("'", "@aspass@", $this->fechaoperacion) . "?@?carril?#??@?";
+           $Md5_Lig_Primera = "nmgp_lig_edit_lapis?#?S?@?caseta?#?" . str_replace("'", "@aspass@", $this->casetaid) . "?@?turno?#??@?fecha_op?#?" . str_replace("'", "@aspass@", $this->fechaoperacion) . "?@?carril?#??@?modo_pdf?#?primera?@?";
+           $Md5_Lig_Completo = "nmgp_lig_edit_lapis?#?S?@?caseta?#?" . str_replace("'", "@aspass@", $this->casetaid) . "?@?turno?#??@?fecha_op?#?" . str_replace("'", "@aspass@", $this->fechaoperacion) . "?@?carril?#??@?modo_pdf?#?completo?@?";
        }
-   $nm_saida->saida("<a  id=\"id_sc_field_preliquidacion_" . $this->SC_seq_page . "\" href=\"javascript:nm_gp_submit5('" . $this->Ini->link_PreliqPDF_genIL_blk . "', '$this->nm_location', '$Md5_Lig', '" . (isset($linkTarget) ? $linkTarget : '_blank') . "', '', '0', '0', '', 'PreliqPDF_genIL', '" . $this->SC_ancora . "')\" onMouseover=\"nm_mostra_hint(this, event, '')\" onMouseOut=\"nm_apaga_hint()\" class=\"" . $this->Ini->cor_link_dados . $this->css_sep . $this->css_preliquidacion_grid_line . "\" style=\"" . $this->Css_Cmp['css_preliquidacion_grid_line'] . "\">" . $conteudo . "</a>\r\n");
+   $nm_saida->saida("<span class=\"pmx-pdf-actions\"><a id=\"id_sc_field_preliquidacion_" . $this->SC_seq_page . "\" href=\"javascript:nm_gp_submit5('" . $this->Ini->link_PreliqPDF_genIL_blk . "', '$this->nm_location', '$Md5_Lig_Primera', 'new_tab', '', '0', '0', '', 'PreliqPDF_genIL', '" . $this->SC_ancora . "')\" title=\"Generar PDF de una hoja\" class=\"" . $this->Ini->cor_link_dados . $this->css_sep . $this->css_preliquidacion_grid_line . " pmx-pdf-mode pmx-pdf-first\" style=\"" . $this->Css_Cmp['css_preliquidacion_grid_line'] . "\">" . $conteudo . "</a><a id=\"id_sc_field_preliquidacion_completo_" . $this->SC_seq_page . "\" href=\"javascript:nm_gp_submit5('" . $this->Ini->link_PreliqPDF_genIL_blk . "', '$this->nm_location', '$Md5_Lig_Completo', 'new_tab', '', '0', '0', '', 'PreliqPDF_genIL', '" . $this->SC_ancora . "')\" title=\"Generar PDF completo de dos hojas\" class=\"" . $this->Ini->cor_link_dados . $this->css_sep . $this->css_preliquidacion_grid_line . " pmx-pdf-mode pmx-pdf-complete\" style=\"" . $this->Css_Cmp['css_preliquidacion_grid_line'] . "\">" . $conteudo . "</a></span>\r\n");
 } else {
    $nm_saida->saida(" <span id=\"id_sc_field_preliquidacion_" . $this->SC_seq_page . "\">$conteudo </span>\r\n");
        } 
@@ -5460,6 +5463,10 @@ $_SESSION['scriptcase']['grid_detalleturnoPD']['contr_erro'] = 'off';
    $nm_saida->saida("          document.F3.nmgp_outra_jan.value = \"true\" ;\r\n");
    $nm_saida->saida("          window.open('','jan_sc','');\r\n");
    $nm_saida->saida("          document.F3.target = \"jan_sc\"; \r\n");
+   $nm_saida->saida("      }\r\n");
+   $nm_saida->saida("      if (apl_name == 'PreliqPDF_genIL')\r\n");
+   $nm_saida->saida("      {\r\n");
+   $nm_saida->saida("          apl_lig = apl_lig.split('#')[0] + '#zoom=100';\r\n");
    $nm_saida->saida("      }\r\n");
    $nm_saida->saida("      if (\"dbifrm_widget\" == target.substr(0, 13)) {\r\n");
    $nm_saida->saida("          var targetIframe = $(parent.document).find(\"[name='\" + target + \"']\");\r\n");

@@ -2344,3 +2344,39 @@ body.pmx-preliq-carril-turno-grid .css_cuerpo_label,
 body.pmx-preliq-carril-turno-grid .css_cuerpo_grid_line {
   min-width: 64px;
 }
+
+/* Operation detail modal: keep every data column reachable. */
+body.pmx-detalle-operacion-grid {
+  box-sizing: border-box;
+  padding: 12px !important;
+}
+
+body.pmx-detalle-operacion-grid .scGridBorder {
+  box-sizing: border-box;
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+body.pmx-detalle-operacion-grid #sc_grid_body {
+  box-sizing: border-box;
+  display: block;
+  max-width: calc(100vw - 36px);
+  overflow-x: auto !important;
+  padding-bottom: 8px;
+  width: calc(100vw - 36px);
+}
+
+body.pmx-detalle-operacion-grid #sc_grid_body .scGridTabela[id^="sc-ui-grid-body"] {
+  min-width: 0;
+  table-layout: fixed;
+  width: 100% !important;
+}
+
+body.pmx-detalle-operacion-grid .scGridLabelFont,
+body.pmx-detalle-operacion-grid .scGridFieldOddFont,
+body.pmx-detalle-operacion-grid .scGridFieldEvenFont {
+  box-sizing: border-box;
+  overflow-wrap: anywhere;
+  padding: 10px 8px !important;
+  white-space: normal !important;
+}
