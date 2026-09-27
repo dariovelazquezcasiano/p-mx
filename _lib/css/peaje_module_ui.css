@@ -2020,6 +2020,61 @@ body.scGridPage.sc-app-grid .css_preliquidado_grid_line span[id^="id_sc_field_pr
   width: 10px;
 }
 
+/* Pending preliquidation: same current shape, keeping its original red status. */
+body.scGridPage.sc-app-grid a.css_preliquidar_grid_line:not(.pmx-restore-action) {
+  align-items: center;
+  background: #fff1f0 !important;
+  border: 1px solid #ffc9c4;
+  border-radius: 7px;
+  display: inline-flex;
+  height: 30px;
+  justify-content: center;
+  min-width: 30px;
+  transform: rotate(45deg);
+  vertical-align: middle;
+}
+
+body.scGridPage.sc-app-grid a.css_preliquidar_grid_line:not(.pmx-restore-action) img {
+  display: none !important;
+}
+
+body.scGridPage.sc-app-grid a.css_preliquidar_grid_line:not(.pmx-restore-action)::before {
+  background: #b42318;
+  border-radius: 3px;
+  box-shadow: 0 0 0 5px rgba(180, 35, 24, 0.14);
+  content: "";
+  height: 10px;
+  transform: rotate(45deg);
+  width: 10px;
+}
+
+body.scGridPage.sc-app-grid td.css_preliquidar_grid_line span[id^="id_sc_field_preliquidar_"] {
+  align-items: center;
+  background: #fff1f0;
+  border: 1px solid #ffc9c4;
+  border-radius: 7px;
+  display: inline-flex;
+  height: 30px;
+  justify-content: center;
+  min-width: 30px;
+  transform: rotate(45deg);
+  vertical-align: middle;
+}
+
+body.scGridPage.sc-app-grid td.css_preliquidar_grid_line span[id^="id_sc_field_preliquidar_"] img {
+  display: none !important;
+}
+
+body.scGridPage.sc-app-grid td.css_preliquidar_grid_line span[id^="id_sc_field_preliquidar_"]::before {
+  background: #b42318;
+  border-radius: 3px;
+  box-shadow: 0 0 0 5px rgba(180, 35, 24, 0.14);
+  content: "";
+  height: 10px;
+  transform: rotate(45deg);
+  width: 10px;
+}
+
 body.scGridPage.sc-app-grid a.scButton_image#bedit,
 body.scGridPage.sc-app-grid a.css_preliquidacion_grid_line,
 body.scGridPage.sc-app-grid a.css_bitacora_grid_line {
@@ -2287,6 +2342,40 @@ body.pmx-preliq-carril-grid #sc_grid_toobar_bot_table .summary_indicator {
   font-size: 12px;
   font-weight: 700;
   padding: 5px 9px;
+}
+
+/* Shared result-grid refinement for Carril, Turno and Dia. */
+body.pmx-preliq-carril-grid #sc_grid_body .scGridTabela[id^="sc-ui-grid-body"] {
+  border: 1px solid #d8e3e0;
+  border-radius: 6px;
+}
+
+body.pmx-preliq-carril-grid .scGridLabelFont {
+  white-space: normal !important;
+}
+
+body.pmx-preliq-carril-grid .scGridFieldOddFont,
+body.pmx-preliq-carril-grid .scGridFieldEvenFont {
+  border-bottom: 1px solid #e2ece9 !important;
+  font-variant-numeric: tabular-nums;
+}
+
+body.pmx-preliq-carril-grid #sc_grid_toobar_bot_table {
+  border-top: 1px solid #d8e3e0 !important;
+}
+
+body.pmx-preliq-carril-grid #sc_grid_toobar_bot_table .scGridToolbarPadding {
+  padding: 9px 12px !important;
+}
+
+body.pmx-preliq-carril-grid #sc_grid_toobar_bot_table .scButton_default,
+body.pmx-preliq-carril-grid #sc_grid_toobar_bot_table .scButton_small {
+  min-height: 30px;
+  padding: 5px 10px !important;
+}
+
+body.pmx-preliq-carril-grid #sc_grid_toobar_bot_table .summary_indicator {
+  margin: 0 4px;
 }
 
 body.pmx-preliq-carril-grid .scGridFooter {
