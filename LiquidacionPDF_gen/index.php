@@ -1904,10 +1904,11 @@ $FechaOperacionDT = $this->sc_temp_FechaOperacionDT;
 $TurnoDT = $this->sc_temp_TurnoDT;
 $CarrilDT = $this->sc_temp_CarrilDT;
 $porDia = 0;
+$modoPdf = (isset($_SESSION['modo_pdf']) && $_SESSION['modo_pdf'] === 'primera') ? 'primera' : 'completo';
 
 $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 $pdf->SetCreator(PDF_CREATOR);
-$pdf->SetAuthor('KZ');
+$pdf->SetAuthor('P-MX');
 $pdf->SetTitle('LIQUIDACIÓN DE CAJERO-RECEPTOR');
 $pdf->SetSubject('Tránsito Vehicular');
 $pdf->SetKeywords('Aforo, PDF, Liquidacion');
@@ -1915,52 +1916,60 @@ $pdf->AddPage('P','LETTER');
 
 $style = <<<EOD
 <style>
+table,
+table * {
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+}
+
 table.estilo1 {
     border: 1px solid black;
-	font-size:6px
-	align="right" 
+	font-size:6px;
+	text-align:right;
 }
 
 table.roundedCorners {
-border: 1px solid Black;
-border-radius: 13px;
+border: 1px solid black;
 border-spacing: 0;
 border-collapse: collapse;
 }
 table.roundedCorners td,
 table.roundedCorners th {
-border: 0.5px solid gray;
+border: 0.5px solid black;
 font-size:7px;
-cellpadding: 15;
-padding: 10px;
+padding: 5px 6px;
 }
 table.roundedCorners tr:last-child > td {
-border-bottom: solid;
+border-bottom: 0.5px solid black;
 }
 </style>
 EOD;
 
 $styleComparativo = <<<EOD
 <style>
+	table,
+	table * {
+		background-color: #FFFFFF !important;
+		color: #000000 !important;
+	}
+
 	table.titulos {
-		font-size:6px
-		align="right" 	
+	font-size:6px
+		text-align:right;
 	}
 	table.roundedCorners {
-		border: 1px solid Black;
-		border-radius: 13px;
+		border: 1px solid black;
 		border-spacing: 0;
 		border-collapse: collapse;
 	}
 	table.roundedCorners td,
 		table.roundedCorners th {
-		border: 0.5px solid gray;
+		border: 0.5px solid black;
 		font-size:5.5px;
-		cellpadding: 15;
-		padding: 10px;
+		padding: 5px 6px;
 	}
 	table.roundedCorners tr:last-child > td {
-		border-bottom: solid;
+		border-bottom: 0.5px solid black;
 	}
 </style>
 EOD;
@@ -1972,9 +1981,11 @@ $pdf->writeHTML($style . $tbl, true, false, false, false, '');
 
 
 
-$pdf->AddPage('L','LETTER'); 
-$tbl = $this->Comparativo($CasetaDT,$FechaOperacionDT,$TurnoDT,$CarrilDT);
-$pdf->writeHTML($styleComparativo . $tbl, true, false, false, false, '');
+if ($modoPdf === 'completo') {
+    $pdf->AddPage('L','LETTER');
+    $tbl = $this->Comparativo($CasetaDT,$FechaOperacionDT,$TurnoDT,$CarrilDT);
+    $pdf->writeHTML($styleComparativo . $tbl, true, false, false, false, '');
+}
 
 unset($tblpre,$tbl);
 
@@ -4295,6 +4306,18 @@ $_SESSION['scriptcase']['LiquidacionPDF_gen']['contr_erro'] = 'off';
    {
        $_SESSION["CasetaDT"] = "";
    }
+   if (isset($_POST["modo_pdf"]))
+   {
+       $_SESSION["modo_pdf"] = ($_POST["modo_pdf"] === "primera") ? "primera" : "completo";
+   }
+   if (isset($_GET["modo_pdf"]))
+   {
+       $_SESSION["modo_pdf"] = ($_GET["modo_pdf"] === "primera") ? "primera" : "completo";
+   }
+   if (!isset($_SESSION["modo_pdf"]))
+   {
+       $_SESSION["modo_pdf"] = "completo";
+   }
    if (isset($_POST["CarrilDT"])) 
    {
        $_SESSION["CarrilDT"] = $_POST["CarrilDT"];
@@ -4536,6 +4559,10 @@ $_SESSION['scriptcase']['LiquidacionPDF_gen']['contr_erro'] = 'off';
        {
            $_SESSION['CarrilDT'] = $CarrilDT;
            nm_limpa_str_LiquidacionPDF_gen($_SESSION["CarrilDT"]);
+       }
+       if (isset($modo_pdf))
+       {
+           $_SESSION['modo_pdf'] = ($modo_pdf === "primera") ? "primera" : "completo";
        }
    } 
    $GLOBALS["NM_ERRO_IBASE"] = 0;  

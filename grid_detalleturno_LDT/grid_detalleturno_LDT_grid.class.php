@@ -1710,7 +1710,7 @@ $nm_saida->saida("}\r\n");
   }
            $nm_saida->saida("  </style>\r\n");
        }
-       $nm_saida->saida("   <link rel=\"stylesheet\" type=\"text/css\" href=\"" . $this->Ini->path_link . "_lib/css/peaje_module_ui.css?v=20260913-palette\" />\r\n");
+       $nm_saida->saida("   <link rel=\"stylesheet\" type=\"text/css\" href=\"" . $this->Ini->path_link . "_lib/css/peaje_module_ui.css?v=20261005-liquidacion\" />\r\n");
        $nm_saida->saida("  </HEAD>\r\n");
    } 
    if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturno_LDT']['embutida'] && $this->Ini->nm_ger_css_emb)
@@ -1733,7 +1733,7 @@ $nm_saida->saida("}\r\n");
            {
                $nm_saida->saida(" <link rel=\"stylesheet\" type=\"text/css\" href=\"../_lib/buttons/" . $this->Ini->Str_btn_css . "\" /> \r\n");
            }
-           $nm_saida->saida("  <body id=\"grid_horizontal\" class=\"" . $this->css_scGridPage . " sc-app-grid\" " . $str_iframe_body . " style=\"-webkit-print-color-adjust: exact;" . $css_body . "\">\r\n");
+           $nm_saida->saida("  <body id=\"grid_horizontal\" class=\"" . $this->css_scGridPage . " sc-app-grid pmx-liquidacion-grid\" " . $str_iframe_body . " style=\"-webkit-print-color-adjust: exact;" . $css_body . "\">\r\n");
            $nm_saida->saida("   <TABLE id=\"sc_table_print\" cellspacing=0 cellpadding=0 align=\"center\" valign=\"top\" " . $this->Tab_width . ">\r\n");
            $nm_saida->saida("     <TR>\r\n");
            $nm_saida->saida("       <TD>\r\n");
@@ -1767,7 +1767,7 @@ $nm_saida->saida("}\r\n");
           $remove_margin = isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturno_LDT']['dashboard_info']['remove_margin']) && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturno_LDT']['dashboard_info']['remove_margin'] ? 'margin: 0; ' : '';
           $remove_border = isset($_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturno_LDT']['dashboard_info']['remove_border']) && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturno_LDT']['dashboard_info']['remove_border'] ? 'border-width: 0; ' : '';
           $vertical_center = '';
-           $nm_saida->saida("  <body id=\"grid_horizontal\" class=\"" . $this->css_scGridPage . " sc-app-grid\" " . $str_iframe_body . " style=\"" . $remove_margin . $vertical_center . $css_body . "\">\r\n");
+           $nm_saida->saida("  <body id=\"grid_horizontal\" class=\"" . $this->css_scGridPage . " sc-app-grid pmx-liquidacion-grid\" " . $str_iframe_body . " style=\"" . $remove_margin . $vertical_center . $css_body . "\">\r\n");
        }
        $nm_saida->saida("  " . $this->Ini->Ajax_result_set . "\r\n");
        if (!$_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturno_LDT']['embutida'] && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturno_LDT']['opcao'] != "pdf" && !$this->Print_All)
@@ -3452,24 +3452,27 @@ $_SESSION['scriptcase']['grid_detalleturno_LDT']['contr_erro'] = 'off';
  if (!$this->Ini->Proc_print && !$this->Ini->SC_Link_View && $_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturno_LDT']['opcao'] != "pdf" && $_SESSION['scriptcase']['contr_link_emb'] != "pdf" && $conteudo != "&nbsp;"){ $_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturno_LDT']['Ind_lig_mult']++;
        $linkTarget = isset($this->Ini->sc_lig_target['C_@scinf_resumen_@scinf_LiquidacionPDF_gen']) ? $this->Ini->sc_lig_target['C_@scinf_resumen_@scinf_LiquidacionPDF_gen'] : (isset($this->Ini->sc_lig_target['C_@scinf_resumen']) ? $this->Ini->sc_lig_target['C_@scinf_resumen'] : null);
        if (isset($this->Ini->sc_lig_md5["LiquidacionPDF_gen"]) && $this->Ini->sc_lig_md5["LiquidacionPDF_gen"] == "S") {
-           $Parms_Lig = "nmgp_lig_edit_lapis?#?S?@?fechaoperaciondt?#?" . str_replace("'", "@aspass@", $this->fechaoperacion) . "?@?turnodt?#?" . str_replace("'", "@aspass@", $this->turnoid) . "?@?casetadt?#?" . str_replace("'", "@aspass@", $this->casetaid) . "?@?";
+           $Parms_Lig_Primera = "nmgp_lig_edit_lapis?#?S?@?fechaoperaciondt?#?" . str_replace("'", "@aspass@", $this->fechaoperacion) . "?@?turnodt?#?" . str_replace("'", "@aspass@", $this->turnoid) . "?@?casetadt?#?" . str_replace("'", "@aspass@", $this->casetaid) . "?@?modo_pdf?#?primera?@?";
+           $Parms_Lig_Completo = "nmgp_lig_edit_lapis?#?S?@?fechaoperaciondt?#?" . str_replace("'", "@aspass@", $this->fechaoperacion) . "?@?turnodt?#?" . str_replace("'", "@aspass@", $this->turnoid) . "?@?casetadt?#?" . str_replace("'", "@aspass@", $this->casetaid) . "?@?modo_pdf?#?completo?@?";
            if ($_SESSION['scriptcase']['proc_mobile']) {
-               $Parms_Lig = str_replace("NM_run_iframe?#?1?@?", "", $Parms_Lig);
+               $Parms_Lig_Primera = str_replace("NM_run_iframe?#?1?@?", "", $Parms_Lig_Primera);
+               $Parms_Lig_Completo = str_replace("NM_run_iframe?#?1?@?", "", $Parms_Lig_Completo);
            }
            if ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturno_LDT']['dashboard_info']['under_dashboard'] && isset($linkTarget))
            {
-               if ('' != $Parms_Lig)
-               {
-                   $Parms_Lig .= '*scout';
-               }
-               $Parms_Lig .= 'under_dashboard*scin1*scoutdashboard_app*scin' . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturno_LDT']['dashboard_info']['dashboard_app'] . '*scoutown_widget*scin' . $linkTarget . '*scoutparent_widget*scin' . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturno_LDT']['dashboard_info']['own_widget'] . '*scoutcompact_mode*scin' . ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturno_LDT']['dashboard_info']['compact_mode'] ? '1' : '0') . '*scoutremove_margin*scin' . ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturno_LDT']['dashboard_info']['remove_margin'] ? '1' : '0') . '*scoutremove_border*scin' . ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturno_LDT']['dashboard_info']['remove_border'] ? '1' : '0');
+               $dashboardParms = 'under_dashboard*scin1*scoutdashboard_app*scin' . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturno_LDT']['dashboard_info']['dashboard_app'] . '*scoutown_widget*scin' . $linkTarget . '*scoutparent_widget*scin' . $_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturno_LDT']['dashboard_info']['own_widget'] . '*scoutcompact_mode*scin' . ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturno_LDT']['dashboard_info']['compact_mode'] ? '1' : '0') . '*scoutremove_margin*scin' . ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturno_LDT']['dashboard_info']['remove_margin'] ? '1' : '0') . '*scoutremove_border*scin' . ($_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturno_LDT']['dashboard_info']['remove_border'] ? '1' : '0');
+               $Parms_Lig_Primera .= '*scout' . $dashboardParms;
+               $Parms_Lig_Completo .= '*scout' . $dashboardParms;
            }
-           $Md5_Lig    = "@SC_par@" . NM_encode_input($this->Ini->sc_page) . "@SC_par@grid_detalleturno_LDT@SC_par@" . md5($Parms_Lig);
-           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturno_LDT']['Lig_Md5'][md5($Parms_Lig)] = $Parms_Lig;
+           $Md5_Lig_Primera = "@SC_par@" . NM_encode_input($this->Ini->sc_page) . "@SC_par@grid_detalleturno_LDT@SC_par@" . md5($Parms_Lig_Primera);
+           $Md5_Lig_Completo = "@SC_par@" . NM_encode_input($this->Ini->sc_page) . "@SC_par@grid_detalleturno_LDT@SC_par@" . md5($Parms_Lig_Completo);
+           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturno_LDT']['Lig_Md5'][md5($Parms_Lig_Primera)] = $Parms_Lig_Primera;
+           $_SESSION['sc_session'][$this->Ini->sc_page]['grid_detalleturno_LDT']['Lig_Md5'][md5($Parms_Lig_Completo)] = $Parms_Lig_Completo;
        } else {
-           $Md5_Lig = "nmgp_lig_edit_lapis?#?S?@?fechaoperaciondt?#?" . str_replace("'", "@aspass@", $this->fechaoperacion) . "?@?turnodt?#?" . str_replace("'", "@aspass@", $this->turnoid) . "?@?casetadt?#?" . str_replace("'", "@aspass@", $this->casetaid) . "?@?";
+           $Md5_Lig_Primera = "nmgp_lig_edit_lapis?#?S?@?fechaoperaciondt?#?" . str_replace("'", "@aspass@", $this->fechaoperacion) . "?@?turnodt?#?" . str_replace("'", "@aspass@", $this->turnoid) . "?@?casetadt?#?" . str_replace("'", "@aspass@", $this->casetaid) . "?@?modo_pdf?#?primera?@?";
+           $Md5_Lig_Completo = "nmgp_lig_edit_lapis?#?S?@?fechaoperaciondt?#?" . str_replace("'", "@aspass@", $this->fechaoperacion) . "?@?turnodt?#?" . str_replace("'", "@aspass@", $this->turnoid) . "?@?casetadt?#?" . str_replace("'", "@aspass@", $this->casetaid) . "?@?modo_pdf?#?completo?@?";
        }
-   $nm_saida->saida("<a  id=\"id_sc_field_resumen_" . $this->SC_seq_page . "\" href=\"javascript:nm_gp_submit5('" . $this->Ini->link_LiquidacionPDF_gen_blk . "', '$this->nm_location', '$Md5_Lig', '" . (isset($linkTarget) ? $linkTarget : '_blank') . "', '', '0', '0', '', 'LiquidacionPDF_gen', '" . $this->SC_ancora . "')\" onMouseover=\"nm_mostra_hint(this, event, '')\" onMouseOut=\"nm_apaga_hint()\" class=\"" . $this->Ini->cor_link_dados . $this->css_sep . $this->css_resumen_grid_line . "\" style=\"" . $this->Css_Cmp['css_resumen_grid_line'] . "\">" . $conteudo . "</a>\r\n");
+   $nm_saida->saida("<span class=\"pmx-pdf-actions\"><a  id=\"id_sc_field_resumen_" . $this->SC_seq_page . "_first\" href=\"javascript:nm_gp_submit5('" . $this->Ini->link_LiquidacionPDF_gen_blk . "', '$this->nm_location', '$Md5_Lig_Primera', 'new_tab', '', '0', '0', '', 'LiquidacionPDF_gen', '" . $this->SC_ancora . "')\" onMouseover=\"nm_mostra_hint(this, event, '')\" onMouseOut=\"nm_apaga_hint()\" title=\"Generar PDF de una hoja\" class=\"" . $this->Ini->cor_link_dados . $this->css_sep . $this->css_resumen_grid_line . " pmx-pdf-mode pmx-pdf-first\" style=\"" . $this->Css_Cmp['css_resumen_grid_line'] . "\"></a><a  id=\"id_sc_field_resumen_" . $this->SC_seq_page . "_complete\" href=\"javascript:nm_gp_submit5('" . $this->Ini->link_LiquidacionPDF_gen_blk . "', '$this->nm_location', '$Md5_Lig_Completo', 'new_tab', '', '0', '0', '', 'LiquidacionPDF_gen', '" . $this->SC_ancora . "')\" onMouseover=\"nm_mostra_hint(this, event, '')\" onMouseOut=\"nm_apaga_hint()\" title=\"Generar PDF completo de dos hojas\" class=\"" . $this->Ini->cor_link_dados . $this->css_sep . $this->css_resumen_grid_line . " pmx-pdf-mode pmx-pdf-complete\" style=\"" . $this->Css_Cmp['css_resumen_grid_line'] . "\"></a></span>\r\n");
 } else {
    $nm_saida->saida(" <span id=\"id_sc_field_resumen_" . $this->SC_seq_page . "\">$conteudo </span>\r\n");
        } 
@@ -4935,6 +4938,7 @@ $_SESSION['scriptcase']['grid_detalleturno_LDT']['contr_erro'] = 'off';
    $nm_saida->saida("   function nm_gp_submit5(apl_lig, apl_saida, parms, target, opc, modal_h, modal_w, m_confirm, apl_name, ancor) \r\n");
    $nm_saida->saida("   { \r\n");
    $nm_saida->saida("      parms = parms.replace(/@percent@/g, \"%\"); \r\n");
+   $nm_saida->saida("      if (apl_name == 'LiquidacionPDF_gen') { apl_lig = apl_lig.split('#')[0] + '#zoom=100'; }\r\n");
    $nm_saida->saida("      if (m_confirm != null && m_confirm != '') \r\n");
    $nm_saida->saida("      { \r\n");
    $nm_saida->saida("          if (confirm(m_confirm))\r\n");
